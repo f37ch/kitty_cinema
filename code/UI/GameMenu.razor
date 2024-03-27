@@ -1,0 +1,465 @@
+@using System.Collections.Generic
+@using System.Linq
+@using System.Threading.Tasks
+@using Sandbox.Network
+@using Sandbox.UI
+@inherits PanelComponent
+<style>
+GameMenu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(#333 0%, #161616 100%);
+    background-size: 100% 100%;
+    justify-content: flex-start;
+    font-weight: bold;
+    font-size: 62px;
+    pointer-events: all;
+    flex-direction: column;
+    transition: all .15s ease-in-out;
+    pointer-events: all;
+
+    .logo {
+        flex-direction: row;
+        height: 35%;
+        //min-height: 35%;
+        margin: 1%;
+        transform: scale(1);
+ 
+        .img {
+            background-position: left;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            width: 310px;//18%
+            flex-shrink: 0;
+       
+        }
+
+        .img2 {
+            width: 100%;
+            background-position: left;
+            background-size: contain;
+            background-repeat: repeat;
+        }
+    }
+
+    .main {
+        flex-direction: row;
+        margin: 1%;
+
+        .option_list {
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            //margin-top: auto;
+            margin-bottom: auto;
+            margin-right: 5%;
+            width: 40%;
+            gap: 14px;
+            flex-shrink: 0;
+
+            .button {
+                transform: scale(1);
+                background-color: rgb(59, 59, 59);
+                font-weight: bolder;
+                justify-content: flex-start;
+                width: 100%;
+                color: white;
+                padding: 14px;
+                border-radius: 14px;
+                transition: all 0.14s ease;
+
+                &:hover {
+                    sound-in: ui.button.over;
+                    color: rgb(114, 201, 189);
+                    transform: translateX(6%);
+                }
+
+                &:active {
+                    sound-in: ui.button.press;
+                }
+
+                &.selected {
+                    background-color: rgb(45, 97, 86);
+                }
+            }
+        }
+
+        .optionwind {
+            border-radius: 14px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 44px;
+            margin-top: auto;
+            margin-bottom: auto;
+            transition: all .35s ease-in-out;
+            width: 100%;
+            background-color: rgb(45, 97, 86);
+            transform: scale(1);
+
+            .info_container{
+                transition: opacity .2s ease;
+                position: absolute;
+                top:80%;
+                transform: scale(1);
+                transition: all 0.14s ease;
+               
+                .text{
+                
+                    align-items: center;
+                    gap:8px;
+                    font-size: 54px;
+                    transition: all 15s ease-in-out;
+                    background-color: rgb(138, 67, 67);
+                    font-weight: bolder;
+                    color:white;
+                    padding: 5px 10px;
+                    border-radius: 14px;
+                    .ic{
+                        
+                        border-radius: 18px;
+                       background-color: rgba(75, 167, 129, 0.664); 
+                       //border-radius: 100%;
+                     
+                    }
+                }
+            }
+
+            .button-list {
+                border-radius: 14px;
+                flex-direction: column;
+                overflow: scroll;
+                width: 100%;
+                gap: 1%;
+                max-height: 90%;
+
+                .button {
+                    background-color: transparent;
+                    align-items: flex-start;
+                    color: #ffffff;
+                    padding: 10px;
+                    justify-content: center;
+                    cursor: pointer;
+                    width: 100%;
+                    flex-direction: column;
+                    flex-shrink: 0;
+                    background-color: rgb(59, 59, 59);
+
+                    .title {
+                        font-weight: bold;
+                        font-size: 20px;
+                    }
+
+                    .map {
+                        font-size: 16px;
+                    }
+
+                    .count {
+                        margin-right: 1%;
+                        right: auto;
+                        position: absolute;
+                        white-space: nowrap;
+                    }
+
+                    &:hover {
+                        background-color: #333;
+                    }
+                }
+            }
+
+            .refresh_button {
+                align-items: center;
+                border-radius: 14px;
+                font-size: 24px;
+                background-color: rgb(59, 59, 59);
+                justify-content: center;
+                font-weight: bolder;
+                color: white;
+                gap: 4%;
+                margin-top: 1%;
+                padding: 8px;
+                width: 100%;
+                cursor: pointer;
+
+                &:hover {
+                    sound-in: ui.button.over;
+                    color: rgb(114, 201, 189);
+                }
+
+                .ic {
+                    font-size: 30px;
+                    background-color: rgba(80, 150, 114, 0.418);
+                    border-radius: 100%;
+                }
+
+                &:active {
+                    sound-in: ui.button.press;
+                }
+            }
+            .stitle{
+                background-color: rgb(7, 75, 69);
+                 border-radius: 14px;
+                 width: 100%;
+                 align-items: center;
+                 justify-content: center;
+                 margin: 1%;
+            }
+            .settings_list {
+                border-radius: 14px;
+                flex-direction: column;
+                overflow: scroll;
+                width: 100%;
+                gap: 2%;
+                max-height: 100%;
+
+                .setting {
+                    flex-shrink: 0;
+                    align-items: center;
+                    font-family: BerlinSansFBDemi;
+                    padding: 10px;
+                    width: 100%;
+                    background-color: rgba(128, 128, 128, 0.418);
+                    border-radius: 14px;
+                    font-size: 44px;
+
+                    .stext {
+                        width: 100%;
+                        justify-content: flex-end;
+                    }
+
+                    .slidercontrol {
+                        width: 20%;
+                    }
+                    
+                    .te{
+                        width: 100%;
+		                flex-shrink: 0;
+                        background-color: #5a5a5a;
+                    }
+		            
+                }
+            }
+        }
+
+        
+    }
+
+    &.hide {
+        opacity: 0;
+        .logo {
+            
+            transition: all .35s ease-in-out;
+            transform: scale(0);
+
+        }
+        .main {
+            transition: all .15s ease-in-out;
+            transform: scale(0);
+        }
+    }
+    &.hideoption {
+        .main {
+            .optionwind {
+                opacity: 0;
+                transition: all .15s ease-in-out;
+                transform: scale(0);
+            }
+        }
+    }
+}
+</style>
+<root class="@(IsMenuOpen ? "" : "hide")">
+    <div class="logo">
+        <img class="img" src="/ui/logo.png"><img>
+        <img class="img2" src="/ui/paws_pattern.png"><img>
+    </div>
+    <div class="main">
+        <div class="option_list">
+            <!--<div class="logo">
+                <text style="color:rgb(0,215,187);">Kitty|</text><text style="color:white;">Cinema</text>
+            </div>-->
+            <div class="button" onclick=@(()=>Create())>CREATE NEW LOBBY</div>
+            <div class="button @(@selectedB=="servers"?"selected":"")" onclick=@(()=>SelectOption("servers"))>SERVER LIST</div>
+            <div class="button @(@selectedB=="settings"?"selected":"")" onclick=@(()=>SelectOption("settings"))>SETTINGS</div>
+            <div class="button" onclick=@(()=>Quit())>QUIT</div>
+        </div>
+        <div class="optionwind">
+            @if (selected=="servers"){
+                @if (IsConnecting){
+                    <div class="parseinfo">Connecting...</div>
+                }
+                else if(parsingServers)
+	    		{
+	    			<div class="parseinfo">Parsing Servers...</div>
+	    		}
+	    		else if (ServerList.Count==0)
+	    		{
+	    			<div class="parseinfo">Currently no servers online.</div>
+	    		}
+	    		else
+	    		{
+	    			<div class="button-list">
+	    				@foreach (var sv in ServerList)
+	    				{
+	    					<div class="button" onclick=@(()=>Preconnect(sv))>
+	    						<div class="title">
+	    							@sv.Name
+	    						</div>
+	    						<div class="map">
+	    							@sv.Map
+	    						</div>
+                                <div class="count">
+	    							@sv.Members/@sv.MaxMembers
+	    						</div>
+	    					</div>
+	    				}
+	    			</div>
+	    		}
+                <div class="refresh_button" onclick=@(()=>RefreshServerList())><i class="ic">refresh</i>REFRESH LIST</div>
+            }else if (selected=="settings"){
+                <h2 class="stitle">Main Settings</div>
+                <div class="settings_list">
+                    <div class="setting">
+                        <SliderControl class="slidercontrol" Max=@(100) Step=@(1) Value=@(Footsteps.FootStepVolume*100)  OnValueChanged=@FootstepSet/>
+                        <div class="stext">FOOTSTEPS VOLUME</div>
+                    </div>
+                    <div class="setting">
+                        <SliderControl class="slidercontrol" Max=@(100) Step=@(1) Value=@Camera.FieldOfView  OnValueChanged=@FovSet/>
+                        <div class="stext">FIELD OF VIEW</div>
+                    </div>
+                </div>
+                <h2 class="stitle">Lobby Stuff</div>
+                <div class="settings_list">
+                    <div class="setting">
+                        <SwitchControl class="slidercontrol" Value=@IsLobbyPrivate OnValueChanged=@TogglePrivate/>
+                        <div class="stext">CREATED LOBBY ARE PRIVATE</div>
+                    </div>
+                    <!--@if (!IsLobbyPrivate){
+                        <div class="setting">
+                            <SwitchControl class="slidercontrol" Value=@IsLobbyNeedPassword OnValueChanged=@TogglePassword/>
+                            <div class="stext">LOBBY PASSWORD</div>
+                        </div>
+                        @if (IsLobbyNeedPassword){
+                            <div class="setting">
+                                <TextEntry class="te" Value:bind="@LobbyPassword" @ref="TextEntry"></TextEntry>
+                            </div>
+                        }
+                    }-->
+                </div>
+            }else if (selected=="displaytext"){
+                <div class="info_container">
+                    <div class="text"><i class="ic">@DisplayIcon</i>@DisplayText</div>
+                </div>
+            }
+        </div>
+    </div>
+</root>
+
+@code{
+    public bool IsMenuOpen {get;set;}
+    public TextEntry TextEntry {get;set;}
+    public CameraComponent Camera {get;set;}
+    public float FootStepsVolume {get;set;}
+    public string selected {get;set;}="servers";
+    public string selectedB {get;set;}="servers";
+    public string DisplayText {get;set;}="HOST LEFT THE GAME";
+    public string DisplayIcon {get;set;}="sensors_off";
+    public bool IsConnecting {get;set;}
+    public bool IsLobbyPrivate {get;set;}
+    public bool IsLobbyNeedPassword {get;set;}
+    public string LobbyPassword {get;set;}
+    private bool parsingServers {get;set;}
+	private List<LobbyInformation> ServerList {get;set;}=new();
+    private void FovSet(float val){
+        Camera.FieldOfView=val;
+    }
+    private void FootstepSet(float val){
+        Footsteps.FootStepVolume=val/100;
+    }
+    private void TogglePrivate(bool val){
+        IsLobbyPrivate=val;
+    }
+    private void TogglePassword(bool val){
+        IsLobbyNeedPassword=val;
+    }
+    protected override void OnUpdate(){
+        base.OnUpdate();
+    
+        if(Game.ActiveScene.Title!="init"&&Input.EscapePressed){
+            IsMenuOpen=!IsMenuOpen;
+            if (!IsMenuOpen){
+                Settings.Save();
+            }else{
+                if (selected=="servers"){
+                    _=RefreshServerList();
+                }
+            }
+        }
+    }
+    protected void Create()
+	{
+        Settings.Save();
+        GameNetworkSystem.Disconnect();
+        Game.ActiveScene.LoadFromFile("Scenes/theater.scene");
+	}
+    protected void Quit()
+	{
+        Settings.Save();
+		GameNetworkSystem.Disconnect();
+		Game.ActiveScene.Destroy();
+		Game.Close();
+	}
+    protected async Task SelectOption(string type)
+	{
+        AddClass("hideoption");
+        if (type=="servers"){
+            _=RefreshServerList();
+        }
+        selectedB=type;
+        StateHasChanged();
+        await Task.DelayRealtimeSeconds(.3f);
+        selected=type;
+        RemoveClass("hideoption");
+        StateHasChanged();
+    }
+    protected override void OnStart()
+	{
+		base.OnStart();
+        if (!Connection.Local.IsHost||Game.ActiveScene.Title=="init"){// for host it loads earlier in PlayerSync component.
+            Settings.Load();
+        }
+        Camera=Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
+        IsMenuOpen=Game.ActiveScene.Title=="init";
+		_=RefreshServerList();
+	}
+    private async Task RefreshServerList()
+	{
+		parsingServers=true;
+		StateHasChanged();
+		ServerList=await Networking.QueryLobbies();
+		parsingServers=false;
+		StateHasChanged();
+	}
+    protected void Preconnect(LobbyInformation Server)
+	{
+        if (Game.ActiveScene.Title!="init"){
+            GameNetworkSystem.Disconnect();
+		    Game.ActiveScene.LoadFromFile("Scenes/init.scene");
+        }
+        _=Game.ActiveScene.GetAllComponents<GameMenu>().FirstOrDefault().Connect(Server.LobbyId);
+	}
+	private async Task Connect(ulong LobbyId)
+	{
+        //GameNetworkSystem.Connect(LobbyId);
+        Game.ActiveScene.GetAllComponents<GameMenu>().FirstOrDefault().IsConnecting=true;
+        await Task.DelayRealtimeSeconds(.5f);
+        await GameNetworkSystem.TryConnectSteamId(LobbyId);
+        //await Task.DelayRealtimeSeconds(5);
+        Game.ActiveScene.GetAllComponents<GameMenu>().FirstOrDefault().IsConnecting=false;
+	}
+    protected override int BuildHash()=>HashCode.Combine(IsMenuOpen);
+}

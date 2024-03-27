@@ -1,0 +1,101 @@
+{
+  "RootObject": {
+    "Id": "23e3d258-a1b0-4452-ab30-7687e673b079",
+    "Name": "MediaPlayer",
+    "Position": "6.961144,-2710.3,164.3312",
+    "Rotation": "0,0,0.7071068,0.7071068",
+    "Scale": "1,1.7,1.7",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "Components": [
+      {
+        "__type": "MediaPlayer",
+        "PanelComponent": {
+          "_type": "gameobject",
+          "go": "34f470fb-4d2b-46ab-85f7-19502a01e902"
+        },
+        "Projector": {
+          "_type": "component",
+          "go": "87afb8c1-56d5-40a3-8e73-2e303237edb8",
+          "component_type": "SpotLight"
+        },
+        "ScreenModel": {
+          "_type": "component",
+          "go": "d26940de-4a30-48fe-9e32-8eeeb4f6dc14",
+          "component_type": "ModelRenderer"
+        }
+      }
+    ],
+    "Children": [
+      {
+        "Id": "d26940de-4a30-48fe-9e32-8eeeb4f6dc14",
+        "Name": "ScreenModel",
+        "Position": "0.02925109,-0.06917572,-106.1081",
+        "Rotation": "0,0,-1,-0.00000004371139",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "ModelRenderer",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/screen.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "ModelCollider",
+            "IsTrigger": false,
+            "Model": "models/screen.vmdl",
+            "OnComponentDisabled": null,
+            "Static": false,
+            "Surface": "surfaces/brick.surface"
+          },
+          {
+            "__type": "Rigidbody",
+            "AngularDamping": 0,
+            "Gravity": false,
+            "LinearDamping": 0,
+            "Locking": {
+              "X": true,
+              "Y": true,
+              "Z": true,
+              "Pitch": true,
+              "Yaw": true,
+              "Roll": true
+            },
+            "MassOverride": 0,
+            "MotionEnabled": true,
+            "RigidbodyFlags": 0,
+            "StartAsleep": true
+          }
+        ]
+      },
+      {
+        "Id": "87afb8c1-56d5-40a3-8e73-2e303237edb8",
+        "Name": "Spot Light",
+        "Position": "0,0,0",
+        "Tags": "light_spot,light",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "SpotLight",
+            "Attenuation": 1,
+            "ConeInner": 90,
+            "ConeOuter": 75,
+            "Cookie": null,
+            "FogMode": "Enabled",
+            "FogStrength": 1,
+            "LightColor": "15,15,15,1",
+            "Radius": 1200,
+            "Shadows": true
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

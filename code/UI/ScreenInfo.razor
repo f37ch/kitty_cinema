@@ -1,0 +1,129 @@
+@using Sandbox
+@using System
+@using Sandbox.UI
+
+@inherits Panel
+<style>
+    ScreenInfo {
+		width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        font-family:BerlinSansFBDemi;
+        text-align: center;
+        color:white;
+        overflow: hidden;
+        align-items: center;
+        transition: background-color 250ms ease;
+        .ptext{
+            color: rgba(0, 0, 0, 0);
+            margin-top:auto;
+            margin-bottom: auto;
+            align-items: center;
+           
+      
+           
+            justify-content:center;
+       
+            font-size: 10vw;
+            transform: scale(0);
+            transition: all 0.25s ease-in-out;
+        }
+
+        .not_loaded{
+            color: rgba(0, 0, 0, 0);
+            
+            align-items: center;
+            position: absolute;
+            height: 1%;
+            width: 1%;
+            font-weight: bold;
+            font-size: 10vw;
+            transform: scale(0);
+           
+            transition: all 0.25s ease-in-out;
+            opacity: 0;
+        }
+        &.Notinside{
+            background-image: radial-gradient(#333 0%,#161616 100%);
+            background-size: 100% 100%;
+            .not_loaded{
+			    transform: scale(1);
+                color: rgb(255, 116, 116);
+                opacity: 1;
+                width: 100%;
+                height: 100%;
+            }
+            .ptext{
+			    transform: scale(0);
+            }
+            .title{
+			    transform: scale(0);
+            }
+        }
+        &.Paused{
+			background-color:rgb(48, 48, 48);
+            .ptext{
+			    transform: scale(1);
+                color: white;
+                font-weight: bold;
+            }
+            .title{
+			    transform: scale(1);
+                color: white;
+            }
+		}
+        .container{
+            align-items:center;
+            bottom:0px;
+            width: 100%;
+            height: 1%;
+            position: absolute;
+            background-color:rgba(87, 87, 87, 1);
+            opacity: 0.2;
+        }
+        
+        .durbar
+        {
+            min-height: 50%;
+            align-items: center;
+            padding-right: 50%;
+        	flex-grow: 1;
+            position: absolute;
+        	height: 100%;
+        	background-color: red;
+        }
+
+        .title{
+            position: absolute;
+            font-size: 3vw;
+            transform: scale(0);
+            transition: all 0.25s ease-in-out;
+            font-weight: bold;
+        }
+    }
+</style>
+
+<root >
+    <text class="title">@MediaPlayer.Title</text>
+    <text class="ptext">Paused</text>
+    <text class="not_loaded">ENTER LOCATION</text>
+    @if (!MediaPlayer.IsLive){
+        <div class="container">
+            <div class="durbar" style="width: @((MediaPlayer.Curtime/MediaPlayer.Duration)*100)%;"/>
+        </div>
+    }
+</root>
+
+@code{
+    public MediaPlayer MediaPlayer {get;set;}
+
+    protected override void OnAfterTreeRender(bool firstTime)
+    {
+        base.OnAfterTreeRender(firstTime);
+    }
+    protected override int BuildHash()
+    {
+        return HashCode.Combine(DateTime.Now.ToString());
+    }
+}

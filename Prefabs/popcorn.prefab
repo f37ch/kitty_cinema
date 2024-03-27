@@ -1,0 +1,78 @@
+{
+  "RootObject": {
+    "__guid": "a14caa65-4adc-49eb-84e2-2947c78605be",
+    "Name": "popcorn",
+    "Tags": "weapon,particles",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "Components": [
+      {
+        "__type": "ModelRenderer",
+        "__guid": "5d064184-c979-48d6-a110-8de1740248da",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/ki0_popcornbucket.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "ModelCollider",
+        "__guid": "82f6fabf-ef15-4da6-8a8e-ce065543e05f",
+        "IsTrigger": false,
+        "Model": "models/ki0_popcornbucket.vmdl",
+        "Static": false
+      },
+      {
+        "__type": "Rigidbody",
+        "__guid": "98359cfe-034e-434b-bdb0-7b2ffe4c9f1f",
+        "AngularDamping": 0,
+        "Gravity": true,
+        "LinearDamping": 0,
+        "Locking": {},
+        "MassOverride": 0,
+        "MotionEnabled": true,
+        "RigidbodyFlags": 0,
+        "StartAsleep": false
+      },
+      {
+        "__type": "BaseWeapon",
+        "__guid": "95e29a17-3e5b-4a62-ba84-2a425b61002c",
+        "ModelCollider": {
+          "_type": "component",
+          "component_id": "82f6fabf-ef15-4da6-8a8e-ce065543e05f",
+          "go": "a14caa65-4adc-49eb-84e2-2947c78605be",
+          "component_type": "ModelCollider"
+        },
+        "Particle": {
+          "_type": "component",
+          "component_id": "cd300de3-7f0a-456c-a41a-f3ac5b0fb7c3",
+          "go": "a14caa65-4adc-49eb-84e2-2947c78605be",
+          "component_type": "LegacyParticleSystem"
+        },
+        "PickupInfo": "PRESS E TO PICKUP THIS YUMMY CORN!",
+        "PickupInfoChat": "You picked up Popcorn! Press RMB to throw it or G to drop weapon.",
+        "Rigidbody": {
+          "_type": "component",
+          "component_id": "98359cfe-034e-434b-bdb0-7b2ffe4c9f1f",
+          "go": "a14caa65-4adc-49eb-84e2-2947c78605be",
+          "component_type": "Rigidbody"
+        },
+        "WeaponName": "Popcorn",
+        "WeaponPosition": "0,6.5,-6.6",
+        "WeaponScale": "1,1,1"
+      },
+      {
+        "__type": "LegacyParticleSystem",
+        "__guid": "cd300de3-7f0a-456c-a41a-f3ac5b0fb7c3",
+        "ControlPoints": [],
+        "Looped": false,
+        "Particles": "particles/popcorn_splashy.vpcf",
+        "PlaybackSpeed": 1
+      }
+    ],
+    "Children": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

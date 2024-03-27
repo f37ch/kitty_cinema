@@ -1,0 +1,145 @@
+@using System
+@using Sandbox
+@using Sandbox.UI
+
+@inherits Panel
+
+<style>
+    .ScreeenUI
+    {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        font-family:BerlinSansFBDemi;
+        text-align: center;
+        color:white;
+        align-items: center;
+        
+        background-image: radial-gradient(#333 0%,#161616 100%);
+        background-size: 100% 100%;
+
+        .logo {
+            margin-top: 4vh;
+            margin-bottom: 4vh;
+            font-size: 7vw;
+    	    font-weight: bolder;
+        }
+        .info{
+            margin-top:auto;
+            margin-bottom:2%;
+            font-size: 4vw;
+    	    font-weight: bolder;
+        }
+        .info.hover{
+            font-size: 8vw; 
+        }
+        .container {
+            display: flex;
+            flex-shrink:0;
+            width: 90%;
+            height: 35%;
+            flex-direction: row;
+            justify-content:center;
+        }
+        .service {
+            background-size:contain;
+            width: 100%;
+            height:100%;
+            margin-right: 1%;
+            background-color: #EEE;
+            background-repeat: no-repeat;
+            background-position: center center;
+            border-radius: 0.5vh;
+            color: transparent;
+            opacity: 0.5;
+        }
+        .service:hover{
+            sound-in:ui.button.over;
+            opacity: 1;
+        }
+        .service:active{
+            sound-in: ui.button.press;
+        }
+
+        .not_loaded{
+            color: rgba(0, 0, 0, 0);
+            
+            align-items: center;
+            position: absolute;
+            height: 1%;
+            width: 1%;
+            font-weight: bold;
+            font-size: 10vw;
+            transform: scale(0);
+           
+            transition: all 0.25s ease-in-out;
+            opacity: 0;
+        }
+        &.Notinside{
+            .container{
+                transform: scale(0);
+            }
+            .logo{
+                transform: scale(0);
+            }
+            .info{
+               transform: scale(0);
+            }
+            .not_loaded{
+			    transform: scale(1);
+                color: rgb(255, 116, 116);
+                opacity: 1;
+                width: 100%;
+                height: 100%;
+            }
+            .ptext{
+			    transform: scale(0);
+            }
+            .title{
+			    transform: scale(0);
+            }
+        }
+        
+    }
+    
+</style>
+
+<root class="ScreeenUI">
+        <text class="not_loaded">ENTER LOCATION</text>
+	    <div class="logo">
+           <text style="color:rgb(0, 215, 187);">Media|</text><text>Player</text>
+        </div>
+        <text class="info">select type of media</text>
+        <div class="container">
+           <button @onclick=@(()=>OpenRequest($"https://www.youtube.com/")) class="service" style="background-image:url(/ui/services/youtube.png);"></button>
+           <button @onclick=@(()=>OpenRequest($"https://soundcloud.com/")) class="service"  style="background-image:url(/ui/services/soundcloud.png);"></button>
+           <button @onclick=@(()=>OpenRequest($"https://twitch.com/")) class="service"  style="background-image:url(/ui/services/twitch.png);"></button>
+           <button @onclick=@(()=>OpenRequest($"direct")) class="service"  style="background-image:url(/ui/services/directlink.png);">direct link</button>
+        </div>
+        
+        <text class="info">press "Q" to open theater menu</text>
+</root>
+
+@code {
+    public MediaPlayer MediaPlayer { get; set; }
+   
+    private void OpenRequest(string url){
+        MediaPlayer.WorldInput.Enabled=false;
+        var menu=MediaPlayer.PanelComponent.Components.Create<RequestMenu>();
+		menu.MediaPlayer=MediaPlayer;
+		if (url=="direct"){
+			menu.AddClass("OpenDirect");
+			menu.RemoveClass("Close");
+		}else{
+			menu.RemoveClass("Close");
+			menu.AddClass("Open");
+		}
+        menu.CurURL=url;
+    }
+
+    protected override int BuildHash()
+    {
+        return HashCode.Combine(DateTime.Now.ToString());
+    }
+}

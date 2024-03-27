@@ -1,0 +1,18 @@
+@using Sandbox.UI
+@inherits PanelComponent
+@attribute [StyleSheet]
+<root class="@(PopTime<Time.Now ? "hide" : "")">
+    <div class="container">
+        <div class="text"><i class="ic">info</i>@Text</div>
+    </div>
+</root>
+@code {
+    public string Text;
+    public float PopTime=Time.Now;
+    protected override void OnUpdate()
+	{
+        base.OnUpdate();
+    }
+
+    protected override int BuildHash()=>System.HashCode.Combine(RealTime.Now.CeilToInt());
+}

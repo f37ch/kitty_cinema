@@ -1,0 +1,50 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "kitty_cinema_v1_beta",
+      "Type": "map",
+      "Org": "playback",
+      "Ident": "kitty_cinema_v1_beta",
+      "Tags": "cinema map theater",
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "pein.toilet#24553",
+        "rustextended.glass_tiling#43278",
+        "facepunch.ceiling_halogen#29025",
+        "brax.lamp02#32339",
+        "rustextended.terrain_grass#43376",
+        "luke.office_plant#22956",
+        "facepunch.plaster_a#18740",
+        "sugmatextures.whitefloortileblend1#37787",
+        "andiq.tiles020#12710",
+        "facepunch.ceiling_light#29026",
+        "trend.arcade1#16702",
+        "agentab.starrynight#31223",
+        "fpopium.couch_02#48462",
+        "gbonn.grassfloorblend#49287",
+        "rust.bush_spicebush_b#25412",
+        "rust.bush_large_spread#25051",
+        "facepunch.glass_b#19947",
+        "facepunch.glass_opaque_background_a#19953",
+        "agentab.skyblue2#31872",
+        "pcjr.garrydecal#38332",
+        "rust.american_beech_a#25035",
+        "rustextended.glass_industrial_b#43277"
+      ],
+      "Metadata": {
+        "SingleAssetSource": "maps/kitty_cinema_v1_beta.vmap",
+        "GameSupport": [
+          "local.theater"
+        ]
+      }
+    }
+  }
+}

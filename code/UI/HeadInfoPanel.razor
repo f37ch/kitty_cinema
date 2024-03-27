@@ -1,0 +1,90 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+<style>
+HeadInfoPanel
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    white-space: nowrap;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+
+    .card
+    {
+        flex-direction: row;
+        background-color: rgba(46, 158, 134, 0.267);
+        border-radius: 14px;
+        padding: 10px 20px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        font-size: 16px;
+
+        .avatar
+        {
+            width: 32px;
+            height: 32px;
+            background-position: center;
+            background-size: cover;
+            border-radius: 100px;
+        }
+
+        .name
+        {
+            font-family: Poppins;
+            color: #fff;
+            text-overflow: ellipsis;
+        }
+
+        .voice
+        {
+            background-color: #111a;
+            border-radius: 20px;
+            padding: 4px;
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            font-family: "Material Icons";
+            font-size: 24px;
+            color: #aaa;
+        }
+    }
+}
+</style>
+@if (Network.OwnerConnection is Connection owner && owner != Connection.Local)
+{
+    <root>
+        <div class="card">
+            <div class="avatar" style="background-image: url( avatar:@owner.SteamId )"></div>
+            <div class="name">@owner.DisplayName</div>
+            @if ( IsVoicePlaying )
+            {
+                <div class="voice">volume_up</div>
+            }
+        </div>
+    </root>
+}
+@code
+{
+    Sandbox.Voice voiceComponent;
+    protected override void OnEnabled()
+    {
+        base.OnEnabled();
+        voiceComponent=GameObject.Root.Components.GetInDescendantsOrSelf<Voice>();
+    }
+
+    public bool IsVoicePlaying
+    {
+        get
+        {
+            if (voiceComponent is null) return false;
+            return voiceComponent.LastPlayed<0.5f;
+        }
+    }
+    protected override int BuildHash()=>System.HashCode.Combine(Network.OwnerConnection,IsVoicePlaying);
+}

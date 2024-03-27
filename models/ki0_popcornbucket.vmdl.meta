@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Kitty Cinema Popcorn Bucket",
+      "Type": "model",
+      "Org": "playback",
+      "Ident": "ki0_popcornbucket",
+      "Tags": "bucket popcorn",
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": "*",
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "models/ki0_popcornbucket.vmdl"
+      }
+    }
+  }
+}

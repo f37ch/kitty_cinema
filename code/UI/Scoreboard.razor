@@ -1,0 +1,256 @@
+@using System.Linq
+@using Sandbox.Network
+@using Sandbox.UI
+@inherits PanelComponent
+<style>
+  Scoreboard{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: #1115;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: Poppins;
+	font-size: 22px;
+	color: white;
+	backdrop-filter: blur(20px);
+	transform: scale(1);
+	transition: all 0.1s ease-out;
+	pointer-events: all;
+	flex-shrink: 0;
+    .logo{
+        //font-family:BerlinSansFBDemi;
+        //font-size: 6vw;
+        //font-weight: bolder;
+		flex-direction: row;
+        height: 15%;
+        min-height: 15%;
+        margin: 1%;
+		width: 60%;
+		.img {
+            background-position: left;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            width: 134px;
+			flex-shrink: 0;
+        }
+
+        .img2 {
+           	width: 100%;
+            background-position: left;
+            background-size: contain;
+            background-repeat: repeat;
+        }
+    }
+	
+	.container
+	{
+		font-size: 30px;
+		flex-direction: column;
+		width: 60%;
+		mix-blend-mode: lighten;
+
+
+		.header
+		{
+			font-weight: bold;
+			font-size: 40px;
+			opacity: 0.3;
+			background-color: rgb(0, 215, 187);
+			padding: 1%;
+		}
+		.list{
+			overflow: scroll;
+			flex-direction: column;
+			gap: 5px;
+			.row{
+				padding: 1%;
+				white-space: nowrap;
+				background-color: gray;
+				&.local
+				{
+					background-color: rgba(0, 215, 186, 0.192);
+					color: #ffffff;
+				}
+			}
+		}
+		*.row
+			{
+				flex-shrink: 0;
+				
+				.name
+				{
+					white-space: nowrap;
+               		text-overflow: ellipsis;
+					align-items: center;
+					gap:4%;
+					flex-grow: 1;
+					width: 100%;
+					.avatar
+					{
+						width: 42px;
+						height: 42px;
+						background-position: center;
+						background-size: cover;
+						opacity: 1;
+						mix-blend-mode: unset;
+					}
+				}
+				
+
+				.stat
+				{
+					width: 100%;
+					justify-content: flex-end;
+				}
+				.loc
+				{
+					
+					width: 100%;
+					justify-content: center;
+				}
+				.admin{
+					mix-blend-mode: unset;
+					padding: 5px;
+					right:-50%;
+					flex-direction: row;
+					position: absolute;
+					height: 100%;
+					width: auto;
+					background-color:rgb(59, 59, 59);
+					align-items: flex-end;
+					transition: right 250ms ease opacity 250ms;
+					gap:2px;
+					
+					.button{
+						justify-content: center;
+						align-items: center;
+						background-color: rgba(0, 215, 186, 0.192);
+						width: auto;
+						padding: 5px;
+						height: 100%;
+						margin-right: 2px;
+						gap: 5px;
+						.bi{
+							background-color: rgb(255, 136, 0);
+							border-radius: 100%;
+						}
+						.bi_ban{
+							background-color: rgb(255, 81, 0);
+							border-radius: 100%;
+						}
+						
+						
+					}
+					.button:hover{
+						cursor: pointer;
+						background-color: rgba(0, 215, 186, 0.466);
+					}
+				}
+			}
+			.row:hover{
+				.admin{
+					right: 0%;
+				}
+			}
+		
+	}
+
+	&.hidden
+	{
+		opacity: 0.0;
+		transform: scale( 0.8 );
+		transition: all 0.2s ease-in;
+	}
+}
+</style>
+<root>
+	<div class="logo">
+        <img class="img" src="/ui/logo.png"><img>
+        <img class="img2" src="/ui/paws_pattern.png"><img>
+    </div>
+	<!--<div class="logo">
+           <text style="color:rgb(0,215,187);">Kitty|</text><text>Cinema</text>
+    </div>-->
+    <div class="container">
+        <div class="header row">
+            <div class="name">NAME</div>
+			<div class="loc">LOCATION</div>
+            <div class="stat">TIME</div>
+        </div>
+		<div class="list">
+        @foreach (var entry in Connection.All)
+        {
+			//entry.Name!="127.0.0.1:55147"&&
+			var da=Game.ActiveScene?.GetAllComponents<TheaterPlayer>()?.FirstOrDefault(x=>x.GameObject.Network.OwnerConnection==entry);
+			if (da==null) {continue;}
+            <div class="row @(entry==Connection.Local?"local":"")">
+                <div class="name">
+					<div class="avatar" style="background-image: url(avatar:@entry.SteamId)"></div>
+                   	@entry.DisplayName
+					@if (entry.IsHost)
+                    {
+                        <i>local_police</i>
+                    }
+                </div>
+				<div class="loc">@GetLocation(entry)</div>
+                <div class="stat">@GetTime(entry)</div>
+				<div class="admin">
+					<div class="button" onclick=@(()=>ShowSteam(entry))><i class="bi_acc">account_box</i>Steam Link</div>
+					@if (Connection.Local.IsHost){
+						<div class="button" onclick=@(()=>NetworkSync.Kick(entry.Id))><i class="bi">link_off</i>Kick</div>
+						<div class="button" onclick=@(()=>BanPlayer(entry))><i class="bi_ban">block</i>Ban</div>
+					}
+				</div>
+            </div>
+        }
+		</div>
+    </div>
+</root>
+@code
+{
+	private Chat Chat;
+    string GetTime( Connection c )
+    {
+        TimeSpan time=DateTime.UtcNow-c.ConnectionTime;
+        if (time.TotalMinutes<60) return time.ToString("mm\\m\\ s\\s");
+        return time.ToString("hh\\h\\ \\m\\m");
+    }
+	private string GetLocation(Connection con)
+    {
+		var da=Scene.GetAllComponents<TheaterPlayer>().FirstOrDefault(x=>x.GameObject.Network.OwnerConnection==con);
+		if (da!=null){
+			return da.Location;
+		}else{
+			return "Unknown";
+		}
+    }
+	private void BanPlayer(Connection connection)
+    {
+		if (!Rpc.Caller.IsHost){return;}
+		Chat.AddLocalText("Bans currently in dev.","info");
+	}
+	private void ShowSteam(Connection con)//it would be cool but steam urls not supported for now in websurface
+    {
+        //var menu=Scene.Components.GetInDescendantsOrSelf<PanelComponent>().Components.Create<RequestMenu>();
+		//menu.SteamShowcase=true;
+		//menu.RemoveClass("Close");
+		//menu.AddClass("Open");
+        //menu.CurURL=$"https://steamdb.info/calculator/{steamid}/?cc=eu/";
+		Clipboard.SetText($"https://steamcommunity.com/profiles/{con.SteamId}");
+		Chat.AddLocalText($"Link to {con.DisplayName}'s profile was copied to your clipboard.","info");
+	}
+	protected override void OnStart()
+	{
+		Chat=Scene.Components.GetInDescendantsOrSelf<Chat>();
+	}
+	protected override void OnUpdate()
+    {
+        SetClass("hidden",!Input.Down("score") );
+    }
+    /// <summary>
+    /// update every second
+    /// </summary>
+    protected override int BuildHash()=>System.HashCode.Combine(RealTime.Now.CeilToInt());
+}

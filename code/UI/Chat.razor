@@ -1,0 +1,328 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.Network;
+@inherits PanelComponent
+@implements Component.INetworkListener
+<style>
+Chat
+{
+	position: absolute;
+	top: 100px;
+	left: 20px;
+	bottom: 200px;
+	width: 600px;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+	border-radius: 20px;
+	flex-direction: column;
+	align-items: stretch;
+	font-size: 18px;
+	font-family: Poppins;
+	flex-grow: 1;
+	gap: 10px;
+	pointer-events: none;
+
+	.output
+	{
+		flex-grow: 1;
+		flex-direction: column;
+		justify-content: flex-end;
+		align-items: stretch;
+		overflow: scroll;
+		gap: 5px;
+
+		.chat_entry
+		{
+			//background-color: #222d;
+			padding: 2px;
+			gap: 10px;
+			text-shadow: 2px 2px 2px #000a;
+			align-items: center;
+			flex-shrink: 0;
+
+			&.fade {
+				transition: opacity 1s ease;
+          		opacity: 0;
+        	}
+
+			.avatar
+			{
+				width: 32px;
+				height: 32px;
+				background-position: center;
+				background-size: cover;
+				border-radius: 100px;
+			}
+
+			.author
+			{
+				color: #009e54ce;
+				white-space: nowrap;
+				flex-shrink: 0;
+				.terminal{
+					color: rgb(56, 119, 105);
+					font-size: 24px;
+					font-family: Material Icons;
+				}
+				.video_settings{
+					color: #ff4848;
+					font-size: 24px;
+					font-family: Material Icons;
+				}
+				.info{
+					color: #48ff94;
+					font-size: 24px;
+					font-family: Material Icons;
+				}
+			}
+
+			.message
+			{
+				color: #fff;
+			}
+		}
+	}
+
+	.input
+	{
+		flex-shrink: 0;
+		color: white;
+		.placeholder {
+       		opacity: 0;
+      	}
+		.togglesmiles{
+			position: absolute;
+			right: 0;
+			font-size: 34px;
+			top:auto;
+			bottom: auto;
+			align-items: center;
+			justify-content: center;
+			transform: scale(0);
+			transition: all 0.2s ease-in-out;
+			
+		}
+	}
+
+	.emoji-picker {
+		flex-shrink: 0;
+		transition: all .2s ease-out;
+		background-color: rgba(46, 46, 46, 0.925);
+		width: 100%;
+		border-radius: 14px;
+    	
+		overflow: scroll;
+		flex-wrap: wrap;
+   	}
+   	.emoji-picker button {
+		
+   	    font-size: 30px;
+   	    cursor: pointer;
+   	    border: none;
+   	    background-color: transparent;
+   	    padding: 0 5px;
+		transition: all 0.2s ease-in-out;
+		transform: scale(1);
+		&:hover{
+			transition: all 0.2s ease-in-out;
+			transform: scale(1.2);
+		}
+   	}
+	
+	&.open
+	{
+		.chat_entry
+		{
+			&.fade {
+        	  opacity: 1;
+        	}
+		}
+		opacity: 1;
+		pointer-events: all;
+		.input
+		{
+			border-radius: 14px;
+			flex-shrink: 0;
+			
+			background-color: #009b8662;
+			.placeholder {
+       			opacity: .5;
+      		}
+			.te{
+				align-items: flex-start;
+				white-space: normal;
+			}
+			.togglesmiles{
+				transform: scale(1);
+				&:hover{
+				transition: all 0.2s ease-in-out;
+				transform: scale(1.2);
+			}
+			}
+		}
+		
+		
+	}
+}
+</style>
+<root>
+	<div class="output">
+		@foreach (var entry in Entries)
+		{
+            <div class="chat_entry @(entry.timeSinceAdded>14f ? "fade" : "")">
+                @if (entry.steamid>0)
+                {
+                    <div class="avatar" style="background-image: url( avatar:@entry.steamid)"></div>
+                }
+				<div class="author">
+					@if (entry.icon==null) 
+					{
+						@entry.author
+					}else{
+						<i class="@entry.icon">@entry.icon</i>
+					}
+				</div>
+				<div class="message">@entry.message</div>
+			</div>
+		}
+	</div>
+	<div class="emoji-picker" style="opacity: @(ShowEmojiPicker ? "1;" : "0;") height: @(ShowEmojiPicker ? "300;" : "0;") padding: @(ShowEmojiPicker ? "5px;" : "0px;")">
+		@foreach (var emoji in EmojiList)
+        {
+    	<button @onclick="@(()=>InsertEmoji(emoji))">@emoji</button>
+		}
+    </div>
+	<div class="input">
+		<TextEntry class="te" @ref="InputBox" onsubmit="@ChatFinished" AllowEmojiReplace=@(true)></TextEntry><!--placeholder="type your msg..."-->
+		<button class="togglesmiles" onclick=@ToggleEmojiPicker>😀</button>
+	</div>
+	
+</root>
+
+@code
+{
+	private List<string> EmojiList = new List<string> {
+    "😀", "😃", "😄", "😁", "😆", "😅", "🤣", "😂", "🙂", "🙃",
+    "😉", "😊", "😇", "😍", "😘", "😗", "😙", "😚", "😋", "😛",
+    "😜", "😝", "🤑", "🤗", "🤭", "🤫", "🤔", "🤐", "🤨", "😐",
+    "😑", "😶", "😏", "😒", "🙄", "😬", "🤥", "😌", "😔", "😪",
+    "🤤", "😴", "😷", "🤒", "🤕", "🤢", "🤮", "🤧", "🥵", "🥶",
+    "🥴", "😵", "🤯", "🤠", "🥳", "🥸", "😎", "🤓", "🧐", "😕",
+    "😟", "🙁", "🙂", "🙃", "😮", "😯", "😲", "😳", "🥺", "😦",
+    "😧", "😨", "😰", "😥", "😢", "😭", "😱", "😖", "😣", "😞",
+    "😓", "😩", "😫", "🥱", "😤", "😡", "😠", "🤬", "😈", "👿",
+    "💀", "💩", "🤡", "👹", "👺", "👻", "👽", "👾", "🤖", "😺",
+    "😸", "😹", "😻", "😼", "😽", "😾", "😿", "🙀",
+    "👋", "🤚", "🖐️", "✋", "🖖",
+    "👍", "👎", "👊", "✊", "🤛", "🤜", "👏", "🙌",
+	"❤️", "💖", "💗", "💞", "💘", "💝", "💓", "💕", "💟", "🤍",
+	};
+    private TextEntry InputBox;
+    private record Entry(ulong steamid,string icon,string author,string message,RealTimeSince timeSinceAdded);
+    private List<Entry> Entries = new();
+	private float LastCheck {get; set;}=0;
+	private bool ShowEmojiPicker = false;
+	private void ToggleEmojiPicker()
+	{
+	    ShowEmojiPicker=!ShowEmojiPicker;
+	}
+	private void InsertEmoji(string emoji)
+	{
+		//var cursorPosition = InputBox.CaretPosition;
+    	//var text = InputBox.Text;
+    	//var newText = text.Insert(cursorPosition,emoji);
+		//InputBox.CaretPosition += emoji.Length;
+		InputBox.Text += emoji;
+	}
+	protected override void OnStart()
+    {
+		base.OnStart();
+		AddLocalText("Welcome to Kitty Cinema!","terminal");
+		AddLocalText("You can toggle thirdperson mode by pressing T button.","info");
+		AddLocalText("If you want to use voice chat, press the X button or Enter to open the chatbox.","info");
+		if (!GameNetworkSystem.IsActive){
+			AddLocalText("Your lobby was created as private, nobody can join you.","info");
+			AddLocalText("To make your lobby visible again, you need to go to settings and switch off the private lobby option, and then recreate the lobby.","info");
+		}
+		
+	}
+    protected override void OnUpdate()
+    {
+        if (InputBox is null)
+            return;
+		
+        Panel.AcceptsFocus = false;
+
+        if ( Input.Pressed( "chat" ) )
+        {
+            InputBox.Focus();
+        }
+
+		if (Entries.Count>150)
+		{
+			Entries.RemoveAt(0);
+			StateHasChanged();
+		}
+
+		if (LastCheck<Time.Now)
+        {
+			LastCheck=Time.Now+5;
+            StateHasChanged();
+        }
+        SetClass("open",InputBox.HasFocus);
+		if (!InputBox.HasFocus){
+			InputBox.Value="";
+			ShowEmojiPicker=false;
+		}
+    }
+
+    void ChatFinished()
+    {
+        var text=InputBox.Text;
+        InputBox.Text="";
+        if (string.IsNullOrWhiteSpace(text)) return;
+        AddText(text);
+    }
+	public void AddLocalText(string message, string icon, bool fproxy=false)
+    {
+		if (fproxy&&Rpc.Caller!=Connection.Local)return;
+        message=message.Truncate(300);
+        if (string.IsNullOrWhiteSpace(message)) return;
+        Entries.Add(new Entry(0,icon,null,message,0));
+        StateHasChanged();
+    }
+	
+    [Broadcast]
+    public void AddText( string message )
+    {
+        message=message.Truncate(300);
+        if (string.IsNullOrWhiteSpace(message)) return;
+        var author=Rpc.Caller.DisplayName;
+        var steamid=Rpc.Caller.SteamId;
+		Log.Info($"{author}: {message}");
+        Entries.Add(new Entry(steamid,null,author,message,0));
+		StateHasChanged();
+	}
+
+    [Broadcast (NetPermission.HostOnly)]
+    public void AddSystemText(string message, string icon)
+    {
+        message=message.Truncate(300);
+        if (string.IsNullOrWhiteSpace(message)) return;
+        Entries.Add(new Entry(0,icon,null,message,0));
+        StateHasChanged();
+    }
+
+	void Component.INetworkListener.OnConnected(Connection channel)
+	{
+		if (IsProxy) return;
+		AddSystemText($"{channel.DisplayName} has joined the game","terminal");
+	}
+
+	void Component.INetworkListener.OnDisconnected(Connection channel)
+	{
+		if (IsProxy) return;
+		AddSystemText($"{channel.DisplayName} has left the game","terminal");
+	}
+}

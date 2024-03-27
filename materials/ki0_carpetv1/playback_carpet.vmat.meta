@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "playback_carpet",
+      "Type": "material",
+      "Org": "playback",
+      "Ident": "playback_carpet",
+      "Tags": "carpet material",
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": "*",
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "materials/ki0_carpetv1/playback_carpet.vmat"
+      }
+    }
+  }
+}

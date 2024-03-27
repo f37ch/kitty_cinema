@@ -1,0 +1,27 @@
+{
+  "RootObject": {
+    "Id": "ba1379e0-6790-4828-a429-df5bdb8a5b2c",
+    "Name": "chair",
+    "Networked": true,
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Prop",
+        "Health": 0,
+        "IsStatic": true,
+        "Model": "models/citizen_props/chair04blackleather.vmdl",
+        "ShowCreatedComponents": true
+      },
+      {
+        "__type": "ChairController",
+        "ChairChatInfo": "Press spacebar to leave the chair!",
+        "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!"
+      }
+    ],
+    "Children": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

@@ -1,0 +1,266 @@
+@using Sandbox
+@using System
+@using Sandbox.UI
+@using System.Linq
+@using System.Threading.Tasks
+@using System.Web
+
+@inherits PanelComponent
+
+<style>
+    RequestMenu {
+		width: 85%;
+		height: 78%;
+		left: 7.5%;
+		top: 8%;
+		position: absolute;
+		background-color: black;
+		flex-direction: column;
+        display: flex;
+		pointer-events: none;
+		transform: scale(0);
+        
+		&.Open{
+			transition: all 0.25s ease-in-out;
+			transform: scale(1);
+            pointer-events: all;
+		}
+        &.OpenDirect{
+			height:2vw;
+            width: 85%;
+            top: 45%;
+            transition: all 0.25s ease-in-out;
+			transform: scale(1);
+            pointer-events: all;
+		}
+		&.Close{
+			transition: all 0.4s ease-in-out;
+			transform: scale(0) rotate(.3turn);
+            pointer-events: none;
+		}
+        header{
+            flex-basis: auto;
+            align-items:center;
+            flex-direction: row;
+            height:1.6vw;
+            gap:5px;
+            margin:5px;
+            .navbutt{
+                flex-shrink: 0;
+                height:100%;
+                font-size: 1.5vw;
+                background-image:linear-gradient(rgb(135, 196, 86), rgb(224, 215, 89));
+                &.disabled {
+        	        background-image:linear-gradient(rgb(163, 190, 140), rgb(209, 206, 158));
+        	    }
+            }
+            .navbutt:hover{
+                background-image:linear-gradient(rgb(90, 196, 86), rgb(210, 224, 89));
+                &.disabled {
+                    background-image:linear-gradient(rgb(163, 190, 140), rgb(209, 206, 158));
+                }
+            }
+            .closebutt{
+                flex-shrink: 0;
+                font-size: 1.5vw;
+                height:100%;
+                background-image:linear-gradient(rgb(182, 105, 117), red);
+            }
+            .closebutt:hover{
+                background-image:linear-gradient(pink, red);
+            }
+            .requestbutt{
+                height:100%;
+                font-size:1.2vw;
+                flex-shrink: 0;
+                color:rgb(24, 24, 24);
+                background-image:linear-gradient(rgb(0, 89, 46), rgb(68, 138, 100));
+                transition: 1s;
+            }
+            .requestbutt:hover{
+                background-image:linear-gradient(rgb(50, 195, 125), rgb(68, 138, 100));
+            }
+            .TextEntry
+            {
+                background-color: rgb(158, 158, 158);
+                font-size: 1.3vw;
+                width: 100%;
+                height: 100%;
+                color:black;
+            }
+        }
+        .button{
+            font-family:BerlinSansFBDemi;
+            font-weight: 700;
+            color:black;
+        }
+        .button:hover{
+            cursor:pointer;
+        }
+        
+    }
+    
+</style>
+
+<root>
+    <header>
+        <button class="navbutt @(HistoryIndex>1 ? "" : "disabled")" @onclick=@(()=>Navigate(true))><i>arrow_back</i></button>
+        <button class="navbutt @(HistoryIndex<URList.Count ? "" : "disabled")" @onclick=@(()=>Navigate(false))><i>arrow_forward</i></button>
+        <TextEntry Value:bind="@WebPanel.Surface.Url" @ref="TextEntry"></TextEntry>
+        @if (!SteamShowcase){
+             <button class="requestbutt" @onclick=@(()=>RunURL(@TextEntry.Value))>REQUEST</button>
+        }
+        <button class="closebutt" @onclick=@(()=>Close())><i>close</i></button>
+    </header>
+    @if (!Panel.HasClass("OpenDirect")){
+        <WebPanel style="width: 100%; flex-grow: 1;" @ref="WebPanel"></WebPanel>
+    }
+</root>
+
+@code{
+    //Value:bind="@WebPanel.Surface.Url" 
+    private TextEntry TextEntry {get;set;}
+    private Chat Chat {get;set;}
+    private WebPanel WebPanel {get;set;}
+    public MediaPlayer MediaPlayer {get;set;}
+    public bool SteamShowcase {get;set;}
+    private int HistoryIndex {get;set;}=0;
+    private bool FromHistory {get;set;}=false;
+    public string CurURL {get;set;}
+    private List<string> URList = new List<string>();
+        
+    public void RunURL(string url)
+	{
+        SetUrl(url);
+        Close();
+	}
+    public void Navigate(bool back)
+	{
+        if (back&&HistoryIndex>1){
+            FromHistory=true;
+            HistoryIndex--;
+            TextEntry.Value=URList[HistoryIndex-1];
+        }else if(!back&&HistoryIndex<URList.Count){
+            FromHistory=true;
+            HistoryIndex++;
+            TextEntry.Value=URList[HistoryIndex-1];
+        }
+	}
+
+    protected override void OnStart(){
+        Flags=ComponentFlags.NotNetworked;
+        base.OnStart();
+    }
+    protected override void OnTreeFirstBuilt()
+    {
+        base.OnTreeFirstBuilt();
+        FromHistory=true;
+        if (CurURL!="direct"){
+            WebPanel.Style.PointerEvents=PointerEvents.All;
+            TextEntry.Value=CurURL;
+            WebPanel.Surface.InBackgroundMode=false;
+        }else{
+            TextEntry.Value="paste direct link here";
+        }
+        TextEntry.AcceptsFocus=true;
+        if (Game.ActiveScene.Components.TryGet<Chat>(out var chatty,FindMode.EnabledInSelfAndDescendants)){
+            Chat=chatty;
+        }
+    }
+    protected override void OnUpdate(){
+        base.OnUpdate();
+        if (WebPanel!=null&&CurURL!=TextEntry.Value){
+            if (!FromHistory){
+                if (HistoryIndex<URList.Count)
+                {
+                    URList.RemoveRange(HistoryIndex,URList.Count-HistoryIndex);
+                }
+                URList.Add(TextEntry.Value);
+                HistoryIndex++;
+            }
+            CurURL=TextEntry.Value;
+            FromHistory=false;
+        }
+    }
+    public void Close()
+	{
+        @if (!SteamShowcase){
+            MediaPlayer.WorldInput.Enabled=true;
+        }
+        TextEntry.AcceptsFocus=false;
+        if(WebPanel!=null){
+            WebPanel.Style.PointerEvents=PointerEvents.None;
+            //WebPanel.Delete();
+        }
+        AddClass("Close");
+        Destroy();
+    }
+    protected override void OnDestroy()
+    {
+        Panel?.Delete();
+        base.OnDestroy();
+    }
+    private async Task ProcessData(string VideoID, string ServiceType, string ServiceName){
+        try{
+            var data=await Http.RequestJsonAsync<ParsedData>($"{MediaController.WebHandlersURL}parser.php?tp={ServiceType}&id={VideoID}","GET");
+            MediaController.BroadcastVideo(data,VideoID,ServiceName,ServiceType,MediaPlayer.GameObject.Id);
+        }catch(Exception e){
+            Chat.AddLocalText($"Failed to requested video: bad URL. ({e})","video_settings");
+		}
+    }
+    private void SetUrl(string url)
+	{
+        if (MediaPlayer.RequestCD>Time.Now){
+			Chat.AddLocalText($"Failed to requested video: Wait atleast a few seconds before requesting new video.","video_settings");
+		}else if(Uri.IsWellFormedUriString(url,UriKind.Absolute)){
+	
+			var uri = new UriBuilder(url).Uri;//try to build url
+			if (uri.Host=="www.youtube.com"||uri.Host=="youtu.be"||uri.Host=="youtube.com"){//youtube links match
+				var query = HttpUtility.ParseQueryString(uri.Query);
+				var videoId = string.Empty;
+				int pos=Array.IndexOf(query.AllKeys,"v");
+				if (pos > -1)
+				{
+				    videoId = query["v"];
+				}else{
+					var seg=uri.Segments; 
+				    videoId = seg[seg.Length-1];
+				}
+				_ = ProcessData(videoId,"yt","YouTube");
+			}else if(uri.Host=="www.twitch.tv"||uri.Host=="twitch.tv"){
+				var videoid=string.Empty;
+				if (uri.Segments.Length<2||uri.Segments.Length>3){
+					Chat.AddLocalText($"Failed to requested video: Wrong twitch.tv url.","video_settings");
+				}else if (uri.Segments.Length==3&&uri.Segments[1]=="videos/"){
+					videoid="vid,"+uri.Segments[2];
+				}else{
+					videoid=uri.Segments[1];
+				}
+				if (videoid!=""){
+					if (videoid.StartsWith("vid,")){
+                       _ = ProcessData(uri.Segments[2],"tw","Twitch");
+					}else{
+						_ = ProcessData(videoid,"twl","Twitch");
+						
+					}
+				}
+			}else if(uri.Host=="www.soundcloud.com"||uri.Host=="soundcloud.com"){
+				if (uri.Segments.Length==3){
+					url=$"https://soundcloud.com/{string.Join("",uri.Segments[1],uri.Segments[2])}";
+                   _ = ProcessData(url,"sc","SoundCloud");
+				}else{
+					 Chat.AddLocalText($"Failed to requested video: wrong soundcloud URL.","video_settings");
+				}
+			}else{
+               _ = ProcessData(url,"dr","DirectLink");
+			}
+			MediaPlayer.RequestCD=Time.Now+2;
+		}else{
+			Chat.AddLocalText($"Failed to requested video: bad URL.","video_settings");
+		}
+    }
+    protected override int BuildHash()
+    {
+        return HashCode.Combine(DateTime.Now.ToString());
+    }
+}
