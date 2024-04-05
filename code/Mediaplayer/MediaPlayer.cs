@@ -26,7 +26,7 @@ public class MediaPlayer : Component
 	private ScreenUI ScreenUI {get;set;}
 	private Pointer Pointer {get;set;}
 	private ScreenInfo ScreenInfo {get;set;}
-	public WorldInput WorldInput {get;set;}
+	public Sandbox.UI.WorldInput WorldInput {get;set;}
 	[HostSync] public float RequestCD {get;set;}=0;
 	[HostSync] public float Duration{get;set;}
 	[HostSync] public float Curtime{get;set;}
@@ -199,7 +199,7 @@ public class MediaPlayer : Component
 		{
 			MaxInteractionDistance=800
 		};
-		WorldInput=new WorldInput(){
+		WorldInput=new Sandbox.UI.WorldInput(){
 			Enabled=true
 		};
 		
