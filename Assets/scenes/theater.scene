@@ -7,6 +7,7 @@
       "Position": "-105.6839,-151.1344,121.7287",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "NetworkSync",
@@ -68,19 +69,21 @@
           "Rotation": "0,0,-1,0",
           "Tags": "player",
           "NetworkMode": 2,
+          "NetworkInterpolation": true,
           "__Prefab": "prefabs/player.prefab"
         },
         {
           "__guid": "13d66eac-1d47-4a2a-ac32-2afb4b7da209",
           "Name": "Camera",
-          "Position": "6.811554,100.5331,-3.087646",
-          "Rotation": "0.06828143,0.06991117,-0.6953747,0.7119719",
+          "Position": "-269.9442,-1036.965,-27.08765",
+          "Rotation": "-0.02595732,0.03845089,0.5589145,0.8279266",
           "Tags": "maincamera",
           "Enabled": true,
           "NetworkMode": 2,
+          "NetworkInterpolation": true,
           "Components": [
             {
-              "__type": "CameraComponent",
+              "__type": "Sandbox.CameraComponent",
               "__guid": "eed9d7e0-3e68-4221-970b-27c939fc6b56",
               "BackgroundColor": "0,0,0,1",
               "ClearFlags": "All",
@@ -89,7 +92,7 @@
               "Orthographic": false,
               "OrthographicHeight": 1204,
               "Priority": 1,
-              "RenderExcludeTags": "1345109176",
+              "RenderExcludeTags": "2110681869",
               "RenderTags": "",
               "TargetEye": "None",
               "Viewport": "0,0,1,1",
@@ -106,9 +109,10 @@
       "Position": "0,0,100",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "MapInstance",
+          "__type": "Sandbox.MapInstance",
           "__guid": "021d1b10-1f9d-4467-bd59-86f32536fca7",
           "MapName": "maps/kitty_cinema_v1_beta.vmap",
           "UseMapFromLaunch": false
@@ -123,9 +127,10 @@
       "Tags": "light_point,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "PointLight",
+          "__type": "Sandbox.PointLight",
           "__guid": "3ff0dfe0-738c-44e5-9305-edb2e903b74e",
           "Attenuation": 1,
           "FogMode": "Enabled",
@@ -143,9 +148,10 @@
       "Tags": "light_point,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "PointLight",
+          "__type": "Sandbox.PointLight",
           "__guid": "db379e8d-d7b7-4ed3-ac63-a78942734e05",
           "Attenuation": 1.24,
           "FogMode": "Enabled",
@@ -163,9 +169,10 @@
       "Tags": "light_point,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "PointLight",
+          "__type": "Sandbox.PointLight",
           "__guid": "c4615c76-ad3d-457d-8cc7-18df506a1f3a",
           "Attenuation": 1.24,
           "FogMode": "Enabled",
@@ -184,9 +191,10 @@
       "Tags": "light_spot,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SpotLight",
+          "__type": "Sandbox.SpotLight",
           "__guid": "6ab07916-92d6-454a-b663-089a8def8088",
           "Attenuation": 1,
           "ConeInner": 20.74,
@@ -207,9 +215,10 @@
       "Tags": "light_spot,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SpotLight",
+          "__type": "Sandbox.SpotLight",
           "__guid": "597a1f14-4b4c-4635-8b3c-f66d4b4aeec2",
           "Attenuation": 1,
           "ConeInner": 20.74,
@@ -230,9 +239,10 @@
       "Tags": "light_spot,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SpotLight",
+          "__type": "Sandbox.SpotLight",
           "__guid": "2534473d-abce-4937-8f77-aef720b93967",
           "Attenuation": 1.87,
           "ConeInner": 37.38,
@@ -253,9 +263,10 @@
       "Tags": "light_spot,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SpotLight",
+          "__type": "Sandbox.SpotLight",
           "__guid": "6902333b-2da9-45d8-8353-fabc3d7447c5",
           "Attenuation": 10,
           "ConeInner": 0,
@@ -276,9 +287,10 @@
       "Tags": "light_spot,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SpotLight",
+          "__type": "Sandbox.SpotLight",
           "__guid": "e9ae9700-be61-4b4d-a234-49cb58ab1075",
           "Attenuation": 10,
           "ConeInner": 0,
@@ -299,9 +311,10 @@
       "Tags": "light_spot,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SpotLight",
+          "__type": "Sandbox.SpotLight",
           "__guid": "8939ff44-d9cc-419e-9d24-10e5e087c8cd",
           "Attenuation": 10,
           "ConeInner": 0,
@@ -322,9 +335,10 @@
       "Tags": "light_spot,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SpotLight",
+          "__type": "Sandbox.SpotLight",
           "__guid": "f3703725-01cb-47a4-bff5-caaa74d35a9e",
           "Attenuation": 10,
           "ConeInner": 0,
@@ -345,9 +359,10 @@
       "Tags": "light_spot,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SpotLight",
+          "__type": "Sandbox.SpotLight",
           "__guid": "ea04d541-fb57-4f66-9b6e-86c1e79864cc",
           "Attenuation": 10,
           "ConeInner": 0,
@@ -368,9 +383,10 @@
       "Tags": "light_spot,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SpotLight",
+          "__type": "Sandbox.SpotLight",
           "__guid": "edfefedd-be05-4700-b5b5-a579cceded6a",
           "Attenuation": 10,
           "ConeInner": 0,
@@ -391,9 +407,10 @@
       "Tags": "light_spot,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SpotLight",
+          "__type": "Sandbox.SpotLight",
           "__guid": "73065976-c2f8-4789-ad41-39189ef7c3eb",
           "Attenuation": 10,
           "ConeInner": 0,
@@ -414,9 +431,10 @@
       "Tags": "light_spot,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SpotLight",
+          "__type": "Sandbox.SpotLight",
           "__guid": "c6964d0f-2315-43ed-9b85-078ee1478665",
           "Attenuation": 10,
           "ConeInner": 0,
@@ -437,9 +455,10 @@
       "Tags": "light_spot,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SpotLight",
+          "__type": "Sandbox.SpotLight",
           "__guid": "e3e13d0f-39a0-4f8f-8e8d-d014e8de1704",
           "Attenuation": 1.87,
           "ConeInner": 37.38,
@@ -460,9 +479,10 @@
       "Tags": "light_spot,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SpotLight",
+          "__type": "Sandbox.SpotLight",
           "__guid": "2089faa8-e04a-4a12-bab3-2a0a5f3a6b4e",
           "Attenuation": 1.87,
           "ConeInner": 37.38,
@@ -483,9 +503,10 @@
       "Tags": "light_spot,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SpotLight",
+          "__type": "Sandbox.SpotLight",
           "__guid": "28803e89-8bfb-499b-8acd-e720c3c843d9",
           "Attenuation": 1.87,
           "ConeInner": 37.38,
@@ -506,9 +527,10 @@
       "Tags": "light_spot,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SpotLight",
+          "__type": "Sandbox.SpotLight",
           "__guid": "81853da7-ff37-4c52-b1d2-657e0bdb00ff",
           "Attenuation": 10,
           "ConeInner": 7.48,
@@ -529,9 +551,10 @@
       "Tags": "light_spot,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SpotLight",
+          "__type": "Sandbox.SpotLight",
           "__guid": "cec62f17-b6d9-4c4c-be89-6f1edf984a65",
           "Attenuation": 1,
           "ConeInner": 20.74,
@@ -552,9 +575,10 @@
       "Tags": "light_spot,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SpotLight",
+          "__type": "Sandbox.SpotLight",
           "__guid": "3af4001a-80e5-4cbb-8da7-828a54f06f96",
           "Attenuation": 1,
           "ConeInner": 20.74,
@@ -575,9 +599,10 @@
       "Tags": "light_spot,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SpotLight",
+          "__type": "Sandbox.SpotLight",
           "__guid": "123464b2-cf8a-4443-a216-4d5cd84d672d",
           "Attenuation": 1,
           "ConeInner": 20.74,
@@ -598,9 +623,10 @@
       "Tags": "light_spot,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SpotLight",
+          "__type": "Sandbox.SpotLight",
           "__guid": "8ab65f39-f3b8-4643-a228-b37e861c5912",
           "Attenuation": 1.74,
           "ConeInner": 25.25,
@@ -621,9 +647,10 @@
       "Tags": "light_spot,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SpotLight",
+          "__type": "Sandbox.SpotLight",
           "__guid": "e03ad66d-cb1e-4104-99e5-4bd86c4f3f20",
           "Attenuation": 1,
           "ConeInner": 20.74,
@@ -644,9 +671,10 @@
       "Tags": "light_spot,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SpotLight",
+          "__type": "Sandbox.SpotLight",
           "__guid": "ad4ce774-4abd-487e-b46a-030b4d0b8d03",
           "Attenuation": 1,
           "ConeInner": 20.74,
@@ -667,9 +695,10 @@
       "Tags": "light_spot,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SpotLight",
+          "__type": "Sandbox.SpotLight",
           "__guid": "ce400d0c-15fa-4bcc-b014-253ec05a35f1",
           "Attenuation": 1,
           "ConeInner": 20.74,
@@ -690,9 +719,10 @@
       "Tags": "light_spot,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SpotLight",
+          "__type": "Sandbox.SpotLight",
           "__guid": "76eb8865-1db7-428b-a10b-cbde593a68f8",
           "Attenuation": 1,
           "ConeInner": 20.74,
@@ -713,9 +743,10 @@
       "Tags": "light_spot,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SpotLight",
+          "__type": "Sandbox.SpotLight",
           "__guid": "cc01b799-56bc-452b-abc8-b06c6264d230",
           "Attenuation": 1,
           "ConeInner": 20.74,
@@ -736,18 +767,19 @@
       "Tags": "light_spot,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SpotLight",
+          "__type": "Sandbox.SpotLight",
           "__guid": "8e0f5d8d-19c4-4b10-8f96-56d32c57ddb3",
-          "Attenuation": 10,
-          "ConeInner": 90,
-          "ConeOuter": 90,
+          "Attenuation": 0,
+          "ConeInner": 67.99,
+          "ConeOuter": 81.13,
           "FogMode": "Enabled",
           "FogStrength": 1,
-          "LightColor": "0.5,0.5,0.5,0.5",
+          "LightColor": "0.2,0.2,0.2,0.2",
           "Radius": 1000,
-          "Shadows": true
+          "Shadows": false
         }
       ]
     },
@@ -757,9 +789,10 @@
       "Position": "-0.06991577,6.282762,101.5707",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "ScreenPanel",
+          "__type": "Sandbox.ScreenPanel",
           "__guid": "4bc37a28-ac3c-43f4-a2e5-cbfd98ecb4ff",
           "AutoScreenScale": true,
           "Opacity": 1,
@@ -778,6 +811,7 @@
       "Position": "-12.91846,-44.25635,58.24101",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Children": [
         {
           "__guid": "0f96ca09-816c-4d39-a4cb-777022aaf548",
@@ -786,9 +820,10 @@
           "Rotation": "0,0,-0.7071068,0.7071068",
           "Enabled": true,
           "NetworkMode": 2,
+          "NetworkInterpolation": true,
           "Components": [
             {
-              "__type": "SpawnPoint",
+              "__type": "Sandbox.SpawnPoint",
               "__guid": "4e28d536-287a-48d1-bf2c-d4c577c010ff",
               "Color": "0.8902,0.31765,0.05098,1"
             }
@@ -801,9 +836,10 @@
           "Rotation": "0,0,-0.7071068,0.7071068",
           "Enabled": true,
           "NetworkMode": 2,
+          "NetworkInterpolation": true,
           "Components": [
             {
-              "__type": "SpawnPoint",
+              "__type": "Sandbox.SpawnPoint",
               "__guid": "279f0169-5931-466c-830e-d3c71a2a049e",
               "Color": "0.8902,0.31765,0.05098,1"
             }
@@ -816,9 +852,10 @@
           "Rotation": "0,0,-0.7071068,0.7071068",
           "Enabled": true,
           "NetworkMode": 2,
+          "NetworkInterpolation": true,
           "Components": [
             {
-              "__type": "SpawnPoint",
+              "__type": "Sandbox.SpawnPoint",
               "__guid": "9d087b65-0ddf-4a4b-8049-a788ee91a82b",
               "Color": "0.8902,0.31765,0.05098,1"
             }
@@ -831,9 +868,10 @@
           "Rotation": "0,0,-0.7071068,0.7071068",
           "Enabled": true,
           "NetworkMode": 2,
+          "NetworkInterpolation": true,
           "Components": [
             {
-              "__type": "SpawnPoint",
+              "__type": "Sandbox.SpawnPoint",
               "__guid": "85c223ae-94a2-486f-9452-026c14ae3505",
               "Color": "0.8902,0.31765,0.05098,1"
             }
@@ -846,9 +884,10 @@
           "Rotation": "0,0,-0.7071068,0.7071068",
           "Enabled": true,
           "NetworkMode": 2,
+          "NetworkInterpolation": true,
           "Components": [
             {
-              "__type": "SpawnPoint",
+              "__type": "Sandbox.SpawnPoint",
               "__guid": "b9142b93-bccd-44f7-9090-8e0b6b159ac8",
               "Color": "0.8902,0.31765,0.05098,1"
             }
@@ -861,9 +900,10 @@
           "Rotation": "0,0,-0.7071068,0.7071068",
           "Enabled": true,
           "NetworkMode": 2,
+          "NetworkInterpolation": true,
           "Components": [
             {
-              "__type": "SpawnPoint",
+              "__type": "Sandbox.SpawnPoint",
               "__guid": "ece00281-3ea1-4041-9e1c-a9bf4a467092",
               "Color": "0.8902,0.31765,0.05098,1"
             }
@@ -876,9 +916,10 @@
           "Rotation": "0,0,-0.7071068,0.7071068",
           "Enabled": true,
           "NetworkMode": 2,
+          "NetworkInterpolation": true,
           "Components": [
             {
-              "__type": "SpawnPoint",
+              "__type": "Sandbox.SpawnPoint",
               "__guid": "9de93448-4474-4bc8-b4f1-14167c882c1b",
               "Color": "0.8902,0.31765,0.05098,1"
             }
@@ -891,9 +932,10 @@
           "Rotation": "0,0,-0.7071068,0.7071068",
           "Enabled": true,
           "NetworkMode": 2,
+          "NetworkInterpolation": true,
           "Components": [
             {
-              "__type": "SpawnPoint",
+              "__type": "Sandbox.SpawnPoint",
               "__guid": "eb19df56-d36e-433a-8056-4a2e65cd9d95",
               "Color": "0.8902,0.31765,0.05098,1"
             }
@@ -906,9 +948,10 @@
           "Rotation": "0,0,-0.7071068,0.7071068",
           "Enabled": true,
           "NetworkMode": 2,
+          "NetworkInterpolation": true,
           "Components": [
             {
-              "__type": "SpawnPoint",
+              "__type": "Sandbox.SpawnPoint",
               "__guid": "7d701d17-0c6d-4fb7-9c0e-0b18048c1a61",
               "Color": "0.8902,0.31765,0.05098,1"
             }
@@ -921,9 +964,10 @@
           "Rotation": "0,0,-0.7071068,0.7071068",
           "Enabled": true,
           "NetworkMode": 2,
+          "NetworkInterpolation": true,
           "Components": [
             {
-              "__type": "SpawnPoint",
+              "__type": "Sandbox.SpawnPoint",
               "__guid": "af3de7e8-c6b9-4a0a-b58e-d3b2f5908a5f",
               "Color": "0.8902,0.31765,0.05098,1"
             }
@@ -938,9 +982,10 @@
       "Rotation": "0.7071068,-0.7071068,0.00000003090862,-0.00000003090862",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "DecalRenderer",
+          "__type": "Sandbox.DecalRenderer",
           "__guid": "e62ab02f-2d04-444f-88fa-50862fd54913",
           "CutoffAngle": 60,
           "CutoffAngleSoftness": 5,
@@ -959,9 +1004,10 @@
       "Scale": "17.19999,13.59987,13.39999",
       "Tags": "trigger",
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "ModelRenderer",
+          "__type": "Sandbox.ModelRenderer",
           "__guid": "bfa250fe-0ba8-45ab-9b31-04b0411891dd",
           "BodyGroups": 18446744073709551615,
           "MaterialOverride": "materials/dev/debug_nav_wireframe.vmat",
@@ -970,7 +1016,7 @@
           "Tint": "0.9345,1,0.21395,0.27"
         },
         {
-          "__type": "BoxCollider",
+          "__type": "Sandbox.BoxCollider",
           "__guid": "20fb34e7-b9bb-4f2b-b0f3-08b963abdf6a",
           "Center": "0,0,0",
           "IsTrigger": true,
@@ -991,9 +1037,10 @@
       "Scale": "17.19999,13.59987,13.39999",
       "Tags": "trigger",
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "ModelRenderer",
+          "__type": "Sandbox.ModelRenderer",
           "__guid": "5fbd0a0e-17c9-4b8c-aca8-87b0002a496f",
           "BodyGroups": 18446744073709551615,
           "MaterialOverride": "materials/dev/debug_nav_wireframe.vmat",
@@ -1002,7 +1049,7 @@
           "Tint": "0.9345,1,0.21395,0.27"
         },
         {
-          "__type": "BoxCollider",
+          "__type": "Sandbox.BoxCollider",
           "__guid": "420bde29-19e0-40a1-bef4-70f76e19a319",
           "Center": "0,0,0",
           "IsTrigger": true,
@@ -1024,9 +1071,10 @@
       "Tags": "trigger",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "ModelRenderer",
+          "__type": "Sandbox.ModelRenderer",
           "__guid": "56fe7d01-12ea-46c7-89c4-4b045e444cc4",
           "__enabled": false,
           "BodyGroups": 18446744073709551615,
@@ -1036,7 +1084,7 @@
           "Tint": "0.12719,0.85644,0.12719,0.27"
         },
         {
-          "__type": "BoxCollider",
+          "__type": "Sandbox.BoxCollider",
           "__guid": "3547ee8c-0de8-4e88-ac9a-b36c58d4eed5",
           "Center": "0,0,0",
           "IsTrigger": true,
@@ -1059,9 +1107,10 @@
       "Tags": "trigger",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "ModelRenderer",
+          "__type": "Sandbox.ModelRenderer",
           "__guid": "64f6420e-85a5-4eca-9e2b-0075a633ca2b",
           "__enabled": false,
           "BodyGroups": 18446744073709551615,
@@ -1071,7 +1120,7 @@
           "Tint": "0.85644,0.12719,0.57933,0.27"
         },
         {
-          "__type": "BoxCollider",
+          "__type": "Sandbox.BoxCollider",
           "__guid": "0cc2d725-0410-4edf-9d82-ab057b659697",
           "Center": "0,0,0",
           "IsTrigger": true,
@@ -1093,9 +1142,10 @@
       "Rotation": "0,0,0.7071068,0.7071068",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "WorldPanel",
+          "__type": "Sandbox.WorldPanel",
           "__guid": "9d73f270-c92b-4b64-ad09-180b2b1e9678",
           "HorizontalAlign": "Center",
           "LookAtCamera": false,
@@ -1122,24 +1172,32 @@
       "Tags": "skybox",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "SkyBox2D",
+          "__type": "Sandbox.SkyBox2D",
           "__guid": "0eadfca5-28fa-49be-840b-cd71177816da",
-          "SkyMaterial": "materials/skybox/light_test_sky_sunny02.vmat",
+          "SkyMaterial": "materials/error.vmat",
           "Tint": "0.87535,0.37674,1,1"
         },
         {
-          "__type": "EnvmapProbe",
+          "__type": "Sandbox.EnvmapProbe",
           "__guid": "4595c7ad-fcf8-4483-937f-c192dff282d6",
+          "Texture": "textures/cubemaps/default2.vtex",
           "Bounds": {
             "Mins": "-512,-512,-512",
             "Maxs": "512,512,512"
           },
+          "DelayBetweenUpdates": 0.1,
           "Feathering": 0.02,
+          "FrameInterval": 5,
+          "MaxDistance": 512,
           "Projection": "Sphere",
-          "Texture": "textures/cubemaps/default2.vtex",
-          "TintColor": "1,1,1,1"
+          "RenderDynamically": false,
+          "TintColor": "1,1,1,1",
+          "UpdateStrategy": "OnEnabled",
+          "ZFar": 4096,
+          "ZNear": 16
         }
       ]
     },
@@ -1151,6 +1209,7 @@
       "Scale": "1,2.3,2.3",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "MediaPlayer",
@@ -1177,13 +1236,14 @@
         {
           "__guid": "d26940de-4a30-48fe-9e32-8eeeb4f6dc14",
           "Name": "ScreenModel",
-          "Position": "0.02925109,-0.06917572,-106.1081",
-          "Rotation": "0,0,-1,-0.00000004371139",
+          "Position": "0.02929688,-0.06917579,-106.1081",
+          "Rotation": "0,0,-1,-0.00000008940697",
           "Enabled": true,
           "NetworkMode": 2,
+          "NetworkInterpolation": true,
           "Components": [
             {
-              "__type": "ModelRenderer",
+              "__type": "Sandbox.ModelRenderer",
               "__guid": "a04c611f-ff44-4d59-83bc-7839d8404ff5",
               "BodyGroups": 18446744073709551615,
               "Model": "models/screen.vmdl",
@@ -1191,7 +1251,7 @@
               "Tint": "1,1,1,1"
             },
             {
-              "__type": "ModelCollider",
+              "__type": "Sandbox.ModelCollider",
               "__guid": "05ff6c26-2ef2-49a6-a4cb-45b687e4b92b",
               "IsTrigger": false,
               "Model": "models/screen.vmdl",
@@ -1200,7 +1260,7 @@
               "Surface": "surfaces/brick.surface"
             },
             {
-              "__type": "Rigidbody",
+              "__type": "Sandbox.Rigidbody",
               "__guid": "0e84865e-5c10-45dd-ba44-60821c18a1a1",
               "AngularDamping": 0,
               "Gravity": false,
@@ -1227,9 +1287,10 @@
           "Tags": "light_spot,light",
           "Enabled": true,
           "NetworkMode": 2,
+          "NetworkInterpolation": true,
           "Components": [
             {
-              "__type": "SpotLight",
+              "__type": "Sandbox.SpotLight",
               "__guid": "c56026a1-bb78-43d5-9b92-9731759d183a",
               "Attenuation": 1,
               "ConeInner": 90,
@@ -1251,6 +1312,7 @@
       "Position": "117.1323,132.4785,318.1753",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Children": [
         {
           "__guid": "34f470fb-4d2b-46ab-85f7-19502a01e902",
@@ -1258,9 +1320,10 @@
           "Position": "-73.59944,69.92676,-53.50952",
           "Enabled": true,
           "NetworkMode": 2,
+          "NetworkInterpolation": true,
           "Components": [
             {
-              "__type": "ScreenPanel",
+              "__type": "Sandbox.ScreenPanel",
               "__guid": "043aa8f2-056e-45af-a189-3a5f7eeb75b2",
               "AutoScreenScale": true,
               "Opacity": 1,
@@ -1283,9 +1346,10 @@
           "Position": "0,0,0",
           "Enabled": true,
           "NetworkMode": 0,
+          "NetworkInterpolation": true,
           "Components": [
             {
-              "__type": "ScreenPanel",
+              "__type": "Sandbox.ScreenPanel",
               "__guid": "5a4d387d-9e29-4950-8186-0c478ac5fc50",
               "AutoScreenScale": true,
               "Opacity": 1,
@@ -1307,10 +1371,12 @@
       "Rotation": "0,0,1,0.0000001947072",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Prop",
+          "__type": "Sandbox.Prop",
           "__guid": "f28258a9-61fe-40c6-a1be-870d611797df",
+          "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl"
@@ -1329,10 +1395,12 @@
       "Position": "-483.8703,-747.7227,31.99999",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Prop",
+          "__type": "Sandbox.Prop",
           "__guid": "fb580299-be37-4f23-9309-fc75d2c9ecf6",
+          "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl"
@@ -1352,10 +1420,12 @@
       "Rotation": "0,0,1,0.0000001947072",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Prop",
+          "__type": "Sandbox.Prop",
           "__guid": "93368dad-2e5e-45f2-81f2-913223e96219",
+          "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl"
@@ -1374,10 +1444,12 @@
       "Position": "-483.8704,-945.9019,31.99999",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Prop",
+          "__type": "Sandbox.Prop",
           "__guid": "452e9cf2-9cff-4367-b0dd-daf8f2d45e8f",
+          "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl"
@@ -1396,9 +1468,10 @@
       "Position": "-0.06991577,-2323.694,182.3062",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "VolumetricFogVolume",
+          "__type": "Sandbox.VolumetricFogVolume",
           "__guid": "3d720930-54bf-4f36-8246-224750dabdce",
           "Bounds": {
             "Mins": "-500,-370.1999,-275.5996",
@@ -1416,10 +1489,12 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Prop",
+          "__type": "Sandbox.Prop",
           "__guid": "08c7f72c-c738-482a-bb31-4ca5a6035d41",
+          "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl"
@@ -1439,10 +1514,12 @@
       "Rotation": "0,0,-0.8660251,0.4999999",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Prop",
+          "__type": "Sandbox.Prop",
           "__guid": "9b9bc4fc-296a-47ce-83d1-a2cc004118d2",
+          "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl"
@@ -1462,10 +1539,12 @@
       "Rotation": "0,0,-0.4999998,0.8660251",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Prop",
+          "__type": "Sandbox.Prop",
           "__guid": "b6d50262-c26c-419f-b7af-3c086c6e8316",
+          "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl"
@@ -1485,10 +1564,12 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Prop",
+          "__type": "Sandbox.Prop",
           "__guid": "659fdf64-5475-4661-bbc0-fef950e3aa90",
+          "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl"
@@ -1508,10 +1589,12 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Prop",
+          "__type": "Sandbox.Prop",
           "__guid": "20028954-0186-4bf4-ae11-1e123974ed0d",
+          "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl"
@@ -1531,10 +1614,12 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Prop",
+          "__type": "Sandbox.Prop",
           "__guid": "fb0884b5-f951-47b7-8b84-74d3afb57c0c",
+          "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl"
@@ -1554,10 +1639,12 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Prop",
+          "__type": "Sandbox.Prop",
           "__guid": "8d78de8e-c1c6-46ae-86d1-41bfb60a1762",
+          "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl"
@@ -1577,10 +1664,12 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Prop",
+          "__type": "Sandbox.Prop",
           "__guid": "bbef8eaf-9204-4353-8ea6-297bad47b1b7",
+          "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl"
@@ -1600,10 +1689,12 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Prop",
+          "__type": "Sandbox.Prop",
           "__guid": "e98d43ae-6e80-48f7-8372-f633e3c43057",
+          "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl"
@@ -1623,10 +1714,12 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Prop",
+          "__type": "Sandbox.Prop",
           "__guid": "27207d76-ee90-4155-9809-2412f3810e83",
+          "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl"
@@ -1646,10 +1739,12 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Prop",
+          "__type": "Sandbox.Prop",
           "__guid": "68426318-3f27-40cf-8d98-f9ad822a2225",
+          "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl"
@@ -1669,10 +1764,12 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Prop",
+          "__type": "Sandbox.Prop",
           "__guid": "709d8f40-c35a-45df-ba11-e3b60222a650",
+          "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl"
@@ -1692,10 +1789,12 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Prop",
+          "__type": "Sandbox.Prop",
           "__guid": "b7a161a5-52d5-4f4d-b042-8f1848c4857c",
+          "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl"
@@ -1715,10 +1814,12 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Prop",
+          "__type": "Sandbox.Prop",
           "__guid": "6f6af759-401a-40cd-897e-c6c080f791bf",
+          "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl"
@@ -1738,10 +1839,12 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Prop",
+          "__type": "Sandbox.Prop",
           "__guid": "b144fbd1-aec3-4d19-b11f-057b07b3fac8",
+          "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl"
@@ -1757,14 +1860,15 @@
     {
       "__guid": "4490a51e-9a68-4b7a-91f9-7755670342b5",
       "Name": "popcorn",
-      "Position": "-63.80085,-971.2773,63.65033",
-      "Rotation": "0.001109007,0.001806702,-0.00000216015,0.9999977",
+      "Position": "-63.81487,-971.2917,63.63776",
+      "Rotation": "0.001390594,0.001156253,-0.000001781486,0.9999985",
       "Tags": "weapon,particles",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "ModelRenderer",
+          "__type": "Sandbox.ModelRenderer",
           "__guid": "28b589e1-a358-4048-87b9-a6409e8f2d50",
           "BodyGroups": 18446744073709551615,
           "Model": "models/ki0_popcornbucket.vmdl",
@@ -1772,7 +1876,7 @@
           "Tint": "1,1,1,1"
         },
         {
-          "__type": "ModelCollider",
+          "__type": "Sandbox.ModelCollider",
           "__guid": "76732a35-0999-49ce-82e8-ae21e9e9d2bc",
           "IsTrigger": false,
           "Model": "models/ki0_popcornbucket.vmdl",
@@ -1780,7 +1884,7 @@
           "Static": false
         },
         {
-          "__type": "Rigidbody",
+          "__type": "Sandbox.Rigidbody",
           "__guid": "e6502cab-4316-45fd-bc07-6c256fac4463",
           "AngularDamping": 0,
           "Gravity": true,
@@ -1819,7 +1923,7 @@
           "WeaponScale": "1,1,1"
         },
         {
-          "__type": "LegacyParticleSystem",
+          "__type": "Sandbox.LegacyParticleSystem",
           "__guid": "e0d882bc-0137-4745-a815-5a634bd8f370",
           "ControlPoints": [],
           "Looped": false,
@@ -1831,14 +1935,15 @@
     {
       "__guid": "c208a551-e9fe-4638-a8a2-12a2ae87920c",
       "Name": "popcorn (2)",
-      "Position": "-101.1862,-980.9462,63.64384",
-      "Rotation": "0.0008409121,0.002118555,0.00006408112,0.9999974",
+      "Position": "-101.2002,-980.9539,63.63715",
+      "Rotation": "0.001229824,0.001125748,0.00007146761,0.9999986",
       "Tags": "weapon,particles",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "ModelRenderer",
+          "__type": "Sandbox.ModelRenderer",
           "__guid": "7b1f15b7-1af3-47dd-a081-1a51ab906f1a",
           "BodyGroups": 18446744073709551615,
           "Model": "models/ki0_popcornbucket.vmdl",
@@ -1846,7 +1951,7 @@
           "Tint": "1,1,1,1"
         },
         {
-          "__type": "ModelCollider",
+          "__type": "Sandbox.ModelCollider",
           "__guid": "c06cd6c2-5c39-4c2e-ba37-6663de986d50",
           "IsTrigger": false,
           "Model": "models/ki0_popcornbucket.vmdl",
@@ -1854,7 +1959,7 @@
           "Static": false
         },
         {
-          "__type": "Rigidbody",
+          "__type": "Sandbox.Rigidbody",
           "__guid": "02fe0fe2-eada-4fb3-9aa3-49bf95bafcd8",
           "AngularDamping": 0,
           "Gravity": true,
@@ -1893,7 +1998,7 @@
           "WeaponScale": "1,1,1"
         },
         {
-          "__type": "LegacyParticleSystem",
+          "__type": "Sandbox.LegacyParticleSystem",
           "__guid": "c0923d69-cb9f-4774-a822-7fc7d1868cd6",
           "ControlPoints": [],
           "Looped": false,
@@ -1905,14 +2010,15 @@
     {
       "__guid": "2272d420-c5d2-42eb-a867-261db48a6316",
       "Name": "popcorn (1)",
-      "Position": "-29.74418,-974.0557,63.64328",
-      "Rotation": "0.00100356,0.002063588,0.0001142793,0.9999974",
+      "Position": "-29.75446,-974.0691,63.63357",
+      "Rotation": "-0.000333553,0.001696431,0.000009494049,0.9999986",
       "Tags": "weapon,particles",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "ModelRenderer",
+          "__type": "Sandbox.ModelRenderer",
           "__guid": "d836f19e-fd0e-44c7-9a28-bf5564ba752a",
           "BodyGroups": 18446744073709551615,
           "Model": "models/ki0_popcornbucket.vmdl",
@@ -1920,7 +2026,7 @@
           "Tint": "1,1,1,1"
         },
         {
-          "__type": "ModelCollider",
+          "__type": "Sandbox.ModelCollider",
           "__guid": "fa2077d4-11e2-4717-bbfa-0079359401c4",
           "IsTrigger": false,
           "Model": "models/ki0_popcornbucket.vmdl",
@@ -1928,7 +2034,7 @@
           "Static": false
         },
         {
-          "__type": "Rigidbody",
+          "__type": "Sandbox.Rigidbody",
           "__guid": "c6354f6a-8142-42b6-848c-bda7067409c5",
           "AngularDamping": 0,
           "Gravity": true,
@@ -1967,7 +2073,7 @@
           "WeaponScale": "1,1,1"
         },
         {
-          "__type": "LegacyParticleSystem",
+          "__type": "Sandbox.LegacyParticleSystem",
           "__guid": "ffc026df-2cec-440b-8fc6-126242b2c8cc",
           "ControlPoints": [],
           "Looped": false,
@@ -1979,15 +2085,16 @@
     {
       "__guid": "004f750c-49e8-4da8-b06b-19a178951bdd",
       "Name": "soda (1)",
-      "Position": "30.11061,-974.615,64.38808",
-      "Rotation": "0.001597958,-0.0008611175,0.00001479152,0.9999984",
+      "Position": "30.11343,-974.6172,64.39163",
+      "Rotation": "0.003836768,-0.0002705109,-0.0001227828,0.9999926",
       "Scale": "1.2,1.2,1.2",
       "Tags": "weapon",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "ModelRenderer",
+          "__type": "Sandbox.ModelRenderer",
           "__guid": "242fb02d-be5d-4760-b540-fc54bf8b9ac9",
           "BodyGroups": 18446744073709551615,
           "Model": "models/citizen_props/sodacan01.vmdl",
@@ -1995,7 +2102,7 @@
           "Tint": "1,1,1,1"
         },
         {
-          "__type": "ModelCollider",
+          "__type": "Sandbox.ModelCollider",
           "__guid": "4d0ec952-58fa-49cd-94ca-d583a9985148",
           "IsTrigger": false,
           "Model": "models/citizen_props/sodacan01.vmdl",
@@ -2003,7 +2110,7 @@
           "Static": false
         },
         {
-          "__type": "Rigidbody",
+          "__type": "Sandbox.Rigidbody",
           "__guid": "dcfec10d-2464-4f1f-b802-e58ffa72b24c",
           "AngularDamping": 0,
           "Gravity": true,
@@ -2040,15 +2147,16 @@
     {
       "__guid": "61e507bf-ad8b-42b9-a7ed-a7a2d383e093",
       "Name": "soda (2)",
-      "Position": "92.26263,-972.472,64.38876",
-      "Rotation": "0.001738667,-0.0008672899,0.00002593605,0.9999982",
+      "Position": "92.26637,-972.4702,64.39148",
+      "Rotation": "0.002837575,-0.0004347102,-0.0002284071,0.9999958",
       "Scale": "1.2,1.2,1.2",
       "Tags": "weapon",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "ModelRenderer",
+          "__type": "Sandbox.ModelRenderer",
           "__guid": "baea420b-612e-4b36-8322-c941b5e60422",
           "BodyGroups": 18446744073709551615,
           "Model": "models/citizen_props/sodacan01.vmdl",
@@ -2056,7 +2164,7 @@
           "Tint": "1,1,1,1"
         },
         {
-          "__type": "ModelCollider",
+          "__type": "Sandbox.ModelCollider",
           "__guid": "b80c2d49-6356-42e1-9f4f-1048ccea6ad8",
           "IsTrigger": false,
           "Model": "models/citizen_props/sodacan01.vmdl",
@@ -2064,7 +2172,7 @@
           "Static": false
         },
         {
-          "__type": "Rigidbody",
+          "__type": "Sandbox.Rigidbody",
           "__guid": "638052ee-30ca-4654-9284-31d173a579cc",
           "AngularDamping": 0,
           "Gravity": true,
@@ -2101,14 +2209,15 @@
     {
       "__guid": "75b5e372-d80c-41d5-a9b1-4ba1da147013",
       "Name": "popcorn (3)",
-      "Position": "117.2137,-964.3658,72.63691",
-      "Rotation": "0.001071518,0.001051841,-0.00003983733,0.9999989",
+      "Position": "117.2025,-964.3898,72.6435",
+      "Rotation": "0.001303711,0.001399979,0.00002736354,0.9999982",
       "Tags": "weapon,particles",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "ModelRenderer",
+          "__type": "Sandbox.ModelRenderer",
           "__guid": "ab05d925-4166-4f1d-bb0a-97945c596f67",
           "BodyGroups": 18446744073709551615,
           "Model": "models/ki0_popcornbucket.vmdl",
@@ -2116,7 +2225,7 @@
           "Tint": "1,1,1,1"
         },
         {
-          "__type": "ModelCollider",
+          "__type": "Sandbox.ModelCollider",
           "__guid": "3f294c90-ff8a-4ce6-b92d-9dae7bff819d",
           "IsTrigger": false,
           "Model": "models/ki0_popcornbucket.vmdl",
@@ -2124,7 +2233,7 @@
           "Static": false
         },
         {
-          "__type": "Rigidbody",
+          "__type": "Sandbox.Rigidbody",
           "__guid": "36c299f1-3fd5-470a-b267-cfaa8c06f65e",
           "AngularDamping": 0,
           "Gravity": true,
@@ -2163,7 +2272,7 @@
           "WeaponScale": "1,1,1"
         },
         {
-          "__type": "LegacyParticleSystem",
+          "__type": "Sandbox.LegacyParticleSystem",
           "__guid": "378307fd-a156-4708-b029-0d424132307e",
           "ControlPoints": [],
           "Looped": false,
@@ -2175,15 +2284,16 @@
     {
       "__guid": "01b0ed11-816b-4d4b-b424-8d3b307ec3f5",
       "Name": "soda (3)",
-      "Position": "54.77195,-955.1617,73.39208",
-      "Rotation": "0.0008761954,-0.000650352,-0.00101159,0.9999989",
+      "Position": "54.77289,-955.1591,73.38647",
+      "Rotation": "0.001133692,0.000493984,0.00004454795,0.9999993",
       "Scale": "1.2,1.2,1.2",
       "Tags": "weapon",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "ModelRenderer",
+          "__type": "Sandbox.ModelRenderer",
           "__guid": "1e2bcb0e-0725-4444-b971-7553ded32ed7",
           "BodyGroups": 18446744073709551615,
           "Model": "models/citizen_props/sodacan01.vmdl",
@@ -2191,7 +2301,7 @@
           "Tint": "1,1,1,1"
         },
         {
-          "__type": "ModelCollider",
+          "__type": "Sandbox.ModelCollider",
           "__guid": "9542b0b6-0641-4d66-9028-7abd1c154ca9",
           "IsTrigger": false,
           "Model": "models/citizen_props/sodacan01.vmdl",
@@ -2199,7 +2309,7 @@
           "Static": false
         },
         {
-          "__type": "Rigidbody",
+          "__type": "Sandbox.Rigidbody",
           "__guid": "6ada249a-94ad-4503-8841-d67ebeb33e5d",
           "AngularDamping": 0,
           "Gravity": true,
@@ -2239,6 +2349,7 @@
       "Position": "-0.09231567,5.758641,95.28773",
       "Enabled": true,
       "NetworkMode": 0,
+      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "WeaponRespawner",
@@ -2261,6 +2372,7 @@
           "Rotation": "0.0005608582,0.002113482,-0.000001706154,0.9999976",
           "Tags": "weapon,particles",
           "NetworkMode": 2,
+          "NetworkInterpolation": true,
           "__Prefab": "prefabs/popcorn.prefab"
         },
         {
@@ -2271,6 +2383,7 @@
           "Scale": "1.2,1.2,1.2",
           "Tags": "weapon",
           "NetworkMode": 2,
+          "NetworkInterpolation": true,
           "__Prefab": "prefabs/soda.prefab"
         }
       ]
@@ -2278,9 +2391,9 @@
   ],
   "SceneProperties": {
     "FixedUpdateFrequency": 50,
-    "Lerping": true,
     "MaxFixedUpdates": 5,
     "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
     "ThreadedAnimation": true,
     "TimeScale": 1,
     "UseFixedUpdate": true,
@@ -2299,7 +2412,7 @@
   },
   "Title": "theater",
   "Description": "",
-  "LastSaved": "2024-03-25T09:26:18.680682\u002B02:00",
+  "LastSaved": "2024-05-07T00:10:57.6418549\u002B03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

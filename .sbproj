@@ -5,11 +5,7 @@
   "Ident": "kitty_cinema",
   "Tags": "cinema theater video mediaplayer multiplayer",
   "Schema": 1,
-  "HasAssets": true,
-  "AssetsPath": "",
-  "Resources": "/materials/*\n/fonts/*\n/models/*\n/ui/*\n/particles/*",
-  "HasCode": true,
-  "CodePath": "/code/",
+  "Resources": "*",
   "PackageReferences": [],
   "EditorReferences": null,
   "Metadata": {
@@ -25,7 +21,6 @@
     "PerMapRanking": false,
     "LeaderboardType": "None",
     "CsProjName": "",
-    "StartupScene": "scenes/init.scene",
     "ProjectTemplate": null,
     "ControlModes": {
       "Keyboard": true,
@@ -143,7 +138,6 @@
       ],
       "__guid": "f501284b-5352-491a-abba-55d97f526ce9"
     },
-    "MapStartupScene": null,
     "LaunchMode": "Normal"
   }
 }

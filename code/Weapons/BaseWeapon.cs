@@ -69,8 +69,8 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 			ModelCollider.Enabled=false;
 			Rigidbody.Gravity=false;
 			//Particle.Enabled=false;
-			GameObject.Lerping=false;
-			GameObject.Transform.ClearLerp();
+			GameObject.Network.DisableInterpolation();
+			GameObject.Transform.ClearInterpolation();
 			Holder.HoldingWeapon=GameObject.Id;
 			Chat.AddLocalText(PickupInfoChat,"info",true);
 		}
