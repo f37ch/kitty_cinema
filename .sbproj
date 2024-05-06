@@ -138,6 +138,7 @@
       ],
       "__guid": "f501284b-5352-491a-abba-55d97f526ce9"
     },
-    "LaunchMode": "Normal"
+    "LaunchMode": "Normal",
+    "StartupScene": "scenes/init.scene"
   }
 }
