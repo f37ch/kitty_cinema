@@ -35,22 +35,22 @@ public class WeaponRespawner: Component
         }
         if (LastPosChecked>60){
             if (SodaPrefab!=null&&SodaWeapons!=null){
-               foreach(var weapon in SodaWeapons){
-                   var soda=Scene.Directory.FindByGuid(weapon.Value);
-                   if (soda!=default&&soda.Parent==Scene&&!soda.Transform.Position.AlmostEqual(weapon.Key)){
+                foreach(var weapon in SodaWeapons){
+                    var soda=Scene.Directory.FindByGuid(weapon.Value);
+                    if (soda!=default&&soda.Parent==soda.Scene&&!soda.Transform.Position.AlmostEqual(weapon.Key)){
                         soda.Transform.Position=weapon.Key;
-                        soda.Transform.Rotation=Rotation.FromRoll(.60f);
-                   }
-               }
+                        soda.Transform.Rotation=Angles.Zero;
+                    }
+                }
             }
             if (PopcornPrefab!=null&&PopCornWeapons!=null){
-               foreach(var weapon in PopCornWeapons){
+                foreach(var weapon in PopCornWeapons){
                     var popcorn=Scene.Directory.FindByGuid(weapon.Value);
                     if (popcorn!=default&&popcorn.Parent==Scene&&!popcorn.Transform.Position.AlmostEqual(weapon.Key)){
                         popcorn.Transform.Position=weapon.Key;
-                        popcorn.Transform.Rotation=Rotation.FromRoll(.60f);
+                        popcorn.Transform.Rotation=Angles.Zero;
                     }
-               }
+                }
             }
             LastPosChecked=0;
         }

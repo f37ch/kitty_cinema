@@ -89,6 +89,7 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 		ModelCollider.Enabled=true;
 		Rigidbody.Enabled=true;
 		GameObject.SetParent(null,false);
+		GameObject.Network.EnableInterpolation();
 		GameObject.Transform.Position=(Holder.Transform.Position+Holder.Transform.LocalRotation.Forward*20).WithZ(Holder.Transform.Position.z+40);
 
 		GameObject.Transform.Rotation=Holder.Transform.Rotation;
