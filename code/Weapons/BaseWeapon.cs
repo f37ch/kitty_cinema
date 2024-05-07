@@ -28,8 +28,10 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 	}
 	public async Task Throw()
 	{
+		Rigidbody.Enabled=true;
 		var obj=GameObject.Clone(GameObject.Transform.Position,GameObject.Transform.Rotation);
 		obj.NetworkSpawn();
+		Rigidbody.Enabled=false;
 		if (obj.Components.TryGet<BaseWeapon>(out var WeaponController)){
 			//WeaponController.Destroy();
 			WeaponController.Throwed=true;
@@ -37,6 +39,7 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 		if (obj.Components.TryGet<ModelCollider>(out var modelCollider,FindMode.DisabledInSelf)){
 			modelCollider.Enabled=true;
 		}
+		
 		//Holder.Animator.TriggerDeploy();
 		
 		obj.Transform.LocalRotation=Rotation.Random;
@@ -46,6 +49,7 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 			await Task.DelayRealtimeSeconds(2f);
 			obj.Destroy();
 		}
+		
 	}
 	[Broadcast]
 	public void BroadcastEffect()
@@ -67,7 +71,7 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 			}
 			Holder=Player;
 			ModelCollider.Enabled=false;
-			Rigidbody.Gravity=false;
+			Rigidbody.Enabled=false;
 			//Particle.Enabled=false;
 			GameObject.Network.DisableInterpolation();
 			GameObject.Transform.ClearInterpolation();
@@ -81,13 +85,14 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 		if (Holder!=null){
 			Holder.HoldingWeapon=default;
 		}
-		//GameObject.Parent=null;
-		Rigidbody.Gravity=true;
+			
 		ModelCollider.Enabled=true;
-		GameObject.SetParent(null,true);
-		//GameObject.Transform.Position=(Holder.Transform.Position+Holder.Transform.LocalRotation.Forward*20).WithZ(Holder.Transform.Position.z+40);
+		Rigidbody.Enabled=true;
+		GameObject.SetParent(null,false);
+		GameObject.Transform.Position=(Holder.Transform.Position+Holder.Transform.LocalRotation.Forward*20).WithZ(Holder.Transform.Position.z+40);
+
 		GameObject.Transform.Rotation=Holder.Transform.Rotation;
-		Rigidbody.Velocity=(Holder.Transform.Rotation.Forward*200).WithZ(-Holder.EyeAngles.pitch*8);
+		//Rigidbody.Velocity=GameObject.Transform.Position+=(Holder.Transform.Rotation.Forward*200).WithZ(-Holder.EyeAngles.pitch*8);
 		Holder=null;
 	}
 	protected override void OnStart()
