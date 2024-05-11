@@ -45,19 +45,6 @@ public sealed class TheaterPlayer : Component
 			//chair stuff
 			EyeAngles+=Input.AnalogLook;
 			EyeAngles=EyeAngles.WithPitch(MathX.Clamp(EyeAngles.pitch,-80f,80f));
-			GameObject.Parent.Components.TryGet<ChairController>(out var ChairController);
-			if (ChairController!=null){
-				foreach (var place in ChairController.UsingList){
-					if (place.user==GameObject.Id){
-						Transform.Local=ChairController.Transform.Local.WithPosition(place.sitpos);
-						Transform.Rotation=ChairController.Transform.Rotation;
-						UpdateCamera(ChairController,place);
-					}
-				}
-			}else{
-				Transform.Rotation=Rotation.FromYaw(EyeAngles.yaw);
-				UpdateCamera(ChairController);
-			}
 			//
 			if (HoldingWeapon!=default){
 				if (Input.Pressed("drop")){
@@ -176,6 +163,13 @@ public sealed class TheaterPlayer : Component
 		//check chair stuff before return
 		if (GameObject.Parent.Components.TryGet<ChairController>(out var ChairController)){
 			if (!IsProxy) {
+				foreach (var place in ChairController.UsingList){
+					if (place.user==GameObject.Id){
+						Transform.Local=ChairController.Transform.Local.WithPosition(place.sitpos);
+						Transform.Rotation=ChairController.Transform.Rotation;
+						UpdateCamera(ChairController,place);
+					}
+				}
 				if (Input.Pressed("Jump")){
 					ChairController.Leave(GameObject.Id);
 				}
@@ -189,6 +183,10 @@ public sealed class TheaterPlayer : Component
 			WishVelocity=default;
 			return;
 		}else{
+			if (!IsProxy) {
+				Transform.Rotation=Rotation.FromYaw(EyeAngles.yaw);
+				UpdateCamera(ChairController);
+			}
 			if (Animator==null) return;
 			Animator.Sitting=CitizenAnimationHelper.SittingStyle.None;
 		}
