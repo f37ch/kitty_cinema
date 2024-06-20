@@ -48,7 +48,8 @@ GameMenu {
     .main {
         flex-direction: row;
         margin: 1%;
-
+        position: relative;
+    
         .option_list {
             flex-direction: column;
             justify-content: flex-start;
@@ -97,9 +98,12 @@ GameMenu {
             margin-top: auto;
             margin-bottom: auto;
             transition: all .35s ease-in-out;
-            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            width:50%;
             background-color: rgb(45, 97, 86);
             transform: scale(1);
+            gap:14px;
 
             .info_container{
                 transition: opacity .2s ease;
@@ -134,7 +138,7 @@ GameMenu {
                 flex-direction: column;
                 overflow: scroll;
                 width: 100%;
-                gap: 1%;
+                gap:4px;
                 max-height: 90%;
 
                 .button {
@@ -179,7 +183,6 @@ GameMenu {
                 justify-content: center;
                 font-weight: bolder;
                 color: white;
-                gap: 4%;
                 margin-top: 1%;
                 padding: 8px;
                 width: 100%;
@@ -202,18 +205,17 @@ GameMenu {
             }
             .stitle{
                 background-color: rgb(7, 75, 69);
-                 border-radius: 14px;
-                 width: 100%;
-                 align-items: center;
-                 justify-content: center;
-                 margin: 1%;
+                border-radius: 14px;
+                width: 100%;
+                align-items: center;
+                justify-content: center;
             }
             .settings_list {
                 border-radius: 14px;
                 flex-direction: column;
                 overflow: scroll;
                 width: 100%;
-                gap: 2%;
+                gap:4px;
                 max-height: 100%;
 
                 .setting {
