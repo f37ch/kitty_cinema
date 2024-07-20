@@ -393,6 +393,7 @@ GameMenu {
         base.OnUpdate();
     
         if(Game.ActiveScene.Title!="init"&&Input.EscapePressed){
+            Input.EscapePressed = false;
             IsMenuOpen=!IsMenuOpen;
             if (!IsMenuOpen){
                 Settings.Save();
@@ -412,8 +413,6 @@ GameMenu {
     protected void Quit()
 	{
         Settings.Save();
-		GameNetworkSystem.Disconnect();
-		Game.ActiveScene.Destroy();
 		Game.Close();
 	}
     protected async Task SelectOption(string type)
