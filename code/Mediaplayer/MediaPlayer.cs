@@ -228,6 +228,7 @@ public class MediaPlayer : Component
             ProjectionTexture=Texture.Create((int)size.x,(int)size.y,ImageFormat.BGRA8888).WithName("WebSurface_projected").WithDynamicUsage().Finish();
             WebPanel.Style.SetBackgroundImage(ProjectionTexture);
         }
+	
         ProjectionTexture.Update(span,0,0,(int)size.x,(int)size.y);
 		Projector.Cookie=ProjectionTexture;
 	}
