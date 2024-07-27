@@ -31,10 +31,10 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 	
 	protected override async Task OnLoad()
 	{
-		if ( Scene.IsEditor )
+		if (Scene.IsEditor)
 			return;
 
-		if ( StartServer && !GameNetworkSystem.IsActive )
+		if (StartServer&&!GameNetworkSystem.IsActive)
 		{
 			LoadingScreen.Title="Creating Lobby";
 			GameNetworkSystem.CreateLobby();
@@ -53,7 +53,8 @@ public sealed class NetworkSync : Component, Component.INetworkListener
     public static void Disconnect(string text, string icon)
 	{
 		GameNetworkSystem.Disconnect();
-		Game.ActiveScene.LoadFromFile("Scenes/init.scene");
+		var init_scene=ResourceLibrary.Get<SceneFile>("scenes/init.scene");
+		Game.ActiveScene.Load(init_scene);
 		var gmenu=Game.ActiveScene.GetAllComponents<GameMenu>().FirstOrDefault();
 		gmenu.DisplayText=text;
 		gmenu.DisplayIcon=icon;

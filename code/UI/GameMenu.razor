@@ -409,7 +409,8 @@ GameMenu {
 	{
         Settings.Save();
         GameNetworkSystem.Disconnect();
-        Game.ActiveScene.LoadFromFile("Scenes/theater.scene");
+        var theater_scene=ResourceLibrary.Get<SceneFile>("scenes/theater.scene");
+		Game.ActiveScene.Load(theater_scene);
 	}
     protected void Quit()
 	{
@@ -431,12 +432,12 @@ GameMenu {
     }
     protected override void OnStart()
 	{
-		base.OnStart();
-        if (!Connection.Local.IsHost||Game.ActiveScene.Title=="init"){// for host it loads earlier in PlayerSync component.
+        var isInit=Game.ActiveScene.Title=="init";
+        if (isInit){
             Settings.Load();
         }
         Camera=Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
-        IsMenuOpen=Game.ActiveScene.Title=="init";
+        IsMenuOpen=isInit;
 		_=RefreshServerList();
 	}
     private async Task RefreshServerList()
@@ -449,9 +450,11 @@ GameMenu {
 	}
     protected void Preconnect(LobbyInformation Server)
 	{
+        Settings.Save();
         if (Game.ActiveScene.Title!="init"){
             GameNetworkSystem.Disconnect();
-		    Game.ActiveScene.LoadFromFile("Scenes/init.scene");
+            var init_scene=ResourceLibrary.Get<SceneFile>("scenes/init.scene");
+		    Game.ActiveScene.Load(init_scene);
         }
         _=Game.ActiveScene.GetAllComponents<GameMenu>().FirstOrDefault().Connect(Server.LobbyId);
 	}

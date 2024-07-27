@@ -41,5 +41,6 @@ public class Settings
 	public static void Save()
 	{
 		FileSystem.Data.WriteJson(Name,Current());
+		Log.Info("Settings saved.");
 	}
 }

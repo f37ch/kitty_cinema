@@ -247,6 +247,7 @@ public sealed class TheaterPlayer : Component
 		Tags.Add(IDHashed);
 		var cam=Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
 		cam.RenderExcludeTags.RemoveAll();
+		Settings.Load();
 	}
 	protected override void OnEnabled()
 	{
