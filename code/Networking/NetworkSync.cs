@@ -23,11 +23,11 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 	/// location of the NetworkHelper object.
 	/// </summary>
 	[Property] public List<GameObject> SpawnPoints {get;set;}
-	[HostSync] public NetDictionary<Guid,Guid> Players {get;set;}
+	//[HostSync] public NetDictionary<Guid,Guid> Players {get;set;}
 	private static Chat Chat;
 	private bool PrivateLobby {get;set;}
-	private bool LobbyNeedPassword {get;set;}
-	private string LobbyPassword {get;set;}
+	//private bool LobbyNeedPassword {get;set;}
+	//private string LobbyPassword {get;set;}
 	
 	protected override async Task OnLoad()
 	{
@@ -41,8 +41,8 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 			Settings.Load();
 			var st=Settings.Current();
 			PrivateLobby=st.PrivateLobby;
-			LobbyNeedPassword=st.IsLobbyNeedPassword;
-			LobbyPassword=st.LobbyPassword;
+			//LobbyNeedPassword=st.IsLobbyNeedPassword;
+			//LobbyPassword=st.LobbyPassword;
 			if (PrivateLobby)
 			{
 				await Task.DelayRealtimeSeconds(.6f);
@@ -141,12 +141,25 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 
 		// Spawn this object and make the client the owner
 		var player=PlayerPrefab.Clone(startLocation,name:$"Player - {channel.DisplayName}");
-		player.NetworkSpawn(channel);
-		if (Players==null){Players=new();}
-		if (!Players.ContainsKey(channel.Id))
-		{
-			Players.Add(channel.Id,player.Id);
+		
+		foreach (var entry in Connection.All)
+        {
+			if (entry.SteamId==channel.SteamId){
+				channel=entry;
+			}
 		}
+		
+		if (!player.Network.Active){
+			player.NetworkSpawn(channel);
+		}else{
+			player.Network.AssignOwnership(channel);
+		}
+			
+		//if (Players==null){Players=new();}
+		//if (!Players.ContainsKey(channel.Id))
+		//{
+		//	Players.Add(channel.Id,player.Id);
+		//}
 	}
 	public void OnActive(Connection channel)
 	{

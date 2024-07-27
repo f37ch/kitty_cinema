@@ -151,7 +151,7 @@ public class MediaPlayer : Component
 		SkipList.Clear();
 	}
 	private void HandleVote(){
-		if(SkipList.Count>=MediaController.CountSkips(GameObject.Id)){
+		if((SkipList.Count>0)&&SkipList.Count>=MediaController.CountSkips(GameObject.Id)){
 			StopPlayBack();
 			MediaController.ChatMsg(this,$"Video was skipped by vote.");
 		}

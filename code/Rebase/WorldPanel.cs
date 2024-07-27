@@ -105,6 +105,7 @@ public class WorldPanel : Sandbox.UI.RootPanel
     //     panels you can change the bounds by setting Sandbox.UI.RootPanel.PanelBounds.
     protected override void UpdateBounds(Rect rect)
     {
+        if (!SceneObject.IsValid()) return;
         var right = Rotation.Right;
 		var down = Rotation.Down;
 		var panelBounds = PanelBounds;
