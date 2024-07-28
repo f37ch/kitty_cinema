@@ -231,6 +231,9 @@ public class MediaPlayer : Component
 	
         ProjectionTexture.Update(span,0,0,(int)size.x,(int)size.y);
 		Projector.Cookie=ProjectionTexture;
+		if (!Projector.Enabled){//????
+			Projector.Enabled=true;
+		}
 	}
 	protected override void OnFixedUpdate(){
 		base.OnFixedUpdate();

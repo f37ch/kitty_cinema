@@ -7,8 +7,6 @@
       "Name": "NetworkSync",
       "Position": "-105.6839,-151.1344,121.7287",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "NetworkSync",
@@ -70,8 +68,6 @@
           "Position": "-127.5646,135.2954,-121.6874",
           "Rotation": "0,0,-1,0",
           "Tags": "player",
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "__Prefab": "prefabs/player.prefab",
           "__PrefabVariables": {}
         },
@@ -79,12 +75,10 @@
           "__guid": "13d66eac-1d47-4a2a-ac32-2afb4b7da209",
           "Flags": 0,
           "Name": "Camera",
-          "Position": "10.62554,12.42821,-3.087646",
-          "Rotation": "0.09640285,0.07599955,-0.7793708,0.6144199",
+          "Position": "205.6839,180.8118,-3.097641",
+          "Rotation": "0.06162842,0.06162842,-0.7044161,0.7044161",
           "Tags": "maincamera",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.CameraComponent",
@@ -96,7 +90,7 @@
               "Orthographic": false,
               "OrthographicHeight": 1204,
               "Priority": 1,
-              "RenderExcludeTags": "939949520",
+              "RenderExcludeTags": "-8890655",
               "RenderTags": "",
               "TargetEye": "None",
               "Viewport": "0,0,1,1",
@@ -113,13 +107,14 @@
       "Name": "Map",
       "Position": "0,0,100",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.MapInstance",
           "__guid": "021d1b10-1f9d-4467-bd59-86f32536fca7",
+          "__version": 1,
+          "EnableCollision": true,
           "MapName": "maps/kitty_cinema_v1_beta.vmap",
+          "NoOrigin": true,
           "UseMapFromLaunch": false
         }
       ],
@@ -132,8 +127,6 @@
       "Position": "0,-1344.834,218.2512",
       "Tags": "light_point,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.PointLight",
@@ -154,8 +147,6 @@
       "Position": "0,-187.7143,218.2512",
       "Tags": "light_point,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.PointLight",
@@ -176,8 +167,6 @@
       "Position": "0,-755.1943,243.5929",
       "Tags": "light_point,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.PointLight",
@@ -199,8 +188,6 @@
       "Rotation": "0,0.7071068,0,0.7071068",
       "Tags": "light_spot,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SpotLight",
@@ -224,8 +211,6 @@
       "Rotation": "0,0.7071068,0,0.7071068",
       "Tags": "light_spot,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SpotLight",
@@ -249,8 +234,6 @@
       "Rotation": "0,0.7071068,0,0.7071068",
       "Tags": "light_spot,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SpotLight",
@@ -274,8 +257,6 @@
       "Rotation": "-0,1,-0,-0.00000004371139",
       "Tags": "light_spot,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SpotLight",
@@ -299,8 +280,6 @@
       "Rotation": "1,0.0000001947072,-0.00000004371139,-0.000000000000008510921",
       "Tags": "light_spot,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SpotLight",
@@ -324,8 +303,6 @@
       "Rotation": "-0,1,-0,-0.00000004371139",
       "Tags": "light_spot,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SpotLight",
@@ -349,8 +326,6 @@
       "Rotation": "1,0.0000001947072,-0.00000004371139,-0.000000000000008510921",
       "Tags": "light_spot,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SpotLight",
@@ -374,8 +349,6 @@
       "Rotation": "-0,1,-0,-0.00000004371139",
       "Tags": "light_spot,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SpotLight",
@@ -399,8 +372,6 @@
       "Rotation": "1,0.0000001947072,-0.00000004371139,-0.000000000000008510921",
       "Tags": "light_spot,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SpotLight",
@@ -424,8 +395,6 @@
       "Rotation": "-0,1,-0,-0.00000004371139",
       "Tags": "light_spot,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SpotLight",
@@ -449,8 +418,6 @@
       "Rotation": "1,0.0000001947072,-0.00000004371139,-0.000000000000008510921",
       "Tags": "light_spot,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SpotLight",
@@ -474,8 +441,6 @@
       "Rotation": "-0.4273651,0.00000001868073,-0.904079,-0.00000003951855",
       "Tags": "light_spot,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SpotLight",
@@ -499,8 +464,6 @@
       "Rotation": "-0.00000000000001012083,-0.427365,-0.000000000000004784192,0.9040791",
       "Tags": "light_spot,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SpotLight",
@@ -524,8 +487,6 @@
       "Rotation": "0,0.7071068,0,0.7071068",
       "Tags": "light_spot,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SpotLight",
@@ -549,8 +510,6 @@
       "Rotation": "0,0.7071068,0,0.7071068",
       "Tags": "light_spot,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SpotLight",
@@ -574,8 +533,6 @@
       "Rotation": "0,0.7071068,0,0.7071068",
       "Tags": "light_spot,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SpotLight",
@@ -599,8 +556,6 @@
       "Rotation": "0.6263539,0.6263539,-0.3281476,0.3281476",
       "Tags": "light_spot,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SpotLight",
@@ -624,8 +579,6 @@
       "Rotation": "0,0.7071068,0,0.7071068",
       "Tags": "light_spot,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SpotLight",
@@ -649,8 +602,6 @@
       "Rotation": "0,0.7071068,0,0.7071068",
       "Tags": "light_spot,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SpotLight",
@@ -674,8 +625,6 @@
       "Rotation": "0,0.7071068,0,0.7071068",
       "Tags": "light_spot,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SpotLight",
@@ -699,8 +648,6 @@
       "Rotation": "0,0.7071068,0,0.7071068",
       "Tags": "light_spot,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SpotLight",
@@ -724,8 +671,6 @@
       "Rotation": "0,0.7071068,0,0.7071068",
       "Tags": "light_spot,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SpotLight",
@@ -749,8 +694,6 @@
       "Rotation": "0,0.7071068,0,0.7071068",
       "Tags": "light_spot,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SpotLight",
@@ -774,8 +717,6 @@
       "Rotation": "0,0.7071068,0,0.7071068",
       "Tags": "light_spot,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SpotLight",
@@ -799,8 +740,6 @@
       "Rotation": "0,-0,-0.7071068,0.7071068",
       "Tags": "light_spot,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SpotLight",
@@ -823,7 +762,6 @@
       "Position": "-0.06991577,6.282762,101.5707",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.ScreenPanel",
@@ -845,8 +783,6 @@
       "Name": "SpawnPoints",
       "Position": "-12.91846,-44.25635,58.24101",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Children": [
         {
           "__guid": "0f96ca09-816c-4d39-a4cb-777022aaf548",
@@ -855,8 +791,6 @@
           "Position": "12.91867,73.93378,2.101",
           "Rotation": "0,0,-0.7071068,0.7071068",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.SpawnPoint",
@@ -872,8 +806,6 @@
           "Position": "12.91861,-2.191261,2.10099",
           "Rotation": "0,0,-0.7071068,0.7071068",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.SpawnPoint",
@@ -889,8 +821,6 @@
           "Position": "62.91848,73.93375,2.10099",
           "Rotation": "0,0,-0.7071068,0.7071068",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.SpawnPoint",
@@ -906,8 +836,6 @@
           "Position": "62.91844,-2.191315,2.10099",
           "Rotation": "0,0,-0.7071068,0.7071068",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.SpawnPoint",
@@ -923,8 +851,6 @@
           "Position": "112.9185,73.9337,2.10099",
           "Rotation": "0,0,-0.7071068,0.7071068",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.SpawnPoint",
@@ -940,8 +866,6 @@
           "Position": "112.9185,-2.191357,2.10099",
           "Rotation": "0,0,-0.7071068,0.7071068",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.SpawnPoint",
@@ -957,8 +881,6 @@
           "Position": "-37.08154,73.93381,2.10099",
           "Rotation": "0,0,-0.7071068,0.7071068",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.SpawnPoint",
@@ -974,8 +896,6 @@
           "Position": "-37.08157,-2.191216,2.10099",
           "Rotation": "0,0,-0.7071068,0.7071068",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.SpawnPoint",
@@ -991,8 +911,6 @@
           "Position": "-87.08156,73.93385,2.10099",
           "Rotation": "0,0,-0.7071068,0.7071068",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.SpawnPoint",
@@ -1008,8 +926,6 @@
           "Position": "-87.08159,-2.191166,2.10099",
           "Rotation": "0,0,-0.7071068,0.7071068",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.SpawnPoint",
@@ -1027,8 +943,6 @@
       "Position": "0.5172956,-1106.035,219.9107",
       "Rotation": "0.7071068,-0.7071068,0.00000003090862,-0.00000003090862",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.DecalRenderer",
@@ -1050,8 +964,6 @@
       "Position": "943.5516,-1458.555,325.5295",
       "Scale": "17.19999,13.59987,13.39999",
       "Tags": "trigger",
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.ModelRenderer",
@@ -1084,8 +996,6 @@
       "Position": "-943.7822,-1458.555,325.5295",
       "Scale": "17.19999,13.59987,13.39999",
       "Tags": "trigger",
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.ModelRenderer",
@@ -1119,8 +1029,6 @@
       "Scale": "20.5,48.39989,13.39999",
       "Tags": "trigger",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.ModelRenderer",
@@ -1156,8 +1064,6 @@
       "Scale": "20,23.30003,10.3",
       "Tags": "trigger",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.ModelRenderer",
@@ -1192,8 +1098,6 @@
       "Position": "-175.5096,-1580.779,107.0915",
       "Rotation": "0,0,0.7071068,0.7071068",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.WorldPanel",
@@ -1224,8 +1128,6 @@
       "Position": "0,0,97.10023",
       "Tags": "skybox",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.SkyBox2D",
@@ -1263,7 +1165,6 @@
       "Scale": "1,2.3,2.3",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "MediaPlayer",
@@ -1294,8 +1195,6 @@
           "Position": "0.02929688,-0.06917579,-106.1081",
           "Rotation": "0,0,-1,-0.00000008940697",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.ModelRenderer",
@@ -1342,12 +1241,11 @@
           "Position": "0,0,0",
           "Tags": "light_spot,light",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.SpotLight",
               "__guid": "c56026a1-bb78-43d5-9b92-9731759d183a",
+              "__enabled": false,
               "Attenuation": 1,
               "ConeInner": 90,
               "ConeOuter": 75,
@@ -1368,8 +1266,6 @@
       "Name": "UI",
       "Position": "117.1323,132.4785,318.1753",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Children": [
         {
           "__guid": "34f470fb-4d2b-46ab-85f7-19502a01e902",
@@ -1377,8 +1273,6 @@
           "Name": "Screen Panel",
           "Position": "-73.59944,69.92676,-53.50952",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.ScreenPanel",
@@ -1404,8 +1298,6 @@
           "Name": "Game Menu",
           "Position": "0,0,0",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.ScreenPanel",
@@ -1431,7 +1323,6 @@
       "Rotation": "0,0,1,0.0000001947072",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -1457,7 +1348,6 @@
       "Position": "-483.8703,-747.7227,31.99999",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -1484,7 +1374,6 @@
       "Rotation": "0,0,1,0.0000001947072",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -1510,7 +1399,6 @@
       "Position": "-483.8704,-945.9019,31.99999",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -1535,8 +1423,6 @@
       "Name": "Volumetric Fog",
       "Position": "-0.06991577,-2323.694,182.3062",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.VolumetricFogVolume",
@@ -1558,7 +1444,6 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -1585,7 +1470,6 @@
       "Rotation": "0,0,-0.8660251,0.4999999",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -1612,7 +1496,6 @@
       "Rotation": "0,0,-0.4999998,0.8660251",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -1639,7 +1522,6 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -1666,7 +1548,6 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -1693,7 +1574,6 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -1720,7 +1600,6 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -1747,7 +1626,6 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -1774,7 +1652,6 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -1801,7 +1678,6 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -1828,7 +1704,6 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -1855,7 +1730,6 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -1882,7 +1756,6 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -1909,7 +1782,6 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -1936,7 +1808,6 @@
       "Rotation": "0,0,-0.7071066,0.7071067",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -1959,12 +1830,11 @@
       "__guid": "4490a51e-9a68-4b7a-91f9-7755670342b5",
       "Flags": 0,
       "Name": "popcorn",
-      "Position": "-63.82476,-971.2988,63.64159",
-      "Rotation": "0.000445752,0.0009061274,0.0001273969,0.9999995",
+      "Position": "-63.82526,-971.2991,63.64171",
+      "Rotation": "0.0004602271,0.0008850521,0.0001302638,0.9999995",
       "Tags": "weapon,particles",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.ModelRenderer",
@@ -2035,12 +1905,11 @@
       "__guid": "c208a551-e9fe-4638-a8a2-12a2ae87920c",
       "Flags": 0,
       "Name": "popcorn (2)",
-      "Position": "-101.2282,-980.9487,63.64561",
-      "Rotation": "0.0001098352,0.0001654907,-0.000003380107,1",
+      "Position": "-101.2329,-980.9411,63.64645",
+      "Rotation": "0.0003846516,0.00231128,0.0000615081,0.9999973",
       "Tags": "weapon,particles",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.ModelRenderer",
@@ -2111,12 +1980,11 @@
       "__guid": "2272d420-c5d2-42eb-a867-261db48a6316",
       "Flags": 0,
       "Name": "popcorn (1)",
-      "Position": "-29.77588,-974.0674,63.64582",
-      "Rotation": "0.00007407695,0.00009815153,-0.000001560714,1",
+      "Position": "-29.77693,-974.0663,63.64646",
+      "Rotation": "0.00005382291,0.00007253417,-0.000001793123,1",
       "Tags": "weapon,particles",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.ModelRenderer",
@@ -2187,13 +2055,12 @@
       "__guid": "004f750c-49e8-4da8-b06b-19a178951bdd",
       "Flags": 0,
       "Name": "soda (1)",
-      "Position": "30.11186,-974.5994,64.39176",
-      "Rotation": "-0.00000317086,0.0000172877,-0.00000007913584,1",
+      "Position": "30.1123,-974.5994,64.39199",
+      "Rotation": "-0.00000324916,0.00001750031,-0.00000007818225,1",
       "Scale": "1.2,1.2,1.2",
       "Tags": "weapon",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.ModelRenderer",
@@ -2250,13 +2117,12 @@
       "__guid": "61e507bf-ad8b-42b9-a7ed-a7a2d383e093",
       "Flags": 0,
       "Name": "soda (2)",
-      "Position": "92.26598,-972.449,64.39185",
-      "Rotation": "-0.000003173084,0.00001729803,-0.00000007857566,1",
+      "Position": "92.26644,-972.449,64.39208",
+      "Rotation": "-0.000003249223,0.00001750067,-0.00000007820253,1",
       "Scale": "1.2,1.2,1.2",
       "Tags": "weapon",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.ModelRenderer",
@@ -2313,12 +2179,11 @@
       "__guid": "75b5e372-d80c-41d5-a9b1-4ba1da147013",
       "Flags": 0,
       "Name": "popcorn (3)",
-      "Position": "117.1942,-964.4076,72.63559",
-      "Rotation": "0.000102235,0.0002715513,-0.000001278457,1",
+      "Position": "117.1927,-964.4066,72.63649",
+      "Rotation": "0.00007371829,0.0001525418,-0.000001547248,1",
       "Tags": "weapon,particles",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.ModelRenderer",
@@ -2389,13 +2254,12 @@
       "__guid": "01b0ed11-816b-4d4b-b424-8d3b307ec3f5",
       "Flags": 0,
       "Name": "soda (3)",
-      "Position": "54.79196,-955.1071,73.39124",
-      "Rotation": "-0.000003171314,0.00001728498,-0.00000007853296,1",
+      "Position": "54.79242,-955.1071,73.39147",
+      "Rotation": "-0.000003248817,0.00001749944,-0.00000007819217,1",
       "Scale": "1.2,1.2,1.2",
       "Tags": "weapon",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.ModelRenderer",
@@ -2455,7 +2319,6 @@
       "Position": "-0.09231567,5.758641,95.28773",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "WeaponRespawner",
@@ -2478,8 +2341,6 @@
           "Position": "385.6664,-10.69617,-39.66934",
           "Rotation": "0.0005608582,0.002113482,-0.000001706154,0.9999976",
           "Tags": "weapon,particles",
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "__Prefab": "prefabs/popcorn.prefab",
           "__PrefabVariables": {}
         },
@@ -2491,8 +2352,6 @@
           "Rotation": "-0.000000632748,0.00002036489,0.000004214836,1",
           "Scale": "1.2,1.2,1.2",
           "Tags": "weapon",
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "__Prefab": "prefabs/soda.prefab",
           "__PrefabVariables": {}
         }
@@ -2522,7 +2381,6 @@
   },
   "Title": "theater",
   "Description": "",
-  "LastSaved": "2024-06-20T22:06:44.2543866\u002B03:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
