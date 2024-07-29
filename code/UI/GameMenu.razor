@@ -3,6 +3,7 @@
 @using System.Threading.Tasks
 @using Sandbox.Network
 @using Sandbox.UI
+@using Sandbox.Audio
 @inherits PanelComponent
 <style>
 GameMenu {
@@ -24,7 +25,7 @@ GameMenu {
     .logo {
         flex-direction: row;
         height: 35%;
-        //min-height: 35%;
+        min-height: 35%;
         margin: 1%;
         transform: scale(1);
  
@@ -210,14 +211,17 @@ GameMenu {
                 width: 100%;
                 align-items: center;
                 justify-content: center;
+                margin:-4px;
             }
             .settings_list {
-                border-radius: 14px;
                 flex-direction: column;
-                overflow: scroll;
                 width: 100%;
                 gap:4px;
-                max-height: 100%;
+                overflow: scroll;
+                max-height: 28%;
+              
+
+                
 
                 .setting {
                     flex-shrink: 0;
@@ -227,14 +231,14 @@ GameMenu {
                     width: 100%;
                     background-color: rgba(128, 128, 128, 0.418);
                     border-radius: 14px;
-                    font-size: 44px;
+                    font-size: 34px;
 
                     .stext {
                         width: 100%;
                         justify-content: flex-end;
                     }
 
-                    .slidercontrol {
+                    .cinemaslider {
                         width: 20%;
                         margin-top: 10px;
                     }
@@ -272,6 +276,31 @@ GameMenu {
                 transition: all .15s ease-in-out;
                 transform: scale(0);
             }
+        }
+    }
+    .setting_justify{
+        min-height: 60px;
+        justify-content: space-around;
+        padding: 10px;
+        width: 100%;
+        background-color: rgba(128, 128, 128, 0.418);
+        border-radius: 14px;
+        font-size: 44px;
+    }
+    .stbutton{
+        height: 40px;
+        padding-left: 40px;
+        padding-right: 40px;
+        font-size:1.2vw;
+        border-radius: 8px;
+        background-color: rgba(34, 102, 74, 0.664); 
+        align-items: center;
+        &:hover {
+            background-color: rgba(53, 153, 111, 0.664);
+            cursor:pointer;
+        }
+        &:active {
+            sound-in: ui.button.press;
         }
     }
 }
@@ -327,24 +356,52 @@ GameMenu {
             }else if (selected=="settings"){
                 <h2 class="stitle">Main Settings</div>
                 <div class="settings_list">
-                    <div class="setting">
-                        <SliderControl class="slidercontrol" Max=@(100) Step=@(1) Value=@(Footsteps.FootStepVolume*100)  OnValueChanged=@FootstepSet/>
-                        <div class="stext">FOOTSTEPS VOLUME</div>
+                    <div class="setting_justify">
+                        <button class="stbutton" onclick=@(()=>Game.Overlay.ShowBinds())>Setup Binds</button>
                     </div>
+                   
+                    
                     <div class="setting">
-                        <SliderControl class="slidercontrol" Max=@(100) Step=@(1) Value=@Camera.FieldOfView  OnValueChanged=@FovSet/>
+                        <CinemaSlider class="cinemaslider" Max=@(100) Step=@(1) Value=@Camera.FieldOfView  OnValueChanged=@FovSet/>
                         <div class="stext">FIELD OF VIEW</div>
                     </div>
+                    
                 </div>
+                <h2 class="stitle">Sound Settings</div>
+                <div class="settings_list">
+                    <div class="setting">
+                        <CinemaSlider class="cinemaslider" Max=@(100) Step=@(1) Value=@(Mixer.Master.Volume*100)  OnValueChanged=@OverVolSet/>
+                        <div class="stext">OVERALL VOLUME</div>
+                    </div>
+                    @{
+                        var children=Mixer.Master.GetChildren();
+                    }
+                    <div class="setting">
+                        <CinemaSlider class="cinemaslider" Max=@(100) Step=@(1) Value=@(children[1].Volume*100)  OnValueChanged=@VoiceVolSet/>
+                        <div class="stext">VOICE VOLUME</div>
+                    </div>
+                    <div class="setting">
+                        <CinemaSlider class="cinemaslider" Max=@(100) Step=@(1) Value=@(children[0].Volume*100)  OnValueChanged=@SFXVolSet/>
+                        <div class="stext">MOST EFFECTS VOLUME</div>
+                    </div>
+                    <div class="setting">
+                        <CinemaSlider class="cinemaslider" Max=@(100) Step=@(1) Value=@(children[2].Volume*100)  OnValueChanged=@UIVolSet/>
+                        <div class="stext">INTERFACE VOLUME</div>
+                    </div>
+                    <div class="setting">
+                        <CinemaSlider class="cinemaslider" Max=@(100) Step=@(1) Value=@(Footsteps.FootStepVolume*100)  OnValueChanged=@FootstepSet/>
+                        <div class="stext">FOOTSTEPS VOLUME</div>
+                    </div>
+                </div> 
                 <h2 class="stitle">Lobby Stuff</div>
                 <div class="settings_list">
                     <div class="setting">
-                        <SwitchControl class="slidercontrol" Value=@IsLobbyPrivate OnValueChanged=@TogglePrivate/>
+                        <CinemaSwitch class="cinemaswitch" Value=@IsLobbyPrivate OnValueChanged=@TogglePrivate/>
                         <div class="stext">CREATED LOBBY ARE PRIVATE</div>
                     </div>
                     <!--@if (!IsLobbyPrivate){
                         <div class="setting">
-                            <SwitchControl class="slidercontrol" Value=@IsLobbyNeedPassword OnValueChanged=@TogglePassword/>
+                            <CinemaSwitch class="cinemaslider" Value=@IsLobbyNeedPassword OnValueChanged=@TogglePassword/>
                             <div class="stext">LOBBY PASSWORD</div>
                         </div>
                         @if (IsLobbyNeedPassword){
@@ -383,6 +440,21 @@ GameMenu {
     }
     private void FootstepSet(float val){
         Footsteps.FootStepVolume=val/100;
+    }
+    private void OverVolSet(float val){
+        Mixer.Master.Volume = val/100;
+    }
+    private void VoiceVolSet(float val){
+        var children=Mixer.Master.GetChildren();
+        children[1].Volume = val/100;
+    }
+    private void SFXVolSet(float val){
+        var children=Mixer.Master.GetChildren();
+        children[0].Volume = val/100;
+    }
+    private void UIVolSet(float val){
+        var children=Mixer.Master.GetChildren();
+        children[2].Volume = val/100;
     }
     private void TogglePrivate(bool val){
         IsLobbyPrivate=val;

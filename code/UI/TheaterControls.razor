@@ -161,21 +161,21 @@
     </div>
     <div class="volume_container">
         <div class="volume_icon" style="background-image:url(/ui/volume.png);"></div>
-        <SliderControl @ref="VolumeSlider" class="sndslider" onclick=@VolumeSet/>
+        <CinemaSlider @ref="VolumeSlider" class="sndslider" onclick=@VolumeSet/>
     </div>
 
     <div class="container">
         <button @onclick=@(()=>TogglePlay()) class="cbutt" style="background-image:url(@ToggleImg);"></button>
         <button @onclick=@(()=>Skip()) class="cbutt" style="background-image:url(/ui/skip.png);"></button>
-        <SliderControl @ref="TimeLine" onclick=@TimeLineSeek/>
+        <CinemaSlider @ref="TimeLine" onclick=@TimeLineSeek/>
         @if(MediaPlayer.Service!=null){
             <div class="video_time">@(ConvertTime(MediaPlayer.Curtime)=="00:00:00"?"● Live":ConvertTime(MediaPlayer.Curtime))</div>
         }
     </div>
 </root>
 @code{
-    private SliderControl TimeLine {get;set;}=new();
-    private SliderControl VolumeSlider {get;set;}=new();
+    private CinemaSlider TimeLine {get;set;}=new();
+    private CinemaSlider VolumeSlider {get;set;}=new();
     public MediaPlayer MediaPlayer {get;set;}
     private float NextThink{get;set;}=0;
     private string ToggleImg {get;set;}="/ui/pause.png";

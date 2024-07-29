@@ -3,7 +3,7 @@
 @inherits BaseControl
 @attribute [StyleSheet]
 
-<root class="slidercontrol">
+<root class="cinemaslider">
 
     <div class="inner">
 
@@ -105,12 +105,12 @@
     Panel ThumbPanel { get; set; }
     TextEntry TextEntryPanel { get; set; }
 
-    public SliderControl()
+    public CinemaSlider()
     {
 
     }
 
-    public SliderControl( float min, float max, float step = 1.0f )
+    public CinemaSlider( float min, float max, float step = 1.0f )
     {
         Min = min;
         Max = max;

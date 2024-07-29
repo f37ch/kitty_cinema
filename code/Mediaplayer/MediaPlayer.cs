@@ -131,10 +131,10 @@ public class MediaPlayer : Component
 					if(PanelComponent.Components.TryGet<Queue>(out var queue)){
 						queue.StateHasChanged();
 					}
+					await Task.DelayRealtimeSeconds(.8f);
 					if (Scene.Components.TryGet<Chat>(out var Chat,FindMode.EnabledInSelfAndDescendants)){
 						Chat.AddLocalText($"[QUE] {vid.requester} has requested video: [{vid.servicename}] {vid.title}","video_settings");
 					}
-					await Task.DelayRealtimeSeconds(.8f);
 					PlaybackScreen(true);
 				}
 			}
@@ -150,9 +150,10 @@ public class MediaPlayer : Component
 		Curtime=0;
 		SkipList.Clear();
 	}
-	private void HandleVote(){
-		if((SkipList.Count>0)&&SkipList.Count>=MediaController.CountSkips(GameObject.Id)){
+	private async Task HandleVote(){
+		if(SkipList.Count>=MediaController.CountSkips(GameObject.Id)){
 			StopPlayBack();
+			await Task.DelayRealtimeSeconds(.2f);
 			MediaController.ChatMsg(this,$"Video was skipped by vote.");
 		}
 	}

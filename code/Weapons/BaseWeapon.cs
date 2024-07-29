@@ -34,6 +34,9 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 			Rigidbody.Enabled=true;
 			var obj=GameObject.Clone(GameObject.Transform.Position,GameObject.Transform.Rotation);
 			obj.NetworkSpawn();
+			obj.NetworkMode=NetworkMode.Never;
+			//obj.Network.SetOrphanedMode(NetworkOrphaned.Destroy);
+			//obj.Network.AssignOwnership(Player.Network.OwnerConnection);
 			Rigidbody.Enabled=false;
 			if (obj.Components.TryGet<BaseWeapon>(out var WeaponController)){
 				//WeaponController.Destroy();
