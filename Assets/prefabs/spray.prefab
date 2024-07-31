@@ -61,13 +61,13 @@
             "Reflections": false,
             "Repeat": false,
             "SoundEvent": "sounds/spraycan.paint.sound",
-            "SoundOverride": false,
+            "SoundOverride": true,
             "StopOnNew": false,
             "TargetMixer": {
               "Name": "game",
               "Id": "5a600970-8479-43d1-b997-e08e5e7b5b65"
             },
-            "Volume": 1
+            "Volume": 0.5
           }
         ]
       },

@@ -101,7 +101,7 @@
         if(Game.ActiveScene.Components.TryGet<ScreenPanel>(out var sp,FindMode.EnabledInSelfAndDescendants)){
             var spray=sp.Components.Create<CinemaEntry>();
             spray.EntryTitle="Seting Spray URL";
-            spray.EntrySubstring="Type direct link to static image or GIF below and press apply button.";
+            spray.EntrySubstring="Paste direct link to static image or GIF below and press apply button. To apply spray on surface press [G] button.";
             spray.EntryCallback+=(st)=>{
                 ConsoleSystem.Run($"spray {st}");
                 spray.Close();
