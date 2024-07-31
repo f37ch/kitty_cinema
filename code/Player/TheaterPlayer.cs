@@ -76,8 +76,9 @@ public sealed class TheaterPlayer : Component
 			if (Input.Pressed("spray"))
 			{
 				if (TimeSinceSpray>10){
-					Spray.Place(EyeWorldPosition,EyeAngles.Forward*UseRange);
-					TimeSinceSpray=0;
+					if (Spray.Place(EyeWorldPosition,EyeAngles.Forward*UseRange)){
+						TimeSinceSpray=0;
+					}
 				}else{
 					Scene.Components.GetInDescendantsOrSelf<Chat>().AddLocalText("Wait atleast 10 seconds before applying next spray.","info",true);
 				}

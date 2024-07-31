@@ -45,11 +45,11 @@ public static partial class Spray
 		}
 	}
   
-	public static void Place(Vector3 eyeworld,Vector3 eye)
+	public static bool Place(Vector3 eyeworld,Vector3 eye)
 	{
 		var trace=Game.SceneTrace.Ray(eyeworld,eyeworld+eye).WithoutTags("player");
 		if (trace.Run() is not {Body.BodyType:PhysicsBodyType.Static} tr)
-			return;
+			return false;
 
 		var config=new CloneConfig
 		{
@@ -67,6 +67,7 @@ public static partial class Spray
 
 		LocalSpray.NetworkSpawn();
 		LocalSpray.SetPrefabSource("prefabs/spray.prefab");
+		return true;
 	}
 }
 
