@@ -4,12 +4,13 @@
 @inherits PanelComponent
 <style>
     TheaterControls{
-        width: 500px;//24%;
+        width: 20%;//24%;
 		height: 48%;
-        right:2%;
-        top:auto;
+        left:79%;
+        top: 21%;
         bottom: auto;
-        align-self: center;
+        position: absolute;
+
         color: white;
         font-family:BerlinSansFBDemi;
         font-size: 44px;
@@ -83,7 +84,7 @@
             background-color: rgb(192, 64, 64);
             sound-in:ui.button.over;
         }
-        .slidercontrol{
+        .cinemaslider{
             top: 10%;
             margin-left: 1%;
         }
@@ -142,10 +143,9 @@
             
 			transition: all 0.4s ease-in-out;
 			transform: scale(0);
-            width: 0px;//%
-            right:-20%;
+            left:100%;
             pointer-events: none;
-            .slidercontrol{
+            .cinemaslider{
                 pointer-events: none;
             }
            

@@ -10,6 +10,7 @@ public sealed class TheaterPlayer : Component
 	[Property][Category("Stats")][Range(0f,1000f,10f)] private float JumpStrength {get; set;}=400f;
 	[Property][Category("Stats")][Range(0f,200f,5f)] private float UseRange {get;set;}=80f;
 	[Property][Category("Stats")] private Vector3 Gravity {get;set;}
+	[Property] public float NoclipSpeed {get;set;}=1000f;
 	[Property] private Vector3 EyePosition {get;set;}
 	[Property] private Angles SpawnAngles {get;set;}
 	[Property] private bool ThirdPerson {get;set;}
@@ -19,6 +20,8 @@ public sealed class TheaterPlayer : Component
 	[Sync] public Angles EyeAngles {get;set;}
 	[Sync] public string Location {get;set;}="Unknown";
 	[Sync] private Rotation CameraRotation {get;set;}
+	[Sync] public bool IsNoclipping {get;set;}
+	[Sync] public RealTimeSince TimeSinceSpray {get;set;}=10;
 	private Vector3 EyeWorldPosition=>Transform.Local.PointToWorld(EyePosition);
 	private Transform StartCameraTransform;
 	private Vector3 WishVelocity;
@@ -33,6 +36,13 @@ public sealed class TheaterPlayer : Component
 	public void OnThrow()
 	{
 		Animator.Target.Set("b_attack",true);
+	}
+	[Broadcast(NetPermission.HostOnly)]
+	public void UpdateNoclip()
+	{
+		IsNoclipping=!IsNoclipping;
+		if (IsNoclipping) Controller.IgnoreLayers.Add("solid");
+		else Controller.IgnoreLayers.Remove("solid");
 	}
 	protected override void OnUpdate()
 	{
@@ -60,6 +70,18 @@ public sealed class TheaterPlayer : Component
 				}
 			}
 			IsRunning=Input.Down("Run");
+			if (Input.Pressed("noclip")){
+				UpdateNoclip();
+			}
+			if (Input.Pressed("spray"))
+			{
+				if (TimeSinceSpray>10){
+					Spray.Place(EyeWorldPosition,EyeAngles.Forward*UseRange);
+					TimeSinceSpray=0;
+				}else{
+					Scene.Components.GetInDescendantsOrSelf<Chat>().AddLocalText("Wait atleast 10 seconds before applying next spray.","info",true);
+				}
+			}
 		}
 		if (Animator!=null&&Controller!=null)
 		{
@@ -71,6 +93,7 @@ public sealed class TheaterPlayer : Component
 			Animator.DuckLevel=DuckLevel;
 			Animator.HoldType=HoldingWeapon!=default?CitizenAnimationHelper.HoldTypes.Pistol:CitizenAnimationHelper.HoldTypes.None;
 			Animator.Handedness=CitizenAnimationHelper.Hand.Right;
+			Animator.IsNoclipping=IsNoclipping;
 			//model.SceneModel.DirectPlayback.Play("HoldItem_RH_Hand_Basic");
 			//Animator.Target.Set("holdtype_pose",2);
 		}
@@ -208,18 +231,34 @@ public sealed class TheaterPlayer : Component
 		}
 		else
 		{
-			Controller.Velocity-=Gravity*Time.Delta*.5f;
+			if (!IsNoclipping)
+			{
+				Controller.Velocity-=Gravity*Time.Delta*.5f;
+			}
 			Controller.Accelerate(WishVelocity.ClampLength(50));
 			Controller.ApplyFriction(0.1f);
 		}
 		Controller.Move();
 		if (!Controller.IsOnGround)
 		{
-			Controller.Velocity-=Gravity*Time.Delta*.5f;
+			if (!IsNoclipping)
+			{
+				Controller.Velocity-=Gravity*Time.Delta*0.5f;
+			}
 		}
 		else
 		{
 			Controller.Velocity=Controller.Velocity.WithZ(0);
+		}
+		if (IsNoclipping)
+		{
+			var vertical=0f;
+			if (Input.Down("Jump")) vertical=1f;
+			if (Input.Down("Duck")) vertical=-1f;
+
+			Controller.IsOnGround=false;
+			Controller.Velocity=EyeAngles.ToRotation()*Input.AnalogMove*NoclipSpeed;
+			Controller.Velocity+=Vector3.Up*vertical*NoclipSpeed;
 		}
 		CheckUsable();
 	}

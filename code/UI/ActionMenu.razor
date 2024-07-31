@@ -1,0 +1,133 @@
+@using Sandbox.UI
+@using System
+
+@inherits PanelComponent
+<style>
+    ActionMenu {
+		width: 35%;//20%
+		height: 18%;
+        left:32.5%;
+		top:81%;
+        color: white;
+        position: absolute;
+        
+		
+        font-family:BerlinSansFBDemi;
+        font-size: 44px;
+        font-weight: bolder;
+        border-radius: 14px;
+	
+        background-color: #1115;
+        backdrop-filter: blur(20px);
+		flex-direction: column;
+        display: flex;
+		pointer-events: all;
+		transform: scale(1);
+        transition: all 0.4s ease-in-out;
+        overflow: hidden;
+
+
+        .title{
+            background-color: rgba(0, 215, 187, .3);
+            
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 1%;
+        }
+
+		&.hide{
+			transition: all 0.4s ease-in-out;
+		
+            width: 0px;//%
+            top:90%;
+        	transform: scale(0);
+            pointer-events: none;
+		}
+        .container{
+            overflow-x: scroll;
+        }
+        .button{
+            min-width: 150px;
+            flex-direction: column;
+            font-size: 20px;
+           
+            padding-top:4px;
+            padding-bottom: 4px;
+            border-radius: 8px;
+            margin: 8px;
+            background-color: rgba(34, 102, 74, 0.664); 
+            align-items: center;
+            &:hover {
+                background-color: rgba(53, 153, 111, 0.664);
+                cursor:pointer;
+            }
+            &:active {
+                sound-in: ui.button.press;
+            }
+            .i{
+                font-size: 60px;
+            }
+        }
+    }
+</style>
+<root class="@(Input.Down("action") ? "" : "hide")">
+    <div class="title">Action Menu</div>
+    
+    <div class="container">
+        <button class="button" @onclick=@(()=>SetSpray())><i class="i">image</i>Set Spray</button>
+        <button class="button" @onclick=@(()=>TauntMenu())><i class="i">emoji_people</i>Taunt Menu</button>
+        <button class="button" @onclick=@(()=>AdminMenu())><i class="i">admin_panel_settings</i>Admin Menu</button>
+        <button class="button" @onclick=@(()=>PMEditor())><i class="i">manage_accounts</i>PM Editor</button>
+        <button class="button" @onclick=@(()=>VRSettings())><i class="i">accessibility</i>VR Settings</button>
+    </div>
+</root>
+@code{
+    private Chat Chat;
+   
+    void VRSettings(){
+        Chat.AddLocalText("VR Settings currently in dev.","info");
+    }
+    void PMEditor(){
+        Chat.AddLocalText("PM Editor currently in dev.","info");
+    }
+    void AdminMenu(){
+        Chat.AddLocalText("Admin menu currently in dev.","info");
+    }
+    void TauntMenu(){
+        Chat.AddLocalText("Taunts currently in dev.","info");
+    }
+    void SetSpray(){
+        if(Game.ActiveScene.Components.TryGet<PanelComponent>(out var sp,FindMode.EnabledInSelfAndDescendants)){
+            var spray=sp.Components.Create<CinemaEntry>();
+            spray.EntryTitle="Seting Spray URL";
+            spray.EntrySubstring="Type direct link to static image or GIF below and press apply button.";
+            spray.EntryCallback+=(st)=>{
+                Log.Info(st);
+                ConsoleSystem.Run($"spray {st}");
+                spray.Close();
+            };
+        }
+        Input.ReleaseActions();
+    }
+    protected override void OnUpdate(){
+       
+        base.OnUpdate();
+    }
+    
+    protected override void OnDestroy()
+    {
+        Panel?.Delete();
+        base.OnDestroy();
+    }
+    protected override void OnStart()
+    {
+        Chat=Scene.Components.GetInDescendantsOrSelf<Chat>();
+    }
+
+
+    protected override int BuildHash()
+    {
+        return HashCode.Combine(Input.Down("action"));
+    }
+}
