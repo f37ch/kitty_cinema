@@ -354,7 +354,7 @@ GameMenu {
 	    		}
                 <div class="refresh_button" onclick=@(()=>RefreshServerList())><i class="ic">refresh</i>REFRESH LIST</div>
             }else if (selected=="settings"){
-                <h2 class="stitle">Main Settings</div>
+                <h2 class="stitle">Main Settings</h2>
                 <div class="settings_list">
                     <div class="setting_justify">
                         <button class="stbutton" onclick=@(()=>Game.Overlay.ShowBinds())>Setup Binds</button>
@@ -367,7 +367,7 @@ GameMenu {
                     </div>
                     
                 </div>
-                <h2 class="stitle">Sound Settings</div>
+                <h2 class="stitle">Sound Settings</h2>
                 <div class="settings_list">
                     <div class="setting">
                         <CinemaSlider class="cinemaslider" Max=@(100) Step=@(1) Value=@(Mixer.Master.Volume*100)  OnValueChanged=@OverVolSet/>
@@ -393,7 +393,7 @@ GameMenu {
                         <div class="stext">FOOTSTEPS VOLUME</div>
                     </div>
                 </div> 
-                <h2 class="stitle">Lobby Stuff</div>
+                <h2 class="stitle">Lobby Stuff</h2>
                 <div class="settings_list">
                     <div class="setting">
                         <CinemaSwitch class="cinemaswitch" Value=@IsLobbyPrivate OnValueChanged=@TogglePrivate/>

@@ -43,11 +43,6 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 			PrivateLobby=st.PrivateLobby;
 			//LobbyNeedPassword=st.IsLobbyNeedPassword;
 			//LobbyPassword=st.LobbyPassword;
-			if (PrivateLobby)
-			{
-				await Task.DelayRealtimeSeconds(.6f);
-				GameNetworkSystem.Disconnect();
-			}
 		}
 	}
     public static void Disconnect(string text, string icon)
@@ -155,7 +150,11 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 		}else{
 			player.Network.AssignOwnership(channel);
 		}
-			
+
+		if (PrivateLobby)
+		{
+			GameNetworkSystem.Disconnect();
+		}
 		//if (Players==null){Players=new();}
 		//if (!Players.ContainsKey(channel.Id))
 		//{
