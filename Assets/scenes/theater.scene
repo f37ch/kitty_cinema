@@ -75,8 +75,8 @@
           "__guid": "13d66eac-1d47-4a2a-ac32-2afb4b7da209",
           "Flags": 0,
           "Name": "Camera",
-          "Position": "140.1443,-411.1154,1.923592",
-          "Rotation": "0.08294193,0.1177925,-0.5697239,0.8091108",
+          "Position": "155.6839,104.6867,-3.097641",
+          "Rotation": "0.06162842,0.06162842,-0.7044161,0.7044161",
           "Tags": "maincamera",
           "Enabled": true,
           "Components": [
@@ -90,7 +90,7 @@
               "Orthographic": false,
               "OrthographicHeight": 1204,
               "Priority": 1,
-              "RenderExcludeTags": "",
+              "RenderExcludeTags": "1417267923",
               "RenderTags": "",
               "TargetEye": "None",
               "Viewport": "0,0,1,1",
@@ -115,6 +115,8 @@
           "EnableCollision": true,
           "MapName": "maps/kitty_cinema_v1_beta.vmap",
           "NoOrigin": true,
+          "OnMapLoaded": null,
+          "OnMapUnloaded": null,
           "UseMapFromLaunch": false
         }
       ],
@@ -769,6 +771,7 @@
           "AutoScreenScale": true,
           "Opacity": 1,
           "Scale": 1,
+          "ScaleStrategy": "ConsistentHeight",
           "ZIndex": 10
         },
         {
@@ -951,6 +954,12 @@
           "CutoffAngleSoftness": 5,
           "Material": "materials/decals/ki0-mainlogo.vmat",
           "Mod2XBlending": false,
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
           "Size": "210,220,20",
           "TintColor": "1,1,1,1",
           "TriPlanar": false
@@ -971,6 +980,12 @@
           "BodyGroups": 18446744073709551615,
           "MaterialOverride": "materials/dev/debug_nav_wireframe.vmat",
           "Model": "models/dev/box.vmdl",
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
           "RenderType": "Off",
           "Tint": "0.9345,1,0.21395,0.27"
         },
@@ -1003,6 +1018,12 @@
           "BodyGroups": 18446744073709551615,
           "MaterialOverride": "materials/dev/debug_nav_wireframe.vmat",
           "Model": "models/dev/box.vmdl",
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
           "RenderType": "Off",
           "Tint": "0.9345,1,0.21395,0.27"
         },
@@ -1037,6 +1058,12 @@
           "BodyGroups": 18446744073709551615,
           "MaterialOverride": "materials/dev/debug_nav_wireframe.vmat",
           "Model": "models/dev/box.vmdl",
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
           "RenderType": "Off",
           "Tint": "0.12719,0.85644,0.12719,0.27"
         },
@@ -1072,6 +1099,12 @@
           "BodyGroups": 18446744073709551615,
           "MaterialOverride": "materials/dev/debug_nav_wireframe.vmat",
           "Model": "models/dev/box.vmdl",
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
           "RenderType": "Off",
           "Tint": "0.85644,0.12719,0.57933,0.27"
         },
@@ -1106,6 +1139,12 @@
           "InteractionRange": 1000,
           "LookAtCamera": false,
           "PanelSize": "2152.203,1446.6",
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
           "RenderScale": 1,
           "VerticalAlign": "Center"
         },
@@ -1147,6 +1186,7 @@
           "Feathering": 0.02,
           "FrameInterval": 5,
           "MaxDistance": 512,
+          "MultiBounce": false,
           "Projection": "Sphere",
           "RenderDynamically": false,
           "TintColor": "1,1,1,1",
@@ -1201,6 +1241,12 @@
               "__guid": "a04c611f-ff44-4d59-83bc-7839d8404ff5",
               "BodyGroups": 18446744073709551615,
               "Model": "models/screen.vmdl",
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
               "RenderType": "On",
               "Tint": "1,1,1,1"
             },
@@ -1227,8 +1273,10 @@
                 "Yaw": true,
                 "Roll": true
               },
+              "MassCenterOverride": "0,0,0",
               "MassOverride": 0,
               "MotionEnabled": true,
+              "OverrideMassCenter": false,
               "RigidbodyFlags": 0,
               "StartAsleep": true
             }
@@ -1238,7 +1286,6 @@
           "__guid": "87afb8c1-56d5-40a3-8e73-2e303237edb8",
           "Flags": 0,
           "Name": "Spot Light",
-          "Position": "0,0,0",
           "Tags": "light_spot,light",
           "Enabled": true,
           "Components": [
@@ -1280,6 +1327,7 @@
               "AutoScreenScale": true,
               "Opacity": 1,
               "Scale": 1,
+              "ScaleStrategy": "ConsistentHeight",
               "ZIndex": 50
             },
             {
@@ -1300,7 +1348,6 @@
           "__guid": "549d19f6-7e4c-4142-bad3-d53bae34ffa3",
           "Flags": 0,
           "Name": "Game Menu",
-          "Position": "0,0,0",
           "Enabled": true,
           "Components": [
             {
@@ -1309,6 +1356,7 @@
               "AutoScreenScale": true,
               "Opacity": 1,
               "Scale": 1,
+              "ScaleStrategy": "ConsistentHeight",
               "ZIndex": 40
             },
             {
@@ -1335,6 +1383,7 @@
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
         {
@@ -1360,6 +1409,7 @@
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
         {
@@ -1386,6 +1436,7 @@
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
         {
@@ -1411,6 +1462,7 @@
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
         {
@@ -1456,6 +1508,7 @@
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
         {
@@ -1482,6 +1535,7 @@
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
         {
@@ -1508,6 +1562,7 @@
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
         {
@@ -1534,6 +1589,7 @@
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
         {
@@ -1560,6 +1616,7 @@
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
         {
@@ -1586,6 +1643,7 @@
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
         {
@@ -1612,6 +1670,7 @@
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
         {
@@ -1638,6 +1697,7 @@
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
         {
@@ -1664,6 +1724,7 @@
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
         {
@@ -1690,6 +1751,7 @@
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
         {
@@ -1716,6 +1778,7 @@
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
         {
@@ -1742,6 +1805,7 @@
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
         {
@@ -1768,6 +1832,7 @@
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
         {
@@ -1794,6 +1859,7 @@
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
         {
@@ -1820,6 +1886,7 @@
           "Health": 0,
           "IsStatic": true,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
         {
@@ -1827,492 +1894,6 @@
           "__guid": "6250126f-4db9-404d-8724-a6f79768aaee",
           "ChairChatInfo": "Press spacebar to leave the chair!",
           "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!"
-        }
-      ]
-    },
-    {
-      "__guid": "4490a51e-9a68-4b7a-91f9-7755670342b5",
-      "Flags": 0,
-      "Name": "popcorn",
-      "Position": "-63.82544,-971.2991,63.64176",
-      "Rotation": "0.0004647175,0.0008785191,0.0001301768,0.9999995",
-      "Tags": "weapon,particles",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "28b589e1-a358-4048-87b9-a6409e8f2d50",
-          "BodyGroups": 18446744073709551615,
-          "Model": "models/ki0_popcornbucket.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "Sandbox.ModelCollider",
-          "__guid": "76732a35-0999-49ce-82e8-ae21e9e9d2bc",
-          "IsTrigger": false,
-          "Model": "models/ki0_popcornbucket.vmdl",
-          "OnComponentDisabled": null,
-          "Static": false
-        },
-        {
-          "__type": "Sandbox.Rigidbody",
-          "__guid": "e6502cab-4316-45fd-bc07-6c256fac4463",
-          "AngularDamping": 0,
-          "Gravity": true,
-          "LinearDamping": 0,
-          "Locking": {},
-          "MassOverride": 0,
-          "MotionEnabled": true,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
-        },
-        {
-          "__type": "BaseWeapon",
-          "__guid": "983ba52a-8869-4cf7-a449-c996fdcf2882",
-          "ModelCollider": {
-            "_type": "component",
-            "component_id": "76732a35-0999-49ce-82e8-ae21e9e9d2bc",
-            "go": "4490a51e-9a68-4b7a-91f9-7755670342b5",
-            "component_type": "ModelCollider"
-          },
-          "Particle": {
-            "_type": "component",
-            "component_id": "e0d882bc-0137-4745-a815-5a634bd8f370",
-            "go": "4490a51e-9a68-4b7a-91f9-7755670342b5",
-            "component_type": "LegacyParticleSystem"
-          },
-          "PickupInfo": "PRESS E TO PICKUP THIS YUMMY CORN!",
-          "PickupInfoChat": "You picked up Popcorn! Press RMB to throw it or G to drop weapon.",
-          "Rigidbody": {
-            "_type": "component",
-            "component_id": "e6502cab-4316-45fd-bc07-6c256fac4463",
-            "go": "4490a51e-9a68-4b7a-91f9-7755670342b5",
-            "component_type": "Rigidbody"
-          },
-          "WeaponName": "Popcorn",
-          "WeaponPosition": "0,6.5,-6.6",
-          "WeaponScale": "1,1,1"
-        },
-        {
-          "__type": "Sandbox.LegacyParticleSystem",
-          "__guid": "e0d882bc-0137-4745-a815-5a634bd8f370",
-          "ControlPoints": [],
-          "Looped": false,
-          "Particles": "particles/popcorn_splashy.vpcf",
-          "PlaybackSpeed": 1
-        }
-      ]
-    },
-    {
-      "__guid": "c208a551-e9fe-4638-a8a2-12a2ae87920c",
-      "Flags": 0,
-      "Name": "popcorn (2)",
-      "Position": "-101.2347,-980.9376,63.64644",
-      "Rotation": "0.0003737174,0.002303105,0.00006192229,0.9999973",
-      "Tags": "weapon,particles",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "7b1f15b7-1af3-47dd-a081-1a51ab906f1a",
-          "BodyGroups": 18446744073709551615,
-          "Model": "models/ki0_popcornbucket.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "Sandbox.ModelCollider",
-          "__guid": "c06cd6c2-5c39-4c2e-ba37-6663de986d50",
-          "IsTrigger": false,
-          "Model": "models/ki0_popcornbucket.vmdl",
-          "OnComponentDisabled": null,
-          "Static": false
-        },
-        {
-          "__type": "Sandbox.Rigidbody",
-          "__guid": "02fe0fe2-eada-4fb3-9aa3-49bf95bafcd8",
-          "AngularDamping": 0,
-          "Gravity": true,
-          "LinearDamping": 0,
-          "Locking": {},
-          "MassOverride": 0,
-          "MotionEnabled": true,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
-        },
-        {
-          "__type": "BaseWeapon",
-          "__guid": "f88f6995-fc91-441b-9155-00a814944de8",
-          "ModelCollider": {
-            "_type": "component",
-            "component_id": "c06cd6c2-5c39-4c2e-ba37-6663de986d50",
-            "go": "c208a551-e9fe-4638-a8a2-12a2ae87920c",
-            "component_type": "ModelCollider"
-          },
-          "Particle": {
-            "_type": "component",
-            "component_id": "c0923d69-cb9f-4774-a822-7fc7d1868cd6",
-            "go": "c208a551-e9fe-4638-a8a2-12a2ae87920c",
-            "component_type": "LegacyParticleSystem"
-          },
-          "PickupInfo": "PRESS E TO PICKUP THIS YUMMY CORN!",
-          "PickupInfoChat": "You picked up Popcorn! Press RMB to throw it or G to drop weapon.",
-          "Rigidbody": {
-            "_type": "component",
-            "component_id": "02fe0fe2-eada-4fb3-9aa3-49bf95bafcd8",
-            "go": "c208a551-e9fe-4638-a8a2-12a2ae87920c",
-            "component_type": "Rigidbody"
-          },
-          "WeaponName": "Popcorn",
-          "WeaponPosition": "0,6.5,-6.6",
-          "WeaponScale": "1,1,1"
-        },
-        {
-          "__type": "Sandbox.LegacyParticleSystem",
-          "__guid": "c0923d69-cb9f-4774-a822-7fc7d1868cd6",
-          "ControlPoints": [],
-          "Looped": false,
-          "Particles": "particles/popcorn_splashy.vpcf",
-          "PlaybackSpeed": 1
-        }
-      ]
-    },
-    {
-      "__guid": "2272d420-c5d2-42eb-a867-261db48a6316",
-      "Flags": 0,
-      "Name": "popcorn (1)",
-      "Position": "-29.77915,-974.063,63.64629",
-      "Rotation": "0.0002750386,0.001712409,0.00004861374,0.9999986",
-      "Tags": "weapon,particles",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "d836f19e-fd0e-44c7-9a28-bf5564ba752a",
-          "BodyGroups": 18446744073709551615,
-          "Model": "models/ki0_popcornbucket.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "Sandbox.ModelCollider",
-          "__guid": "fa2077d4-11e2-4717-bbfa-0079359401c4",
-          "IsTrigger": false,
-          "Model": "models/ki0_popcornbucket.vmdl",
-          "OnComponentDisabled": null,
-          "Static": false
-        },
-        {
-          "__type": "Sandbox.Rigidbody",
-          "__guid": "c6354f6a-8142-42b6-848c-bda7067409c5",
-          "AngularDamping": 0,
-          "Gravity": true,
-          "LinearDamping": 0,
-          "Locking": {},
-          "MassOverride": 0,
-          "MotionEnabled": true,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
-        },
-        {
-          "__type": "BaseWeapon",
-          "__guid": "7cca7ec7-778c-403c-a0c7-7b1ff5a19f3b",
-          "ModelCollider": {
-            "_type": "component",
-            "component_id": "fa2077d4-11e2-4717-bbfa-0079359401c4",
-            "go": "2272d420-c5d2-42eb-a867-261db48a6316",
-            "component_type": "ModelCollider"
-          },
-          "Particle": {
-            "_type": "component",
-            "component_id": "ffc026df-2cec-440b-8fc6-126242b2c8cc",
-            "go": "2272d420-c5d2-42eb-a867-261db48a6316",
-            "component_type": "LegacyParticleSystem"
-          },
-          "PickupInfo": "PRESS E TO PICKUP THIS YUMMY CORN!",
-          "PickupInfoChat": "You picked up Popcorn! Press RMB to throw it or G to drop weapon.",
-          "Rigidbody": {
-            "_type": "component",
-            "component_id": "c6354f6a-8142-42b6-848c-bda7067409c5",
-            "go": "2272d420-c5d2-42eb-a867-261db48a6316",
-            "component_type": "Rigidbody"
-          },
-          "WeaponName": "Popcorn",
-          "WeaponPosition": "0,6.5,-6.6",
-          "WeaponScale": "1,1,1"
-        },
-        {
-          "__type": "Sandbox.LegacyParticleSystem",
-          "__guid": "ffc026df-2cec-440b-8fc6-126242b2c8cc",
-          "ControlPoints": [],
-          "Looped": false,
-          "Particles": "particles/popcorn_splashy.vpcf",
-          "PlaybackSpeed": 1
-        }
-      ]
-    },
-    {
-      "__guid": "004f750c-49e8-4da8-b06b-19a178951bdd",
-      "Flags": 0,
-      "Name": "soda (1)",
-      "Position": "30.11252,-974.5994,64.39211",
-      "Rotation": "-0.000003249316,0.00001750078,-0.00000007820273,1",
-      "Scale": "1.2,1.2,1.2",
-      "Tags": "weapon",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "242fb02d-be5d-4760-b540-fc54bf8b9ac9",
-          "BodyGroups": 18446744073709551615,
-          "Model": "models/citizen_props/sodacan01.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "Sandbox.ModelCollider",
-          "__guid": "4d0ec952-58fa-49cd-94ca-d583a9985148",
-          "IsTrigger": false,
-          "Model": "models/citizen_props/sodacan01.vmdl",
-          "OnComponentDisabled": null,
-          "Static": false
-        },
-        {
-          "__type": "Sandbox.Rigidbody",
-          "__guid": "dcfec10d-2464-4f1f-b802-e58ffa72b24c",
-          "AngularDamping": 0,
-          "Gravity": true,
-          "LinearDamping": 0,
-          "Locking": {},
-          "MassOverride": 0,
-          "MotionEnabled": true,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
-        },
-        {
-          "__type": "BaseWeapon",
-          "__guid": "498fea3b-7561-4823-ab81-abe95d3e5831",
-          "ModelCollider": {
-            "_type": "component",
-            "component_id": "4d0ec952-58fa-49cd-94ca-d583a9985148",
-            "go": "004f750c-49e8-4da8-b06b-19a178951bdd",
-            "component_type": "ModelCollider"
-          },
-          "PickupInfo": "PRESS E TO PICKUP THIS JUICY SODA!",
-          "PickupInfoChat": "You picked up Soda! Press RMB to throw it or G to drop weapon.",
-          "Rigidbody": {
-            "_type": "component",
-            "component_id": "dcfec10d-2464-4f1f-b802-e58ffa72b24c",
-            "go": "004f750c-49e8-4da8-b06b-19a178951bdd",
-            "component_type": "Rigidbody"
-          },
-          "WeaponName": "Soda",
-          "WeaponPosition": "0.6,1,-5",
-          "WeaponScale": "1.2,1.2,1.2"
-        }
-      ]
-    },
-    {
-      "__guid": "61e507bf-ad8b-42b9-a7ed-a7a2d383e093",
-      "Flags": 0,
-      "Name": "soda (2)",
-      "Position": "92.26667,-972.449,64.3922",
-      "Rotation": "-0.000003249039,0.00001750086,-0.0000000782307,1",
-      "Scale": "1.2,1.2,1.2",
-      "Tags": "weapon",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "baea420b-612e-4b36-8322-c941b5e60422",
-          "BodyGroups": 18446744073709551615,
-          "Model": "models/citizen_props/sodacan01.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "Sandbox.ModelCollider",
-          "__guid": "b80c2d49-6356-42e1-9f4f-1048ccea6ad8",
-          "IsTrigger": false,
-          "Model": "models/citizen_props/sodacan01.vmdl",
-          "OnComponentDisabled": null,
-          "Static": false
-        },
-        {
-          "__type": "Sandbox.Rigidbody",
-          "__guid": "638052ee-30ca-4654-9284-31d173a579cc",
-          "AngularDamping": 0,
-          "Gravity": true,
-          "LinearDamping": 0,
-          "Locking": {},
-          "MassOverride": 0,
-          "MotionEnabled": true,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
-        },
-        {
-          "__type": "BaseWeapon",
-          "__guid": "c547b870-9caf-4296-87ca-ec5194bed185",
-          "ModelCollider": {
-            "_type": "component",
-            "component_id": "b80c2d49-6356-42e1-9f4f-1048ccea6ad8",
-            "go": "61e507bf-ad8b-42b9-a7ed-a7a2d383e093",
-            "component_type": "ModelCollider"
-          },
-          "PickupInfo": "PRESS E TO PICKUP THIS JUICY SODA!",
-          "PickupInfoChat": "You picked up Soda! Press RMB to throw it or G to drop weapon.",
-          "Rigidbody": {
-            "_type": "component",
-            "component_id": "638052ee-30ca-4654-9284-31d173a579cc",
-            "go": "61e507bf-ad8b-42b9-a7ed-a7a2d383e093",
-            "component_type": "Rigidbody"
-          },
-          "WeaponName": "Soda",
-          "WeaponPosition": "0.6,1,-5",
-          "WeaponScale": "1.2,1.2,1.2"
-        }
-      ]
-    },
-    {
-      "__guid": "75b5e372-d80c-41d5-a9b1-4ba1da147013",
-      "Flags": 0,
-      "Name": "popcorn (3)",
-      "Position": "117.1922,-964.4065,72.63686",
-      "Rotation": "0.00002225422,0.00001455108,-0.000002292365,1",
-      "Tags": "weapon,particles",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "ab05d925-4166-4f1d-bb0a-97945c596f67",
-          "BodyGroups": 18446744073709551615,
-          "Model": "models/ki0_popcornbucket.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "Sandbox.ModelCollider",
-          "__guid": "3f294c90-ff8a-4ce6-b92d-9dae7bff819d",
-          "IsTrigger": false,
-          "Model": "models/ki0_popcornbucket.vmdl",
-          "OnComponentDisabled": null,
-          "Static": false
-        },
-        {
-          "__type": "Sandbox.Rigidbody",
-          "__guid": "36c299f1-3fd5-470a-b267-cfaa8c06f65e",
-          "AngularDamping": 0,
-          "Gravity": true,
-          "LinearDamping": 0,
-          "Locking": {},
-          "MassOverride": 0,
-          "MotionEnabled": true,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
-        },
-        {
-          "__type": "BaseWeapon",
-          "__guid": "f2951b34-a506-4147-8ace-65ad222d883a",
-          "ModelCollider": {
-            "_type": "component",
-            "component_id": "3f294c90-ff8a-4ce6-b92d-9dae7bff819d",
-            "go": "75b5e372-d80c-41d5-a9b1-4ba1da147013",
-            "component_type": "ModelCollider"
-          },
-          "Particle": {
-            "_type": "component",
-            "component_id": "378307fd-a156-4708-b029-0d424132307e",
-            "go": "75b5e372-d80c-41d5-a9b1-4ba1da147013",
-            "component_type": "LegacyParticleSystem"
-          },
-          "PickupInfo": "PRESS E TO PICKUP THIS YUMMY CORN!",
-          "PickupInfoChat": "You picked up Popcorn! Press RMB to throw it or G to drop weapon.",
-          "Rigidbody": {
-            "_type": "component",
-            "component_id": "36c299f1-3fd5-470a-b267-cfaa8c06f65e",
-            "go": "75b5e372-d80c-41d5-a9b1-4ba1da147013",
-            "component_type": "Rigidbody"
-          },
-          "WeaponName": "Popcorn",
-          "WeaponPosition": "0,6.5,-6.6",
-          "WeaponScale": "1,1,1"
-        },
-        {
-          "__type": "Sandbox.LegacyParticleSystem",
-          "__guid": "378307fd-a156-4708-b029-0d424132307e",
-          "ControlPoints": [],
-          "Looped": false,
-          "Particles": "particles/popcorn_splashy.vpcf",
-          "PlaybackSpeed": 1
-        }
-      ]
-    },
-    {
-      "__guid": "01b0ed11-816b-4d4b-b424-8d3b307ec3f5",
-      "Flags": 0,
-      "Name": "soda (3)",
-      "Position": "54.79265,-955.1071,73.39159",
-      "Rotation": "-0.000003248964,0.00001749998,-0.00000007819256,1",
-      "Scale": "1.2,1.2,1.2",
-      "Tags": "weapon",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "1e2bcb0e-0725-4444-b971-7553ded32ed7",
-          "BodyGroups": 18446744073709551615,
-          "Model": "models/citizen_props/sodacan01.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "Sandbox.ModelCollider",
-          "__guid": "9542b0b6-0641-4d66-9028-7abd1c154ca9",
-          "IsTrigger": false,
-          "Model": "models/citizen_props/sodacan01.vmdl",
-          "OnComponentDisabled": null,
-          "Static": false
-        },
-        {
-          "__type": "Sandbox.Rigidbody",
-          "__guid": "6ada249a-94ad-4503-8841-d67ebeb33e5d",
-          "AngularDamping": 0,
-          "Gravity": true,
-          "LinearDamping": 0,
-          "Locking": {},
-          "MassOverride": 0,
-          "MotionEnabled": true,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
-        },
-        {
-          "__type": "BaseWeapon",
-          "__guid": "5b6df33a-6bae-4507-a44d-e12111979104",
-          "ModelCollider": {
-            "_type": "component",
-            "component_id": "9542b0b6-0641-4d66-9028-7abd1c154ca9",
-            "go": "01b0ed11-816b-4d4b-b424-8d3b307ec3f5",
-            "component_type": "ModelCollider"
-          },
-          "PickupInfo": "PRESS E TO PICKUP THIS JUICY SODA!",
-          "PickupInfoChat": "You picked up Soda! Press RMB to throw it or G to drop weapon.",
-          "Rigidbody": {
-            "_type": "component",
-            "component_id": "6ada249a-94ad-4503-8841-d67ebeb33e5d",
-            "go": "01b0ed11-816b-4d4b-b424-8d3b307ec3f5",
-            "component_type": "Rigidbody"
-          },
-          "WeaponName": "Soda",
-          "WeaponPosition": "0.6,1,-5",
-          "WeaponScale": "1.2,1.2,1.2"
         }
       ]
     },
@@ -2360,6 +1941,149 @@
           "__PrefabVariables": {}
         }
       ]
+    },
+    {
+      "__guid": "17b0ae7f-a3f2-4b7c-804a-413c14686b3e",
+      "Flags": 0,
+      "Name": "popcorn (4)",
+      "Position": "118.4944,-959.9202,72.52591",
+      "Rotation": "0.002773375,0.001718035,-0.01568278,0.9998717",
+      "Tags": "weapon,particles",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "7c2bcc0c-ec34-43db-8dd8-743f1a512e75",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/ki0_popcornbucket.vmdl",
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.ModelCollider",
+          "__guid": "4b20b061-1339-4f23-9c4d-6a53f89e26ea",
+          "IsTrigger": false,
+          "Model": "models/ki0_popcornbucket.vmdl",
+          "OnComponentDisabled": null,
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.Rigidbody",
+          "__guid": "20365dc1-b42c-4228-bf76-e989fe1ab4e2",
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0,
+          "Locking": {},
+          "MassCenterOverride": "0,0,0",
+          "MassOverride": 0,
+          "MotionEnabled": true,
+          "OverrideMassCenter": false,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        },
+        {
+          "__type": "BaseWeapon",
+          "__guid": "747b14cd-624d-4f26-bb3e-4333618aa243",
+          "Particle": {
+            "_type": "component",
+            "component_id": "a0e683bd-a834-4650-baf5-b46268f94275",
+            "go": "17b0ae7f-a3f2-4b7c-804a-413c14686b3e",
+            "component_type": "LegacyParticleSystem"
+          },
+          "PickupInfo": "PRESS E TO PICKUP THIS YUMMY CORN!",
+          "PickupInfoChat": "You picked up Popcorn! Press RMB to throw it or G to drop weapon.",
+          "Rigidbody": {
+            "_type": "component",
+            "component_id": "20365dc1-b42c-4228-bf76-e989fe1ab4e2",
+            "go": "17b0ae7f-a3f2-4b7c-804a-413c14686b3e",
+            "component_type": "Rigidbody"
+          },
+          "WeaponName": "Popcorn",
+          "WeaponPosition": "13.7,0,-6.6",
+          "WeaponScale": "1,1,1"
+        },
+        {
+          "__type": "Sandbox.LegacyParticleSystem",
+          "__guid": "a0e683bd-a834-4650-baf5-b46268f94275",
+          "ControlPoints": [],
+          "Looped": false,
+          "Particles": "particles/popcorn_splashy.vpcf",
+          "PlaybackSpeed": 1
+        }
+      ]
+    },
+    {
+      "__guid": "493bb1fa-618f-43b6-91df-b78b0a2c9c6d",
+      "Flags": 0,
+      "Name": "popcorn (1)",
+      "Position": "-32.11704,-973.9149,64",
+      "Tags": "weapon,particles",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "prefabs/popcorn.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "f251aa43-1898-41bf-ad96-aca64819dd4f",
+      "Flags": 0,
+      "Name": "popcorn",
+      "Position": "-68.02538,-973.4263,64",
+      "Tags": "weapon,particles",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "prefabs/popcorn.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "d83b969e-4160-44d7-acf0-6bfdcaf9ef88",
+      "Flags": 0,
+      "Name": "popcorn (2)",
+      "Position": "-101.2603,-982.9909,64",
+      "Tags": "weapon,particles",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "prefabs/popcorn.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "4b2ee8f4-b334-4dfd-a852-ae57bfc19bea",
+      "Flags": 0,
+      "Name": "soda",
+      "Position": "35.4462,-974.6896,65",
+      "Tags": "weapon",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "prefabs/soda.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "f4d3b90a-d98a-44f6-8707-ac94b3a89963",
+      "Flags": 0,
+      "Name": "soda (1)",
+      "Position": "89.8351,-973.6049,65",
+      "Tags": "weapon",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "prefabs/soda.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "a0816c93-2ce4-455b-a7ff-35ae0bbf886a",
+      "Flags": 0,
+      "Name": "soda (2)",
+      "Position": "55.80073,-956.2946,74",
+      "Tags": "weapon",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "prefabs/soda.prefab",
+      "__PrefabVariables": {}
     }
   ],
   "SceneProperties": {
@@ -2367,6 +2091,7 @@
     "MaxFixedUpdates": 5,
     "NetworkFrequency": 30,
     "NetworkInterpolation": true,
+    "PhysicsSubSteps": 1,
     "ThreadedAnimation": true,
     "TimeScale": 1,
     "UseFixedUpdate": true,
@@ -2387,5 +2112,6 @@
   "Description": "",
   "ResourceVersion": 1,
   "__references": [],
+  "IsValid": true,
   "__version": 1
 }

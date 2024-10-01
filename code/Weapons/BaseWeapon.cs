@@ -24,7 +24,7 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 				//var holdBone = model.Model.Bones.AllBones.FirstOrDefault<BoneCollection.Bone>( bone => bone.Name == "arm_upper_R" );
 				//Log.Info(holdBone.Index);
 				GameObject.SetParent(bone,true);
-				GameObject.Transform.Local=bone.Transform.Local.WithRotation(Rotation.FromYaw(90)).WithPosition(WeaponPosition).WithScale(WeaponScale);
+				GameObject.Transform.Local=bone.Transform.Local.WithRotation(Rotation.FromRoll(-50)).WithPosition(WeaponPosition).WithScale(WeaponScale);
 			}
 		}
 	}

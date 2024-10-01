@@ -1,35 +1,44 @@
 {
   "RootObject": {
     "__guid": "053f2f9c-acf6-43f9-9b70-859c48d0d432",
+    "Flags": 0,
     "Name": "soda",
     "Tags": "weapon",
     "Enabled": true,
     "NetworkMode": 1,
     "Components": [
       {
-        "__type": "ModelRenderer",
+        "__type": "Sandbox.ModelRenderer",
         "__guid": "c39018b4-5159-4eaf-9ae1-77153af726ed",
         "BodyGroups": 18446744073709551615,
         "Model": "models/citizen_props/sodacan01.vmdl",
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
         "RenderType": "On",
         "Tint": "1,1,1,1"
       },
       {
-        "__type": "ModelCollider",
+        "__type": "Sandbox.ModelCollider",
         "__guid": "036362ce-f6de-43cc-8c16-ffefda538326",
         "IsTrigger": false,
         "Model": "models/citizen_props/sodacan01.vmdl",
         "Static": false
       },
       {
-        "__type": "Rigidbody",
+        "__type": "Sandbox.Rigidbody",
         "__guid": "546a0c61-84df-4c2b-ada5-34b19b498bf1",
         "AngularDamping": 0,
         "Gravity": true,
         "LinearDamping": 0,
         "Locking": {},
+        "MassCenterOverride": "0,0,0",
         "MassOverride": 0,
         "MotionEnabled": true,
+        "OverrideMassCenter": false,
         "RigidbodyFlags": 0,
         "StartAsleep": false
       },
@@ -51,15 +60,19 @@
           "component_type": "Rigidbody"
         },
         "WeaponName": "Soda",
-        "WeaponPosition": "0.6,1,-5",
-        "WeaponRotation": "0,0,0,0",
+        "WeaponPosition": "13,-2.8,-3.400002",
         "WeaponScale": "1.2,1.2,1.2"
       }
     ],
-    "Children": []
+    "Children": [],
+    "__variables": []
   },
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
-  "__references": []
+  "DontBreakAsTemplate": false,
+  "ResourceVersion": 1,
+  "__references": [],
+  "IsValid": true,
+  "__version": 1
 }
