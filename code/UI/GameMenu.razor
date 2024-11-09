@@ -465,7 +465,7 @@ GameMenu {
     protected override void OnUpdate(){
         base.OnUpdate();
     
-        if(Game.ActiveScene.Title!="init"&&Input.EscapePressed){
+        if(Game.ActiveScene.Components.Get<SceneInformation>(FindMode.EnabledInSelfAndDescendants).Title!="init"&&Input.EscapePressed){
             Input.EscapePressed = false;
             IsMenuOpen=!IsMenuOpen;
             if (!IsMenuOpen){
@@ -504,7 +504,9 @@ GameMenu {
     }
     protected override void OnStart()
 	{
-        var isInit=Game.ActiveScene.Title=="init";
+        var isInit=Game.ActiveScene.Components.Get<SceneInformation>(FindMode.EnabledInSelfAndDescendants).Title=="init";
+
+   
         if (isInit){
             Settings.Load();
         }
@@ -523,7 +525,7 @@ GameMenu {
     protected void Preconnect(LobbyInformation Server)
 	{
         Settings.Save();
-        if (Game.ActiveScene.Title!="init"){
+        if (Game.ActiveScene.Components.Get<SceneInformation>(FindMode.EnabledInSelfAndDescendants).Title!="init"){
             GameNetworkSystem.Disconnect();
             var init_scene=ResourceLibrary.Get<SceneFile>("scenes/init.scene");
 		    Game.ActiveScene.Load(init_scene);

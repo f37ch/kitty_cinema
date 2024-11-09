@@ -15,11 +15,11 @@
 						[
 							{
 								from = "materials/hotspots/metal_painted_black_a_hs.vmat"
-								to = "materials/hotspots/metal_painted_red_b_hs.vmat"
+								to = "materials/ki0_woodwall/ki0_woodwall.vmat"
 							},
 							{
 								from = "materials/hotspots/metal_painted_red_b_hs.vmat"
-								to = "materials/hotspots/metal_painted_red_b_hs.vmat"
+								to = "materials/ki0_woodwall/ki0_woodwall.vmat"
 							},
 						]
 						use_global_default = false

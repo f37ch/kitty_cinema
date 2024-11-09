@@ -48,9 +48,9 @@ public sealed class TheaterPlayer : Component
 	{
 		if (!IsProxy){
 			//!
-			Scene.Camera.Transform.Position=Camera.Transform.Position;
-			Scene.Camera.Transform.Rotation=Camera.Transform.Rotation;
-			CameraRotation=Camera.Transform.Rotation;
+			Scene.Camera.WorldPosition=Camera.WorldPosition;
+			Scene.Camera.WorldRotation=Camera.WorldRotation;
+			CameraRotation=Camera.WorldRotation;
 			DuckLevel=MathX.Lerp(Animator.DuckLevel,Input.Down("Duck")?1:0,Time.Delta*10.0f);
 			//chair stuff
 			EyeAngles+=Input.AnalogLook;
@@ -144,13 +144,13 @@ public sealed class TheaterPlayer : Component
 			if (ChairController!=null){//chair stuff
 				var cameraTransform=Transform.Local.WithPosition(Place.eyepos+Transform.Local.Backward*80).RotateAround(Place.eyepos,EyeAngles);
 				var cameraPosition=ThirdPerson?ChairController.Transform.Local.PointToWorld(cameraTransform.Position):ChairController.Transform.Local.PointToWorld(ChairController.Transform.Local.WithPosition(Place.eyepos).Position);
-				var cameraTrace=Scene.Trace.Ray(Transform.Position.WithZ(70),cameraPosition)
+				var cameraTrace=Scene.Trace.Ray(WorldPosition.WithZ(70),cameraPosition)
 					.Size(5f)
 					.IgnoreGameObjectHierarchy(GameObject)
 					.WithoutTags(IDHashed,"weapon")
 					.Run();
-				Camera.Transform.Position=cameraTrace.EndPosition;
-				Camera.Transform.LocalRotation=cameraTransform.Rotation;
+				Camera.WorldPosition=cameraTrace.EndPosition;
+				Camera.LocalRotation=cameraTransform.Rotation;
 			}else{
 				var cameraTransform=StartCameraTransform.RotateAround(EyePosition,EyeAngles.WithYaw(0f));
 				var cameraPosition=ThirdPerson?Transform.Local.PointToWorld(cameraTransform.Position):EyeWorldPosition;
@@ -160,8 +160,8 @@ public sealed class TheaterPlayer : Component
 					.IgnoreGameObjectHierarchy(GameObject)
 					.WithoutTags(IDHashed,"weapon")
 					.Run();
-				Camera.Transform.Position=cameraTrace.EndPosition;
-				Camera.Transform.LocalRotation=cameraTransform.Rotation;
+				Camera.WorldPosition=cameraTrace.EndPosition;
+				Camera.LocalRotation=cameraTransform.Rotation;
 			}
 			var cam=Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
 			if (cam!=null){
@@ -190,7 +190,7 @@ public sealed class TheaterPlayer : Component
 				foreach (var place in ChairController.UsingList){
 					if (place.user==GameObject.Id){
 						Transform.Local=ChairController.Transform.Local.WithPosition(place.sitpos);
-						Transform.Rotation=ChairController.Transform.Rotation;
+						WorldRotation=ChairController.WorldRotation;
 						UpdateCamera(ChairController,place);
 					}
 				}
@@ -208,7 +208,7 @@ public sealed class TheaterPlayer : Component
 			return;
 		}else{
 			if (!IsProxy) {
-				Transform.Rotation=Rotation.FromYaw(EyeAngles.yaw);
+				WorldRotation=Rotation.FromYaw(EyeAngles.yaw);
 				UpdateCamera(ChairController);
 			}
 			if (Animator==null) return;
