@@ -268,6 +268,7 @@ public sealed class TheaterPlayer : Component
 		var rot=EyeAngles.ToRotation();
 		WishVelocity=rot*Input.AnalogMove;
 		WishVelocity=WishVelocity.WithZ(0);
+		if ( WishVelocity == Vector3.Zero ) return ;
 		if (!WishVelocity.IsNearZeroLength)WishVelocity=WishVelocity.Normal;
 		if (Input.Down("Run")&&!Input.Down("Duck")&&!Input.Down("Walk")){
 			WishVelocity*=RunSpeed;
