@@ -23,7 +23,7 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 	/// location of the NetworkHelper object.
 	/// </summary>
 	[Property] public List<GameObject> SpawnPoints {get;set;}
-	//[HostSync] public NetDictionary<Guid,Guid> Players {get;set;}
+	//[Sync] public NetDictionary<Guid,Guid> Players {get;set;}
 	private static Chat Chat;
 	private bool PrivateLobby {get;set;}
 	//private bool LobbyNeedPassword {get;set;}
@@ -34,10 +34,10 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 		if (Scene.IsEditor)
 			return;
 
-		if (StartServer&&!GameNetworkSystem.IsActive)
+		if (StartServer&&!Networking.IsActive)
 		{
 			LoadingScreen.Title="Creating Lobby";
-			GameNetworkSystem.CreateLobby();
+			Networking.CreateLobby(new LobbyConfig());
 			Settings.Load();
 			var st=Settings.Current();
 			PrivateLobby=st.PrivateLobby;
@@ -47,7 +47,7 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 	}
     public static void Disconnect(string text, string icon)
 	{
-		GameNetworkSystem.Disconnect();
+		Networking.Disconnect();
 		var init_scene=ResourceLibrary.Get<SceneFile>("scenes/init.scene");
 		Game.ActiveScene.Load(init_scene);
 		var gmenu=Game.ActiveScene.GetAllComponents<GameMenu>().FirstOrDefault();
@@ -57,7 +57,7 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 		gmenu.selectedB="";
 		Log.Info(text);
 	}
-	[Broadcast (NetPermission.HostOnly)]
+	[Rpc.Broadcast(NetFlags.HostOnly)]
 	public static void Kick(Guid id)
 	{
 		if (!Rpc.Caller.IsHost) return;
@@ -76,7 +76,7 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 		Game.ActiveScene.Directory.FindByGuid(id)?.Destroy();
 	}
 	public void OnDisconnected(Connection conn){
-		var playerobj=Game.ActiveScene?.GetAllComponents<TheaterPlayer>()?.FirstOrDefault(x=>x.GameObject.Network.OwnerConnection.Id==conn.Id);
+		var playerobj=Game.ActiveScene?.GetAllComponents<TheaterPlayer>()?.FirstOrDefault(x=>x.GameObject.Network.Owner.Id==conn.Id);
 		if (playerobj!=null){
 			playerobj?.Destroy();
 		}
@@ -104,7 +104,7 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 	//		}
 	//	}
 	//}
-	//[Broadcast]
+	//[Rpc.Broadcast]
 	//public void ReceivePassword(string password)
 	//{
 	//	if (IsProxy) return;
@@ -153,7 +153,7 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 
 		if (PrivateLobby)
 		{
-			GameNetworkSystem.Disconnect();
+			Networking.Disconnect();
 		}
 		//if (Players==null){Players=new();}
 		//if (!Players.ContainsKey(channel.Id))

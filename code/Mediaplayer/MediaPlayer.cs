@@ -27,18 +27,18 @@ public class MediaPlayer : Component
 	private Pointer Pointer {get;set;}
 	private ScreenInfo ScreenInfo {get;set;}
 	public Sandbox.UI.WorldInput WorldInput {get;set;}
-	[HostSync] public float RequestCD {get;set;}=0;
-	[HostSync] public float Duration{get;set;}
-	[HostSync] public float Curtime{get;set;}
-	[HostSync] public string Service{get;set;}
-	[HostSync] public string ContentID{get;set;}
-	[HostSync] public bool Paused {get;set;}
-	[HostSync] public bool IsLive {get;set;}
-	[HostSync] public string Title {get;set;}
-	[HostSync] public string Location{get;set;}
-	[HostSync] public string Thumbnail{get;set;}
-	[HostSync] public NetList<Video> VideoList {get;set;}=new();
-	[HostSync] public NetList<Skips> SkipList {get;set;}=new();
+	[Sync] public float RequestCD {get;set;}=0;
+	[Sync] public float Duration{get;set;}
+	[Sync] public float Curtime{get;set;}
+	[Sync] public string Service{get;set;}
+	[Sync] public string ContentID{get;set;}
+	[Sync] public bool Paused {get;set;}
+	[Sync] public bool IsLive {get;set;}
+	[Sync] public string Title {get;set;}
+	[Sync] public string Location{get;set;}
+	[Sync] public string Thumbnail{get;set;}
+	[Sync] public NetList<Video> VideoList {get;set;}=new();
+	[Sync] public NetList<Skips> SkipList {get;set;}=new();
 	public float Volume{get;set;}=40;
 	private bool LocalInside {get;set;}
 	private bool MouseToggle {get;set;}
@@ -51,12 +51,12 @@ public class MediaPlayer : Component
 	/// </summary>
 	private void WorldPanelLogicUpdate(){
 
-		var rot=ScreenModel.Transform.Rotation;
+		var rot=ScreenModel.WorldRotation;
 		if (WorldUI==null) return;
-		WorldUI.Transform=Transform.Local.WithScale(10).WithPosition(ScreenModel.Transform.Position+rot.Backward*0.7F+rot.Up*ScreenModel.Transform.Scale.z*boundz/2).WithRotation(Rotation.LookAt(rot.Backward,rot.Up));
+		WorldUI.Transform=Transform.Local.WithScale(10).WithPosition(ScreenModel.WorldPosition+rot.Backward*0.7F+rot.Up*ScreenModel.WorldScale.z*boundz/2).WithRotation(Rotation.LookAt(rot.Backward,rot.Up));
 		boundy=ScreenModel.Model.Bounds.Size.y-16;
 		boundz=ScreenModel.Model.Bounds.Size.z-8;
-		WorldUI.PanelBounds=new Rect(-Transform.Scale.y*boundy,-Transform.Scale.z*boundz,Transform.Scale.y*boundy*2,Transform.Scale.z*(boundz*2-16));
+		WorldUI.PanelBounds=new Rect(-WorldScale.y*boundy,-WorldScale.z*boundz,WorldScale.y*boundy*2,WorldScale.z*(boundz*2-16));
 		if (Scene.Camera is null) {return;}
 		var ray=Scene.Camera.ScreenPixelToRay(Screen.Size/2);
 		WorldInput.Ray=ray;
@@ -74,7 +74,7 @@ public class MediaPlayer : Component
 				Pointer.AddClass("Hide");
 			}
 		}
-		var me=Scene.GetAllComponents<TheaterPlayer>().FirstOrDefault(x=>x?.GameObject?.Network.OwnerConnection==Connection.Local);
+		var me=Scene.GetAllComponents<TheaterPlayer>().FirstOrDefault(x=>x?.GameObject?.Network.Owner==Connection.Local);
 		if (me!=null&&me.Location==Location){
 			if (ScreenUI!=null&&ScreenUI.HasClass("Notinside")){
 				ScreenUI.RemoveClass("Notinside");

@@ -3,8 +3,8 @@ public class WeaponRespawner: Component
 {
 	[Property] GameObject  PopcornPrefab {get;set;}
     [Property] GameObject  SodaPrefab {get;set;}
-    [HostSync] private NetDictionary<Vector3,Guid> PopCornWeapons {get;set;}
-    [HostSync] private NetDictionary<Vector3,Guid> SodaWeapons {get;set;}
+    [Sync] private NetDictionary<Vector3,Guid> PopCornWeapons {get;set;}
+    [Sync] private NetDictionary<Vector3,Guid> SodaWeapons {get;set;}
     private RealTimeSince LastChecked;
     private RealTimeSince LastPosChecked;
     protected override void OnFixedUpdate()
@@ -37,18 +37,18 @@ public class WeaponRespawner: Component
             if (SodaPrefab!=null&&SodaWeapons!=null){
                 foreach(var weapon in SodaWeapons){
                     var soda=Scene.Directory.FindByGuid(weapon.Value);
-                    if (soda!=default&&soda.Parent==soda.Scene&&!soda.Transform.Position.AlmostEqual(weapon.Key)){
-                        soda.Transform.Position=weapon.Key;
-                        soda.Transform.Rotation=Angles.Zero;
+                    if (soda!=default&&soda.Parent==soda.Scene&&!soda.WorldPosition.AlmostEqual(weapon.Key)){
+                        soda.WorldPosition=weapon.Key;
+                        soda.WorldRotation=Angles.Zero;
                     }
                 }
             }
             if (PopcornPrefab!=null&&PopCornWeapons!=null){
                 foreach(var weapon in PopCornWeapons){
                     var popcorn=Scene.Directory.FindByGuid(weapon.Value);
-                    if (popcorn!=default&&popcorn.Parent==Scene&&!popcorn.Transform.Position.AlmostEqual(weapon.Key)){
-                        popcorn.Transform.Position=weapon.Key;
-                        popcorn.Transform.Rotation=Angles.Zero;
+                    if (popcorn!=default&&popcorn.Parent==Scene&&!popcorn.WorldPosition.AlmostEqual(weapon.Key)){
+                        popcorn.WorldPosition=weapon.Key;
+                        popcorn.WorldRotation=Angles.Zero;
                     }
                 }
             }
@@ -62,13 +62,13 @@ public class WeaponRespawner: Component
         if (PopCornWeapons==null){
             PopCornWeapons=new();
             foreach(var weapon in Game.ActiveScene.Components.GetAll<BaseWeapon>().Where(x=>x.WeaponName=="Popcorn")){
-                PopCornWeapons?.Add(weapon.Transform.Position,weapon.GameObject.Id);
+                PopCornWeapons?.Add(weapon.WorldPosition,weapon.GameObject.Id);
             }
         }
         if (SodaWeapons==null){
             SodaWeapons=new();
             foreach(var weapon in Game.ActiveScene.Components.GetAll<BaseWeapon>().Where(x=>x.WeaponName=="Soda")){
-                SodaWeapons?.Add(weapon.Transform.Position,weapon.GameObject.Id);
+                SodaWeapons?.Add(weapon.WorldPosition,weapon.GameObject.Id);
             }
         }
         base.OnAwake();

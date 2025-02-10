@@ -2,7 +2,7 @@ using System.Linq;
 public class MediaController:Component
 {
     public const string WebHandlersURL="https://etsv.pw/mediaplayer/";
-	[Broadcast]
+	[Rpc.Broadcast]
     public static void BroadcastVideo(ParsedData Data, string VideoID, string ServiceName, string ServiceType, Guid PlayerID){
 		var MediaPlayer=GetPlayer(PlayerID);
 		if (MediaPlayer.Service!=null){
@@ -45,7 +45,7 @@ public class MediaController:Component
 	public static void ChatMsg(MediaPlayer MediaPlayer,string msg,bool islocal=false)
 	{
 		if (Game.ActiveScene.Components.TryGet<Chat>(out var Chat,FindMode.EnabledInSelfAndDescendants)){
-			var da=Game.ActiveScene.GetAllComponents<TheaterPlayer>().FirstOrDefault(x=>x.GameObject.Network.OwnerConnection==Connection.Local);
+			var da=Game.ActiveScene.GetAllComponents<TheaterPlayer>().FirstOrDefault(x=>x.GameObject.Network.Owner==Connection.Local);
 			if (da==null) return;
 			if (islocal){//local player Log.Info(Connection.Local.Id==Rpc.Caller.Id);
 				Chat.AddLocalText(msg,"video_settings",true);
@@ -77,7 +77,7 @@ public class MediaController:Component
 			return (int)Math.Round(numplayers_in_theater*.66f);
 		}
 	}
-	[Broadcast]
+	[Rpc.Broadcast]
     public static void VoteSkip(Guid playerid)
 	{
 		var MediaPlayer=GetPlayer(playerid);
@@ -93,7 +93,7 @@ public class MediaController:Component
 		});
 		ChatMsg(MediaPlayer,$"{Rpc.Caller.DisplayName} has voted to skip this video.");
 	}
-    [Broadcast (NetPermission.HostOnly)]
+    [Rpc.Broadcast(NetFlags.HostOnly)]
     public static void Skip(Guid playerid)
 	{
 		if (!Rpc.Caller.IsHost) return;
@@ -104,7 +104,7 @@ public class MediaController:Component
 		MediaPlayer.Service=null;
 		ChatMsg(MediaPlayer,$"{Rpc.Caller.DisplayName} skipped current video.");
 	}
-    [Broadcast (NetPermission.HostOnly)]
+    [Rpc.Broadcast(NetFlags.HostOnly)]
     public static void TogglePlay(Guid playerid)
 	{
 		if (!Rpc.Caller.IsHost) return;
@@ -121,7 +121,7 @@ public class MediaController:Component
         }
 		
 	}
-    [Broadcast (NetPermission.HostOnly)]
+    [Rpc.Broadcast(NetFlags.HostOnly)]
     public static void Seek(Guid playerid,float time)
 	{
 		if (!Rpc.Caller.IsHost) return;

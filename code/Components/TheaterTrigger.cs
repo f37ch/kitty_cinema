@@ -12,13 +12,13 @@ public sealed class TheaterTrigger:Component,Component.ITriggerListener
 				Player.Location=LocationName;
 				if (MediaPlayer!=null&&!IsProxy){
 					if(!MediaPlayer.PanelComponent.Components.TryGet<Queue>(out var queue)){
-						if (Player.GameObject.Network.OwnerConnection.Id==Connection.Local.Id){
+						if (Player.GameObject.Network.Owner.Id==Connection.Local.Id){
 							queue=MediaPlayer.PanelComponent.Components.Create<Queue>();
 							queue.MediaPlayer=MediaPlayer;
 						}
 					}
 					if(!MediaPlayer.PanelComponent.Components.TryGet<TheaterControls>(out var controls)){
-						if (Player.GameObject.Network.OwnerConnection.Id==Connection.Local.Id){
+						if (Player.GameObject.Network.Owner.Id==Connection.Local.Id){
 							controls=MediaPlayer.PanelComponent.Components.Create<TheaterControls>();
 							controls.MediaPlayer=MediaPlayer;
 						}
@@ -37,7 +37,7 @@ public sealed class TheaterTrigger:Component,Component.ITriggerListener
 	{
 		iTouching--;
 		if (other.GameObject.Root.Components.TryGet<TheaterPlayer>(out var Player)){
-			if (Player.GameObject.Network.OwnerConnection.Id==Connection.Local.Id){
+			if (Player.GameObject.Network.Owner.Id==Connection.Local.Id){
 				if (MediaPlayer!=null&&!IsProxy){
 					if(MediaPlayer.PanelComponent.Components.TryGet<Queue>(out var queue)){
 						queue.Destroy();

@@ -32,7 +32,7 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 	{
 		if (Scene.Directory.FindByGuid(Holder).Components.TryGet<TheaterPlayer>(out var Player)){
 			Rigidbody.Enabled=true;
-			var obj=GameObject.Clone(GameObject.Transform.Position,GameObject.Transform.Rotation);
+			var obj=GameObject.Clone(GameObject.WorldPosition,GameObject.WorldRotation);
 			obj.NetworkSpawn();
 			obj.NetworkMode=NetworkMode.Never;
 			//obj.Network.SetOrphanedMode(NetworkOrphaned.Destroy);
@@ -48,17 +48,17 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 
 			//Holder.Animator.TriggerDeploy();
 
-			obj.Transform.LocalRotation=Rotation.Random;
+			obj.LocalRotation=Rotation.Random;
 			if (obj.Components.TryGet<Rigidbody>(out var body)){
 				body.Gravity=true;
-				body.Velocity=(Player.Transform.Rotation.Forward*700).WithZ(-Player.EyeAngles.pitch*15);
+				body.Velocity=(Player.WorldRotation.Forward*700).WithZ(-Player.EyeAngles.pitch*15);
 				await Task.DelayRealtimeSeconds(2f);
 				obj.Destroy();
 			}
 		}
 		
 	}
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void BroadcastEffect()
 	{
 		if (Particle!=null){Particle.Enabled=true;}
@@ -67,7 +67,7 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 	{
 		BroadcastEffect();
 	}
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void PickUp(Guid Userid)
 	{
 		if (Throwed) return;
@@ -86,7 +86,7 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 			Chat.AddLocalText(PickupInfoChat,"info",true);
 		}
 	}
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void Drop()
 	{
 		if (Scene.Directory.FindByGuid(Holder).Components.TryGet<TheaterPlayer>(out var Player)){
@@ -97,10 +97,10 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 			Rigidbody.Enabled=true;
 			GameObject.SetParent(null,false);
 			GameObject.Network.EnableInterpolation();
-			GameObject.Transform.Position=(Player.Transform.Position+Player.Transform.LocalRotation.Forward*20).WithZ(Player.Transform.Position.z+40);
+			GameObject.WorldPosition=(Player.WorldPosition+Player.LocalRotation.Forward*20).WithZ(Player.WorldPosition.z+40);
 
-			GameObject.Transform.Rotation=Player.Transform.Rotation;
-			//Rigidbody.Velocity=GameObject.Transform.Position+=(Holder.Transform.Rotation.Forward*200).WithZ(-Holder.EyeAngles.pitch*8);
+			GameObject.WorldRotation=Player.WorldRotation;
+			//Rigidbody.Velocity=GameObject.WorldPosition+=(Holder.WorldRotation.Forward*200).WithZ(-Holder.EyeAngles.pitch*8);
 			Holder=default;
 		}
 	}
@@ -109,9 +109,9 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 		base.OnStart();
 		GameObject.NetworkMode=NetworkMode.Object;
 		if (Particle!=null){Particle.Enabled=false;}
-		Transform.Scale=WeaponScale;
+		WorldScale=WeaponScale;
 		Popup=Scene.Components.GetInDescendantsOrSelf<InfoPopup>();
 		Chat=Scene.Components.GetInDescendantsOrSelf<Chat>();
-		SpawnPosition=GameObject.Transform.Position;
+		SpawnPosition=GameObject.WorldPosition;
 	}
 }

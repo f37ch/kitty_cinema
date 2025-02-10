@@ -241,7 +241,7 @@ Chat
 		AddLocalText("Welcome to Kitty Cinema!","terminal");
 		AddLocalText("You can toggle thirdperson mode by pressing T button.","info");
 		AddLocalText("If you want to use voice chat, press the X button or Enter to open the chatbox.","info");
-		if (!GameNetworkSystem.IsActive){
+		if (!Networking.IsActive){
 			AddLocalText("Your lobby was created as private, nobody can join you.","info");
 			AddLocalText("To make your lobby visible again, you need to go to settings and switch off the private lobby option, and then recreate the lobby.","info");
 		}
@@ -293,7 +293,7 @@ Chat
         StateHasChanged();
     }
 	
-    [Broadcast]
+    [Rpc.Broadcast]
     public void AddText( string message )
     {
         message=message.Truncate(300);
@@ -305,7 +305,7 @@ Chat
 		StateHasChanged();
 	}
 
-    [Broadcast (NetPermission.HostOnly)]
+    [Rpc.Broadcast(NetFlags.HostOnly)]
     public void AddSystemText(string message, string icon)
     {
         message=message.Truncate(300);

@@ -8,7 +8,7 @@ public sealed class ChairController : Component
 {
 	[Property] public string  ChairInfo { get; set; }
 	[Property] public string  ChairChatInfo { get; set; }
-	[HostSync] public NetList<ChairPlace> UsingList {get;set;}=new();
+	[Sync] public NetList<ChairPlace> UsingList {get;set;}=new();
 	private Chat Chat {get; set;}
 	public InfoPopup Popup {get;set;}
 	
@@ -17,7 +17,7 @@ public sealed class ChairController : Component
 		base.OnUpdate();
 	
 	}
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void Sit(Guid Userid)
 	{
 		foreach (var Place in UsingList){
@@ -26,7 +26,7 @@ public sealed class ChairController : Component
 					UsingList.Add(new (){user=User.GameObject.Id,eyepos=Place.eyepos,sitpos=Place.sitpos});
 					User.GameObject.SetParent(GameObject,true);
 					
-					if (Connection.Local==User.Network.OwnerConnection){
+					if (Connection.Local==User.Network.Owner){
 						Chat.AddLocalText(ChairChatInfo,"info");
 					}
 					UsingList.Remove(Place);
@@ -35,7 +35,7 @@ public sealed class ChairController : Component
 			}
 		}
 	}
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void Leave(Guid Userid)
 	{
 		foreach (var Place in UsingList){
@@ -44,8 +44,8 @@ public sealed class ChairController : Component
 					UsingList.Add(new (){user=default,eyepos=Place.eyepos,sitpos=Place.sitpos});
 					UsingList.Remove(Place);
 					User.GameObject.SetParent(null,true);
-					User.Transform.Position=Transform.Local.PointToWorld(Place.sitpos.WithX(80));
-					User.EyeAngles=User.EyeAngles.WithYaw(Transform.LocalRotation.Yaw());
+					User.WorldPosition=Transform.Local.PointToWorld(Place.sitpos.WithX(80));
+					User.EyeAngles=User.EyeAngles.WithYaw(LocalRotation.Yaw());
 					
 				}
 				break;

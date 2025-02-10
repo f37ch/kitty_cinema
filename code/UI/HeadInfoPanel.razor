@@ -56,7 +56,7 @@ HeadInfoPanel
     }
 }
 </style>
-@if (Network.OwnerConnection is Connection owner && owner != Connection.Local)
+@if (Network.Owner is Connection owner && owner != Connection.Local)
 {
     <root>
         <div class="card">
@@ -86,5 +86,5 @@ HeadInfoPanel
             return voiceComponent.LastPlayed<0.5f;
         }
     }
-    protected override int BuildHash()=>System.HashCode.Combine(Network.OwnerConnection,IsVoicePlaying);
+    protected override int BuildHash()=>System.HashCode.Combine(Network.Owner,IsVoicePlaying);
 }

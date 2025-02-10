@@ -183,7 +183,7 @@
         @foreach (var entry in Connection.All)
         {
 			//entry.Name!="127.0.0.1:55147"&&
-			var da=Game.ActiveScene?.GetAllComponents<TheaterPlayer>()?.FirstOrDefault(x=>x.GameObject.Network.OwnerConnection==entry);
+			var da=Game.ActiveScene?.GetAllComponents<TheaterPlayer>()?.FirstOrDefault(x=>x.GameObject.Network.Owner==entry);
 			if (da==null) {continue;}
             <div class="row @(entry==Connection.Local?"local":"")">
                 <div class="name">
@@ -219,7 +219,7 @@
     }
 	private string GetLocation(Connection con)
     {
-		var da=Scene.GetAllComponents<TheaterPlayer>().FirstOrDefault(x=>x.GameObject.Network.OwnerConnection==con);
+		var da=Scene.GetAllComponents<TheaterPlayer>().FirstOrDefault(x=>x.GameObject.Network.Owner==con);
 		if (da!=null){
 			return da.Location;
 		}else{

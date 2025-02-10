@@ -32,12 +32,12 @@ public sealed class TheaterPlayer : Component
 		var draw=Gizmo.Draw;
 		draw.LineSphere(EyePosition,10f);
 	}
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void OnThrow()
 	{
 		Animator.Target.Set("b_attack",true);
 	}
-	[Broadcast(NetPermission.HostOnly)]
+	[Rpc.Broadcast(NetFlags.HostOnly)]
 	public void UpdateNoclip()
 	{
 		IsNoclipping=!IsNoclipping;
@@ -177,7 +177,7 @@ public sealed class TheaterPlayer : Component
 			}
 		}
 	}
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void OnJump()
 	{
 		Animator?.TriggerJump();
