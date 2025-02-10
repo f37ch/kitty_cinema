@@ -277,6 +277,7 @@ Chat
         var text=InputBox.Text;
         InputBox.Text="";
         if (string.IsNullOrWhiteSpace(text)) return;
+		Sandbox.Services.Achievements.Unlock("ssome");
         AddText(text);
     }
 	public void AddLocalText(string message, string icon, bool fproxy=false)

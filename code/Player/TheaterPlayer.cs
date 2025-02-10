@@ -288,6 +288,7 @@ public sealed class TheaterPlayer : Component
 		Tags.Add(IDHashed);
 		var cam=Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
 		cam.RenderExcludeTags.RemoveAll();
+		Sandbox.Services.Achievements.Unlock("newbie");
 		Settings.Load();
 	}
 	protected override void OnEnabled()
