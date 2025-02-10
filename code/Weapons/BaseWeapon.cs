@@ -20,17 +20,17 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 		if (Holder!=default&&Scene.Directory.FindByGuid(Holder).Components.TryGet<TheaterPlayer>(out var Player)){
 			if (Player.Components.TryGet<SkinnedModelRenderer>(out var model))
 			{
-				model.TryGetBoneTransform("hold_R",out Transform btransform);
-				Transform ltransform=new Transform(WeaponPosition,Rotation.FromRoll(-10),1);
-        		Transform wtransform=btransform.ToWorld(ltransform);
-        		GameObject.WorldPosition=wtransform.Position;
-        		GameObject.WorldRotation=wtransform.Rotation;
-        		GameObject.WorldScale=wtransform.Scale;
-				//var bone=model.GetBoneObject(15);
+				//model.TryGetBoneTransform("hold_R",out Transform btransform);
+				//Transform ltransform=new Transform(WeaponPosition,Rotation.FromRoll(-10),1);
+        		//Transform wtransform=btransform.ToWorld(ltransform);
+        		//GameObject.WorldPosition=wtransform.Position;
+        		//GameObject.WorldRotation=wtransform.Rotation;
+        		//GameObject.WorldScale=wtransform.Scale;
+				var bone=model.GetBoneObject(15);
 				////var holdBone = model.Model.Bones.AllBones.FirstOrDefault<BoneCollection.Bone>( bone => bone.Name == "arm_upper_R" );
 				////Log.Info(holdBone.Index);
-				////GameObject.SetParent(bone,true);
-				//GameObject.Transform.Local=bone.Transform.Local.WithRotation(Rotation.FromRoll(-50)).WithPosition(WeaponPosition).WithScale(WeaponScale);
+				GameObject.SetParent(bone,true);
+				GameObject.Transform.Local=bone.Transform.Local.WithRotation(Rotation.FromRoll(-50)).WithPosition(WeaponPosition).WithScale(WeaponScale);
 			}
 		}
 	}
@@ -39,7 +39,10 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 	{
 		if (Scene.Directory.FindByGuid(Holder).Components.TryGet<TheaterPlayer>(out var Player)){
 			Rigidbody.Enabled=true;
+			
 			var obj=GameObject.Clone(GameObject.WorldPosition,GameObject.WorldRotation);
+			obj.Tags.Remove("player");
+			obj.Tags.Remove(Player.IDHashed);
 			obj.NetworkSpawn();
 			obj.NetworkMode=NetworkMode.Never;
 			//obj.Network.SetOrphanedMode(NetworkOrphaned.Destroy);

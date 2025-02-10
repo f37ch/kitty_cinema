@@ -102,7 +102,7 @@
           "component_type": "Rigidbody"
         },
         "WeaponName": "Soda",
-        "WeaponPosition": "0,0,-3.400002",
+        "WeaponPosition": "13.6,-2.5,-3.400002",
         "WeaponScale": "1.2,1.2,1.2"
       }
     ],

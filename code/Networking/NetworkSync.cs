@@ -37,10 +37,13 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 		if (StartServer&&!Networking.IsActive)
 		{
 			LoadingScreen.Title="Creating Lobby";
-			Networking.CreateLobby(new LobbyConfig());
+			
 			Settings.Load();
 			var st=Settings.Current();
 			PrivateLobby=st.PrivateLobby;
+			Networking.CreateLobby(new LobbyConfig(){
+				Privacy=PrivateLobby?LobbyPrivacy.FriendsOnly:LobbyPrivacy.Public,
+			});
 			//LobbyNeedPassword=st.IsLobbyNeedPassword;
 			//LobbyPassword=st.LobbyPassword;
 		}
@@ -163,10 +166,6 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 		//	HandlePassword(channel.Id);
 		//}else{
 			InitPlayer(channel);
-			if (PrivateLobby)
-			{
-				Networking.Disconnect();
-			}
 		//}
 	}
 
