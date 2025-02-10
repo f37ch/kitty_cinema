@@ -150,12 +150,12 @@ public class MediaPlayer : Component
 		Curtime=0;
 		SkipList.Clear();
 	}
-	private async Task HandleVote(){
-		if(SkipList.Count>=MediaController.CountSkips(GameObject.Id)){
-			StopPlayBack();
-			await Task.DelayRealtimeSeconds(.2f);
-			MediaController.ChatMsg(this,$"Video was skipped by vote.");
-		}
+	private void HandleVote(){
+		if (Service!=null&&SkipList.Count>=MediaController.CountSkips(GameObject.Id))
+    	{
+    	    MediaController.ChatMsg(this,"Video was skipped by vote.");
+    	    StopPlayBack();
+    	}
 	}
 	private void HomeScreen(){
 		if (ScreenUI!=null){return;}

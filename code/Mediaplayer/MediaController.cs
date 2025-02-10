@@ -42,6 +42,7 @@ public class MediaController:Component
 	public static MediaPlayer GetPlayer(Guid id){
 		return Game.ActiveScene.Directory.FindByGuid(id).Components.Get<MediaPlayer>();
 	}
+	[Rpc.Broadcast(NetFlags.HostOnly)]
 	public static void ChatMsg(MediaPlayer MediaPlayer,string msg,bool islocal=false)
 	{
 		if (Game.ActiveScene.Components.TryGet<Chat>(out var Chat,FindMode.EnabledInSelfAndDescendants)){
