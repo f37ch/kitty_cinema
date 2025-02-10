@@ -235,17 +235,12 @@ Chat
 		//InputBox.CaretPosition += emoji.Length;
 		InputBox.Text += emoji;
 	}
-	protected override async void OnStart()
+	protected override void OnStart()
     {
 		base.OnStart();
 		AddLocalText("Welcome to Kitty Cinema!","terminal");
 		AddLocalText("You can toggle thirdperson mode by pressing T button.","info");
 		AddLocalText("If you want to use voice chat, press the X button or Enter to open the chatbox.","info");
-		await Task.DelayRealtimeSeconds(5);
-		if (!Networking.IsActive){
-			AddLocalText("Your lobby was created as private, nobody can join you.","info");
-			AddLocalText("To make your lobby visible again, you need to go to settings and switch off the private lobby option, and then recreate the lobby.","info");
-		}
 	}
     protected override void OnUpdate()
     {

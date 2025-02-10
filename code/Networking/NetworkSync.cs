@@ -166,6 +166,10 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 		//	HandlePassword(channel.Id);
 		//}else{
 			InitPlayer(channel);
+			if (PrivateLobby){
+				Chat.AddLocalText("Only your friends can join this lobby, and only via steam friends list.","info",true);
+				Chat.AddLocalText("To make your lobby visible for everyone, you need to go to settings and switch off the only friends lobby option, and then recreate the lobby.","info",true);
+			}
 		//}
 	}
 
