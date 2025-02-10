@@ -2,6 +2,31 @@
   "__guid": "af80101e-fc3e-4ce6-86a6-034a97dfe10f",
   "GameObjects": [
     {
+      "__guid": "97c0830b-f471-4f6b-9dc4-e05777657674",
+      "Flags": 0,
+      "Name": "Scene Information",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SceneInformation",
+          "__guid": "e886a70e-2781-4945-987e-6a5464552e83",
+          "Author": null,
+          "Changes": null,
+          "Description": "",
+          "Group": null,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "SceneTags": "",
+          "Title": "theater",
+          "Version": null
+        }
+      ]
+    },
+    {
       "__guid": "feedbe4d-7ac3-4a78-963c-13580d449b5e",
       "Flags": 0,
       "Name": "NetworkSync",
@@ -11,6 +36,12 @@
         {
           "__type": "NetworkSync",
           "__guid": "2c6a5e53-41fe-43c3-982d-b8fc5ef4799e",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "PlayerPrefab": {
             "_type": "gameobject",
             "go": "ed7146f3-4f8e-471e-b14b-80e7ab673ec8"
@@ -87,6 +118,12 @@
               "ClearFlags": "All",
               "FieldOfView": 96,
               "IsMainCamera": true,
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
               "Orthographic": false,
               "OrthographicHeight": 1204,
               "Priority": 1,
@@ -115,6 +152,12 @@
           "EnableCollision": true,
           "MapName": "maps/kitty_cinema_v1_beta.vmap",
           "NoOrigin": true,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "OnMapLoaded": null,
           "OnMapUnloaded": null,
           "UseMapFromLaunch": false
@@ -137,6 +180,12 @@
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "9.735,10.19,8.48377,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 1000,
           "Shadows": false
         }
@@ -157,6 +206,12 @@
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "15.59129,16.32,13.58735,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 1400,
           "Shadows": true
         }
@@ -177,6 +232,12 @@
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "13.58735,15.50021,16.32,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 1400,
           "Shadows": true
         }
@@ -197,9 +258,16 @@
           "Attenuation": 1,
           "ConeInner": 20.74,
           "ConeOuter": 67.57,
+          "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "20.51324,21.99809,22.45,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 500,
           "Shadows": true
         }
@@ -220,9 +288,16 @@
           "Attenuation": 1,
           "ConeInner": 20.74,
           "ConeOuter": 67.57,
+          "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "20.51324,21.99809,22.45,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 500,
           "Shadows": true
         }
@@ -243,9 +318,16 @@
           "Attenuation": 1.87,
           "ConeInner": 37.38,
           "ConeOuter": 61.93,
+          "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "26.1144,28.00469,28.58,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 500,
           "Shadows": false
         }
@@ -266,9 +348,16 @@
           "Attenuation": 10,
           "ConeInner": 0,
           "ConeOuter": 58,
+          "Cookie": null,
           "FogMode": "Disabled",
           "FogStrength": 1,
           "LightColor": "26.1144,28.00469,28.58,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 100,
           "Shadows": false
         }
@@ -289,9 +378,16 @@
           "Attenuation": 10,
           "ConeInner": 0,
           "ConeOuter": 58,
+          "Cookie": null,
           "FogMode": "Disabled",
           "FogStrength": 1,
           "LightColor": "26.1144,28.00469,28.58,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 100,
           "Shadows": false
         }
@@ -312,9 +408,16 @@
           "Attenuation": 10,
           "ConeInner": 0,
           "ConeOuter": 58,
+          "Cookie": null,
           "FogMode": "Disabled",
           "FogStrength": 1,
           "LightColor": "26.1144,28.00469,28.58,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 100,
           "Shadows": false
         }
@@ -335,9 +438,16 @@
           "Attenuation": 10,
           "ConeInner": 0,
           "ConeOuter": 58,
+          "Cookie": null,
           "FogMode": "Disabled",
           "FogStrength": 1,
           "LightColor": "26.1144,28.00469,28.58,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 100,
           "Shadows": false
         }
@@ -358,9 +468,16 @@
           "Attenuation": 10,
           "ConeInner": 0,
           "ConeOuter": 58,
+          "Cookie": null,
           "FogMode": "Disabled",
           "FogStrength": 1,
           "LightColor": "26.1144,28.00469,28.58,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 100,
           "Shadows": false
         }
@@ -381,9 +498,16 @@
           "Attenuation": 10,
           "ConeInner": 0,
           "ConeOuter": 58,
+          "Cookie": null,
           "FogMode": "Disabled",
           "FogStrength": 1,
           "LightColor": "26.1144,28.00469,28.58,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 100,
           "Shadows": false
         }
@@ -404,9 +528,16 @@
           "Attenuation": 10,
           "ConeInner": 0,
           "ConeOuter": 58,
+          "Cookie": null,
           "FogMode": "Disabled",
           "FogStrength": 1,
           "LightColor": "26.1144,28.00469,28.58,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 100,
           "Shadows": false
         }
@@ -427,9 +558,16 @@
           "Attenuation": 10,
           "ConeInner": 0,
           "ConeOuter": 58,
+          "Cookie": null,
           "FogMode": "Disabled",
           "FogStrength": 1,
           "LightColor": "26.1144,28.00469,28.58,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 100,
           "Shadows": false
         }
@@ -450,9 +588,16 @@
           "Attenuation": 1.87,
           "ConeInner": 37.38,
           "ConeOuter": 78.86,
+          "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "26.1144,28.00469,28.58,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 500,
           "Shadows": false
         }
@@ -473,9 +618,16 @@
           "Attenuation": 1.87,
           "ConeInner": 37.38,
           "ConeOuter": 78.86,
+          "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "26.1144,28.00469,28.58,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 500,
           "Shadows": false
         }
@@ -496,9 +648,16 @@
           "Attenuation": 1.87,
           "ConeInner": 37.38,
           "ConeOuter": 61.93,
+          "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "26.1144,28.00469,28.58,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 500,
           "Shadows": false
         }
@@ -519,9 +678,16 @@
           "Attenuation": 10,
           "ConeInner": 7.48,
           "ConeOuter": 68.13,
+          "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "26.1144,28.00469,28.58,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 500,
           "Shadows": false
         }
@@ -542,9 +708,16 @@
           "Attenuation": 1,
           "ConeInner": 20.74,
           "ConeOuter": 67.57,
+          "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "20.51324,21.99809,22.45,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 500,
           "Shadows": false
         }
@@ -565,9 +738,16 @@
           "Attenuation": 1,
           "ConeInner": 20.74,
           "ConeOuter": 67.57,
+          "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "20.51324,21.99809,22.45,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 500,
           "Shadows": false
         }
@@ -588,9 +768,16 @@
           "Attenuation": 1,
           "ConeInner": 20.74,
           "ConeOuter": 60,
+          "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "14.91,15.99,16.32,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 500,
           "Shadows": true
         }
@@ -611,9 +798,16 @@
           "Attenuation": 1.74,
           "ConeInner": 25.25,
           "ConeOuter": 35.69,
+          "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "14.91,15.99,16.32,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 500,
           "Shadows": false
         }
@@ -634,9 +828,16 @@
           "Attenuation": 1,
           "ConeInner": 20.74,
           "ConeOuter": 60,
+          "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "14.91,15.99,16.32,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 500,
           "Shadows": true
         }
@@ -657,9 +858,16 @@
           "Attenuation": 1,
           "ConeInner": 20.74,
           "ConeOuter": 60,
+          "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "14.91207,15.99148,16.32,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 500,
           "Shadows": true
         }
@@ -680,9 +888,16 @@
           "Attenuation": 1,
           "ConeInner": 20.74,
           "ConeOuter": 60,
+          "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "14.91207,15.99148,16.32,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 500,
           "Shadows": true
         }
@@ -703,9 +918,16 @@
           "Attenuation": 1,
           "ConeInner": 20.74,
           "ConeOuter": 60,
+          "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "14.91,15.99,16.32,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 500,
           "Shadows": true
         }
@@ -726,9 +948,16 @@
           "Attenuation": 1,
           "ConeInner": 20.74,
           "ConeOuter": 60,
+          "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "14.91,15.99,16.32,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 500,
           "Shadows": true
         }
@@ -749,9 +978,16 @@
           "Attenuation": 0,
           "ConeInner": 67.99,
           "ConeOuter": 81.13,
+          "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "0.2,0.2,0.2,0.2",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Radius": 1000,
           "Shadows": false
         }
@@ -769,6 +1005,12 @@
           "__type": "Sandbox.ScreenPanel",
           "__guid": "4bc37a28-ac3c-43f4-a2e5-cbfd98ecb4ff",
           "AutoScreenScale": true,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Opacity": 1,
           "Scale": 1,
           "ScaleStrategy": "ConsistentHeight",
@@ -776,7 +1018,13 @@
         },
         {
           "__type": "Chat",
-          "__guid": "04aeefeb-d872-4559-8c86-26d7aaa35626"
+          "__guid": "04aeefeb-d872-4559-8c86-26d7aaa35626",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         }
       ]
     },
@@ -798,7 +1046,13 @@
             {
               "__type": "Sandbox.SpawnPoint",
               "__guid": "4e28d536-287a-48d1-bf2c-d4c577c010ff",
-              "Color": "0.8902,0.31765,0.05098,1"
+              "Color": "0.8902,0.31765,0.05098,1",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null
             }
           ]
         },
@@ -813,7 +1067,13 @@
             {
               "__type": "Sandbox.SpawnPoint",
               "__guid": "279f0169-5931-466c-830e-d3c71a2a049e",
-              "Color": "0.8902,0.31765,0.05098,1"
+              "Color": "0.8902,0.31765,0.05098,1",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null
             }
           ]
         },
@@ -828,7 +1088,13 @@
             {
               "__type": "Sandbox.SpawnPoint",
               "__guid": "9d087b65-0ddf-4a4b-8049-a788ee91a82b",
-              "Color": "0.8902,0.31765,0.05098,1"
+              "Color": "0.8902,0.31765,0.05098,1",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null
             }
           ]
         },
@@ -843,7 +1109,13 @@
             {
               "__type": "Sandbox.SpawnPoint",
               "__guid": "85c223ae-94a2-486f-9452-026c14ae3505",
-              "Color": "0.8902,0.31765,0.05098,1"
+              "Color": "0.8902,0.31765,0.05098,1",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null
             }
           ]
         },
@@ -858,7 +1130,13 @@
             {
               "__type": "Sandbox.SpawnPoint",
               "__guid": "b9142b93-bccd-44f7-9090-8e0b6b159ac8",
-              "Color": "0.8902,0.31765,0.05098,1"
+              "Color": "0.8902,0.31765,0.05098,1",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null
             }
           ]
         },
@@ -873,7 +1151,13 @@
             {
               "__type": "Sandbox.SpawnPoint",
               "__guid": "ece00281-3ea1-4041-9e1c-a9bf4a467092",
-              "Color": "0.8902,0.31765,0.05098,1"
+              "Color": "0.8902,0.31765,0.05098,1",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null
             }
           ]
         },
@@ -888,7 +1172,13 @@
             {
               "__type": "Sandbox.SpawnPoint",
               "__guid": "9de93448-4474-4bc8-b4f1-14167c882c1b",
-              "Color": "0.8902,0.31765,0.05098,1"
+              "Color": "0.8902,0.31765,0.05098,1",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null
             }
           ]
         },
@@ -903,7 +1193,13 @@
             {
               "__type": "Sandbox.SpawnPoint",
               "__guid": "eb19df56-d36e-433a-8056-4a2e65cd9d95",
-              "Color": "0.8902,0.31765,0.05098,1"
+              "Color": "0.8902,0.31765,0.05098,1",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null
             }
           ]
         },
@@ -918,7 +1214,13 @@
             {
               "__type": "Sandbox.SpawnPoint",
               "__guid": "7d701d17-0c6d-4fb7-9c0e-0b18048c1a61",
-              "Color": "0.8902,0.31765,0.05098,1"
+              "Color": "0.8902,0.31765,0.05098,1",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null
             }
           ]
         },
@@ -933,7 +1235,13 @@
             {
               "__type": "Sandbox.SpawnPoint",
               "__guid": "af3de7e8-c6b9-4a0a-b58e-d3b2f5908a5f",
-              "Color": "0.8902,0.31765,0.05098,1"
+              "Color": "0.8902,0.31765,0.05098,1",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null
             }
           ]
         }
@@ -954,6 +1262,12 @@
           "CutoffAngleSoftness": 5,
           "Material": "materials/decals/ki0-mainlogo.vmat",
           "Mod2XBlending": false,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "RenderOptions": {
             "GameLayer": true,
             "OverlayLayer": false,
@@ -978,8 +1292,16 @@
           "__type": "Sandbox.ModelRenderer",
           "__guid": "bfa250fe-0ba8-45ab-9b31-04b0411891dd",
           "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
+          "MaterialGroup": null,
           "MaterialOverride": "materials/dev/debug_nav_wireframe.vmat",
           "Model": "models/dev/box.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "RenderOptions": {
             "GameLayer": true,
             "OverlayLayer": false,
@@ -993,14 +1315,33 @@
           "__type": "Sandbox.BoxCollider",
           "__guid": "20fb34e7-b9bb-4f2b-b0f3-08b963abdf6a",
           "Center": "0,0,0",
+          "Friction": null,
           "IsTrigger": true,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnObjectTriggerEnter": null,
+          "OnObjectTriggerExit": null,
+          "OnTriggerEnter": null,
+          "OnTriggerExit": null,
           "Scale": "50,50,50",
-          "Static": false
+          "Static": false,
+          "Surface": null,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "TheaterTrigger",
           "__guid": "dd07ed92-1cf3-4747-9eff-7454eb2c04c3",
-          "LocationName": "Lobby Left"
+          "LocationName": "Lobby Left",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         }
       ]
     },
@@ -1016,8 +1357,16 @@
           "__type": "Sandbox.ModelRenderer",
           "__guid": "5fbd0a0e-17c9-4b8c-aca8-87b0002a496f",
           "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
+          "MaterialGroup": null,
           "MaterialOverride": "materials/dev/debug_nav_wireframe.vmat",
           "Model": "models/dev/box.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "RenderOptions": {
             "GameLayer": true,
             "OverlayLayer": false,
@@ -1031,14 +1380,33 @@
           "__type": "Sandbox.BoxCollider",
           "__guid": "420bde29-19e0-40a1-bef4-70f76e19a319",
           "Center": "0,0,0",
+          "Friction": null,
           "IsTrigger": true,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnObjectTriggerEnter": null,
+          "OnObjectTriggerExit": null,
+          "OnTriggerEnter": null,
+          "OnTriggerExit": null,
           "Scale": "50,50,50",
-          "Static": false
+          "Static": false,
+          "Surface": null,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "TheaterTrigger",
           "__guid": "8f9aecbe-4bd7-4ba6-9a46-01b110582e30",
-          "LocationName": "Lobby Right"
+          "LocationName": "Lobby Right",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         }
       ]
     },
@@ -1056,8 +1424,16 @@
           "__guid": "56fe7d01-12ea-46c7-89c4-4b045e444cc4",
           "__enabled": false,
           "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
+          "MaterialGroup": null,
           "MaterialOverride": "materials/dev/debug_nav_wireframe.vmat",
           "Model": "models/dev/box.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "RenderOptions": {
             "GameLayer": true,
             "OverlayLayer": false,
@@ -1071,15 +1447,33 @@
           "__type": "Sandbox.BoxCollider",
           "__guid": "3547ee8c-0de8-4e88-ac9a-b36c58d4eed5",
           "Center": "0,0,0",
+          "Friction": null,
           "IsTrigger": true,
+          "OnComponentDestroy": null,
           "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnObjectTriggerEnter": null,
+          "OnObjectTriggerExit": null,
+          "OnTriggerEnter": null,
+          "OnTriggerExit": null,
           "Scale": "50,50,50",
-          "Static": false
+          "Static": false,
+          "Surface": null,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "TheaterTrigger",
           "__guid": "04f1e93b-7c57-43eb-81bf-46d026cb1bca",
-          "LocationName": "Lobby"
+          "LocationName": "Lobby",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         }
       ]
     },
@@ -1097,8 +1491,16 @@
           "__guid": "64f6420e-85a5-4eca-9e2b-0075a633ca2b",
           "__enabled": false,
           "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
+          "MaterialGroup": null,
           "MaterialOverride": "materials/dev/debug_nav_wireframe.vmat",
           "Model": "models/dev/box.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "RenderOptions": {
             "GameLayer": true,
             "OverlayLayer": false,
@@ -1112,15 +1514,33 @@
           "__type": "Sandbox.BoxCollider",
           "__guid": "0cc2d725-0410-4edf-9d82-ab057b659697",
           "Center": "0,0,0",
+          "Friction": null,
           "IsTrigger": true,
+          "OnComponentDestroy": null,
           "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnObjectTriggerEnter": null,
+          "OnObjectTriggerExit": null,
+          "OnTriggerEnter": null,
+          "OnTriggerExit": null,
           "Scale": "50,50,50",
-          "Static": false
+          "Static": false,
+          "Surface": null,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "TheaterTrigger",
           "__guid": "2f989ba8-77b5-4af1-bbe5-d2081e56dfdc",
-          "LocationName": "Theater"
+          "LocationName": "Theater",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         }
       ]
     },
@@ -1138,6 +1558,12 @@
           "HorizontalAlign": "Center",
           "InteractionRange": 1000,
           "LookAtCamera": false,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "PanelSize": "2152.203,1446.6",
           "RenderOptions": {
             "GameLayer": true,
@@ -1156,7 +1582,13 @@
             "component_id": "18ba05c5-ace9-4697-bec1-60e4f8abe94d",
             "go": "23e3d258-a1b0-4452-ab30-7687e673b079",
             "component_type": "MediaPlayer"
-          }
+          },
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         }
       ]
     },
@@ -1171,13 +1603,19 @@
         {
           "__type": "Sandbox.SkyBox2D",
           "__guid": "0eadfca5-28fa-49be-840b-cd71177816da",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "SkyIndirectLighting": true,
           "SkyMaterial": "materials/skybox/skybox_day_01.vmat",
           "Tint": "0.87535,0.37674,1,1"
         },
         {
           "__type": "Sandbox.EnvmapProbe",
           "__guid": "4595c7ad-fcf8-4483-937f-c192dff282d6",
-          "Texture": "textures/cubemaps/default2.vtex",
           "Bounds": {
             "Mins": "-512,-512,-512",
             "Maxs": "512,512,512"
@@ -1187,8 +1625,15 @@
           "FrameInterval": 5,
           "MaxDistance": 512,
           "MultiBounce": false,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Projection": "Sphere",
           "RenderDynamically": false,
+          "Texture": "textures/cubemaps/default2.vtex",
           "TintColor": "1,1,1,1",
           "UpdateStrategy": "OnEnabled",
           "ZFar": 4096,
@@ -1209,6 +1654,12 @@
         {
           "__type": "MediaPlayer",
           "__guid": "18ba05c5-ace9-4697-bec1-60e4f8abe94d",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "PanelComponent": {
             "_type": "gameobject",
             "go": "34f470fb-4d2b-46ab-85f7-19502a01e902"
@@ -1240,7 +1691,16 @@
               "__type": "Sandbox.ModelRenderer",
               "__guid": "a04c611f-ff44-4d59-83bc-7839d8404ff5",
               "BodyGroups": 18446744073709551615,
+              "CreateAttachments": false,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
               "Model": "models/screen.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
               "RenderOptions": {
                 "GameLayer": true,
                 "OverlayLayer": false,
@@ -1253,11 +1713,22 @@
             {
               "__type": "Sandbox.ModelCollider",
               "__guid": "05ff6c26-2ef2-49a6-a4cb-45b687e4b92b",
+              "Friction": null,
               "IsTrigger": false,
               "Model": "models/screen.vmdl",
+              "OnComponentDestroy": null,
               "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnObjectTriggerEnter": null,
+              "OnObjectTriggerExit": null,
+              "OnTriggerEnter": null,
+              "OnTriggerExit": null,
               "Static": false,
-              "Surface": "surfaces/brick.surface"
+              "Surface": "surfaces/brick.surface",
+              "SurfaceVelocity": "0,0,0"
             },
             {
               "__type": "Sandbox.Rigidbody",
@@ -1276,6 +1747,12 @@
               "MassCenterOverride": "0,0,0",
               "MassOverride": 0,
               "MotionEnabled": true,
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
               "OverrideMassCenter": false,
               "RigidbodyFlags": 0,
               "StartAsleep": true
@@ -1300,6 +1777,12 @@
               "FogMode": "Enabled",
               "FogStrength": 1,
               "LightColor": "15,15,15,1",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
               "Radius": 1200,
               "Shadows": true
             }
@@ -1325,6 +1808,12 @@
               "__type": "Sandbox.ScreenPanel",
               "__guid": "043aa8f2-056e-45af-a189-3a5f7eeb75b2",
               "AutoScreenScale": true,
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
               "Opacity": 1,
               "Scale": 1,
               "ScaleStrategy": "ConsistentHeight",
@@ -1332,15 +1821,33 @@
             },
             {
               "__type": "Scoreboard",
-              "__guid": "d578c99f-1479-4c06-91d6-1f5906088dd0"
+              "__guid": "d578c99f-1479-4c06-91d6-1f5906088dd0",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null
             },
             {
               "__type": "InfoPopup",
-              "__guid": "1e7c3046-f9b1-4a2c-962d-4dd0250afb82"
+              "__guid": "1e7c3046-f9b1-4a2c-962d-4dd0250afb82",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null
             },
             {
               "__type": "ActionMenu",
-              "__guid": "fa385c7e-9c6d-4e88-bcd8-6b033a0e86aa"
+              "__guid": "fa385c7e-9c6d-4e88-bcd8-6b033a0e86aa",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null
             }
           ]
         },
@@ -1354,6 +1861,12 @@
               "__type": "Sandbox.ScreenPanel",
               "__guid": "5a4d387d-9e29-4950-8186-0c478ac5fc50",
               "AutoScreenScale": true,
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
               "Opacity": 1,
               "Scale": 1,
               "ScaleStrategy": "ConsistentHeight",
@@ -1361,7 +1874,13 @@
             },
             {
               "__type": "GameMenu",
-              "__guid": "8008f515-5451-408f-84a8-a1ed903ede70"
+              "__guid": "8008f515-5451-408f-84a8-a1ed903ede70",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null
             }
           ]
         }
@@ -1382,7 +1901,16 @@
           "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
+          "MaterialGroup": null,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
           "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
@@ -1390,7 +1918,13 @@
           "__type": "ChairController",
           "__guid": "26dfbaae-fe07-4d46-861f-b8563fd047a3",
           "ChairChatInfo": "Press spacebar to leave the chair!",
-          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!"
+          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         }
       ]
     },
@@ -1408,7 +1942,16 @@
           "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
+          "MaterialGroup": null,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
           "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
@@ -1416,7 +1959,13 @@
           "__type": "ChairController",
           "__guid": "9b1a8b16-75d6-4b1b-b362-8d47eee5dd09",
           "ChairChatInfo": "Press spacebar to leave the chair!",
-          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!"
+          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         }
       ]
     },
@@ -1435,7 +1984,16 @@
           "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
+          "MaterialGroup": null,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
           "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
@@ -1443,7 +2001,13 @@
           "__type": "ChairController",
           "__guid": "a242e56e-feca-41cf-8e25-8481f90f4449",
           "ChairChatInfo": "Press spacebar to leave the chair!",
-          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!"
+          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         }
       ]
     },
@@ -1461,7 +2025,16 @@
           "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
+          "MaterialGroup": null,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
           "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
@@ -1469,7 +2042,13 @@
           "__type": "ChairController",
           "__guid": "cca76598-4973-4d9f-b9f3-96f0260a8e65",
           "ChairChatInfo": "Press spacebar to leave the chair!",
-          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!"
+          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         }
       ]
     },
@@ -1488,6 +2067,12 @@
             "Maxs": "500,500,353.2998"
           },
           "FalloffExponent": 0.7,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "Strength": 0.06
         }
       ]
@@ -1507,7 +2092,16 @@
           "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
+          "MaterialGroup": null,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
           "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
@@ -1515,7 +2109,13 @@
           "__type": "ChairController",
           "__guid": "887024eb-7557-4573-a136-59c7a5f4a700",
           "ChairChatInfo": "Press spacebar to leave the chair!",
-          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!"
+          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         }
       ]
     },
@@ -1534,7 +2134,16 @@
           "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
+          "MaterialGroup": null,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
           "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
@@ -1542,7 +2151,13 @@
           "__type": "ChairController",
           "__guid": "fc1e931c-5333-4248-8bfd-1f52f63c5a6c",
           "ChairChatInfo": "Press spacebar to leave the chair!",
-          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!"
+          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         }
       ]
     },
@@ -1561,7 +2176,16 @@
           "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
+          "MaterialGroup": null,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
           "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
@@ -1569,7 +2193,13 @@
           "__type": "ChairController",
           "__guid": "b7899ac9-bf94-42ea-869b-c3861fb2776c",
           "ChairChatInfo": "Press spacebar to leave the chair!",
-          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!"
+          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         }
       ]
     },
@@ -1588,7 +2218,16 @@
           "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
+          "MaterialGroup": null,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
           "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
@@ -1596,7 +2235,13 @@
           "__type": "ChairController",
           "__guid": "dd162566-5d3e-4390-a00a-768c3cff357c",
           "ChairChatInfo": "Press spacebar to leave the chair!",
-          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!"
+          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         }
       ]
     },
@@ -1615,7 +2260,16 @@
           "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
+          "MaterialGroup": null,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
           "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
@@ -1623,7 +2277,13 @@
           "__type": "ChairController",
           "__guid": "566b0266-3586-4e83-a7d7-7c2e267b26ea",
           "ChairChatInfo": "Press spacebar to leave the chair!",
-          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!"
+          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         }
       ]
     },
@@ -1642,7 +2302,16 @@
           "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
+          "MaterialGroup": null,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
           "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
@@ -1650,7 +2319,13 @@
           "__type": "ChairController",
           "__guid": "92bce667-e741-4a40-b7d6-055347c50de5",
           "ChairChatInfo": "Press spacebar to leave the chair!",
-          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!"
+          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         }
       ]
     },
@@ -1669,7 +2344,16 @@
           "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
+          "MaterialGroup": null,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
           "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
@@ -1677,7 +2361,13 @@
           "__type": "ChairController",
           "__guid": "b6685246-7b35-4de1-aac9-85d6b9f3eeb5",
           "ChairChatInfo": "Press spacebar to leave the chair!",
-          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!"
+          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         }
       ]
     },
@@ -1696,7 +2386,16 @@
           "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
+          "MaterialGroup": null,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
           "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
@@ -1704,7 +2403,13 @@
           "__type": "ChairController",
           "__guid": "1449836b-06f6-42eb-b884-3441e86cd43a",
           "ChairChatInfo": "Press spacebar to leave the chair!",
-          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!"
+          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         }
       ]
     },
@@ -1723,7 +2428,16 @@
           "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
+          "MaterialGroup": null,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
           "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
@@ -1731,7 +2445,13 @@
           "__type": "ChairController",
           "__guid": "99903aa1-690a-4667-8f42-b264d2a540cf",
           "ChairChatInfo": "Press spacebar to leave the chair!",
-          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!"
+          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         }
       ]
     },
@@ -1750,7 +2470,16 @@
           "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
+          "MaterialGroup": null,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
           "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
@@ -1758,7 +2487,13 @@
           "__type": "ChairController",
           "__guid": "bb2597dc-aa9d-43f1-ba2a-a5c4ed1fa9e7",
           "ChairChatInfo": "Press spacebar to leave the chair!",
-          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!"
+          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         }
       ]
     },
@@ -1777,7 +2512,16 @@
           "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
+          "MaterialGroup": null,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
           "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
@@ -1785,7 +2529,13 @@
           "__type": "ChairController",
           "__guid": "2ee8d1af-d4e3-43f1-82d4-fba2a94b9aa0",
           "ChairChatInfo": "Press spacebar to leave the chair!",
-          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!"
+          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         }
       ]
     },
@@ -1804,7 +2554,16 @@
           "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
+          "MaterialGroup": null,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
           "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
@@ -1812,7 +2571,13 @@
           "__type": "ChairController",
           "__guid": "cc568f69-47d0-49bd-aa50-cee02fe7626b",
           "ChairChatInfo": "Press spacebar to leave the chair!",
-          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!"
+          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         }
       ]
     },
@@ -1831,7 +2596,16 @@
           "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
+          "MaterialGroup": null,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
           "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
@@ -1839,7 +2613,13 @@
           "__type": "ChairController",
           "__guid": "43ef4e7e-9d6a-406e-87a5-ee689dd575e6",
           "ChairChatInfo": "Press spacebar to leave the chair!",
-          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!"
+          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         }
       ]
     },
@@ -1858,7 +2638,16 @@
           "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
+          "MaterialGroup": null,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
           "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
@@ -1866,7 +2655,13 @@
           "__type": "ChairController",
           "__guid": "1c761d80-17bb-4171-b5f6-6e4cdeb447a0",
           "ChairChatInfo": "Press spacebar to leave the chair!",
-          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!"
+          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         }
       ]
     },
@@ -1885,7 +2680,16 @@
           "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": true,
+          "MaterialGroup": null,
           "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
           "StartAsleep": false,
           "Tint": "1,1,1,1"
         },
@@ -1893,7 +2697,13 @@
           "__type": "ChairController",
           "__guid": "6250126f-4db9-404d-8724-a6f79768aaee",
           "ChairChatInfo": "Press spacebar to leave the chair!",
-          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!"
+          "ChairInfo": "PRESS E TO SIT ON THIS COMFY CHAIR!",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         }
       ]
     },
@@ -1908,6 +2718,12 @@
         {
           "__type": "WeaponRespawner",
           "__guid": "9969727a-73b6-430b-ab4b-b42a8976ec6a",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
           "PopcornPrefab": {
             "_type": "gameobject",
             "go": "03b29248-23ec-44c5-b5f4-d75c9ce1380b"
@@ -1925,7 +2741,7 @@
           "Name": "popcorn (4)",
           "Position": "385.6664,-10.69617,-39.66934",
           "Rotation": "0.0005608582,0.002113482,-0.000001706154,0.9999976",
-          "Tags": "weapon,particles",
+          "Tags": "particles,weapon",
           "__Prefab": "prefabs/popcorn.prefab",
           "__PrefabVariables": {}
         },
@@ -1943,146 +2759,73 @@
       ]
     },
     {
-      "__guid": "17b0ae7f-a3f2-4b7c-804a-413c14686b3e",
-      "Flags": 0,
-      "Name": "popcorn (4)",
-      "Position": "118.4944,-959.9202,72.52591",
-      "Rotation": "0.002773375,0.001718035,-0.01568278,0.9998717",
-      "Tags": "weapon,particles",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "7c2bcc0c-ec34-43db-8dd8-743f1a512e75",
-          "BodyGroups": 18446744073709551615,
-          "Model": "models/ki0_popcornbucket.vmdl",
-          "RenderOptions": {
-            "GameLayer": true,
-            "OverlayLayer": false,
-            "BloomLayer": false,
-            "AfterUILayer": false
-          },
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "Sandbox.ModelCollider",
-          "__guid": "4b20b061-1339-4f23-9c4d-6a53f89e26ea",
-          "IsTrigger": false,
-          "Model": "models/ki0_popcornbucket.vmdl",
-          "OnComponentDisabled": null,
-          "Static": false
-        },
-        {
-          "__type": "Sandbox.Rigidbody",
-          "__guid": "20365dc1-b42c-4228-bf76-e989fe1ab4e2",
-          "AngularDamping": 0,
-          "Gravity": true,
-          "LinearDamping": 0,
-          "Locking": {},
-          "MassCenterOverride": "0,0,0",
-          "MassOverride": 0,
-          "MotionEnabled": true,
-          "OverrideMassCenter": false,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
-        },
-        {
-          "__type": "BaseWeapon",
-          "__guid": "747b14cd-624d-4f26-bb3e-4333618aa243",
-          "Particle": {
-            "_type": "component",
-            "component_id": "a0e683bd-a834-4650-baf5-b46268f94275",
-            "go": "17b0ae7f-a3f2-4b7c-804a-413c14686b3e",
-            "component_type": "LegacyParticleSystem"
-          },
-          "PickupInfo": "PRESS E TO PICKUP THIS YUMMY CORN!",
-          "PickupInfoChat": "You picked up Popcorn! Press RMB to throw it or G to drop weapon.",
-          "Rigidbody": {
-            "_type": "component",
-            "component_id": "20365dc1-b42c-4228-bf76-e989fe1ab4e2",
-            "go": "17b0ae7f-a3f2-4b7c-804a-413c14686b3e",
-            "component_type": "Rigidbody"
-          },
-          "WeaponName": "Popcorn",
-          "WeaponPosition": "13.7,0,-6.6",
-          "WeaponScale": "1,1,1"
-        },
-        {
-          "__type": "Sandbox.LegacyParticleSystem",
-          "__guid": "a0e683bd-a834-4650-baf5-b46268f94275",
-          "ControlPoints": [],
-          "Looped": false,
-          "Particles": "particles/popcorn_splashy.vpcf",
-          "PlaybackSpeed": 1
-        }
-      ]
-    },
-    {
-      "__guid": "493bb1fa-618f-43b6-91df-b78b0a2c9c6d",
-      "Flags": 0,
-      "Name": "popcorn (1)",
-      "Position": "-32.11704,-973.9149,64",
-      "Tags": "weapon,particles",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "__Prefab": "prefabs/popcorn.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "f251aa43-1898-41bf-ad96-aca64819dd4f",
-      "Flags": 0,
-      "Name": "popcorn",
-      "Position": "-68.02538,-973.4263,64",
-      "Tags": "weapon,particles",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "__Prefab": "prefabs/popcorn.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "d83b969e-4160-44d7-acf0-6bfdcaf9ef88",
-      "Flags": 0,
-      "Name": "popcorn (2)",
-      "Position": "-101.2603,-982.9909,64",
-      "Tags": "weapon,particles",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "__Prefab": "prefabs/popcorn.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "4b2ee8f4-b334-4dfd-a852-ae57bfc19bea",
-      "Flags": 0,
-      "Name": "soda",
-      "Position": "35.4462,-974.6896,65",
-      "Tags": "weapon",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "__Prefab": "prefabs/soda.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "f4d3b90a-d98a-44f6-8707-ac94b3a89963",
-      "Flags": 0,
-      "Name": "soda (1)",
-      "Position": "89.8351,-973.6049,65",
-      "Tags": "weapon",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "__Prefab": "prefabs/soda.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "a0816c93-2ce4-455b-a7ff-35ae0bbf886a",
+      "__guid": "0471e158-97ef-4dfa-b6a8-f6cb62113664",
       "Flags": 0,
       "Name": "soda (2)",
-      "Position": "55.80073,-956.2946,74",
+      "Position": "61.91036,-956.1774,74",
       "Tags": "weapon",
       "Enabled": true,
-      "NetworkMode": 1,
       "__Prefab": "prefabs/soda.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "0e159c5e-0262-4239-bc4f-04f15bb0e70d",
+      "Flags": 0,
+      "Name": "soda (1)",
+      "Position": "90.92167,-975.6924,65",
+      "Tags": "weapon",
+      "Enabled": true,
+      "__Prefab": "prefabs/soda.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "d414fa8e-0d54-44e4-af3d-de5312367e77",
+      "Flags": 0,
+      "Name": "soda",
+      "Position": "33.0312,-975.1594,65",
+      "Tags": "weapon",
+      "Enabled": true,
+      "__Prefab": "prefabs/soda.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "8a675d72-4519-4cbf-ae99-c7f4c0d87be4",
+      "Flags": 0,
+      "Name": "popcorn (1)",
+      "Position": "-33.82065,-972.494,64",
+      "Tags": "particles,weapon",
+      "Enabled": true,
+      "__Prefab": "prefabs/popcorn.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "6b351129-005d-4a1a-ae5c-759dad711245",
+      "Flags": 0,
+      "Name": "popcorn",
+      "Position": "-71.09028,-972.6708,64",
+      "Tags": "particles,weapon",
+      "Enabled": true,
+      "__Prefab": "prefabs/popcorn.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "dfc7c418-af3d-415b-823a-4045af36f541",
+      "Flags": 0,
+      "Name": "popcorn (2)",
+      "Position": "-101.2978,-984.1857,64",
+      "Tags": "particles,weapon",
+      "Enabled": true,
+      "__Prefab": "prefabs/popcorn.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "275ce63b-cda8-4bea-b8e3-c412069b8a6c",
+      "Flags": 0,
+      "Name": "popcorn (3)",
+      "Position": "117.2929,-954.6813,73",
+      "Tags": "particles,weapon",
+      "Enabled": true,
+      "__Prefab": "prefabs/popcorn.prefab",
       "__PrefabVariables": {}
     }
   ],
@@ -2095,6 +2838,9 @@
     "ThreadedAnimation": true,
     "TimeScale": 1,
     "UseFixedUpdate": true,
+    "Metadata": {
+      "Title": "theater"
+    },
     "NavMesh": {
       "Enabled": false,
       "IncludeStaticBodies": true,
@@ -2108,10 +2854,9 @@
       "IncludedBodies": ""
     }
   },
+  "ResourceVersion": 2,
   "Title": "theater",
-  "Description": "",
-  "ResourceVersion": 1,
+  "Description": null,
   "__references": [],
-  "IsValid": true,
-  "__version": 1
+  "__version": 2
 }

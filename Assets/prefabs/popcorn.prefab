@@ -11,7 +11,16 @@
         "__type": "Sandbox.ModelRenderer",
         "__guid": "5d064184-c979-48d6-a110-8de1740248da",
         "BodyGroups": 18446744073709551615,
+        "CreateAttachments": false,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
         "Model": "models/ki0_popcornbucket.vmdl",
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
         "RenderOptions": {
           "GameLayer": true,
           "OverlayLayer": false,
@@ -24,9 +33,22 @@
       {
         "__type": "Sandbox.ModelCollider",
         "__guid": "82f6fabf-ef15-4da6-8a8e-ce065543e05f",
+        "Friction": null,
         "IsTrigger": false,
         "Model": "models/ki0_popcornbucket.vmdl",
-        "Static": false
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "OnObjectTriggerEnter": null,
+        "OnObjectTriggerExit": null,
+        "OnTriggerEnter": null,
+        "OnTriggerExit": null,
+        "Static": false,
+        "Surface": null,
+        "SurfaceVelocity": "0,0,0"
       },
       {
         "__type": "Sandbox.Rigidbody",
@@ -34,10 +56,23 @@
         "AngularDamping": 0,
         "Gravity": true,
         "LinearDamping": 0,
-        "Locking": {},
+        "Locking": {
+          "X": false,
+          "Y": false,
+          "Z": false,
+          "Pitch": false,
+          "Yaw": false,
+          "Roll": false
+        },
         "MassCenterOverride": "0,0,0",
         "MassOverride": 0,
         "MotionEnabled": true,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
         "OverrideMassCenter": false,
         "RigidbodyFlags": 0,
         "StartAsleep": false
@@ -45,6 +80,18 @@
       {
         "__type": "BaseWeapon",
         "__guid": "95e29a17-3e5b-4a62-ba84-2a425b61002c",
+        "ModelCollider": {
+          "_type": "component",
+          "component_id": "82f6fabf-ef15-4da6-8a8e-ce065543e05f",
+          "go": "a14caa65-4adc-49eb-84e2-2947c78605be",
+          "component_type": "ModelCollider"
+        },
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
         "Particle": {
           "_type": "component",
           "component_id": "cd300de3-7f0a-456c-a41a-f3ac5b0fb7c3",
@@ -60,7 +107,7 @@
           "component_type": "Rigidbody"
         },
         "WeaponName": "Popcorn",
-        "WeaponPosition": "13.7,0,-6.6",
+        "WeaponPosition": "7.999981,0,-6.6",
         "WeaponScale": "1,1,1"
       },
       {
@@ -68,12 +115,41 @@
         "__guid": "cd300de3-7f0a-456c-a41a-f3ac5b0fb7c3",
         "ControlPoints": [],
         "Looped": false,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
         "Particles": "particles/popcorn_splashy.vpcf",
         "PlaybackSpeed": 1
       }
     ],
     "Children": [],
-    "__variables": []
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
   },
   "ShowInMenu": false,
   "MenuPath": null,
@@ -81,6 +157,5 @@
   "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [],
-  "IsValid": true,
   "__version": 1
 }

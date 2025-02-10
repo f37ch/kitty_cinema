@@ -11,7 +11,16 @@
         "__type": "Sandbox.ModelRenderer",
         "__guid": "c39018b4-5159-4eaf-9ae1-77153af726ed",
         "BodyGroups": 18446744073709551615,
+        "CreateAttachments": false,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
         "Model": "models/citizen_props/sodacan01.vmdl",
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
         "RenderOptions": {
           "GameLayer": true,
           "OverlayLayer": false,
@@ -24,9 +33,22 @@
       {
         "__type": "Sandbox.ModelCollider",
         "__guid": "036362ce-f6de-43cc-8c16-ffefda538326",
+        "Friction": null,
         "IsTrigger": false,
         "Model": "models/citizen_props/sodacan01.vmdl",
-        "Static": false
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "OnObjectTriggerEnter": null,
+        "OnObjectTriggerExit": null,
+        "OnTriggerEnter": null,
+        "OnTriggerExit": null,
+        "Static": false,
+        "Surface": null,
+        "SurfaceVelocity": "0,0,0"
       },
       {
         "__type": "Sandbox.Rigidbody",
@@ -34,10 +56,23 @@
         "AngularDamping": 0,
         "Gravity": true,
         "LinearDamping": 0,
-        "Locking": {},
+        "Locking": {
+          "X": false,
+          "Y": false,
+          "Z": false,
+          "Pitch": false,
+          "Yaw": false,
+          "Roll": false
+        },
         "MassCenterOverride": "0,0,0",
         "MassOverride": 0,
         "MotionEnabled": true,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
         "OverrideMassCenter": false,
         "RigidbodyFlags": 0,
         "StartAsleep": false
@@ -51,6 +86,13 @@
           "go": "053f2f9c-acf6-43f9-9b70-859c48d0d432",
           "component_type": "ModelCollider"
         },
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "Particle": null,
         "PickupInfo": "PRESS E TO PICKUP THIS JUICY SODA!",
         "PickupInfoChat": "You picked up Soda! Press RMB to throw it or G to drop weapon.",
         "Rigidbody": {
@@ -60,12 +102,35 @@
           "component_type": "Rigidbody"
         },
         "WeaponName": "Soda",
-        "WeaponPosition": "13,-2.8,-3.400002",
+        "WeaponPosition": "0,0,-3.400002",
         "WeaponScale": "1.2,1.2,1.2"
       }
     ],
     "Children": [],
-    "__variables": []
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
   },
   "ShowInMenu": false,
   "MenuPath": null,
@@ -73,6 +138,5 @@
   "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [],
-  "IsValid": true,
   "__version": 1
 }

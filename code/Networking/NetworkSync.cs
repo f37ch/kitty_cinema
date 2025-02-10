@@ -151,10 +151,6 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 			player.Network.AssignOwnership(channel);
 		}
 
-		if (PrivateLobby)
-		{
-			Networking.Disconnect();
-		}
 		//if (Players==null){Players=new();}
 		//if (!Players.ContainsKey(channel.Id))
 		//{
@@ -167,6 +163,10 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 		//	HandlePassword(channel.Id);
 		//}else{
 			InitPlayer(channel);
+			if (PrivateLobby)
+			{
+				Networking.Disconnect();
+			}
 		//}
 	}
 
