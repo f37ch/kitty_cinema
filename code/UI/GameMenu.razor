@@ -439,22 +439,22 @@ GameMenu {
         Camera.FieldOfView=val;
     }
     private void FootstepSet(float val){
-        Footsteps.FootStepVolume=val/100;
+        Footsteps.FootStepVolume=Math.Clamp(val/100,0,1);
     }
     private void OverVolSet(float val){
-        Mixer.Master.Volume = val/100;
+        Mixer.Master.Volume=val/100;
     }
     private void VoiceVolSet(float val){
         var children=Mixer.Master.GetChildren();
-        children[1].Volume = val/100;
+        children[1].Volume=Math.Clamp(val/100,0,1);
     }
     private void SFXVolSet(float val){
         var children=Mixer.Master.GetChildren();
-        children[0].Volume = val/100;
+        children[0].Volume=Math.Clamp(val/100,0,1);
     }
     private void UIVolSet(float val){
         var children=Mixer.Master.GetChildren();
-        children[2].Volume = val/100;
+        children[2].Volume=Math.Clamp(val/100,0,1);
     }
     private void TogglePrivate(bool val){
         IsLobbyPrivate=val;

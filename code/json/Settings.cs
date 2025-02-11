@@ -5,11 +5,11 @@ public class Settings
 	[JsonIgnore] private const string Name="settings.json";
 	[JsonIgnore] private static Settings settings=null;
 	public float PlayerFov {get;set;}=85;
-    public float FootStepVolume {get;set;}=100;
-	public float OverAllVolume {get;set;}=100;
-	public float SFXVolume {get;set;}=100;
-	public float VoiceVolume {get;set;}=100;
-	public float InterfaceVolume {get;set;}=100;
+    public float FootStepVolume {get;set;}=1;
+	public float OverAllVolume {get;set;}=1;
+	public float SFXVolume {get;set;}=1;
+	public float VoiceVolume {get;set;}=1;
+	public float InterfaceVolume {get;set;}=1;
 	public bool PrivateLobby {get;set;}
 	public string LobbyPassword {get;set;}
 	public bool IsLobbyNeedPassword {get;set;}
