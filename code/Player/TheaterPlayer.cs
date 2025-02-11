@@ -43,6 +43,9 @@ public sealed class TheaterPlayer : Component
 		IsNoclipping=!IsNoclipping;
 		if (IsNoclipping) Controller.IgnoreLayers.Add("solid");
 		else Controller.IgnoreLayers.Remove("solid");
+		if (Rpc.Caller==Connection.Local){
+			Sandbox.Services.Achievements.Unlock("fly");
+		}
 	}
 	protected override void OnUpdate()
 	{
