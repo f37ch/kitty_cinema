@@ -8,7 +8,7 @@ public class MediaController:Component
 		if (MediaPlayer.Service!=null){
 			foreach (var video in MediaPlayer.VideoList){
 			    if (video.videoid == VideoID){
-                    ChatMsg(MediaPlayer,$"Failed to requested video: Current video already listed in queue.",true);
+                    ChatMsgLocal(MediaPlayer,$"Failed to requested video: Current video already listed in queue.");
 			        return;
                 }
             }
@@ -24,7 +24,7 @@ public class MediaController:Component
 			if(MediaPlayer.PanelComponent.Components.TryGet<Queue>(out var queue)){
 				queue.StateHasChanged();
 			}
-			ChatMsg(MediaPlayer,$"Your video was added to queue.",true);
+			ChatMsgLocal(MediaPlayer,$"Your video was added to queue.");
 			if (Rpc.Caller==Connection.Local){
 				Sandbox.Services.Stats.Increment("videos",1);
 			}
@@ -42,18 +42,20 @@ public class MediaController:Component
 	public static MediaPlayer GetPlayer(Guid id){
 		return Game.ActiveScene.Directory.FindByGuid(id).Components.Get<MediaPlayer>();
 	}
-	[Rpc.Broadcast(NetFlags.HostOnly)]
-	public static void ChatMsg(MediaPlayer MediaPlayer,string msg,bool islocal=false)
+	public static void ChatMsgLocal(MediaPlayer MediaPlayer,string msg)//local msg
+	{
+		if (Game.ActiveScene.Components.TryGet<Chat>(out var Chat,FindMode.EnabledInSelfAndDescendants)){
+			Chat.AddLocalText(msg,"video_settings",true);
+		}
+	}
+	[Rpc.Broadcast(NetFlags.HostOnly)]//msg for all in theater
+	public static void ChatMsg(MediaPlayer MediaPlayer,string msg)
 	{
 		if (Game.ActiveScene.Components.TryGet<Chat>(out var Chat,FindMode.EnabledInSelfAndDescendants)){
 			var da=Game.ActiveScene.GetAllComponents<TheaterPlayer>().FirstOrDefault(x=>x.GameObject.Network.Owner==Connection.Local);
 			if (da==null) return;
-			if (islocal){//local player Log.Info(Connection.Local.Id==Rpc.Caller.Id);
-				Chat.AddLocalText(msg,"video_settings",true);
-			}else{//only players in theater
-				if (da.Location==MediaPlayer.Location){
-					Chat.AddLocalText(msg,"video_settings");
-				}
+			if (da.Location==MediaPlayer.Location){
+				Chat.AddLocalText(msg,"video_settings");
 			}
 		}
 	}
@@ -61,7 +63,7 @@ public class MediaController:Component
 	{
 		var MediaPlayer=GetPlayer(playerid);
         MediaPlayer.Volume=volume;
-		ChatMsg(MediaPlayer,$"Your volume set to {volume}%.",true);
+		ChatMsgLocal(MediaPlayer,$"Your volume set to {volume}%.");
 		if (!MediaPlayer.Paused){
 			MediaPlayer.WebPanel.Surface.Url=$"{WebHandlersURL}player.php?tp={MediaPlayer.Service}&dt={MediaPlayer.ContentID}&st={MediaPlayer.Curtime}&vol={MediaPlayer.Volume}";
 			//MediaPlayer.Trigger=Time.Now+1;
@@ -82,10 +84,10 @@ public class MediaController:Component
     public static void VoteSkip(Guid playerid)
 	{
 		var MediaPlayer=GetPlayer(playerid);
-		if (MediaPlayer.Service==null){ChatMsg(MediaPlayer,$"Failed to vote skip video: No video is playing.",true);return;}
+		if (MediaPlayer.Service==null){ChatMsgLocal(MediaPlayer,$"Failed to vote skip video: No video is playing.");return;}
 		foreach (var vote in MediaPlayer.SkipList){
 		    if (vote.steamid == Rpc.Caller.SteamId){
-                ChatMsg(MediaPlayer,$"Failed to vote skip video: You already voted.",true);
+				ChatMsgLocal(MediaPlayer,$"Failed to vote skip video: You already voted.");
 		        return;
             }
         }
