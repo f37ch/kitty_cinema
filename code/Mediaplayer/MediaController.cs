@@ -129,10 +129,11 @@ public class MediaController:Component
 	{
 		if (!Rpc.Caller.IsHost) return;
 		var MediaPlayer=GetPlayer(playerid);
+		if (MediaPlayer==null) return;
 		if (MediaPlayer.Service==null||MediaPlayer.Paused||MediaPlayer.IsLive){return;}
         MediaPlayer.Curtime=time;
+		if (MediaPlayer.WebPanel==null) return;
 		MediaPlayer.WebPanel.Surface.Url=$"{WebHandlersURL}player.php?tp={MediaPlayer.Service}&st={MediaPlayer.Curtime}&dt={MediaPlayer.ContentID}&vol={MediaPlayer.Volume}";
-		//MediaPlayer.Trigger=Time.Now+1;
 		ChatMsg(MediaPlayer,$"{Rpc.Caller.DisplayName} seeked current video.");
 	}
 }
