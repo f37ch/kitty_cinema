@@ -27,7 +27,7 @@ internal sealed class ScenePanelObject : SceneCustomObject
         int value = 1;
         attributes.SetCombo(in k, in value);
         Matrix value2 = Matrix.CreateRotation(Rotation.From(0f, 90f, 90f));
-        value2 *= Matrix.CreateScale(0.05f);
+        value2 *= Matrix.CreateScale(ScreenToWorldScale);
         RenderAttributes attributes2 = Graphics.Attributes;
         k = "WorldMat";
         attributes2.Set(in k, in value2);
