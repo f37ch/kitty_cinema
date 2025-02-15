@@ -211,8 +211,8 @@ public class MediaPlayer : Component
 		WebPanel.AcceptsFocus=false;
 		WebPanel.Surface.OnTexture+=UpdateProjection;
 		
-		ProjectionTexture=Texture.CreateRenderTarget("projector",ImageFormat.RGBA8888,Screen.Size,ProjectionTexture);
-		Projector.Cookie=ProjectionTexture;
+		//ProjectionTexture=Texture.CreateRenderTarget("projector",ImageFormat.RGBA8888,Screen.Size,ProjectionTexture);
+		//Projector.Cookie=ProjectionTexture;
 		Projector.LightColor=new Color(15,15,15);
 		
 		ScreenUI=WebPanel.AddChild<ScreenUI>();
@@ -229,7 +229,7 @@ public class MediaPlayer : Component
             ProjectionTexture=Texture.Create((int)size.x,(int)size.y,ImageFormat.BGRA8888).WithName("WebSurface_projected").WithDynamicUsage().Finish();
             WebPanel.Style.SetBackgroundImage(ProjectionTexture);
         }
-	
+
         ProjectionTexture.Update(span,0,0,(int)size.x,(int)size.y);
 		Projector.Cookie=ProjectionTexture;
 		if (!Projector.Enabled){//????
