@@ -36,6 +36,7 @@
     "notify.leavechair":"Press spacebar to leave the chair!",
     "notify.popcornActions":"You picked up Popcorn! Press RMB to throw it or G to drop weapon.",
     "notify.sodaActions":"You picked up Soda! Press RMB to throw it or G to drop weapon.",
+    "notify.dropweaponFirst":"You need to drop current weapon first!",
 
     "requestmenu.request": "REQUEST",
     "thumbnail.novideo": "No Video Playing",

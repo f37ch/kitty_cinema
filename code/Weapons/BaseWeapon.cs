@@ -83,7 +83,7 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 		if (Throwed) return;
 		if (Scene.Directory.FindByGuid(Userid).Components.TryGet<TheaterPlayer>(out var Player)){
 			if (Player.HoldingWeapon!=default){
-				Chat.AddLocalText("You need to drop current weapon first!","info",true);
+				Chat.AddLocalText("#notify.dropweaponFirst","info",true);
 				return;
 			}
 			Holder=Userid;
