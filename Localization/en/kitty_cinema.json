@@ -17,6 +17,7 @@
     "menu.settings.footstepsVolume": "FOOTSTEPS VOLUME",
     "menu.settings.lobby": "Lobby Stuff",
     "menu.settings.lobby.friends": "ONLY FRIENDS CAN JOIN",
+    "menu.settings.binds": "Setup Binds",
 
     "scoreboard.name": "NAME",
     "scoreboard.location": "LOCATION",
