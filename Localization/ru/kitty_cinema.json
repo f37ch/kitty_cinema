@@ -16,7 +16,7 @@
     "menu.settings.interfaceVolume": "ГРОМКОСТЬ ИНТЕРФЕЙСА",
     "menu.settings.footstepsVolume": "ГРОМКОСТЬ ШАГОВ",
     "menu.settings.lobby": "Настройки Лобби",
-    "menu.settings.lobby.friends": "ТОЛЬКО ДРУЗЬЯ МОГУТ ПОДКЛЮЧИТЬСЯ",
+    "menu.settings.lobby.friends": "ТОЛЬКО ДЛЯ ДРУЗЕЙ",
 
     "scoreboard.name": "ИМЯ",
     "scoreboard.location": "ЛОКАЦИЯ",
@@ -40,7 +40,7 @@
     "requestmenu.request": "ВЫБРАТЬ",
     "thumbnail.novideo": "Нет Видео",
     "theatercontrols.votesLeft":"ГОЛОСОВ ДО СКИПА",
-    "theatercontrols.voteSkip":"ГОЛОС ЗА СКИП",
+    "theatercontrols.voteSkip":"ГОЛОСОВАТЬ",
     "popups.chair":"НАЖМИТЕ E, ЧТОБЫ СЕСТЬ В КРЕСЛО!",
     "popups.popcorn":"НАЖМИТЕ E, ЧТОБЫ ВЗЯТЬ ПОПКОРН!",
     "popups.soda":"НАЖМИТЕ E, ЧТОБЫ ВЗЯТЬ СОДОВУЮ!"
