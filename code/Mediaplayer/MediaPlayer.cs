@@ -20,7 +20,7 @@ public class MediaPlayer : Component
 	[Property]private ModelRenderer ScreenModel { get; set; }
 	[Property]public GameObject PanelComponent { get; set; }
 	[Property]private SpotLight Projector { get; set; }
-	private Texture ProjectionTexture {get;set;}
+	private Texture WebTexture {get;set;}
 	private WorldPanel WorldUI { get; set; }
     public WebPanel WebPanel {get;set;}
 	private ScreenUI ScreenUI {get;set;}
@@ -209,10 +209,11 @@ public class MediaPlayer : Component
 		WebPanel.Style.Height=Length.Percent(100);
 		WebPanel.Style.PointerEvents=PointerEvents.All;
 		WebPanel.AcceptsFocus=false;
+		//WebPanel.Surface.ScaleFactor=2f;
 		WebPanel.Surface.OnTexture+=UpdateProjection;
 		
-		//ProjectionTexture=Texture.CreateRenderTarget("projector",ImageFormat.RGBA8888,Screen.Size,ProjectionTexture);
-		//Projector.Cookie=ProjectionTexture;
+		//WebTexture=Texture.CreateRenderTarget("WebSurface",ImageFormat.RGBA8888,Screen.Size,WebTexture);
+		//Projector.Cookie=WebTexture;
 		Projector.LightColor=new Color(15,15,15);
 		
 		ScreenUI=WebPanel.AddChild<ScreenUI>();
@@ -223,15 +224,15 @@ public class MediaPlayer : Component
 	private void UpdateProjection(ReadOnlySpan<byte> span, Vector2 size)
     {
 		if (!LocalInside) return;//we're not inside theater, save fps.
-		if (ProjectionTexture==null||ProjectionTexture.Size!=size)
+		if (WebTexture==null||WebTexture.Size!=size)
       	{
-            ProjectionTexture?.Dispose();
-            ProjectionTexture=Texture.Create((int)size.x,(int)size.y,ImageFormat.BGRA8888).WithName("WebSurface_projected").WithDynamicUsage().Finish();
-            WebPanel.Style.SetBackgroundImage(ProjectionTexture);
+            WebTexture?.Dispose();
+            WebTexture=Texture.Create((int)size.x,(int)size.y,ImageFormat.BGRA8888).WithName("WebSurface").WithDynamicUsage().Finish();
+            WebPanel.Style.SetBackgroundImage(WebTexture);
         }
 
-        ProjectionTexture.Update(span,0,0,(int)size.x,(int)size.y);
-		Projector.Cookie=ProjectionTexture;
+        WebTexture.Update(span,0,0,(int)size.x,(int)size.y);
+		Projector.Cookie=WebTexture;
 		if (!Projector.Enabled){//????
 			Projector.Enabled=true;
 		}

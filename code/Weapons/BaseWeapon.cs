@@ -101,9 +101,8 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 	public void Drop()
 	{
 		if (Scene.Directory.FindByGuid(Holder).Components.TryGet<TheaterPlayer>(out var Player)){
-			Player.HoldingWeapon=default;
+			if (Player.IsValid){Player.HoldingWeapon=default;}
 		
-			
 			ModelCollider.Enabled=true;
 			Rigidbody.Enabled=true;
 			GameObject.SetParent(null,false);
