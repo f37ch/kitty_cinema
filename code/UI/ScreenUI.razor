@@ -82,13 +82,13 @@
         }
         &.Notinside{
             .container{
-                transform: scale(0);
+                display: none;
             }
             .logo{
-                transform: scale(0);
+                display: none;
             }
             .info{
-               transform: scale(0);
+               display: none;
             }
             .not_loaded{
 			    transform: scale(1);
@@ -98,10 +98,10 @@
                 height: 100%;
             }
             .ptext{
-			    transform: scale(0);
+			    display: none;
             }
             .title{
-			    transform: scale(0);
+			   display: none;
             }
         }
         
@@ -110,11 +110,11 @@
 </style>
 
 <root class="ScreeenUI">
-        <text class="not_loaded">ENTER LOCATION</text>
+        <text class="not_loaded">#mediaplayer.enterLocation</text>
 	    <div class="logo">
            <text style="color:rgb(0, 215, 187);">Media|</text><text>Player</text>
         </div>
-        <text class="info">select type of media</text>
+        <text class="info">#mediaplayer.selectType</text>
         <div class="container">
            <button @onclick=@(()=>OpenRequest($"https://www.youtube.com/")) class="service" style="background-image:url(/ui/services/youtube.png);"></button>
            <button @onclick=@(()=>OpenRequest($"https://soundcloud.com/")) class="service"  style="background-image:url(/ui/services/soundcloud.png);"></button>
@@ -122,7 +122,7 @@
            <button @onclick=@(()=>OpenRequest($"direct")) class="service"  style="background-image:url(/ui/services/directlink.png);">direct link</button>
         </div>
         
-        <text class="info">press "Q" to open theater menu</text>
+        <text class="info">#mediaplayer.bindsInfo</text>
 </root>
 
 @code {

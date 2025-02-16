@@ -108,7 +108,7 @@
         <button class="navbutt @(HistoryIndex<URList.Count ? "" : "disabled")" @onclick=@(()=>Navigate(false))><i>arrow_forward</i></button>
         <TextEntry Value:bind="@WebPanel.Surface.Url" @ref="TextEntry"></TextEntry>
         @if (!SteamShowcase){
-             <button class="requestbutt" @onclick=@(()=>RunURL(@TextEntry.Value))>REQUEST</button>
+             <button class="requestbutt" @onclick=@(()=>RunURL(@TextEntry.Value))>#requestmenu.request</button>
         }
         <button class="closebutt" @onclick=@(()=>Close())><i>close</i></button>
     </header>

@@ -105,6 +105,8 @@ public class MediaController:Component
         MediaPlayer.Curtime=0;
 		MediaPlayer.Duration=0;
 		MediaPlayer.Service=null;
+		MediaPlayer.Title=null;
+		MediaPlayer.SkipList.Clear();
 		ChatMsg(MediaPlayer,$"{Rpc.Caller.DisplayName} skipped current video.");
 	}
     [Rpc.Broadcast(NetFlags.HostOnly)]

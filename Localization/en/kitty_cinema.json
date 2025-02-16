@@ -1,0 +1,47 @@
+{
+    "menu.newLobby": "CREATE NEW LOBBY",
+    "menu.serverList": "SERVER LIST",
+    "menu.settings": "SETTINGS",
+    "menu.quit": "QUIT",
+    "menu.connecting": "Connecting...",
+    "menu.parsing": "Parsing Servers...",
+    "menu.nosv": "Currently no servers online.",
+    "menu.refreshsv": "REFRESH LIST",
+    "menu.settings.main": "Main Settings",
+    "menu.settings.fov": "FIELD OF VIEW",
+    "menu.settings.sound": "Sound Settings",
+    "menu.settings.overallVolume": "OVERALL VOLUME",
+    "menu.settings.voiceVolume": "VOICE VOLUME",
+    "menu.settings.effectVolume": "MOST EFFECTS VOLUME",
+    "menu.settings.interfaceVolume": "INTERFACE VOLUME",
+    "menu.settings.footstepsVolume": "FOOTSTEPS VOLUME",
+    "menu.settings.lobby": "Lobby Stuff",
+    "menu.settings.lobby.friends": "ONLY FRIENDS CAN JOIN",
+
+    "scoreboard.name": "NAME",
+    "scoreboard.location": "LOCATION",
+    "scoreboard.time": "TIME",
+
+    "mediaplayer.enterLocation": "ENTER LOCATION",
+    "mediaplayer.paused": "Paused",
+    "mediaplayer.selectType": "select type of media",
+    "mediaplayer.bindsInfo": "press \"Q\" to open theater menu",
+
+    "notify.welcome": "Welcome to Kitty Cinema!",
+    "notify.tpinfo": "You can toggle thirdperson mode by pressing T button.",
+    "notify.cominfo": "If you want to use voice chat, press the X button or Enter to open the chatbox.",
+    "notify.friendonly": "Only your friends can join this lobby, and only via steam friends list.",
+    "notify.friendonly2": "To make your lobby visible for everyone, you need to go to settings and switch off the only friends lobby option, and then recreate the lobby.",
+    "notify.leavechair":"Press spacebar to leave the chair!",
+    "notify.popcornActions":"You picked up Popcorn! Press RMB to throw it or G to drop weapon.",
+    "notify.sodaActions":"You picked up Soda! Press RMB to throw it or G to drop weapon.",
+
+    "requestmenu.request": "REQUEST",
+    "thumbnail.novideo": "No Video Playing",
+    "theatercontrols.votesLeft":"MORE VOTE TO SKIP",
+    "theatercontrols.voteSkip":"VOTE FOR SKIP",
+
+    "popups.chair":"PRESS E TO SIT ON THIS COMFY CHAIR!",
+    "popups.popcorn":"PRESS E TO PICKUP THIS YUMMY CORN!",
+    "popups.soda":"PRESS E TO PICKUP THIS JUICY SODA!"
+}

@@ -315,23 +315,23 @@ GameMenu {
             <!--<div class="logo">
                 <text style="color:rgb(0,215,187);">Kitty|</text><text style="color:white;">Cinema</text>
             </div>-->
-            <div class="button" onclick=@(()=>Create())>CREATE NEW LOBBY</div>
-            <div class="button @(@selectedB=="servers"?"selected":"")" onclick=@(()=>SelectOption("servers"))>SERVER LIST</div>
-            <div class="button @(@selectedB=="settings"?"selected":"")" onclick=@(()=>SelectOption("settings"))>SETTINGS</div>
-            <div class="button" onclick=@(()=>Quit())>QUIT</div>
+            <div class="button" onclick=@(()=>Create())>#menu.newLobby</div>
+            <div class="button @(@selectedB=="servers"?"selected":"")" onclick=@(()=>SelectOption("servers"))>#menu.serverList</div>
+            <div class="button @(@selectedB=="settings"?"selected":"")" onclick=@(()=>SelectOption("settings"))>#menu.settings</div>
+            <div class="button" onclick=@(()=>Quit())>#menu.quit</div>
         </div>
         <div class="optionwind">
             @if (selected=="servers"){
                 @if (IsConnecting){
-                    <div class="parseinfo">Connecting...</div>
+                    <div class="parseinfo">#menu.connecting</div>
                 }
                 else if(parsingServers)
 	    		{
-	    			<div class="parseinfo">Parsing Servers...</div>
+	    			<div class="parseinfo">#menu.parsing</div>
 	    		}
 	    		else if (ServerList.Count==0)
 	    		{
-	    			<div class="parseinfo">Currently no servers online.</div>
+	    			<div class="parseinfo">#menu.nosv</div>
 	    		}
 	    		else
 	    		{
@@ -352,9 +352,9 @@ GameMenu {
 	    				}
 	    			</div>
 	    		}
-                <div class="refresh_button" onclick=@(()=>RefreshServerList())><i class="ic">refresh</i>REFRESH LIST</div>
+                <div class="refresh_button" onclick=@(()=>RefreshServerList())><i class="ic">refresh</i>#menu.refreshsv</div>
             }else if (selected=="settings"){
-                <h2 class="stitle">Main Settings</h2>
+                <h2 class="stitle">#menu.settings.main</h2>
                 <div class="settings_list">
                     <!--<div class="setting_justify">
                         <button class="stbutton" onclick=@(()=>Game.Overlay.ShowBinds())>Setup Binds</button>
@@ -363,41 +363,41 @@ GameMenu {
                     
                     <div class="setting">
                         <CinemaSlider class="cinemaslider" Max=@(100) Step=@(1) Value=@Camera.FieldOfView  OnValueChanged=@FovSet/>
-                        <div class="stext">FIELD OF VIEW</div>
+                        <div class="stext">#menu.settings.fov</div>
                     </div>
                     
                 </div>
-                <h2 class="stitle">Sound Settings</h2>
+                <h2 class="stitle">#menu.settings.sound</h2>
                 <div class="settings_list">
                     <div class="setting">
                         <CinemaSlider class="cinemaslider" Max=@(100) Step=@(1) Value=@(Mixer.Master.Volume*100)  OnValueChanged=@OverVolSet/>
-                        <div class="stext">OVERALL VOLUME</div>
+                        <div class="stext">#menu.settings.overallVolume</div>
                     </div>
                     @{
                         var children=Mixer.Master.GetChildren();
                     }
                     <div class="setting">
                         <CinemaSlider class="cinemaslider" Max=@(100) Step=@(1) Value=@(children[1].Volume*100)  OnValueChanged=@VoiceVolSet/>
-                        <div class="stext">VOICE VOLUME</div>
+                        <div class="stext">#menu.settings.voiceVolume</div>
                     </div>
                     <div class="setting">
                         <CinemaSlider class="cinemaslider" Max=@(100) Step=@(1) Value=@(children[0].Volume*100)  OnValueChanged=@SFXVolSet/>
-                        <div class="stext">MOST EFFECTS VOLUME</div>
+                        <div class="stext">#menu.settings.effectVolume</div>
                     </div>
                     <div class="setting">
                         <CinemaSlider class="cinemaslider" Max=@(100) Step=@(1) Value=@(children[2].Volume*100)  OnValueChanged=@UIVolSet/>
-                        <div class="stext">INTERFACE VOLUME</div>
+                        <div class="stext">#menu.settings.interfaceVolume</div>
                     </div>
                     <div class="setting">
                         <CinemaSlider class="cinemaslider" Max=@(100) Step=@(1) Value=@(Footsteps.FootStepVolume*100)  OnValueChanged=@FootstepSet/>
-                        <div class="stext">FOOTSTEPS VOLUME</div>
+                        <div class="stext">#menu.settings.footstepsVolume</div>
                     </div>
                 </div> 
-                <h2 class="stitle">Lobby Stuff</h2>
+                <h2 class="stitle">#menu.settings.lobby</h2>
                 <div class="settings_list">
                     <div class="setting">
                         <CinemaSwitch class="cinemaswitch" Value=@IsLobbyPrivate OnValueChanged=@TogglePrivate/>
-                        <div class="stext">ONLY FRIENDS CAN JOIN</div>
+                        <div class="stext">#menu.settings.lobby.friends</div>
                     </div>
                     <!--@if (!IsLobbyPrivate){
                         <div class="setting">

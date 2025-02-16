@@ -31,37 +31,6 @@
             transition: all 0.25s ease-in-out;
         }
 
-        .not_loaded{
-            color: rgba(0, 0, 0, 0);
-            
-            align-items: center;
-            position: relative;
-            height: 1%;
-            width: 1%;
-            font-weight: bold;
-            font-size: 10vw;
-            transform: scale(0);
-           
-            transition: all 0.25s ease-in-out;
-            opacity: 0;
-        }
-        &.Notinside{
-            background-image: radial-gradient(#333 0%,#161616 100%);
-            background-size: 100% 100%;
-            .not_loaded{
-			    transform: scale(1);
-                color: rgb(255, 116, 116);
-                opacity: 1;
-                width: 100%;
-                height: 100%;
-            }
-            .ptext{
-			    transform: scale(0);
-            }
-            .title{
-			    transform: scale(0);
-            }
-        }
         &.Paused{
 			background-color:rgb(48, 48, 48);
             .ptext{
@@ -106,8 +75,7 @@
 
 <root >
     <text class="title">@MediaPlayer.Title</text>
-    <text class="ptext">Paused</text>
-    <text class="not_loaded">ENTER LOCATION</text>
+    <text class="ptext">#mediaplayer.paused</text>
     @if (!MediaPlayer.IsLive){
         <div class="container">
             <div class="durbar" style="width: @((MediaPlayer.Curtime/MediaPlayer.Duration)*100)%;"/>

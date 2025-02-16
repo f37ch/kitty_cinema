@@ -51,8 +51,8 @@
 </style>
 
 <root>
-	<div class="thumbtitle">@(MediaPlayer.Title!=null?MediaPlayer.Title:"No Video Playing"</div>
-	<img class="img" src="@(MediaPlayer.Thumbnail!=null ? MediaPlayer.Thumbnail : "/ui/novideo.gif")"/>
+	<div class="thumbtitle">@GetTitle()</div>
+	<img class="img" src="@GetThumbnail()"/>
 	@if (MediaPlayer.Duration>0){
 		<div class="container">
 			<div class="durbar" style="width: @((MediaPlayer.Curtime/MediaPlayer.Duration)*100)%;"/>
@@ -63,5 +63,24 @@
 @code
 {
 	[Property] MediaPlayer MediaPlayer {get;set;}
+	protected override void OnFixedUpdate(){
+		base.OnFixedUpdate();
+	}
+	private string GetTitle()
+    {
+		if (MediaPlayer.Title!=null){
+			return MediaPlayer.Title;
+		}else{
+			return "#thumbnail.novideo";
+		}
+    }
+	private string GetThumbnail()
+    {
+		if (MediaPlayer.Thumbnail!=null){
+			return MediaPlayer.Thumbnail;
+		}else{
+			return "/ui/novideo.gif";
+		}
+    }
 	protected override int BuildHash() => System.HashCode.Combine(RealTime.Now.CeilToInt());
 }

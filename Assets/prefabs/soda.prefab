@@ -93,8 +93,8 @@
         "OnComponentStart": null,
         "OnComponentUpdate": null,
         "Particle": null,
-        "PickupInfo": "PRESS E TO PICKUP THIS JUICY SODA!",
-        "PickupInfoChat": "You picked up Soda! Press RMB to throw it or G to drop weapon.",
+        "PickupInfo": "#popups.soda",
+        "PickupInfoChat": "#notify.sodaActions",
         "Rigidbody": {
           "_type": "component",
           "component_id": "546a0c61-84df-4c2b-ada5-34b19b498bf1",

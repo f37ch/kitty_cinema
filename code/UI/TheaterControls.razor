@@ -160,8 +160,8 @@
     <div class="title">Theater Control</div>
     <div class="vote">
         <div class="counter">@(MediaController.CountSkips(MediaPlayer.GameObject.Id)-MediaPlayer.SkipList.Count)</div>
-        <div class="text">MORE VOTE TO SKIP</div>
-        <button class="button" @onclick=@(()=>MediaController.VoteSkip(MediaPlayer.GameObject.Id))><i class="i">add_task</i>VOTE FOR SKIP</button>
+        <div class="text">#theatercontrols.votesLeft</div>
+        <button class="button" @onclick=@(()=>MediaController.VoteSkip(MediaPlayer.GameObject.Id))><i class="i">add_task</i>#theatercontrols.voteSkip</button>
     </div>
     <div class="volume_container">
         <div class="volume_icon" style="background-image:url(/ui/volume.png);"></div>

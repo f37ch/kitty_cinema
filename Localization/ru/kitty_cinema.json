@@ -1,0 +1,47 @@
+{
+    "menu.newLobby": "СОЗДАТЬ ЛОББИ",
+    "menu.serverList": "СПИСОК СЕРВЕРОВ",
+    "menu.settings": "НАСТРОЙКИ",
+    "menu.quit": "ВЫЙТИ",
+    "menu.connecting": "Подключение...",
+    "menu.parsing": "Парсинг Серверов...",
+    "menu.nosv": "Серверов онлайн не найдено.",
+    "menu.refreshsv": "ОБНОВИТЬ СПИСОК",
+    "menu.settings.main": "Основные Настройки",
+    "menu.settings.fov": "ПОЛЕ ЗРЕНИЯ",
+    "menu.settings.sound": "Настройки Звука",
+    "menu.settings.overallVolume": "ОБЩАЯ ГРОМКОСТЬ",
+    "menu.settings.voiceVolume": "ГРОМКОСТЬ ГОЛОСА",
+    "menu.settings.effectVolume": "ГРОМКОСТЬ ЭФФЕКТОВ",
+    "menu.settings.interfaceVolume": "ГРОМКОСТЬ ИНТЕРФЕЙСА",
+    "menu.settings.footstepsVolume": "ГРОМКОСТЬ ШАГОВ",
+    "menu.settings.lobby": "Настройки Лобби",
+    "menu.settings.lobby.friends": "ТОЛЬКО ДРУЗЬЯ МОГУТ ПОДКЛЮЧИТЬСЯ",
+
+    "scoreboard.name": "ИМЯ",
+    "scoreboard.location": "ЛОКАЦИЯ",
+    "scoreboard.time": "ВРЕМЯ",
+
+    "mediaplayer.enterLocation": "ВНЕ ЛОКАЦИИ",
+    "mediaplayer.paused": "Пауза",
+    "mediaplayer.selectType": "выберите тип медиа",
+    "mediaplayer.bindsInfo": "нажмите \"Q\", чтобы открыть меню театра",
+
+    "notify.welcome": "Добро пожаловать на Kitty Cinema!",
+    "notify.tpinfo": "Нажмите на T чтобы переключить вид камеры.",
+    "notify.cominfo": "Для использования воисчата, нажмите на X, или Enter для открытия чатбокса.",
+    "notify.friendonly": "Только ваши друзья могут присоедениться к этому лобби, и только через стим.",
+    "notify.friendonly2": "Чтобы сделять лобби видимым в списке серверов, вам надо зайти в настройки и выключить опцию лобби для друзей.",
+    "notify.leavechair":"Нажмите пробел, чтобы встать с кресла!",
+    "notify.popcornActions":"Вы взяли Попкорн! Нажмите ПКМ для броска, или G чтобы выбросить.",
+    "notify.sodaActions":"Вы взяли Содовую! Нажмите ПКМ для броска, или G чтобы выбросить.",
+
+
+    "requestmenu.request": "ВЫБРАТЬ",
+    "thumbnail.novideo": "Нет Видео",
+    "theatercontrols.votesLeft":"ГОЛОСОВ ДО СКИПА",
+    "theatercontrols.voteSkip":"ГОЛОС ЗА СКИП",
+    "popups.chair":"НАЖМИТЕ E, ЧТОБЫ СЕСТЬ В КРЕСЛО!",
+    "popups.popcorn":"НАЖМИТЕ E, ЧТОБЫ ВЗЯТЬ ПОПКОРН!",
+    "popups.soda":"НАЖМИТЕ E, ЧТОБЫ ВЗЯТЬ СОДОВУЮ!"
+}

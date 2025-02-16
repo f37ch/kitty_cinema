@@ -98,8 +98,8 @@
           "go": "a14caa65-4adc-49eb-84e2-2947c78605be",
           "component_type": "LegacyParticleSystem"
         },
-        "PickupInfo": "PRESS E TO PICKUP THIS YUMMY CORN!",
-        "PickupInfoChat": "You picked up Popcorn! Press RMB to throw it or G to drop weapon.",
+        "PickupInfo": "#popups.popcorn",
+        "PickupInfoChat": "#notify.popcornActions",
         "Rigidbody": {
           "_type": "component",
           "component_id": "98359cfe-034e-434b-bdb0-7b2ffe4c9f1f",

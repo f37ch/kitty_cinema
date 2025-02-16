@@ -238,9 +238,9 @@ Chat
 	protected override void OnStart()
     {
 		base.OnStart();
-		AddLocalText("Welcome to Kitty Cinema!","terminal");
-		AddLocalText("You can toggle thirdperson mode by pressing T button.","info");
-		AddLocalText("If you want to use voice chat, press the X button or Enter to open the chatbox.","info");
+		AddLocalText("#notify.welcome","terminal");
+		AddLocalText("#notify.tpinfo","info");
+		AddLocalText("#notify.cominfo","info");
 	}
     protected override void OnUpdate()
     {
