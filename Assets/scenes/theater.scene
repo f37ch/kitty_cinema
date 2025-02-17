@@ -967,7 +967,7 @@
       "__guid": "76efe4ea-dbd4-49d9-aff6-7ab28fb0fb6d",
       "Flags": 0,
       "Name": "Spot Light",
-      "Position": "0,-2585.796,221.1124",
+      "Position": "0,-2551.663,221.1124",
       "Rotation": "0,-0,-0.7071068,0.7071068",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -975,7 +975,7 @@
         {
           "__type": "Sandbox.SpotLight",
           "__guid": "8e0f5d8d-19c4-4b10-8f96-56d32c57ddb3",
-          "Attenuation": 0,
+          "Attenuation": 0.15,
           "ConeInner": 67.99,
           "ConeOuter": 81.13,
           "Cookie": null,
