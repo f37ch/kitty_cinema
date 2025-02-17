@@ -240,10 +240,7 @@ public class MediaPlayer : Component
         	BlurShader.Attributes.Set("OutputTexture",BlurredTexture);
         }
         WebTexture.Update(span,0,0,(int)size.x,(int)size.y);
-		BlurShader.Attributes.Set("InputTexture",WebTexture);
-        BlurShader.Attributes.Set("OutputTexture",BlurredTexture);
         BlurShader.Dispatch((int)size.x,(int)size.y,1);// maybe x/8,y/8?
-
 
 		Projector.Cookie=BlurredTexture;
 		if (!Projector.Enabled){//????
