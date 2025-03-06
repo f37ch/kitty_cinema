@@ -197,7 +197,7 @@
 				<div class="loc">@GetLocation(entry)</div>
                 <div class="stat">@GetTime(entry)</div>
 				<div class="admin">
-					<div class="button" onclick=@(()=>ShowSteam(entry))><i class="bi_acc">account_box</i>Steam Link</div>
+					<div class="button" onclick=@(()=>ShowSteam(entry))><i class="bi_acc">account_box</i>Show Profile</div>
 					@if (Connection.Local.IsHost){
 						<div class="button" onclick=@(()=>NetworkSync.Kick(entry.Id))><i class="bi">link_off</i>Kick</div>
 						<div class="button" onclick=@(()=>BanPlayer(entry))><i class="bi_ban">block</i>Ban</div>
@@ -231,15 +231,11 @@
 		if (!Rpc.Caller.IsHost){return;}
 		Chat.AddLocalText("Bans currently in dev.","info");
 	}
-	private void ShowSteam(Connection con)//it would be cool but steam urls not supported for now in websurface
+	private void ShowSteam(Connection con)
     {
-        //var menu=Scene.Components.GetInDescendantsOrSelf<PanelComponent>().Components.Create<RequestMenu>();
-		//menu.SteamShowcase=true;
-		//menu.RemoveClass("Close");
-		//menu.AddClass("Open");
-        //menu.CurURL=$"https://steamdb.info/calculator/{steamid}/?cc=eu/";
-		Clipboard.SetText($"https://steamcommunity.com/profiles/{con.SteamId}");
-		Chat.AddLocalText($"Link to {con.DisplayName}'s profile was copied to your clipboard.","info");
+		Game.Overlay.ShowPlayer(con.SteamId);
+		//Clipboard.SetText($"https://steamcommunity.com/profiles/{con.SteamId}");
+		//Chat.AddLocalText($"Link to {con.DisplayName}'s profile was copied to your clipboard.","info");
 	}
 	protected override void OnStart()
 	{

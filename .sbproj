@@ -8,7 +8,7 @@
   "Resources": "*",
   "PackageReferences": [],
   "EditorReferences": null,
-  "IsWhitelistDisabled": false,
+  "IsStandaloneOnly": false,
   "Metadata": {
     "MaxPlayers": 64,
     "MinPlayers": 1,
