@@ -12,9 +12,9 @@
         "__guid": "d0747979-5e3b-4cf2-a1d7-3538eed5e89c",
         "_decal": {
           "_type": "component",
-          "component_id": "569643d0-6586-40f2-9a5c-f3d8b988a6ba",
+          "component_id": "1a7f4ae9-72cd-47fa-8bec-bcf94b065925",
           "go": "1e0dcc8d-0faa-4e2c-9677-9759a0ac38eb",
-          "component_type": "Decal"
+          "component_type": "DecalRenderer"
         },
         "_text": {
           "_type": "component",
@@ -42,13 +42,13 @@
         "__guid": "1e0dcc8d-0faa-4e2c-9677-9759a0ac38eb",
         "Flags": 0,
         "Name": "decal",
-        "Rotation": "0,0,1,-0.00000004371139",
+        "Position": "16,0.000001325797,0.000001523365",
+        "Rotation": "0,-1,0,-0.00000004371139",
         "Enabled": true,
         "Components": [
           {
             "__type": "Sandbox.DecalRenderer",
             "__guid": "1a7f4ae9-72cd-47fa-8bec-bcf94b065925",
-            "__enabled": false,
             "CutoffAngle": 60,
             "CutoffAngleSoftness": 5,
             "Material": "materials/spray/spray.vmat",
@@ -121,6 +121,7 @@
             "__type": "Sandbox.Decal",
             "__guid": "569643d0-6586-40f2-9a5c-f3d8b988a6ba",
             "__version": 1,
+            "__enabled": false,
             "AttenuationAngle": 1,
             "ColorTexture": null,
             "ColorTint": "255,255,255,255",
