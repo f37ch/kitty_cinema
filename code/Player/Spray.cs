@@ -73,15 +73,15 @@ public static partial class Spray
 
 internal class SprayRenderer : Renderer
 {
-	[Property] internal DecalRenderer _decal { get; set; }
-	[Property] internal TextRenderer _text { get; set; }
+	[Property] internal Decal _decal {get;set;}
+	[Property] internal TextRenderer _text {get;set;}
 
 	[Property, ImageAssetPath]
 	public string Image {get;set;}
 
 	[Button("Remove Spray",Icon="clear")]
 	public void Remove()=>GameObject.Destroy();
-	
+
 	public virtual void UpdateObject()
 	{
 		_decal.Enabled=!Spray.DisableRendering;
@@ -91,9 +91,8 @@ internal class SprayRenderer : Renderer
 	protected override async void OnAwake()
 	{
 		UpdateObject();
-		var texture=await Texture.LoadAsync(FileSystem.Mounted,Image);
 
-		_decal.Material=Material.Load("materials/spray/spray.vmat").CreateCopy();
-		_decal.Material.Set("g_tColor",texture);
+		_decal.ColorTexture=await Texture.LoadAsync(FileSystem.Mounted,Image);
+		_decal.NormalTexture=_decal.ColorTexture;
 	}
 }

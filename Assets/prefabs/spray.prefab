@@ -12,15 +12,28 @@
         "__guid": "d0747979-5e3b-4cf2-a1d7-3538eed5e89c",
         "_decal": {
           "_type": "component",
-          "component_id": "1a7f4ae9-72cd-47fa-8bec-bcf94b065925",
+          "component_id": "569643d0-6586-40f2-9a5c-f3d8b988a6ba",
           "go": "1e0dcc8d-0faa-4e2c-9677-9759a0ac38eb",
-          "component_type": "DecalRenderer"
+          "component_type": "Decal"
         },
         "_text": {
           "_type": "component",
           "component_id": "0cc392d7-6c59-4ea2-9dd8-357f4ff3e928",
           "go": "d3d254ff-1c70-4b08-b96f-1bfd057363bb",
           "component_type": "TextRenderer"
+        },
+        "Image": null,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
         }
       }
     ],
@@ -29,17 +42,29 @@
         "__guid": "1e0dcc8d-0faa-4e2c-9677-9759a0ac38eb",
         "Flags": 0,
         "Name": "decal",
-        "Position": "1,0,0",
-        "Rotation": "-0.00000004371139,1,-0.00000004371139,0.000000000000001910685",
+        "Rotation": "0,0,1,-0.00000004371139",
         "Enabled": true,
         "Components": [
           {
             "__type": "Sandbox.DecalRenderer",
             "__guid": "1a7f4ae9-72cd-47fa-8bec-bcf94b065925",
+            "__enabled": false,
             "CutoffAngle": 60,
             "CutoffAngleSoftness": 5,
             "Material": "materials/spray/spray.vmat",
             "Mod2XBlending": false,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
             "Size": "64,64,32",
             "TintColor": "1,1,1,1",
             "TriPlanar": false
@@ -47,14 +72,37 @@
           {
             "__type": "Sandbox.SoundPointComponent",
             "__guid": "b00a9bdb-3ad3-4e57-bb59-2ba3394eeb3c",
+            "Distance": 512,
             "DistanceAttenuation": false,
             "DistanceAttenuationOverride": false,
+            "Falloff": [
+              {
+                "x": 0,
+                "y": 1,
+                "in": 3.1415927,
+                "out": -3.1415927,
+                "mode": "Mirrored"
+              },
+              {
+                "x": 1,
+                "y": 0,
+                "in": 0,
+                "out": 0,
+                "mode": "Mirrored"
+              }
+            ],
             "Force2d": false,
             "MaxRepeatTime": 1,
             "MinRepeatTime": 1,
             "Occlusion": false,
             "OcclusionOverride": false,
             "OcclusionRadius": 32,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
             "Pitch": 1,
             "PlayOnStart": true,
             "ReflectionOverride": false,
@@ -68,8 +116,29 @@
               "Id": "5a600970-8479-43d1-b997-e08e5e7b5b65"
             },
             "Volume": 0.5
+          },
+          {
+            "__type": "Sandbox.Decal",
+            "__guid": "569643d0-6586-40f2-9a5c-f3d8b988a6ba",
+            "__version": 1,
+            "AttenuationAngle": 1,
+            "ColorTexture": null,
+            "ColorTint": "255,255,255,255",
+            "NormalTexture": null,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
+            "RMOTexture": null,
+            "SequenceId": 0,
+            "SheetSequence": false,
+            "Size": "32,64,64",
+            "SortLayer": 0
           }
-        ]
+        ],
+        "Children": []
       },
       {
         "__guid": "d3d254ff-1c70-4b08-b96f-1bfd057363bb",
@@ -82,22 +151,68 @@
           {
             "__type": "Sandbox.TextRenderer",
             "__guid": "0cc392d7-6c59-4ea2-9dd8-357f4ff3e928",
+            "__version": 1,
             "__enabled": false,
-            "Color": "0.05434,0.73023,0.62885,1",
-            "FontFamily": "Poppins",
-            "FontSize": 32,
-            "FontWeight": 800,
+            "BlendMode": "Normal",
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
             "Scale": 0.25,
-            "Text": "Mingebag",
-            "TextAlignment": "Center"
+            "TextAlignment": "Center",
+            "TextScope": {
+              "Text": "Mingebag",
+              "TextColor": "0.05434,0.73023,0.62885,1",
+              "FontName": "Poppins",
+              "FontSize": 32,
+              "FontWeight": 800,
+              "FontItalic": false,
+              "LineHeight": 1,
+              "LetterSpacing": 0,
+              "WordSpacing": 0,
+              "Outline": {
+                "Enabled": false,
+                "Size": 4,
+                "Color": "0,0,1,1"
+              },
+              "Shadow": {
+                "Enabled": false,
+                "Size": 4,
+                "Color": "0,0,0,1",
+                "Offset": "4,4"
+              },
+              "OutlineUnder": {
+                "Enabled": false,
+                "Size": 4,
+                "Color": "0,1,0,1"
+              },
+              "ShadowUnder": {
+                "Enabled": false,
+                "Size": 4,
+                "Color": "0,0,0,1",
+                "Offset": "4,4"
+              }
+            }
           }
-        ]
+        ],
+        "Children": []
       }
     ],
     "__variables": [
       {
         "Id": "Image",
         "Title": "Image",
+        "Description": null,
+        "Group": null,
+        "Order": 0,
         "Targets": [
           {
             "Id": "d0747979-5e3b-4cf2-a1d7-3538eed5e89c",
@@ -112,6 +227,9 @@
       {
         "Id": "Placer",
         "Title": "Placer",
+        "Description": null,
+        "Group": null,
+        "Order": 0,
         "Targets": [
           {
             "Id": "0cc392d7-6c59-4ea2-9dd8-357f4ff3e928",
@@ -122,6 +240,9 @@
       {
         "Id": "Remove",
         "Title": "Remove",
+        "Description": null,
+        "Group": null,
+        "Order": 0,
         "Targets": [
           {
             "Id": "d0747979-5e3b-4cf2-a1d7-3538eed5e89c",
@@ -133,11 +254,30 @@
           }
         ]
       }
-    ]
+    ],
+    "__properties": {
+      "NetworkInterpolation": false,
+      "TimeScale": 1,
+      "WantsSystemScene": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
   },
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
