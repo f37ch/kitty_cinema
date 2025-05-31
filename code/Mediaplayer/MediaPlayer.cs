@@ -21,7 +21,7 @@ public class MediaPlayer : Component
 	[Property]public GameObject PanelComponent { get; set; }
 	[Property]private SpotLight Projector { get; set; }
 	private Texture WebTexture {get;set;}
-	private Texture BlurredTexture {get;set;}
+	//private Texture BlurredTexture {get;set;}
 	private WorldPanel WorldUI { get; set; }
     public WebPanel WebPanel {get;set;}
 	private ScreenUI ScreenUI {get;set;}
@@ -44,7 +44,7 @@ public class MediaPlayer : Component
 	private bool LocalInside {get;set;}
 	private bool MouseToggle {get;set;}
 	private RealTimeSince NextThink;
-	private ComputeShader BlurShader {get;set;}=new ComputeShader("shaders/ProjectionBlur");
+	//private ComputeShader BlurShader {get;set;}=new ComputeShader("shaders/ProjectionBlur");
 	private static float boundy,boundz;
 	/// <summary>
 	///  Automate WorldPanel Bounds and size!
@@ -224,25 +224,25 @@ public class MediaPlayer : Component
 	private void UpdateProjection(ReadOnlySpan<byte> span, Vector2 size)
     {
 		if (!LocalInside) return;//we're not inside theater, save fps.
-		if (WebTexture==null||WebTexture.Size!=size)
-      	{
-            WebTexture?.Dispose();
-            WebTexture=Texture.Create((int)size.x,(int)size.y,ImageFormat.BGRA8888).WithUAVBinding().WithName("WebSurface").WithDynamicUsage().Finish();
-            WebPanel.Style.SetBackgroundImage(WebTexture);
+		if (WebTexture == null || WebTexture.Size != size)
+		{
+			WebTexture?.Dispose();
+			WebTexture = Texture.Create((int)size.x, (int)size.y, ImageFormat.BGRA8888).WithUAVBinding().WithName("WebSurface").WithDynamicUsage().Finish();
+			WebPanel.Style.SetBackgroundImage(WebTexture);
 
-			BlurredTexture?.Dispose();
-            BlurredTexture=Texture.Create((int)size.x,(int)size.y,ImageFormat.RGBA8888).WithUAVBinding()
-            .WithFormat(ImageFormat.RGBA8888)
-            .WithDynamicUsage()
-            .Finish();
+			//BlurredTexture?.Dispose();
+			//BlurredTexture=Texture.Create((int)size.x,(int)size.y,ImageFormat.RGBA8888).WithUAVBinding()
+			//.WithFormat(ImageFormat.RGBA8888)
+			//.WithDynamicUsage()
+			//.Finish();
+			
+			//BlurShader.Attributes.Set("InputTexture",WebTexture);
+			//BlurShader.Attributes.Set("OutputTexture",BlurredTexture);
+		}
+    	WebTexture.Update(span,0,0,(int)size.x,(int)size.y);
+        //BlurShader.Dispatch((int)size.x,(int)size.y,1);// maybe x/8,y/8?
 
-			BlurShader.Attributes.Set("InputTexture",WebTexture);
-        	BlurShader.Attributes.Set("OutputTexture",BlurredTexture);
-        }
-        WebTexture.Update(span,0,0,(int)size.x,(int)size.y);
-        BlurShader.Dispatch((int)size.x,(int)size.y,1);// maybe x/8,y/8?
-
-		Projector.Cookie=BlurredTexture;
+		Projector.Cookie=WebTexture;
 		if (!Projector.Enabled){//????
 			Projector.Enabled=true;
 		}
