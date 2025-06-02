@@ -54,19 +54,17 @@ public static partial class Spray
 		var config=new CloneConfig
 		{
 			Name=$"Spray - {Steam.PersonaName}",
-			Transform = new Transform(tr.HitPosition,Rotation.LookAt(tr.Normal)),
-			PrefabVariables = new Dictionary<string, object>
-			{
-				{"Image",Cookie.Get("spray.url","materials/decals/default.png")},
-				{"Placer",Steam.PersonaName},
-			}
+			Transform=new Transform(tr.HitPosition,Rotation.LookAt(tr.Normal)),
 		};
 
 		LocalSpray?.Destroy();
 		LocalSpray=GameObject.Clone("prefabs/spray.prefab",config);
 
+		if (LocalSpray.Components.TryGet<SprayRenderer>(out var renderer,FindMode.DisabledInSelf)){
+			renderer.Image=Cookie.Get("spray.url","materials/decals/default.png");
+		}
+
 		LocalSpray.NetworkSpawn();
-		LocalSpray.SetPrefabSource("prefabs/spray.prefab");
 		return true;
 	}
 }
