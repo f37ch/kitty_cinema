@@ -246,14 +246,24 @@
         "PerParticleTimeScale": {
           "Type": "Range",
           "Evaluation": "Frame",
-          "CurveA": {
-            "rangex": "0,0",
-            "rangey": "0,0"
-          },
-          "CurveB": {
-            "rangex": "0,0",
-            "rangey": "0,0"
-          },
+          "CurveA": [
+            {
+              "x": 0.5,
+              "y": 0.5,
+              "in": 0,
+              "out": 0,
+              "mode": "Mirrored"
+            }
+          ],
+          "CurveB": [
+            {
+              "x": 0.5,
+              "y": 0.5,
+              "in": 0,
+              "out": 0,
+              "mode": "Mirrored"
+            }
+          ],
           "Constants": "2,4,0,0"
         },
         "Pitch": 0,
@@ -334,7 +344,7 @@
             "TargetColor": "0,1,0,1",
             "CacheToDisk": true
           },
-          "compiled": null
+          "compiled": "textures/generated/imagefile/26e125199c359754.vtex"
         }
       },
       {
@@ -353,7 +363,7 @@
         "OnComponentStart": null,
         "OnComponentUpdate": null,
         "OnEdge": false,
-        "Radius": 40,
+        "Radius": 0,
         "Rate": 0,
         "RateOverDistance": 0,
         "Velocity": 0
