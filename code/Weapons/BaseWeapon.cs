@@ -8,7 +8,7 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 	[Property] public string  WeaponName {get;set;}
 	[Property] private Vector3 WeaponPosition {get;set;}
 	[Property] private Vector3 WeaponScale {get;set;}=1;
-	[Property] private LegacyParticleSystem Particle {get;set;}
+	[Property] private ParticleEffect Particle {get;set;}
 	[Sync] private Guid Holder {get;set;}
 	public bool Throwed;
 	public InfoPopup Popup {get;set;}
@@ -68,15 +68,19 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 		}
 		
 	}
-	[Rpc.Broadcast]
-	public void BroadcastEffect()
-	{
-		if (Particle!=null){Particle.Enabled=true;}
-	}
-	public void OnCollisionStart(Collision o)
-	{
-		BroadcastEffect();
-	}
+	//[Rpc.Broadcast]
+	//public void BroadcastEffect(Vector3 point)
+	//{
+	//	//if (Particle!=null){Particle.Enabled=true;Particle.ResetEmitters(); }
+	//}
+	//public void OnCollisionStart(Collision o)
+	//{
+	//	Log.Info( o.Other.GameObject.Tags.Has( "world" ) );
+	//	if ( o.Other.GameObject.Tags.Has( "world" ) )
+	//	{
+	//		//BroadcastEffect( o.Contact.Point );
+	//	}
+	//}
 	[Rpc.Broadcast]
 	public void PickUp(Guid Userid)
 	{
@@ -118,8 +122,8 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 	{
 		base.OnStart();
 		GameObject.NetworkMode=NetworkMode.Object;
-		if (Particle!=null){Particle.Enabled=false;}
-		WorldScale=WeaponScale;
+		//if (Particle!=null){Particle.Enabled=false;}
+		WorldScale =WeaponScale;
 		Popup=Scene.Components.GetInDescendantsOrSelf<InfoPopup>();
 		Chat=Scene.Components.GetInDescendantsOrSelf<Chat>();
 		SpawnPosition=GameObject.WorldPosition;
