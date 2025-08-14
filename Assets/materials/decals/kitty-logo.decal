@@ -1,0 +1,20 @@
+{
+  "ColorTexture": "materials/decals/ki0-mainlogo.vtex",
+  "NormalTexture": null,
+  "RoughMetalOcclusionTexture": {
+    "$compiler": "texture",
+    "$source": "color",
+    "data": {
+      "Color": "0.16471,0.16471,1,1"
+    },
+    "compiled": null
+  },
+  "HeightTexture": null,
+  "ParallaxStrength": 1,
+  "Tint": "1,1,1,1",
+  "ColorMix": 1,
+  "Width": 32,
+  "Height": 32,
+  "__references": [],
+  "__version": 0
+}
