@@ -34,7 +34,7 @@ public static partial class Spray
 		}
 		finally
 		{
-			Cookie.Set("spray.url",imageUrl);
+			Game.Cookies.Set("spray.url",imageUrl);
 		}
 	}
     private static void OnDirty(object oldValue, object newValue)
@@ -54,32 +54,34 @@ public static partial class Spray
 		var config=new CloneConfig
 		{
 			Name=$"Spray - {Steam.PersonaName}",
-			Transform=new Transform(tr.HitPosition,Rotation.LookAt(tr.Normal)),
+			Transform = new Transform(tr.HitPosition,Rotation.LookAt(tr.Normal)),
+			PrefabVariables = new Dictionary<string, object>
+			{
+				{"Image",Game.Cookies.Get("spray.url","materials/decals/default.png")},
+				{"Placer",Steam.PersonaName},
+			}
 		};
 
 		LocalSpray?.Destroy();
 		LocalSpray=GameObject.Clone("prefabs/spray.prefab",config);
 
-		if (LocalSpray.Components.TryGet<SprayRenderer>(out var renderer,FindMode.DisabledInSelf)){
-			renderer.Image=Cookie.Get("spray.url","materials/decals/default.png");
-		}
-
 		LocalSpray.NetworkSpawn();
+		LocalSpray.SetPrefabSource("prefabs/spray.prefab");
 		return true;
 	}
 }
 
 internal class SprayRenderer : Renderer
 {
-	[Property] internal DecalRenderer _decal { get; set; }
-	[Property] internal TextRenderer _text { get; set; }
+	[Property] internal Decal _decal {get;set;}
+	[Property] internal TextRenderer _text {get;set;}
 
 	[Property, ImageAssetPath]
 	public string Image {get;set;}
 
 	[Button("Remove Spray",Icon="clear")]
 	public void Remove()=>GameObject.Destroy();
-	
+
 	public virtual void UpdateObject()
 	{
 		_decal.Enabled=!Spray.DisableRendering;
@@ -88,10 +90,32 @@ internal class SprayRenderer : Renderer
 
 	protected override async void OnAwake()
 	{
-		UpdateObject();
-		var texture=await Texture.LoadAsync(FileSystem.Mounted,Image);
+	    UpdateObject();
 
-		_decal.Material=Material.Load("materials/spray/spray.vmat").CreateCopy();
-		_decal.Material.Set("g_tColor",texture);
+	    if (string.IsNullOrWhiteSpace(Image))
+	        return;
+	    try
+	    {
+	        var tex = await Texture.LoadFromFileSystemAsync(Image,FileSystem.Mounted);
+	        if (tex == null)
+	        {
+	            Log.Warning($"[SprayRenderer] Unable to load texture: {Image}");
+	            return;
+	        }
+
+	        var def = new DecalDefinition
+	        {
+	            ColorTexture = tex,
+	            Width = 512,   
+	            Height = 512,
+	            Tint = Color.White
+	        };
+
+	        _decal.Decals = new List<DecalDefinition> { def };
+	    }
+	    catch (Exception ex)
+	    {
+	        Log.Error(ex, $"[SprayRenderer] Error Loading spray: {Image}");
+	    }
 	}
 }

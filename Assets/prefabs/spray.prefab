@@ -1,20 +1,28 @@
 {
   "RootObject": {
     "__guid": "cb3a44bf-a7bf-4b12-b3d2-5fd0849ceff6",
+    "__version": 1,
     "Flags": 0,
     "Name": "spray",
+    "Position": "0,0,0",
+    "Rotation": "0,0,0,1",
+    "Scale": "1,1,1",
+    "Tags": "",
     "Enabled": true,
     "NetworkMode": 1,
     "NetworkInterpolation": false,
+    "NetworkOrphaned": 0,
+    "OwnerTransfer": 1,
     "Components": [
       {
         "__type": "SprayRenderer",
         "__guid": "d0747979-5e3b-4cf2-a1d7-3538eed5e89c",
+        "__enabled": true,
         "_decal": {
           "_type": "component",
-          "component_id": "1a7f4ae9-72cd-47fa-8bec-bcf94b065925",
+          "component_id": "569643d0-6586-40f2-9a5c-f3d8b988a6ba",
           "go": "1e0dcc8d-0faa-4e2c-9677-9759a0ac38eb",
-          "component_type": "DecalRenderer"
+          "component_type": "Decal"
         },
         "_text": {
           "_type": "component",
@@ -40,38 +48,23 @@
     "Children": [
       {
         "__guid": "1e0dcc8d-0faa-4e2c-9677-9759a0ac38eb",
+        "__version": 1,
         "Flags": 0,
         "Name": "decal",
-        "Position": "16,0.000001325797,0.000001523365",
-        "Rotation": "0,-1,0,-0.00000004371139",
+        "Position": "0,0,0",
+        "Rotation": "0,0,1,-0.00000004371139",
+        "Scale": "1,1,1",
+        "Tags": "",
         "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkInterpolation": true,
+        "NetworkOrphaned": 0,
+        "OwnerTransfer": 1,
         "Components": [
-          {
-            "__type": "Sandbox.DecalRenderer",
-            "__guid": "1a7f4ae9-72cd-47fa-8bec-bcf94b065925",
-            "CutoffAngle": 60,
-            "CutoffAngleSoftness": 5,
-            "Material": "materials/spray/spray.vmat",
-            "Mod2XBlending": false,
-            "OnComponentDestroy": null,
-            "OnComponentDisabled": null,
-            "OnComponentEnabled": null,
-            "OnComponentFixedUpdate": null,
-            "OnComponentStart": null,
-            "OnComponentUpdate": null,
-            "RenderOptions": {
-              "GameLayer": true,
-              "OverlayLayer": false,
-              "BloomLayer": false,
-              "AfterUILayer": false
-            },
-            "Size": "64,64,32",
-            "TintColor": "1,1,1,1",
-            "TriPlanar": false
-          },
           {
             "__type": "Sandbox.SoundPointComponent",
             "__guid": "b00a9bdb-3ad3-4e57-bb59-2ba3394eeb3c",
+            "__enabled": true,
             "Distance": 512,
             "DistanceAttenuation": false,
             "DistanceAttenuationOverride": false,
@@ -120,41 +113,85 @@
           {
             "__type": "Sandbox.Decal",
             "__guid": "569643d0-6586-40f2-9a5c-f3d8b988a6ba",
-            "__version": 1,
-            "__enabled": false,
+            "__enabled": true,
+            "__version": 3,
             "AttenuationAngle": 1,
-            "ColorTexture": null,
-            "ColorTint": "255,255,255,255",
-            "NormalTexture": null,
+            "ColorMix": 1,
+            "ColorTint": {
+              "Type": "Constant",
+              "Evaluation": "Life",
+              "GradientA": {
+                "blend": "Linear",
+                "color": [
+                  {
+                    "t": 0.5,
+                    "c": "1,1,1,1"
+                  }
+                ],
+                "alpha": []
+              },
+              "GradientB": {
+                "blend": "Linear",
+                "color": [
+                  {
+                    "t": 0.5,
+                    "c": "1,1,1,1"
+                  }
+                ],
+                "alpha": []
+              },
+              "ConstantA": "1,1,1,1",
+              "ConstantB": "1,1,1,1"
+            },
+            "Decals": [],
+            "Depth": 8,
+            "LifeTime": 0,
+            "Looped": false,
             "OnComponentDestroy": null,
             "OnComponentDisabled": null,
             "OnComponentEnabled": null,
             "OnComponentFixedUpdate": null,
             "OnComponentStart": null,
             "OnComponentUpdate": null,
-            "RMOTexture": null,
+            "Parallax": 1,
+            "Rotation": {
+              "Type": "Range",
+              "Evaluation": "Seed",
+              "Constants": "0,360,0,0"
+            },
+            "Scale": 1,
             "SequenceId": 0,
             "SheetSequence": false,
-            "Size": "32,64,64",
-            "SortLayer": 0
+            "Size": "0,0",
+            "SortLayer": 0,
+            "Transient": false
           }
         ],
         "Children": []
       },
       {
         "__guid": "d3d254ff-1c70-4b08-b96f-1bfd057363bb",
+        "__version": 1,
         "Flags": 0,
         "Name": "text",
         "Position": "1,0,0",
         "Rotation": "0,0,1,-0.00000004371139",
+        "Scale": "1,1,1",
+        "Tags": "",
         "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkInterpolation": true,
+        "NetworkOrphaned": 0,
+        "OwnerTransfer": 1,
         "Components": [
           {
             "__type": "Sandbox.TextRenderer",
             "__guid": "0cc392d7-6c59-4ea2-9dd8-357f4ff3e928",
-            "__version": 1,
             "__enabled": false,
+            "__version": 1,
             "BlendMode": "Normal",
+            "FogStrength": 1,
+            "HorizontalAlignment": "Center",
             "OnComponentDestroy": null,
             "OnComponentDisabled": null,
             "OnComponentEnabled": null,
@@ -168,7 +205,6 @@
               "AfterUILayer": false
             },
             "Scale": 0.25,
-            "TextAlignment": "Center",
             "TextScope": {
               "Text": "Mingebag",
               "TextColor": "0.05434,0.73023,0.62885,1",
@@ -201,12 +237,31 @@
                 "Color": "0,0,0,1",
                 "Offset": "4,4"
               }
-            }
+            },
+            "VerticalAlignment": "Center"
           }
         ],
         "Children": []
       }
     ],
+    "__properties": {
+      "NetworkInterpolation": false,
+      "TimeScale": 1,
+      "WantsSystemScene": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    },
     "__variables": [
       {
         "Id": "Image",
@@ -255,31 +310,13 @@
           }
         ]
       }
-    ],
-    "__properties": {
-      "NetworkInterpolation": false,
-      "TimeScale": 1,
-      "WantsSystemScene": true,
-      "Metadata": {},
-      "NavMesh": {
-        "Enabled": false,
-        "IncludeStaticBodies": true,
-        "IncludeKeyframedBodies": true,
-        "EditorAutoUpdate": true,
-        "AgentHeight": 64,
-        "AgentRadius": 16,
-        "AgentStepSize": 18,
-        "AgentMaxSlope": 40,
-        "ExcludedBodies": "",
-        "IncludedBodies": ""
-      }
-    }
+    ]
   },
+  "ResourceVersion": 2,
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
   "DontBreakAsTemplate": false,
-  "ResourceVersion": 1,
   "__references": [],
-  "__version": 1
+  "__version": 2
 }
