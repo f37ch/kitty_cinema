@@ -18,8 +18,8 @@
 								to = "materials/ki0-popcornbucket.vmat"
 							},
 						]
-						use_global_default = false
-						global_default_material = ""
+						use_global_default = true
+						global_default_material = "materials/ki0-popcornbucket.vmat"
 					},
 				]
 			},
@@ -89,6 +89,7 @@
 							exception_list = 
 							[
 								"Cube_001",
+								"Cube",
 							]
 						}
 					},
