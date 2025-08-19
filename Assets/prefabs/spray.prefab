@@ -157,12 +157,12 @@
             "Rotation": {
               "Type": "Range",
               "Evaluation": "Seed",
-              "Constants": "0,360,0,0"
+              "Constants": "0,0,0,0"
             },
             "Scale": 1,
             "SequenceId": 0,
             "SheetSequence": false,
-            "Size": "0,0",
+            "Size": "5,5",
             "SortLayer": 0,
             "Transient": false
           }

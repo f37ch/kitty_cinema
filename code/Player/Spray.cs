@@ -3,6 +3,7 @@
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using Sandbox.Resources;
 using Sandbox.Utility;
 public static partial class Spray
 {
@@ -94,28 +95,27 @@ internal class SprayRenderer : Renderer
 
 	    if (string.IsNullOrWhiteSpace(Image))
 	        return;
-	    try
-	    {
-	        var tex = await Texture.LoadFromFileSystemAsync(Image,FileSystem.Mounted);
-	        if (tex == null)
-	        {
-	            Log.Warning($"[SprayRenderer] Unable to load texture: {Image}");
-	            return;
-	        }
+		try
+		{
+			var tex = await Texture.LoadFromFileSystemAsync( Image, FileSystem.Mounted, true );
+			if ( tex == null )
+			{
+				Log.Warning( $"[SprayRenderer] Unable to load texture: {Image}" );
+				return;
+			}
+			
 
-	        var def = new DecalDefinition
-	        {
-	            ColorTexture = tex,
-	            Width = 512,   
-	            Height = 512,
-	            Tint = Color.White
-	        };
+			var def = new DecalDefinition
+			{
+				ColorTexture = tex,
+				Tint = Color.White,
+			};
 
-	        _decal.Decals = new List<DecalDefinition> { def };
+			_decal.Decals.Add( def );
 	    }
-	    catch (Exception ex)
-	    {
-	        Log.Error(ex, $"[SprayRenderer] Error Loading spray: {Image}");
-	    }
+		catch ( Exception ex )
+		{
+			Log.Error( ex, $"[SprayRenderer] Error Loading spray: {Image}" );
+		}
 	}
 }
