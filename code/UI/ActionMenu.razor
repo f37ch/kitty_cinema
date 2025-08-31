@@ -103,6 +103,7 @@
             spray.EntryTitle="Seting Spray URL";
             spray.EntrySubstring="Paste direct link to static image or GIF below and press apply button. To apply spray on surface press [G] button.";
             spray.EntryCallback+=(st)=>{
+                if (string.IsNullOrEmpty(st)) st = "invalid";
                 ConsoleSystem.Run($"spray {st}");
                 spray.Close();
             };

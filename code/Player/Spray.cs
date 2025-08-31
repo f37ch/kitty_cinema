@@ -31,7 +31,7 @@ public static partial class Spray
 		catch (Exception e)
 		{
 			Log.Warning(e);
-			imageUrl="materials/spray/fallback.vtex";
+			imageUrl="https://i.imgur.com/WokDVj8.png";
 		}
 		finally
 		{
@@ -58,7 +58,7 @@ public static partial class Spray
 			Transform = new Transform(tr.HitPosition,Rotation.LookAt(tr.Normal)),
 			PrefabVariables = new Dictionary<string, object>
 			{
-				{"Image",Game.Cookies.Get("spray.url","materials/decals/default.png")},
+				{"Image",Game.Cookies.Get("spray.url","https://i.imgur.com/b0FoWrh.png")},
 				{"Placer",Steam.PersonaName},
 			}
 		};
