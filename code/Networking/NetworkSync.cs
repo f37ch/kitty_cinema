@@ -1,6 +1,7 @@
 using Sandbox.Network;
 using System.Threading.Tasks;
 using System.Linq;
+using Sandbox.UI;
 //using System.Data;
 //using System.Threading.Channels;
 [Title("Network Sync")]
@@ -47,6 +48,7 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 			//LobbyNeedPassword=st.IsLobbyNeedPassword;
 			//LobbyPassword=st.LobbyPassword;
 		}
+		await Task.CompletedTask;
 	}
     public static void Disconnect(string text, string icon)
 	{

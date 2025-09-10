@@ -1,14 +1,15 @@
 using System.Linq;
 using Sandbox.Citizen;
+using Sandbox.UI;
 public sealed class TheaterPlayer : Component
 {
 	[Property][Category("Components")] private GameObject Camera {get;set;}
 	[Property][Category("Components")] private CharacterController Controller {get;set;}
 	[Property][Category("Components")] private CitizenAnimationHelper Animator {get;set;}
-	[Property][Category("Stats")][Range(0f,400f,1f)] private float WalkSpeed {get;set;}=120f;
-	[Property][Category("Stats")][Range(0f,800f,1f)] private float RunSpeed {get; set;}=250f;
-	[Property][Category("Stats")][Range(0f,1000f,10f)] private float JumpStrength {get; set;}=400f;
-	[Property][Category("Stats")][Range(0f,200f,5f)] private float UseRange {get;set;}=80f;
+	[Property][Category("Stats")][Step(1f)] private float WalkSpeed {get;set;}=120f;
+	[Property][Category("Stats")][Step(1f)] private float RunSpeed {get; set;}=250f;
+	[Property][Category("Stats")][Step(10f)] private float JumpStrength {get; set;}=400f;
+	[Property][Category("Stats")][Step(5f)] private float UseRange {get;set;}=80f;
 	[Property][Category("Stats")] private Vector3 Gravity {get;set;}
 	[Property] public float NoclipSpeed {get;set;}=1000f;
 	[Property] private Vector3 EyePosition {get;set;}
@@ -72,8 +73,9 @@ public sealed class TheaterPlayer : Component
 					}
 				}
 			}
-			IsRunning=Input.Down("Run");
-			if (Input.Pressed("noclip")){
+			IsRunning =Input.Down("Run");
+			if ( Input.Pressed( "noclip" ) )
+			{
 				UpdateNoclip();
 			}
 			if (Input.Pressed("spray"))
@@ -87,17 +89,17 @@ public sealed class TheaterPlayer : Component
 				}
 			}
 		}
-		if (Animator!=null&&Controller!=null)
+		if ( Animator != null && Controller != null )
 		{
-			Animator.WithVelocity(Controller.Velocity);
-			Animator.WithWishVelocity(WishVelocity);
-			Animator.IsGrounded=Controller.IsOnGround;
-			Animator.WithLook(CameraRotation.Forward,1,1,1.0f);
-			Animator.MoveStyle=IsRunning?CitizenAnimationHelper.MoveStyles.Run:CitizenAnimationHelper.MoveStyles.Walk;
-			Animator.DuckLevel=DuckLevel;
-			Animator.HoldType=HoldingWeapon!=default?CitizenAnimationHelper.HoldTypes.Pistol:CitizenAnimationHelper.HoldTypes.None;
-			Animator.Handedness=CitizenAnimationHelper.Hand.Right;
-			Animator.IsNoclipping=IsNoclipping;
+			Animator.WithVelocity( Controller.Velocity );
+			Animator.WithWishVelocity( WishVelocity );
+			Animator.IsGrounded = Controller.IsOnGround;
+			Animator.WithLook( CameraRotation.Forward, 1, 1, 1.0f );
+			Animator.MoveStyle = IsRunning ? CitizenAnimationHelper.MoveStyles.Run : CitizenAnimationHelper.MoveStyles.Walk;
+			Animator.DuckLevel = DuckLevel;
+			Animator.HoldType = HoldingWeapon != default ? CitizenAnimationHelper.HoldTypes.Pistol : CitizenAnimationHelper.HoldTypes.None;
+			Animator.Handedness = CitizenAnimationHelper.Hand.Right;
+			Animator.IsNoclipping = IsNoclipping;
 			//model.SceneModel.DirectPlayback.Play("HoldItem_RH_Hand_Basic");
 			//Animator.Target.Set("holdtype_pose",2);
 		}
