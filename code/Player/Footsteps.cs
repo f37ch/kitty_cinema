@@ -24,7 +24,7 @@ public sealed class Footsteps : Component
 		if (!trace.Hit) return;
 		if (trace.Surface is null) return;
 		TimeSinceLastStep=0;
-		var sound=e.FootId==0?trace.Surface.Sounds.FootLeft:trace.Surface.Sounds.FootRight;
+		var sound=e.FootId==0?trace.Surface.SoundCollection.FootLeft:trace.Surface.SoundCollection.FootRight;
 		if (sound is null) return;
 		var handle=Sound.Play(sound,trace.HitPosition+trace.Normal*5);
 		handle.Volume*=e.Volume*FootStepVolume;

@@ -187,8 +187,8 @@
           {
             "__type": "Sandbox.TextRenderer",
             "__guid": "0cc392d7-6c59-4ea2-9dd8-357f4ff3e928",
-            "__enabled": false,
-            "__version": 1,
+            "__enabled": true,
+            "__version": 2,
             "BlendMode": "Normal",
             "FogStrength": 1,
             "HorizontalAlignment": "Center",
@@ -215,6 +215,7 @@
               "LineHeight": 1,
               "LetterSpacing": 0,
               "WordSpacing": 0,
+              "FilterMode": "Bilinear",
               "Outline": {
                 "Enabled": false,
                 "Size": 4,

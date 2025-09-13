@@ -7,10 +7,10 @@ using Sandbox.Resources;
 using Sandbox.Utility;
 public static partial class Spray
 {
-    [ConVar("spraydebug",Help="Renders who placed a spray." ),Change(nameof(OnDirty))]
+    [ConVar("spraydebug",Help="Renders who placed a spray." ),Change(nameof(OnSDirty))]
 	internal static bool EnableDebug {get;set;}
 
-	[ConVar("spraydisable",Help="Disables player sprays. Good for streamers.",Saved=true),Change(nameof(OnDirty))]
+	[ConVar("spraydisable",Help="Disables player sprays. Good for streamers.",Saved=true),Change(nameof(OnSDirty))]
 	internal static bool DisableRendering {get;set;}
 	private static bool IsImage(this HttpContent content)=>content.Headers.GetValues("Content-Type").Any(type=>type.Contains("image"));
     public static GameObject LocalSpray;
@@ -38,8 +38,9 @@ public static partial class Spray
 			Game.Cookies.Set("spray.url",imageUrl);
 		}
 	}
-    private static void OnDirty(object oldValue, object newValue)
+    private static void OnSDirty(bool oldValue, bool newValue)
 	{
+		
 		foreach (var spray in Game.ActiveScene.GetAllComponents<SprayRenderer>())
 		{
 			spray.UpdateObject();
@@ -54,20 +55,20 @@ public static partial class Spray
 
 		var config=new CloneConfig
 		{
-			Name=$"Spray - {Steam.PersonaName}",
-			Transform = new Transform(tr.HitPosition,Rotation.LookAt(tr.Normal)),
-			PrefabVariables = new Dictionary<string, object>
-			{
-				{"Image",Game.Cookies.Get("spray.url","https://i.imgur.com/b0FoWrh.png")},
-				{"Placer",Steam.PersonaName},
-			}
+			Name = $"Spray - {Steam.PersonaName}",
+			Transform = new Transform( tr.HitPosition, Rotation.LookAt( tr.Normal ) ),
 		};
+		
 
 		LocalSpray?.Destroy();
 		LocalSpray=GameObject.Clone("prefabs/spray.prefab",config);
 
 		LocalSpray.NetworkSpawn();
-		LocalSpray.SetPrefabSource("prefabs/spray.prefab");
+
+		var sprayfab=LocalSpray.GetComponentInChildren<SprayRenderer>();
+		sprayfab.Image=Game.Cookies.Get("spray.url","https://i.imgur.com/b0FoWrh.png");
+		sprayfab._text.Text=Steam.PersonaName;
+		
 		return true;
 	}
 }
@@ -93,8 +94,10 @@ internal class SprayRenderer : Renderer
 	{
 	    UpdateObject();
 
-	    if (string.IsNullOrWhiteSpace(Image))
-	        return;
+		await Task.DelayRealtimeSeconds( 0.2f );//cuz it needs time to get our link first
+
+	    if ( string.IsNullOrWhiteSpace( Image ) )
+			return;
 		try
 		{
 			var tex = await Texture.LoadFromFileSystemAsync( Image, FileSystem.Mounted, true );
