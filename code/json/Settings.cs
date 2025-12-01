@@ -1,5 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 using Sandbox.Audio;
+using Sandbox.UI;
 public class Settings
 {
 	[JsonIgnore] private const string Name="settings.json";

@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Sandbox.UI;
 public sealed class BaseWeapon: Component, Component.ICollisionListener
 {
 	[Property] ModelCollider  ModelCollider {get;set;}

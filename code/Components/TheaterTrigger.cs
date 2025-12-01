@@ -1,4 +1,5 @@
 
+using Sandbox.UI;
 public sealed class TheaterTrigger:Component,Component.ITriggerListener
 {
 	private MediaPlayer MediaPlayer { get; set; }

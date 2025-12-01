@@ -1,3 +1,4 @@
+using Sandbox.UI;
 public struct ChairPlace
 {
 	public Guid user { get; set; }
