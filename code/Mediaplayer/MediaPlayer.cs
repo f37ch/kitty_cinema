@@ -63,11 +63,12 @@ public class MediaPlayer : Component
 		var ray=Scene.Camera.ScreenPixelToRay(Screen.Size/2);
 		WorldInput.Ray=ray;
 		WorldInput.MouseLeftPressed=Input.Down("use");
-		if (WorldInput.Hovered!=null)
+		if (ray.Position.Distance(WorldUI.Position)<WorldUI.MaxInteractionDistance)
     	{
 			if (Pointer.HasClass("Hide")){
 				Pointer.RemoveClass("Hide");
 			}
+			
 			Pointer.Style.Top=(WorldUI.PanelBounds.Top/2.2f)+WorldUI.MousePosActual.y/2;
       		Pointer.Style.Left=WorldUI.MousePosActual.x/2;
 			

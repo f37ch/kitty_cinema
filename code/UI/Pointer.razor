@@ -1,8 +1,7 @@
 @using Sandbox.UI
 @inherits Panel
-@attribute [StyleSheet]
 <root>
 </root>
 @code {
-   protected override int BuildHash() => System.HashCode.Combine( RealTime.Now.CeilToInt() );
+   protected override int BuildHash()=>System.HashCode.Combine(RealTime.Now.CeilToInt());
 }
