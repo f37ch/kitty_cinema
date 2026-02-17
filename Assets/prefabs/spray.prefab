@@ -1,7 +1,7 @@
 {
   "RootObject": {
     "__guid": "cb3a44bf-a7bf-4b12-b3d2-5fd0849ceff6",
-    "__version": 1,
+    "__version": 2,
     "Flags": 0,
     "Name": "spray",
     "Position": "0,0,0",
@@ -10,14 +10,16 @@
     "Tags": "",
     "Enabled": true,
     "NetworkMode": 1,
-    "NetworkInterpolation": false,
+    "NetworkFlags": 0,
     "NetworkOrphaned": 0,
+    "NetworkTransmit": true,
     "OwnerTransfer": 1,
     "Components": [
       {
         "__type": "SprayRenderer",
         "__guid": "d0747979-5e3b-4cf2-a1d7-3538eed5e89c",
         "__enabled": true,
+        "Flags": 0,
         "_decal": {
           "_type": "component",
           "component_id": "569643d0-6586-40f2-9a5c-f3d8b988a6ba",
@@ -48,7 +50,7 @@
     "Children": [
       {
         "__guid": "1e0dcc8d-0faa-4e2c-9677-9759a0ac38eb",
-        "__version": 1,
+        "__version": 2,
         "Flags": 0,
         "Name": "decal",
         "Position": "0,0,0",
@@ -57,14 +59,16 @@
         "Tags": "",
         "Enabled": true,
         "NetworkMode": 2,
-        "NetworkInterpolation": true,
+        "NetworkFlags": 0,
         "NetworkOrphaned": 0,
+        "NetworkTransmit": true,
         "OwnerTransfer": 1,
         "Components": [
           {
             "__type": "Sandbox.SoundPointComponent",
             "__guid": "b00a9bdb-3ad3-4e57-bb59-2ba3394eeb3c",
             "__enabled": true,
+            "Flags": 0,
             "Distance": 512,
             "DistanceAttenuation": false,
             "DistanceAttenuationOverride": false,
@@ -114,6 +118,7 @@
             "__type": "Sandbox.Decal",
             "__guid": "569643d0-6586-40f2-9a5c-f3d8b988a6ba",
             "__enabled": true,
+            "Flags": 0,
             "__version": 3,
             "AttenuationAngle": 1,
             "ColorMix": 1,
@@ -171,7 +176,7 @@
       },
       {
         "__guid": "d3d254ff-1c70-4b08-b96f-1bfd057363bb",
-        "__version": 1,
+        "__version": 2,
         "Flags": 0,
         "Name": "text",
         "Position": "1,0,0",
@@ -180,14 +185,16 @@
         "Tags": "",
         "Enabled": true,
         "NetworkMode": 2,
-        "NetworkInterpolation": true,
+        "NetworkFlags": 0,
         "NetworkOrphaned": 0,
+        "NetworkTransmit": true,
         "OwnerTransfer": 1,
         "Components": [
           {
             "__type": "Sandbox.TextRenderer",
             "__guid": "0cc392d7-6c59-4ea2-9dd8-357f4ff3e928",
             "__enabled": true,
+            "Flags": 0,
             "__version": 2,
             "BlendMode": "Normal",
             "FogStrength": 1,
@@ -216,6 +223,7 @@
               "LetterSpacing": 0,
               "WordSpacing": 0,
               "FilterMode": "Bilinear",
+              "FontSmooth": "Auto",
               "Outline": {
                 "Enabled": false,
                 "Size": 4,
@@ -246,7 +254,7 @@
       }
     ],
     "__properties": {
-      "NetworkInterpolation": false,
+      "NetworkInterpolation": true,
       "TimeScale": 1,
       "WantsSystemScene": true,
       "Metadata": {},
@@ -254,7 +262,7 @@
         "Enabled": false,
         "IncludeStaticBodies": true,
         "IncludeKeyframedBodies": true,
-        "EditorAutoUpdate": true,
+        "EditorAutoUpdate": false,
         "AgentHeight": 64,
         "AgentRadius": 16,
         "AgentStepSize": 18,

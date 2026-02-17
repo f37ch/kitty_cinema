@@ -27,7 +27,7 @@ public class MediaPlayer : Component
 	private ScreenUI ScreenUI {get;set;}
 	private Pointer Pointer {get;set;}
 	private ScreenInfo ScreenInfo {get;set;}
-	public Sandbox.UI.WorldInput WorldInput {get;set;}
+	public Sandbox.WorldInput WorldInput {get;set;}
 	[Sync] public float RequestCD {get;set;}=0;
 	[Sync] public float Duration{get;set;}
 	[Sync] public float Curtime{get;set;}
@@ -61,8 +61,9 @@ public class MediaPlayer : Component
 		WorldUI.PanelBounds=new Rect(-WorldScale.y*boundy,-WorldScale.z*boundz,WorldScale.y*boundy*2,WorldScale.z*(boundz*2-16));
 		if (Scene.Camera is null) {return;}
 		var ray=Scene.Camera.ScreenPixelToRay(Screen.Size/2);
-		WorldInput.Ray=ray;
-		WorldInput.MouseLeftPressed=Input.Down("use");
+
+		//Log.Info(WorldInput.Hovered);
+	
 		if (ray.Position.Distance(WorldUI.Position)<WorldUI.MaxInteractionDistance)
     	{
 			if (Pointer.HasClass("Hide")){
@@ -198,14 +199,15 @@ public class MediaPlayer : Component
 		}
 	}
 	protected override void OnStart(){
-		//Flags=ComponentFlags.None;
+		
 		WorldUI=new WorldPanel(Scene.SceneWorld)
 		{
-			MaxInteractionDistance=800
+			MaxInteractionDistance=800,
+	
 		};
-		WorldInput=new Sandbox.UI.WorldInput(){
-			Enabled=true
-		};
+
+		WorldInput=Scene.Camera.Components.GetOrCreate<Sandbox.WorldInput>();
+		WorldInput.LeftMouseAction="use";
 		
 		WebPanel=WorldUI.AddChild<WebPanel>();
 		WebPanel.Style.Width=Length.Percent(100);
@@ -220,6 +222,7 @@ public class MediaPlayer : Component
 		ScreenUI=WebPanel.AddChild<ScreenUI>();
 		ScreenUI.MediaPlayer=this;
 		ScreenUI.AcceptsFocus=false;
+		ScreenUI.Style.PointerEvents=PointerEvents.All;
 		Pointer=ScreenUI.AddChild<Pointer>();
     }
 	private void UpdateProjection(ReadOnlySpan<byte> span, Vector2 size)

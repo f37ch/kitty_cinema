@@ -1,19 +1,31 @@
 {
   "RootObject": {
     "__guid": "053f2f9c-acf6-43f9-9b70-859c48d0d432",
+    "__version": 2,
     "Flags": 0,
     "Name": "soda",
+    "Position": "0,0,0",
+    "Rotation": "0,0,0,1",
+    "Scale": "1,1,1",
     "Tags": "weapon",
     "Enabled": true,
     "NetworkMode": 1,
+    "NetworkFlags": 0,
+    "NetworkOrphaned": 0,
+    "NetworkTransmit": true,
+    "OwnerTransfer": 1,
     "Components": [
       {
         "__type": "Sandbox.ModelRenderer",
         "__guid": "c39018b4-5159-4eaf-9ae1-77153af726ed",
+        "__enabled": true,
+        "Flags": 0,
         "BodyGroups": 18446744073709551615,
         "CreateAttachments": false,
+        "LodOverride": null,
         "MaterialGroup": null,
         "MaterialOverride": null,
+        "Materials": null,
         "Model": "models/citizen_props/sodacan01.vmdl",
         "OnComponentDestroy": null,
         "OnComponentDisabled": null,
@@ -33,6 +45,10 @@
       {
         "__type": "Sandbox.ModelCollider",
         "__guid": "036362ce-f6de-43cc-8c16-ffefda538326",
+        "__enabled": true,
+        "Flags": 0,
+        "ColliderFlags": 0,
+        "Elasticity": null,
         "Friction": null,
         "IsTrigger": false,
         "Model": "models/citizen_props/sodacan01.vmdl",
@@ -46,6 +62,7 @@
         "OnObjectTriggerExit": null,
         "OnTriggerEnter": null,
         "OnTriggerExit": null,
+        "RollingResistance": null,
         "Static": false,
         "Surface": null,
         "SurfaceVelocity": "0,0,0"
@@ -53,8 +70,14 @@
       {
         "__type": "Sandbox.Rigidbody",
         "__guid": "546a0c61-84df-4c2b-ada5-34b19b498bf1",
+        "__enabled": true,
+        "Flags": 0,
         "AngularDamping": 0,
+        "EnableImpactDamage": true,
+        "EnhancedCcd": false,
         "Gravity": true,
+        "GravityScale": 1,
+        "ImpactDamage": 0,
         "LinearDamping": 0,
         "Locking": {
           "X": false,
@@ -66,6 +89,7 @@
         },
         "MassCenterOverride": "0,0,0",
         "MassOverride": 0,
+        "MinImpactDamageSpeed": 500,
         "MotionEnabled": true,
         "OnComponentDestroy": null,
         "OnComponentDisabled": null,
@@ -80,6 +104,8 @@
       {
         "__type": "BaseWeapon",
         "__guid": "9c0cf2bb-59bc-4569-a5f4-a0e62c65dee5",
+        "__enabled": true,
+        "Flags": 0,
         "ModelCollider": {
           "_type": "component",
           "component_id": "036362ce-f6de-43cc-8c16-ffefda538326",
@@ -107,22 +133,16 @@
       }
     ],
     "Children": [],
-    "__variables": [],
     "__properties": {
-      "FixedUpdateFrequency": 50,
-      "MaxFixedUpdates": 5,
-      "NetworkFrequency": 30,
       "NetworkInterpolation": true,
-      "PhysicsSubSteps": 1,
-      "ThreadedAnimation": true,
       "TimeScale": 1,
-      "UseFixedUpdate": true,
+      "WantsSystemScene": true,
       "Metadata": {},
       "NavMesh": {
         "Enabled": false,
         "IncludeStaticBodies": true,
         "IncludeKeyframedBodies": true,
-        "EditorAutoUpdate": true,
+        "EditorAutoUpdate": false,
         "AgentHeight": 64,
         "AgentRadius": 16,
         "AgentStepSize": 18,
@@ -130,13 +150,14 @@
         "ExcludedBodies": "",
         "IncludedBodies": ""
       }
-    }
+    },
+    "__variables": []
   },
+  "ResourceVersion": 2,
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
   "DontBreakAsTemplate": false,
-  "ResourceVersion": 1,
   "__references": [],
-  "__version": 1
+  "__version": 2
 }

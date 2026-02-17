@@ -1,26 +1,41 @@
 {
   "RootObject": {
-    "Id": "23e3d258-a1b0-4452-ab30-7687e673b079",
-    "Name": "MediaPlayer",
+    "__guid": "23e3d258-a1b0-4452-ab30-7687e673b079",
+    "__version": 2,
+    "Flags": 0,
+    "Name": "mediaplayer",
     "Position": "6.961144,-2710.3,164.3312",
     "Rotation": "0,0,0.7071068,0.7071068",
     "Scale": "1,1.7,1.7",
+    "Tags": "",
     "Enabled": true,
     "NetworkMode": 1,
+    "NetworkFlags": 0,
+    "NetworkOrphaned": 0,
+    "NetworkTransmit": true,
+    "OwnerTransfer": 1,
     "Components": [
       {
         "__type": "MediaPlayer",
-        "PanelComponent": {
-          "_type": "gameobject",
-          "go": "34f470fb-4d2b-46ab-85f7-19502a01e902"
-        },
+        "__guid": "fe53049a-8c49-405c-8736-dfb1ca21f890",
+        "__enabled": true,
+        "Flags": 0,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "PanelComponent": null,
         "Projector": {
           "_type": "component",
+          "component_id": "72d60da8-971f-4a0f-b2c7-b3356f5f1262",
           "go": "87afb8c1-56d5-40a3-8e73-2e303237edb8",
           "component_type": "SpotLight"
         },
         "ScreenModel": {
           "_type": "component",
+          "component_id": "3f6434d1-ea0f-4957-972c-03b0a9336ec1",
           "go": "d26940de-4a30-48fe-9e32-8eeeb4f6dc14",
           "component_type": "ModelRenderer"
         }
@@ -28,32 +43,84 @@
     ],
     "Children": [
       {
-        "Id": "d26940de-4a30-48fe-9e32-8eeeb4f6dc14",
+        "__guid": "d26940de-4a30-48fe-9e32-8eeeb4f6dc14",
+        "__version": 2,
+        "Flags": 0,
         "Name": "ScreenModel",
         "Position": "0.02925109,-0.06917572,-106.1081",
         "Rotation": "0,0,-1,-0.00000004371139",
+        "Scale": "1,1,1",
+        "Tags": "",
         "Enabled": true,
         "NetworkMode": 2,
+        "NetworkFlags": 0,
+        "NetworkOrphaned": 0,
+        "NetworkTransmit": true,
+        "OwnerTransfer": 1,
         "Components": [
           {
-            "__type": "ModelRenderer",
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "3f6434d1-ea0f-4957-972c-03b0a9336ec1",
+            "__enabled": true,
+            "Flags": 0,
             "BodyGroups": 18446744073709551615,
+            "CreateAttachments": false,
+            "LodOverride": null,
+            "MaterialGroup": null,
+            "MaterialOverride": null,
+            "Materials": null,
             "Model": "models/screen.vmdl",
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
             "RenderType": "On",
             "Tint": "1,1,1,1"
           },
           {
-            "__type": "ModelCollider",
+            "__type": "Sandbox.ModelCollider",
+            "__guid": "1dd77507-3749-4351-8a23-2613de6f418b",
+            "__enabled": true,
+            "Flags": 0,
+            "ColliderFlags": 0,
+            "Elasticity": null,
+            "Friction": null,
             "IsTrigger": false,
             "Model": "models/screen.vmdl",
+            "OnComponentDestroy": null,
             "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
+            "OnObjectTriggerEnter": null,
+            "OnObjectTriggerExit": null,
+            "OnTriggerEnter": null,
+            "OnTriggerExit": null,
+            "RollingResistance": null,
             "Static": false,
-            "Surface": "surfaces/brick.surface"
+            "Surface": "surfaces/brick.surface",
+            "SurfaceVelocity": "0,0,0"
           },
           {
-            "__type": "Rigidbody",
+            "__type": "Sandbox.Rigidbody",
+            "__guid": "e8cd9573-8677-48b1-b5f6-a1c3926aebfa",
+            "__enabled": true,
+            "Flags": 0,
             "AngularDamping": 0,
+            "EnableImpactDamage": true,
+            "EnhancedCcd": false,
             "Gravity": false,
+            "GravityScale": 1,
+            "ImpactDamage": 0,
             "LinearDamping": 0,
             "Locking": {
               "X": true,
@@ -63,23 +130,44 @@
               "Yaw": true,
               "Roll": true
             },
+            "MassCenterOverride": "0,0,0",
             "MassOverride": 0,
+            "MinImpactDamageSpeed": 500,
             "MotionEnabled": true,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
+            "OverrideMassCenter": false,
             "RigidbodyFlags": 0,
             "StartAsleep": true
           }
-        ]
+        ],
+        "Children": []
       },
       {
-        "Id": "87afb8c1-56d5-40a3-8e73-2e303237edb8",
+        "__guid": "87afb8c1-56d5-40a3-8e73-2e303237edb8",
+        "__version": 2,
+        "Flags": 0,
         "Name": "Spot Light",
         "Position": "0,0,0",
+        "Rotation": "0,0,0,1",
+        "Scale": "1,1,1",
         "Tags": "light_spot,light",
         "Enabled": true,
         "NetworkMode": 2,
+        "NetworkFlags": 0,
+        "NetworkOrphaned": 0,
+        "NetworkTransmit": true,
+        "OwnerTransfer": 1,
         "Components": [
           {
-            "__type": "SpotLight",
+            "__type": "Sandbox.SpotLight",
+            "__guid": "72d60da8-971f-4a0f-b2c7-b3356f5f1262",
+            "__enabled": true,
+            "Flags": 0,
             "Attenuation": 1,
             "ConeInner": 90,
             "ConeOuter": 75,
@@ -87,15 +175,44 @@
             "FogMode": "Enabled",
             "FogStrength": 1,
             "LightColor": "15,15,15,1",
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
             "Radius": 1200,
             "Shadows": true
           }
-        ]
+        ],
+        "Children": []
       }
-    ]
+    ],
+    "__properties": {
+      "NetworkInterpolation": true,
+      "TimeScale": 1,
+      "WantsSystemScene": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": false,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    },
+    "__variables": []
   },
+  "ResourceVersion": 2,
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
-  "__references": []
+  "DontBreakAsTemplate": false,
+  "__references": [],
+  "__version": 2
 }

@@ -82,27 +82,36 @@ public class WorldPanel : Sandbox.UI.RootPanel
     //     Maximum distance at which a player can interact with this world panel.
     public float MaxInteractionDistance { get; set; }
 
-    public WorldPanel(SceneWorld world)
-    {
-        ArgumentNullException.ThrowIfNull(world, "world");
-        SceneObject = new ScenePanelObject(world, this);
-        SceneObject.Flags.IsOpaque = false;
-        SceneObject.Flags.IsTranslucent = true;
-        RenderedManually = true;
-        float x = -500f;
-        float y = -500f;
-        float width = 1000f;
-        float height = 1000f;
-        PanelBounds = new Rect(in x, in y, in width, in height);
-        Scale = 2f;
-        MaxInteractionDistance = 1000f;
-        IsWorldPanel = true;
-    }
+    public WorldPanel( SceneWorld world )
+	{
+		ArgumentNullException.ThrowIfNull( world, "world" );
+
+		SceneObject = new ScenePanelObject( world, this );
+		SceneObject.Flags.IsOpaque = false;
+		SceneObject.Flags.IsTranslucent = true;
+
+		// Don't render this panel using the panel system
+		RenderedManually = true;
+
+		// Default size is 1000x1000, centered on scene object transform
+		PanelBounds = new Rect( -500, -500, 1000, 1000 );
+
+		// World panels are scaled down to world units,
+		// so boost the panel scale to sensible default
+		Scale = 2.0f;
+
+		MaxInteractionDistance = 1000.0f;
+
+		// This is a world panel - we need to set this so that layers
+		// get the attribute restored properly
+		IsWorldPanel = true;
+	}
 
     //
     // Summary:
     //     Update the bounds for this panel. We purposely do nothing here because on world
     //     panels you can change the bounds by setting Sandbox.UI.RootPanel.PanelBounds.
+
     protected override void UpdateBounds(Rect rect)
     {
         if (!SceneObject.IsValid()) return;
@@ -112,6 +121,7 @@ public class WorldPanel : Sandbox.UI.RootPanel
 		//
 		// Work out the bounds by adding each corner to a bbox
 		//
+        
         Vector3 center=right*panelBounds.Left+down*panelBounds.Top;
 		BBox bounds=BBox.FromPositionAndSize(center);
 		bounds=bounds.AddPoint( right * panelBounds.Left + down * panelBounds.Bottom );
@@ -142,6 +152,7 @@ public class WorldPanel : Sandbox.UI.RootPanel
 
     public override bool RayToLocalPosition( Ray ray, out Vector2 position, out float distance )
 	{
+        Log.Info("TEST");
 		position = default;
 		distance = 0;
 		var plane = new Plane( Position, Rotation.Forward );
@@ -170,6 +181,5 @@ public class WorldPanel : Sandbox.UI.RootPanel
 		position = localPos;
 		return true;
 	}
-
 
 }
