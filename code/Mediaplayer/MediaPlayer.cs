@@ -171,7 +171,6 @@ public class MediaPlayer : Component
 		Pointer=ScreenUI.AddChild<Pointer>();
 	}
 	private void PlaybackScreen(bool forseplay=false){
-		Log.Info("DA");
 		if (ScreenInfo!=null){return;}
 		ScreenUI.Delete();
 		ScreenUI=null;
