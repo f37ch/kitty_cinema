@@ -85,20 +85,13 @@
 		base.OnFixedUpdate();
 	}
 	private string GetTitle()
-    {
-		if (MediaPlayer.Title!=null){
-			return MediaPlayer.Title;
-		}else{
-			return "#thumbnail.novideo";
-		}
-    }
-	private string GetThumbnail()
-    {
-		if (MediaPlayer.Thumbnail!=null){
-			return MediaPlayer.Thumbnail;
-		}else{
-			return "/ui/novideo.gif";
-		}
-    }
+	{
+	    if (string.IsNullOrEmpty(MediaPlayer?.Title))
+	        return "#thumbnail.novideo";
+	
+	    return MediaPlayer.Title;
+	}
+
+	private string GetThumbnail() => MediaPlayer?.Thumbnail ?? "/ui/novideo.gif";
 	protected override int BuildHash() => System.HashCode.Combine(RealTime.Now.CeilToInt());
 }

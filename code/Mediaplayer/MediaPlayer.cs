@@ -20,9 +20,10 @@ public class MediaPlayer : Component
 	[Property]private ModelRenderer ScreenModel { get; set; }
 	[Property]public GameObject PanelComponent { get; set; }
 	[Property]private SpotLight Projector { get; set; }
+	[Property]private Sandbox.WorldPanel WorldPanel { get; set; }
 	private Texture WebTexture {get;set;}
 	private Texture BlurredTexture {get;set;}
-	private WorldPanel WorldUI { get; set; }
+	private Sandbox.UI.WorldPanel WorldUI { get; set; }
     public WebPanel WebPanel {get;set;}
 	private ScreenUI ScreenUI {get;set;}
 	private Pointer Pointer {get;set;}
@@ -45,7 +46,8 @@ public class MediaPlayer : Component
 	private bool MouseToggle {get;set;}
 	private RealTimeSince NextThink;
 	private ComputeShader BlurShader {get;set;}=new ComputeShader("shaders/ProjectionBlur");
-	private static float boundy,boundz;
+	private Color ProjectionColor {get;set;}=new Color(12,12,12);
+	//private static float boundy,boundz;
 	/// <summary>
 	///  Automate WorldPanel Bounds and size!
 	///  Fixes shit with with disappearance.
@@ -55,29 +57,7 @@ public class MediaPlayer : Component
 
 		var rot=ScreenModel.WorldRotation;
 		if (WorldUI==null) return;
-		WorldUI.Transform=Transform.Local.WithScale(10).WithPosition(ScreenModel.WorldPosition+rot.Backward*0.7F+rot.Up*ScreenModel.WorldScale.z*boundz/2).WithRotation(Rotation.LookAt(rot.Backward,rot.Up));
-		boundy=ScreenModel.Model.Bounds.Size.y-16;
-		boundz=ScreenModel.Model.Bounds.Size.z-8;
-		WorldUI.PanelBounds=new Rect(-WorldScale.y*boundy,-WorldScale.z*boundz,WorldScale.y*boundy*2,WorldScale.z*(boundz*2-16));
-		if (Scene.Camera is null) {return;}
-		var ray=Scene.Camera.ScreenPixelToRay(Screen.Size/2);
-
-		//Log.Info(WorldInput.Hovered);
-	
-		if (ray.Position.Distance(WorldUI.Position)<WorldUI.MaxInteractionDistance)
-    	{
-			if (Pointer.HasClass("Hide")){
-				Pointer.RemoveClass("Hide");
-			}
-			
-			Pointer.Style.Top=(WorldUI.PanelBounds.Top/2.2f)+WorldUI.MousePosActual.y/2;
-      		Pointer.Style.Left=WorldUI.MousePosActual.x/2;
-			
-    	}else{
-			if (!Pointer.HasClass("Hide")){
-				Pointer.AddClass("Hide");
-			}
-		}
+		
 		var me=Scene.GetAllComponents<TheaterPlayer>().FirstOrDefault(x=>x?.GameObject?.Network.Owner==Connection.Local);
 		if (me!=null&&me.Location==Location){
 			if (ScreenUI!=null&&ScreenUI.HasClass("Notinside")){
@@ -90,6 +70,25 @@ public class MediaPlayer : Component
 			}else{
 				if (ScreenInfo==null){
 					PlaybackScreen();
+				}
+			}
+			if (ScreenUI!=null){
+				var ray=Scene.Camera.ScreenPixelToRay(Screen.Size/2);
+				if (!Input.Down("queue")&&ray.Position.Distance(WorldUI.Position)<WorldUI.MaxInteractionDistance)
+				{
+					ScreenUI.Style.PointerEvents=PointerEvents.All;
+					if (Pointer.HasClass("Hide")){
+						Pointer.RemoveClass("Hide");
+					}
+
+					Pointer.Style.Top=WorldUI.PanelBounds.Top + WorldUI.MousePosition.y/2;
+					Pointer.Style.Left =(WorldUI.MousePosition.x-WorldUI.PanelBounds.Width/2)/2;
+
+				}else{
+					ScreenUI.Style.PointerEvents=PointerEvents.None;
+					if (!Pointer.HasClass("Hide")){
+						Pointer.AddClass("Hide");
+					}
 				}
 			}
 			//if(Trigger>Time.Now){
@@ -172,7 +171,7 @@ public class MediaPlayer : Component
 		Pointer=ScreenUI.AddChild<Pointer>();
 	}
 	private void PlaybackScreen(bool forseplay=false){
-		
+		Log.Info("DA");
 		if (ScreenInfo!=null){return;}
 		ScreenUI.Delete();
 		ScreenUI=null;
@@ -198,13 +197,17 @@ public class MediaPlayer : Component
 			WebPanel.Surface.Url=$"{MediaController.WebHandlersURL}player.php?tp={Service}&dt={ContentID}&vol={Volume}&st={Curtime}";
 		}
 	}
+	
 	protected override void OnStart(){
 		
-		WorldUI=new WorldPanel(Scene.SceneWorld)
-		{
-			MaxInteractionDistance=800,
-	
-		};
+		WorldPanel.InteractionRange=800;
+		WorldPanel.PanelSize= new Vector2(
+		  7050*ScreenModel.WorldScale.x,
+		  1700*ScreenModel.WorldScale.y
+		);
+		WorldPanel.RenderScale=6;
+
+    	WorldUI=WorldPanel.GetPanel() as Sandbox.UI.WorldPanel;
 
 		WorldInput=Scene.Camera.Components.GetOrCreate<Sandbox.WorldInput>();
 		WorldInput.LeftMouseAction="use";
@@ -212,22 +215,23 @@ public class MediaPlayer : Component
 		WebPanel=WorldUI.AddChild<WebPanel>();
 		WebPanel.Style.Width=Length.Percent(100);
 		WebPanel.Style.Height=Length.Percent(100);
-		WebPanel.Style.PointerEvents=PointerEvents.All;
+		WebPanel.Style.PointerEvents=PointerEvents.None;
 		WebPanel.AcceptsFocus=false;
 		//WebPanel.Surface.ScaleFactor=2f;
 		WebPanel.Surface.OnTexture+=UpdateProjection;
 
-		Projector.LightColor=new Color(12,12,12);
+		Projector.LightColor=new Color(0.16f,0.16f,0.16f);
+
 		
 		ScreenUI=WebPanel.AddChild<ScreenUI>();
 		ScreenUI.MediaPlayer=this;
 		ScreenUI.AcceptsFocus=false;
-		ScreenUI.Style.PointerEvents=PointerEvents.All;
 		Pointer=ScreenUI.AddChild<Pointer>();
     }
 	private void UpdateProjection(ReadOnlySpan<byte> span, Vector2 size)
     {
 		if (!LocalInside) return;//we're not inside theater, save fps.
+		Projector.LightColor=ProjectionColor;
 		if (WebTexture == null || WebTexture.Size != size)
 		{
 			WebTexture?.Dispose();
@@ -260,11 +264,11 @@ public class MediaPlayer : Component
 	}
 	protected override void OnDestroy(){
 		base.OnDestroy();
-		WorldUI?.Delete();
+		WorldPanel?.Destroy();
 	}
 	protected override void OnDisabled()
 	{
 		base.OnDisabled();
-		WorldUI?.Delete();
+		WorldPanel?.Destroy();
 	}
 }

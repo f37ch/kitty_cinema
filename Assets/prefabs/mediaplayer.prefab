@@ -38,6 +38,12 @@
           "component_id": "3f6434d1-ea0f-4957-972c-03b0a9336ec1",
           "go": "d26940de-4a30-48fe-9e32-8eeeb4f6dc14",
           "component_type": "ModelRenderer"
+        },
+        "WorldPanel": {
+          "_type": "component",
+          "component_id": "84ec7fef-8acb-48bc-bad8-16b89089125a",
+          "go": "8a7f386f-d31b-4e17-a166-ecb72179a7c4",
+          "component_type": "WorldPanel"
         }
       }
     ],
@@ -174,7 +180,7 @@
             "Cookie": null,
             "FogMode": "Enabled",
             "FogStrength": 1,
-            "LightColor": "15,15,15,1",
+            "LightColor": "0.16,0.16,0.16,1",
             "OnComponentDestroy": null,
             "OnComponentDisabled": null,
             "OnComponentEnabled": null,
@@ -183,6 +189,49 @@
             "OnComponentUpdate": null,
             "Radius": 1200,
             "Shadows": true
+          }
+        ],
+        "Children": []
+      },
+      {
+        "__guid": "8a7f386f-d31b-4e17-a166-ecb72179a7c4",
+        "__version": 2,
+        "Flags": 0,
+        "Name": "World",
+        "Position": "0.6364746,0.00004966469,0.00002692727",
+        "Rotation": "0,0,0,1",
+        "Scale": "1,1,1",
+        "Tags": "",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkFlags": 0,
+        "NetworkOrphaned": 0,
+        "NetworkTransmit": true,
+        "OwnerTransfer": 1,
+        "Components": [
+          {
+            "__type": "Sandbox.WorldPanel",
+            "__guid": "84ec7fef-8acb-48bc-bad8-16b89089125a",
+            "__enabled": true,
+            "Flags": 0,
+            "HorizontalAlign": "Center",
+            "InteractionRange": 1000,
+            "LookAtCamera": false,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
+            "PanelSize": "11970,3930",
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
+            "RenderScale": 8,
+            "VerticalAlign": "Center"
           }
         ],
         "Children": []
