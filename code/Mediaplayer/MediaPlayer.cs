@@ -221,12 +221,12 @@ public class MediaPlayer : Component
 		WebPanel.Surface.OnTexture+=UpdateProjection;
 
 		Projector.LightColor=new Color(0.16f,0.16f,0.16f);
-
 		
 		ScreenUI=WebPanel.AddChild<ScreenUI>();
 		ScreenUI.MediaPlayer=this;
 		ScreenUI.AcceptsFocus=false;
 		Pointer=ScreenUI.AddChild<Pointer>();
+		Pointer.AddClass("Hide");
     }
 	private void UpdateProjection(ReadOnlySpan<byte> span, Vector2 size)
     {
