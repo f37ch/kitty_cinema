@@ -54,8 +54,6 @@ public class MediaPlayer : Component
 	///  Calculates ray to screen.
 	/// </summary>
 	private void WorldPanelLogicUpdate(){
-
-		var rot=ScreenModel.WorldRotation;
 		if (WorldUI==null) return;
 		
 		var me=Scene.GetAllComponents<TheaterPlayer>().FirstOrDefault(x=>x?.GameObject?.Network.Owner==Connection.Local);

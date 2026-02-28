@@ -2249,7 +2249,7 @@
           "Flags": 0,
           "MediaPlayer": {
             "_type": "component",
-            "component_id": "edb4f7dc-820c-4fe5-846e-379755e8c94e",
+            "component_id": "47316a06-0478-44a2-9275-33df6a1bbf7f",
             "go": "23e3d258-a1b0-4452-ab30-7687e673b079",
             "component_type": "MediaPlayer"
           },
@@ -2377,15 +2377,15 @@
       },
       "__PrefabIdToInstanceId": {
         "23e3d258-a1b0-4452-ab30-7687e673b079": "23e3d258-a1b0-4452-ab30-7687e673b079",
-        "fe53049a-8c49-405c-8736-dfb1ca21f890": "edb4f7dc-820c-4fe5-846e-379755e8c94e",
-        "d26940de-4a30-48fe-9e32-8eeeb4f6dc14": "aef177a0-fb17-4026-b3d3-62cabf24fac0",
-        "3f6434d1-ea0f-4957-972c-03b0a9336ec1": "95b4088f-c6f1-40c8-807d-b35ce959d962",
-        "1dd77507-3749-4351-8a23-2613de6f418b": "104af05f-5c8b-4eee-b028-643040692538",
-        "e8cd9573-8677-48b1-b5f6-a1c3926aebfa": "d046f0a6-eb7b-4cd6-824a-31a82dc23dca",
-        "87afb8c1-56d5-40a3-8e73-2e303237edb8": "27734424-1eb6-4acd-b782-c4b5f9cce260",
-        "72d60da8-971f-4a0f-b2c7-b3356f5f1262": "8f433d24-5da4-40bc-ac8e-12e4ac49bb7d",
-        "8a7f386f-d31b-4e17-a166-ecb72179a7c4": "0e1242b1-1310-44c2-af2c-af9d2540c50b",
-        "84ec7fef-8acb-48bc-bad8-16b89089125a": "da3eff49-2868-4909-a4e0-02f6763a52c7"
+        "fe53049a-8c49-405c-8736-dfb1ca21f890": "47316a06-0478-44a2-9275-33df6a1bbf7f",
+        "d26940de-4a30-48fe-9e32-8eeeb4f6dc14": "3d6dff40-1eb1-403a-977c-f9dc1be29eab",
+        "3f6434d1-ea0f-4957-972c-03b0a9336ec1": "f344a8aa-4cb3-490e-b777-b495a0e25c58",
+        "1dd77507-3749-4351-8a23-2613de6f418b": "82f85567-0ecf-421f-a6dd-82a21efbf2fd",
+        "e8cd9573-8677-48b1-b5f6-a1c3926aebfa": "681ca836-0f4f-421b-8d2f-26a0e1b6312c",
+        "8a7f386f-d31b-4e17-a166-ecb72179a7c4": "122655a5-c437-43dd-93ce-66f4e4b2e70a",
+        "84ec7fef-8acb-48bc-bad8-16b89089125a": "0aa04478-5528-4bec-b577-2c1f9e8137b3",
+        "87afb8c1-56d5-40a3-8e73-2e303237edb8": "60920d86-ec49-443d-9f0f-2148c46e5942",
+        "72d60da8-971f-4a0f-b2c7-b3356f5f1262": "75d67297-4409-416e-88b1-edeadb930e9c"
       }
     },
     {
