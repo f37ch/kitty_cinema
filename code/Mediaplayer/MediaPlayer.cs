@@ -103,6 +103,9 @@ public class MediaPlayer : Component
 			}else{
 				if (!ScreenUI.HasClass("Notinside")){
 					ScreenUI.AddClass("Notinside");
+					if (!Pointer.HasClass("Hide")){
+						Pointer.AddClass("Hide");
+					}
 				}
 			}
 			LocalInside=false;
