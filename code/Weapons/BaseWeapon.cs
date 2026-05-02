@@ -96,7 +96,7 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 			Rigidbody.Enabled=false;
 			ModelCollider.Enabled=false;
 			//Particle.Enabled=false;
-			GameObject.Network.DisableInterpolation();
+			GameObject.Network.Interpolation=false;
 			GameObject.Transform.ClearInterpolation();
 			Player.HoldingWeapon=GameObject.Id;
 			Chat.AddLocalText(PickupInfoChat,"info",true);
@@ -111,7 +111,7 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 			ModelCollider.Enabled=true;
 			Rigidbody.Enabled=true;
 			GameObject.SetParent(null,false);
-			GameObject.Network.EnableInterpolation();
+			GameObject.Network.Interpolation=true;
 			GameObject.WorldPosition=(Player.WorldPosition+Player.LocalRotation.Forward*20).WithZ(Player.WorldPosition.z+40);
 
 			GameObject.WorldRotation=Player.WorldRotation;

@@ -84,7 +84,7 @@
 </root>
 @code{
     private Chat Chat;
-   
+
     void VRSettings(){
         Chat.AddLocalText("VR Settings currently in dev.","info");
     }
@@ -102,10 +102,10 @@
             var spray=sp.Components.Create<CinemaEntry>();
             spray.EntryTitle="Seting Spray URL";
             spray.EntrySubstring="Paste direct link to static image or GIF below and press apply button. To apply spray on surface press [G] button.";
-            spray.EntryCallback+=(st)=>{
+            spray.EntryCallback+=async (st)=>{
                 if (string.IsNullOrEmpty(st)) st = "invalid";
                 ConsoleSystem.Run($"spray {st}");
-                spray.Close();
+                await spray.Close();
             };
         }
         Input.ReleaseActions();

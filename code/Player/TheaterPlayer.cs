@@ -15,7 +15,7 @@ public sealed class TheaterPlayer : Component
 	[Property] private Vector3 EyePosition {get;set;}
 	[Property] private Angles SpawnAngles {get;set;}
 	[Property] private bool ThirdPerson {get;set;}
-	[Sync] private bool IsRunning {get;set;}
+	[Sync] private new bool IsRunning {get;set;}
 	[Sync] private float DuckLevel {get;set;}
 	[Sync] public Guid HoldingWeapon {get;set;}
 	[Sync] public Angles EyeAngles {get;set;}

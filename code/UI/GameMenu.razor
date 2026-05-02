@@ -338,6 +338,7 @@ GameMenu {
 	    			<div class="button-list">
 	    				@foreach (var sv in ServerList)
 	    				{
+                            @if (sv.IsHidden){continue;}
 	    					<div class="button" onclick=@(()=>Preconnect(sv))>
 	    						<div class="title">
 	    							@sv.Name
