@@ -5,5 +5,6 @@ public class ParsedData
     public string restriction { get; set; }
 	public string thumb { get; set; }
 	public string type { get; set; }
+	public string error { get; set; }
 	public string id { get; set; }
 }

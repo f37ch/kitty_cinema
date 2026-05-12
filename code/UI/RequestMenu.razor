@@ -229,8 +229,12 @@
     private async Task ProcessData(string VideoID, string ServiceType, string ServiceName, string OriginalUrl){
         try{
             var data=await Http.RequestJsonAsync<ParsedData>($"{MediaController.WebHandlersURL}parser.php?tp={ServiceType}&id={VideoID}","GET");
-            MediaController.BroadcastVideo(data,VideoID,ServiceName,ServiceType,MediaPlayer.GameObject.Id);
-            RequestHistoryStore.Record(OriginalUrl,data.title??"Unknown",data.thumb??"/ui/thumb.png",data.duration);
+            if (data.title!=null){
+                MediaController.BroadcastVideo(data,VideoID,ServiceName,ServiceType,MediaPlayer.GameObject.Id);
+                RequestHistoryStore.Record(OriginalUrl,data.title??"Unknown",data.thumb??"/ui/thumb.png",data.duration);
+            }else{
+                Chat.AddLocalText($"Failed to requested video: failed to parse data.({data.error??"..."})","video_settings");
+            }
             HistoryPanel?.Refresh();
         }catch(Exception e){
             Chat.AddLocalText($"Failed to requested video: bad URL. ({e})","video_settings");
@@ -273,13 +277,15 @@
 					}
 				}
 			}else if(uri.Host=="www.soundcloud.com"||uri.Host=="soundcloud.com"){
-				if (uri.Segments.Length==3){
-					url=$"https://soundcloud.com/{string.Join("",uri.Segments[1],uri.Segments[2])}";
-                   _ = ProcessData(url,"sc","SoundCloud",url);
-				}else{
-					 Chat.AddLocalText($"Failed to requested video: wrong soundcloud URL.","video_settings");
-				}
-			}else{
+                if (uri.Segments.Length==3){
+                    var artist=uri.Segments[1].TrimEnd('/');
+                    var track=uri.Segments[2].TrimEnd('/');
+                    var slug=$"{artist}/{track}";
+                    _ = ProcessData(slug,"sc","SoundCloud",url);
+                }else{
+                    Chat.AddLocalText($"Failed to requested video: wrong soundcloud URL.","video_settings");
+                }
+            }else{
                _ = ProcessData(url,"dr","DirectLink",url);
 			}
 			MediaPlayer.RequestCD=Time.Now+2;
