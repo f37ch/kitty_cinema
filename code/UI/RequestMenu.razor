@@ -4,6 +4,7 @@
 @using System.Linq
 @using System.Threading.Tasks
 @using System.Web
+@namespace Sandbox.UI
 
 @inherits PanelComponent
 
@@ -15,7 +16,7 @@
 		top: 8%;
 		position: absolute;
 		background-color: black;
-		flex-direction: column;
+		flex-direction: row;
         display: flex;
 		pointer-events: none;
 		transform: scale(0);
@@ -99,22 +100,33 @@
         }
         
     }
-    
+
+    .browser-wrap {
+        flex-grow: 1;
+        flex-shrink: 1;
+        width: 0;
+        height: 100%;
+        flex-direction: column;
+        display: flex;
+        overflow: hidden;
+    }
 </style>
 
 <root>
-    <header>
-        <button class="navbutt @(HistoryIndex>1 ? "" : "disabled")" @onclick=@(()=>Navigate(true))><i>arrow_back</i></button>
-        <button class="navbutt @(HistoryIndex<URList.Count ? "" : "disabled")" @onclick=@(()=>Navigate(false))><i>arrow_forward</i></button>
-        <TextEntry Value:bind="@WebPanel.Surface.Url" @ref="TextEntry"></TextEntry>
-        @if (!SteamShowcase){
-             <button class="requestbutt" @onclick=@(()=>RunURL(@TextEntry.Value))>#requestmenu.request</button>
+    <div class="browser-wrap">
+        <header>
+            <button class="navbutt @(HistoryIndex>1 ? "" : "disabled")" @onclick=@(()=>Navigate(true))><i>arrow_back</i></button>
+            <button class="navbutt @(HistoryIndex<URList.Count ? "" : "disabled")" @onclick=@(()=>Navigate(false))><i>arrow_forward</i></button>
+            <TextEntry Value:bind="@WebPanel.Surface.Url" @ref="TextEntry"></TextEntry>
+            @if (!SteamShowcase){
+                 <button class="requestbutt" @onclick=@(()=>RunURL(@TextEntry.Value))>#requestmenu.request</button>
+            }
+            <button class="closebutt" @onclick=@(()=>Close())><i>close</i></button>
+        </header>
+        @if (!Panel.HasClass("OpenDirect")){
+            <WebPanel style="width: 100%; flex-grow: 1;" @ref="WebPanel"></WebPanel>
         }
-        <button class="closebutt" @onclick=@(()=>Close())><i>close</i></button>
-    </header>
-    @if (!Panel.HasClass("OpenDirect")){
-        <WebPanel style="width: 100%; flex-grow: 1;" @ref="WebPanel"></WebPanel>
-    }
+    </div>
 </root>
 
 @code{
@@ -122,6 +134,7 @@
     private TextEntry TextEntry {get;set;}
     private Chat Chat {get;set;}
     private WebPanel WebPanel {get;set;}
+    private RequestHistory HistoryPanel {get;set;}
     public MediaPlayer MediaPlayer {get;set;}
     public bool SteamShowcase {get;set;}
     private int HistoryIndex {get;set;}=0;
@@ -129,6 +142,12 @@
     public string CurURL {get;set;}
     private List<string> URList = new List<string>();
         
+    /// <summary>Вставляет URL из истории в TextEntry без запроса.</summary>
+    public void SetHistoryUrl(string url)
+    {
+        FromHistory = true;
+        TextEntry.Value = url;
+    }
     public void RunURL(string url)
 	{
         SetUrl(url);
@@ -163,6 +182,11 @@
             TextEntry.Value="paste direct link here";
         }
         TextEntry.AcceptsFocus=true;
+        if (!Panel.HasClass("OpenDirect")){
+            HistoryPanel=Panel.AddChild<RequestHistory>();
+            HistoryPanel.RequestMenu=this;
+            HistoryPanel.Refresh();
+        }
         if (Game.ActiveScene.Components.TryGet<Chat>(out var chatty,FindMode.EnabledInSelfAndDescendants)){
             Chat=chatty;
         }
@@ -192,6 +216,8 @@
             WebPanel.Style.PointerEvents=PointerEvents.None;
             //WebPanel.Delete();
         }
+        HistoryPanel?.Delete();
+        HistoryPanel=null;
         AddClass("Close");
         Destroy();
     }
@@ -200,10 +226,12 @@
         Panel?.Delete();
         base.OnDestroy();
     }
-    private async Task ProcessData(string VideoID, string ServiceType, string ServiceName){
+    private async Task ProcessData(string VideoID, string ServiceType, string ServiceName, string OriginalUrl){
         try{
             var data=await Http.RequestJsonAsync<ParsedData>($"{MediaController.WebHandlersURL}parser.php?tp={ServiceType}&id={VideoID}","GET");
             MediaController.BroadcastVideo(data,VideoID,ServiceName,ServiceType,MediaPlayer.GameObject.Id);
+            RequestHistoryStore.Record(OriginalUrl,data.title??"Unknown",data.thumb??"/ui/thumb.png",data.duration);
+            HistoryPanel?.Refresh();
         }catch(Exception e){
             Chat.AddLocalText($"Failed to requested video: bad URL. ({e})","video_settings");
 		}
@@ -226,7 +254,7 @@
 					var seg=uri.Segments; 
 				    videoId = seg[seg.Length-1];
 				}
-				_ = ProcessData(videoId,"yt","YouTube");
+				_ = ProcessData(videoId,"yt","YouTube",url);
 			}else if(uri.Host=="www.twitch.tv"||uri.Host=="twitch.tv"){
 				var videoid=string.Empty;
 				if (uri.Segments.Length<2||uri.Segments.Length>3){
@@ -238,21 +266,21 @@
 				}
 				if (videoid!=""){
 					if (videoid.StartsWith("vid,")){
-                       _ = ProcessData(uri.Segments[2],"tw","Twitch");
+                       _ = ProcessData(uri.Segments[2],"tw","Twitch",url);
 					}else{
-						_ = ProcessData(videoid,"twl","Twitch");
+						_ = ProcessData(videoid,"twl","Twitch",url);
 						
 					}
 				}
 			}else if(uri.Host=="www.soundcloud.com"||uri.Host=="soundcloud.com"){
 				if (uri.Segments.Length==3){
 					url=$"https://soundcloud.com/{string.Join("",uri.Segments[1],uri.Segments[2])}";
-                   _ = ProcessData(url,"sc","SoundCloud");
+                   _ = ProcessData(url,"sc","SoundCloud",url);
 				}else{
 					 Chat.AddLocalText($"Failed to requested video: wrong soundcloud URL.","video_settings");
 				}
 			}else{
-               _ = ProcessData(url,"dr","DirectLink");
+               _ = ProcessData(url,"dr","DirectLink",url);
 			}
 			MediaPlayer.RequestCD=Time.Now+2;
 		}else{

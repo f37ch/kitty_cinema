@@ -1,0 +1,363 @@
+@using Sandbox
+@using Sandbox.UI
+@using System.Linq
+@namespace Sandbox.UI
+
+@inherits Panel
+
+<style>
+    RequestHistory {
+        width: 22%;
+        height: 100%;
+        flex-direction: column;
+        display: flex;
+        background-color: #0e0e0edd;
+        border-left: 1px solid #ffffff18;
+
+        .hist-header {
+            flex-shrink: 0;
+            height: 2vw;
+            background-color: #00d7bb33;
+            justify-content: center;
+            align-items: center;
+            font-family: BerlinSansFBDemi;
+            font-size: 1.1vw;
+            font-weight: bolder;
+            color: #d4d4d4;
+            letter-spacing: 2px;
+        }
+
+        .hist-search {
+            flex-shrink: 0;
+            margin: 4px 6px 2px 6px;
+            height: 1.4vw;
+            .TextEntry {
+                width: 100%;
+                height: 100%;
+                background-color: #1e1e1e;
+                color: #ccc;
+                font-size: 0.9vw;
+                border: 1px solid #ffffff22;
+                border-radius: 4px;
+            }
+        }
+
+        .hist-sort {
+            flex-shrink: 0;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin: 2px 6px;
+            gap: 3px;
+
+            .sort-btn {
+                font-size: 0.65vw;
+                font-family: BerlinSansFBDemi;
+                color: #aaa;
+                background-color: #1a1a1a;
+                border: 1px solid #ffffff18;
+                border-radius: 3px;
+                padding: 1px 6px;
+                transition: all 0.1s ease;
+                &:hover { color: #00d7bb; cursor: pointer; border-color: #00d7bb55; }
+                &.active { color: #00d7bb; background-color: #00d7bb1a; border-color: #00d7bb66; }
+            }
+        }
+
+        .hist-list {
+            flex-grow: 1;
+            flex-direction: column;
+            overflow: scroll;
+            gap: 3px;
+            padding: 4px 6px;
+
+            .hist-item {
+                flex-shrink: 0;
+                flex-direction: row;
+                height: 52px;
+                background-color: #477c7533;
+                border-radius: 5px;
+                overflow: hidden;
+                border: 1px solid #ffffff0a;
+                transition: background-color 0.15s ease;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                &:hover { background-color: #477c7566; cursor: pointer; }
+
+                .hist-thumb {
+                    flex-shrink: 0;
+                    width: 30%;
+                    background-position: center;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                }
+                .hist-thumb-ph {
+                    flex-shrink: 0;
+                    width: 30%;
+                    background-color: #1a1a1a;
+                    justify-content: center;
+                    align-items: center;
+                    color: #444;
+                    font-family: Material Icons;
+                    font-size: 1.2vw;
+                }
+                .hist-info {
+                    flex-grow: 1;
+                    flex-shrink: 1;
+                    flex-direction: column;
+                    padding: 4px 5px;
+                    justify-content: center;
+                    .hist-title {
+                        color: #ddd;
+                        font-size: 0.75vw;
+                        font-family: BerlinSansFBDemi;
+                        opacity: 0.9;
+                    }
+                    .hist-meta {
+                        flex-direction: row;
+                        gap: 6px;
+                        .hist-dur { color: #00d7bad0; font-size: 0.6vw; }
+                        .hist-cnt { color: #f0f0f0d8; font-size: 0.6vw; }
+                    }
+                }
+                .hist-actions {
+                    flex-shrink: 0;
+                    flex-direction: column;
+                    justify-content: center;
+                    gap: 2px;
+                    padding: 4px 3px;
+                    .btn-ha {
+                        width: 1.1vw;
+                        height: 1.1vw;
+                        font-family: Material Icons;
+                        font-size: 0.8vw;
+                        border-radius: 3px;
+                        justify-content: center;
+                        align-items: center;
+                        opacity: 0.35;
+                        transition: opacity 0.1s ease;
+                        &:hover { opacity: 1; cursor: pointer; }
+                    }
+                    .btn-play { color: #00d7bb; &:hover { background-color: #00d7bb22; } }
+                    .btn-del  { color: #ff6b6b; &:hover { background-color: #ff6b6b22; } }
+                }
+            }
+
+            .hist-empty {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                flex-grow: 1;
+                color: #ffffff33;
+                font-size: 0.85vw;
+                gap: 6px;
+                padding-top: 20%;
+                .empty-icon { font-family: Material Icons; font-size: 2vw; }
+            }
+        }
+
+        .hist-pager {
+            flex-shrink: 0;
+            flex-direction: row;
+            align-items: center;
+            height: 1.6vw;
+            background-color: #101010;
+            border-top: 1px solid #ffffff12;
+            padding: 0 4px;
+            gap: 3px;
+            .pg-btn {
+                flex-shrink: 0;
+                width: 1.2vw;
+                height: 1.2vw;
+                font-family: Material Icons;
+                font-size: 1vw;
+                justify-content: center;
+                align-items: center;
+                border-radius: 3px;
+                color: #00d7bb;
+                opacity: 0.7;
+                &:hover { opacity: 1; cursor: pointer; background-color: #00d7bb18; }
+                &.disabled { color: #555; opacity: 0.4; pointer-events: none; }
+            }
+            .pg-info { flex-grow: 1; color: #ffffff66; font-size: 0.7vw; text-align: center; }
+            .btn-clear {
+                flex-shrink: 0;
+                height: 1.1vw;
+                font-size: 0.65vw;
+                font-family: BerlinSansFBDemi;
+                color: #ff6b6b99;
+                background-color: transparent;
+                border: 1px solid #ff6b6b44;
+                border-radius: 3px;
+                padding: 0 5px;
+                transition: all 0.15s ease;
+                &:hover { color: #ff6b6b; border-color: #ff6b6b88; cursor: pointer; background-color: #ff6b6b11; }
+            }
+        }
+    }
+</style>
+
+<root>
+    <div class="hist-header">HISTORY</div>
+
+    <div class="hist-search">
+        <TextEntry @ref="SearchEntry" Placeholder="search..." />
+    </div>
+
+    <div class="hist-sort">
+        <button class="sort-btn @(_sortMode=="lastRequest"?"active":"")" onclick=@(()=>SetSort("lastRequest"))>recent</button>
+        <button class="sort-btn @(_sortMode=="title"?"active":"")"       onclick=@(()=>SetSort("title"))>A-Z</button>
+        <button class="sort-btn @(_sortMode=="duration"?"active":"")"    onclick=@(()=>SetSort("duration"))>duration</button>
+        <button class="sort-btn @(_sortMode=="count"?"active":"")"       onclick=@(()=>SetSort("count"))>popular</button>
+    </div>
+
+    <div class="hist-list">
+        @if ( !PageItems.Any() )
+        {
+            <div class="hist-empty">
+                <label class="empty-icon">movie_filter</label>
+                <label>no history yet</label>
+            </div>
+        }
+        else
+        {
+            @foreach ( var entry in PageItems )
+            {
+                <div class="hist-item">
+
+                    @if ( !string.IsNullOrEmpty( entry.Thumb ) )
+                    {
+                        <img class="hist-thumb" onclick=@(() => OnItemClick( entry )) onerror="/ui/novideo.gif" src=@entry.Thumb/>
+                    }
+                    else
+                    {
+                        <div class="hist-thumb-ph" onclick=@(() => OnItemClick( entry ))><label>movie</label></div>
+                    }
+
+                    <div class="hist-info">
+                        <div class="hist-title">@entry.Title</div>
+                        <div class="hist-meta">
+                            <div class="hist-dur">@(entry.Duration > 0 ? FormatTime(entry.Duration) : "live")</div>
+                            <div class="hist-cnt">x@(entry.Count)</div>
+                        </div>
+                    </div>
+
+                    <div class="hist-actions">
+                        <button class="btn-ha btn-play" onclick=@(() => OnRequestClick( entry ))>play_arrow</button>
+                        <button class="btn-ha btn-del"  onclick=@(() => OnDeleteClick( entry ))>delete</button>
+                    </div>
+
+                </div>
+            }
+        }
+    </div>
+
+    <div class="hist-pager">
+        <button class="pg-btn @(CurrentPage<=1?"disabled":"")" onclick=@PrevPage>chevron_left</button>
+        <label class="pg-info">@CurrentPage / @TotalPages</label>
+        <button class="pg-btn @(CurrentPage>=TotalPages?"disabled":"")" onclick=@NextPage>chevron_right</button>
+        <button class="btn-clear" onclick=@OnClearAll>clear all</button>
+    </div>
+</root>
+
+@code {
+    public RequestMenu RequestMenu { get; set; }
+
+    private TextEntry SearchEntry { get; set; }
+
+    private const int PageSize = 50;
+    private List<HistoryEntry> _filtered = new();
+    private string _sortMode = "lastRequest";
+    private string _lastSearch = "";
+    private int CurrentPage { get; set; } = 1;
+    private int TotalPages => Math.Max( 1, (int)Math.Ceiling( _filtered.Count / (double)PageSize ) );
+    private IEnumerable<HistoryEntry> PageItems => _filtered.Skip( (CurrentPage - 1) * PageSize ).Take( PageSize );
+
+    protected override void OnAfterTreeRender( bool firstTime )
+    {
+        base.OnAfterTreeRender( firstTime );
+        if ( !firstTime ) return;
+        Refresh();
+    }
+
+    public void RecordAndRefresh( string url, string title, string thumb, float duration )
+    {
+        RequestHistoryStore.Record( url, title, thumb, duration );
+        Refresh();
+    }
+
+    public void Refresh()
+    {
+        ApplyFilters();
+        StateHasChanged();
+    }
+
+    private void SetSort( string mode )
+    {
+        _sortMode = mode;
+        CurrentPage = 1;
+        ApplyFilters();
+        StateHasChanged();
+    }
+
+    private void PrevPage() { if ( CurrentPage > 1 ) { CurrentPage--; StateHasChanged(); } }
+    private void NextPage() { if ( CurrentPage < TotalPages ) { CurrentPage++; StateHasChanged(); } }
+
+    private void OnItemClick( HistoryEntry e ) => RequestMenu?.SetHistoryUrl( e.Url );
+    private void OnRequestClick( HistoryEntry e ) => RequestMenu?.RunURL( e.Url );
+
+    private void OnDeleteClick( HistoryEntry e )
+    {
+        RequestHistoryStore.RemoveById( e.Id );
+        _filtered.RemoveAll( x => x.Id == e.Id );
+        StateHasChanged();
+    }
+
+    private void OnClearAll()
+    {
+        RequestHistoryStore.ClearAll();
+        _filtered.Clear();
+        CurrentPage = 1;
+        StateHasChanged();
+    }
+
+    private void ApplyFilters()
+    {
+        var q = _lastSearch.ToLowerInvariant();
+        var all = RequestHistoryStore.GetAll();
+
+        IEnumerable<HistoryEntry> res = string.IsNullOrEmpty( q )
+            ? all
+            : all.Where( e => e.Title.ToLowerInvariant().Contains( q ) || e.Url.ToLowerInvariant().Contains( q ) );
+
+        _filtered = _sortMode switch
+        {
+            "title"    => res.OrderBy( e => e.Title ).ToList(),
+            "duration" => res.OrderByDescending( e => e.Duration ).ToList(),
+            "count"    => res.OrderByDescending( e => e.Count ).ToList(),
+            _          => res.OrderByDescending( e => e.LastRequest ).ToList()
+        };
+    }
+
+    private static string FormatTime( float seconds )
+    {
+        var t = TimeSpan.FromSeconds( seconds );
+        return t.Hours > 0
+            ? $"{t.Hours}:{t.Minutes:D2}:{t.Seconds:D2}"
+            : $"{t.Minutes}:{t.Seconds:D2}";
+    }
+
+    protected override int BuildHash()
+    {
+
+        var cur = SearchEntry?.Value ?? "";
+        if ( cur != _lastSearch )
+        {
+            _lastSearch = cur;
+            CurrentPage = 1;
+            ApplyFilters();
+        }
+
+        var first = _filtered.FirstOrDefault();
+        return HashCode.Combine( CurrentPage, _sortMode, _filtered.Count, _lastSearch, first?.Id ?? "", first?.Title ?? "" );
+    }
+}
