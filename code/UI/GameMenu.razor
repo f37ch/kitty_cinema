@@ -144,16 +144,21 @@ GameMenu {
 
                 .button {
                     background-color: transparent;
-                    align-items: flex-start;
+                    align-items: center;
                     color: #ffffff;
                     padding: 10px;
-                    justify-content: center;
+                    justify-content: space-between;
                     cursor: pointer;
                     width: 100%;
-                    flex-direction: column;
+                    flex-direction: row;
                     flex-shrink: 0;
                     background-color: rgb(59, 59, 59);
                     position: relative; 
+
+                    .text-wrapper {
+                        flex-direction: column;
+                        align-items: flex-start;
+                    }
 
                     .title {
                         font-weight: bold;
@@ -166,8 +171,7 @@ GameMenu {
 
                     .count {
                         margin-right: 1%;
-                        right: auto;
-                        position: absolute;
+                        font-size: 20px;
                         white-space: nowrap;
                     }
 
@@ -340,16 +344,17 @@ GameMenu {
 	    				{
                             @if (sv.IsHidden){continue;}
 	    					<div class="button" onclick=@(()=>Preconnect(sv))>
-	    						<div class="title">
-	    							@sv.Name
-	    						</div>
-	    						<div class="map">
-	    							@sv.Map
-	    						</div>
+                                <div class="text-wrapper"> <div class="title">
+                                        @sv.Name
+                                    </div>
+                                    <div class="map">
+                                        @sv.Map
+                                    </div>
+                                </div>
                                 <div class="count">
-	    							@sv.Members/@sv.MaxMembers
-	    						</div>
-	    					</div>
+                                    @sv.Members/@sv.MaxMembers
+                                </div>
+                            </div>
 	    				}
 	    			</div>
 	    		}
