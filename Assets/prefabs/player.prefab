@@ -2529,7 +2529,37 @@
         "NetworkOrphaned": 0,
         "NetworkTransmit": true,
         "OwnerTransfer": 1,
-        "Components": [],
+        "Components": [
+          {
+            "__type": "Sandbox.CameraComponent",
+            "__guid": "4f0c2a7e-9b1d-4c63-8e2f-5a7d3b9c1e64",
+            "__enabled": false,
+            "Flags": 0,
+            "BackgroundColor": "0,0,0,1",
+            "ClearFlags": "All",
+            "EnablePostProcessing": true,
+            "FieldOfView": 85,
+            "FovAxis": "Horizontal",
+            "IsMainCamera": true,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
+            "Orthographic": false,
+            "OrthographicHeight": 1204,
+            "PostProcessAnchor": null,
+            "Priority": 1,
+            "RenderExcludeTags": "",
+            "RenderTags": "",
+            "RenderTexture": null,
+            "TargetEye": "None",
+            "Viewport": "0,0,1,1",
+            "ZFar": 10000,
+            "ZNear": 5
+          }
+        ],
         "Children": []
       }
     ],

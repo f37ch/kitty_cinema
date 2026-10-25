@@ -28,6 +28,28 @@ public sealed class TheaterPlayer : Component
 	/// <summary>Bumped on every start, so the same taunt can be replayed.</summary>
 	[Sync] private int TauntSerial {get;set;}
 	public bool IsTaunting=>!string.IsNullOrEmpty(Taunt);
+	/// <summary>This client owned the player when it started, so it's the one this client plays as.</summary>
+	private bool StartedLocal;
+	/// <summary>
+	/// Its player left (e.g. the old host) and ownership moved to us: the object is ours now but isn't our player,
+	/// driving it would take over our camera.
+	/// </summary>
+	private bool IsOrphaned=>!IsProxy&&!StartedLocal;
+	/// <summary>The player this client plays as (not a leftover handed to us by a host change).</summary>
+	public bool IsLocalPlayer=>!IsProxy&&StartedLocal;
+	/// <summary>
+	/// The view camera, on the prefab's camera object: every player carries one, only the local player's is on,
+	/// so it goes away with its player (e.g. the old host leaving).
+	/// </summary>
+	private CameraComponent ViewCamera=>Camera?.Components.Get<CameraComponent>(FindMode.EverythingInSelf);
+	/// <summary>Drops a leftover player, it would take over the local camera and input.</summary>
+	private bool CheckOrphaned()
+	{
+		if (!IsOrphaned) return false;
+		Log.Info($"{GameObject.Name} was left behind by its player, removing it.");
+		GameObject.Destroy();
+		return true;
+	}
 	private string AppliedTaunt;
 	private int AppliedSerial=-1;
 	/// <summary>Distance of the orbit camera while taunting.</summary>
@@ -100,15 +122,8 @@ public sealed class TheaterPlayer : Component
 	}
 	protected override void OnUpdate()
 	{
+		if (CheckOrphaned()) return;
 		if (!IsProxy){
-			//!
-			var sceneCamera=Scene.Camera;
-			if (sceneCamera!=null){
-				sceneCamera.WorldPosition=Camera.WorldPosition;
-				sceneCamera.WorldRotation=Camera.WorldRotation;
-				// The camera may be replaced or reset (scene load, network snapshot): keep the player's FOV on it.
-				if (sceneCamera.FieldOfView!=Settings.Data.PlayerFov) sceneCamera.FieldOfView=Settings.Data.PlayerFov;
-			}
 			CameraRotation=Camera.WorldRotation;
 			DuckLevel=MathX.Lerp(Animator.DuckLevel,Input.Down("Duck")?1:0,Time.Delta*10.0f);
 			//chair stuff
@@ -236,8 +251,8 @@ public sealed class TheaterPlayer : Component
 				Camera.WorldPosition=cameraTrace.EndPosition;
 				Camera.LocalRotation=cameraTransform.Rotation;
 			}
-			var cam=Scene.Camera;
-			if (cam!=null){
+			var cam=ViewCamera;
+			if (cam.IsValid()){
 				if (ThirdPerson||IsTaunting){
 					if (cam.RenderExcludeTags.Has(IDHashed)){
 						cam.RenderExcludeTags.Remove(IDHashed);
@@ -257,6 +272,7 @@ public sealed class TheaterPlayer : Component
 	}
 	protected override void OnFixedUpdate()
 	{
+		if (IsOrphaned) return;
 		//check chair stuff before return
 		if (GameObject.Parent.Components.TryGet<ChairController>(out var ChairController)){
 			if (!IsProxy) {
@@ -356,20 +372,20 @@ public sealed class TheaterPlayer : Component
 	{
 		base.OnStart();
 		EyeAngles=SpawnAngles;//i dunno why setting rotation in player prefab didnt work tho...
-		if (IsProxy) return;
+		if (IsProxy){
+			// Someone else's player: its camera may arrive switched on (the old host's, after a handoff).
+			if (ViewCamera.IsValid()) ViewCamera.Enabled=false;
+			return;
+		}
+		StartedLocal=true;
 		if (Camera!=null) StartCameraTransform=Camera.Transform.Local;
 		IDHashed=GameObject.Id.GetHashCode().ToString();//for now it only needs for render exclude camera tag
 		Tags.Add(IDHashed);
-		if (Scene.Camera==null){
-			// The scene camera isn't networked, so a joining client has none: every client owns a local one.
-			var cameraObject=new GameObject(true,"Camera");
-			cameraObject.NetworkMode=NetworkMode.Never;
-			cameraObject.Tags.Add("maincamera");
-			var created=cameraObject.Components.Create<CameraComponent>();
-			created.IsMainCamera=true;
-			created.ZNear=5;
+		var view=ViewCamera;
+		if (view.IsValid()){
+			view.RenderExcludeTags.RemoveAll();
+			view.Enabled=true;
 		}
-		Scene.Camera?.RenderExcludeTags.RemoveAll();
 		Sandbox.Services.Achievements.Unlock("newbie");
 		Settings.Load();
 	}

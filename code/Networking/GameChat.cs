@@ -41,6 +41,6 @@ public static class GameChat
 
 	private static string LocalLocation()
 	{
-		return Game.ActiveScene?.GetAllComponents<TheaterPlayer>().FirstOrDefault(x=>!x.IsProxy)?.Location;
+		return Game.ActiveScene?.GetAllComponents<TheaterPlayer>().FirstOrDefault(x=>x.IsLocalPlayer)?.Location;
 	}
 }

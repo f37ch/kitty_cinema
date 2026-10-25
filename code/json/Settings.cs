@@ -66,6 +66,8 @@ public class Settings
 		// By name: the order of the mixer's channels isn't fixed.
 		SetMixer(Mixer.Default,s.SFXVolume);
 		SetMixer(Mixer.Voice,s.VoiceVolume);
+		// The hall's reverb makes voice chat sound like an echo: keep voices dry.
+		if (Mixer.Voice!=null) Mixer.Voice.Reverb=0;
 		SetMixer(FindChannel("ui"),s.InterfaceVolume);
 	}
 	private static void SetMixer(Mixer mixer,float volume)

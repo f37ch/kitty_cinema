@@ -198,7 +198,7 @@
     </div>
 </root>
 @code{
-    private TheaterPlayer Player=>Game.ActiveScene?.GetAllComponents<TheaterPlayer>().FirstOrDefault(x=>!x.IsProxy);
+    private TheaterPlayer Player=>Game.ActiveScene?.GetAllComponents<TheaterPlayer>().FirstOrDefault(x=>x.IsLocalPlayer);
     private bool Closing {get;set;}
 
     public static TauntMenu Open()

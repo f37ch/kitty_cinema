@@ -199,7 +199,7 @@ public class MediaPlayer : Component
 
 	private void UpdateLocalInside(){
 		if (!LocalPlayer.IsValid()){
-			LocalPlayer=Scene.GetAllComponents<TheaterPlayer>().FirstOrDefault(x=>!x.IsProxy);
+			LocalPlayer=Scene.GetAllComponents<TheaterPlayer>().FirstOrDefault(x=>x.IsLocalPlayer);
 		}
 		LocalInside=LocalPlayer.IsValid()&&Location!=null&&LocalPlayer.Location==Location;
 	}
