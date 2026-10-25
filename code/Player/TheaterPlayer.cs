@@ -102,11 +102,14 @@ public sealed class TheaterPlayer : Component
 	{
 		if (!IsProxy){
 			//!
-			Scene.Camera.WorldPosition=Camera.WorldPosition;
-			Scene.Camera.WorldRotation=Camera.WorldRotation;
+			var sceneCamera=Scene.Camera;
+			if (sceneCamera!=null){
+				sceneCamera.WorldPosition=Camera.WorldPosition;
+				sceneCamera.WorldRotation=Camera.WorldRotation;
+				// The camera may be replaced or reset (scene load, network snapshot): keep the player's FOV on it.
+				if (sceneCamera.FieldOfView!=Settings.Data.PlayerFov) sceneCamera.FieldOfView=Settings.Data.PlayerFov;
+			}
 			CameraRotation=Camera.WorldRotation;
-			// The camera may be replaced or reset (scene load, network snapshot): keep the player's FOV on it.
-			if (Scene.Camera.FieldOfView!=Settings.Data.PlayerFov) Scene.Camera.FieldOfView=Settings.Data.PlayerFov;
 			DuckLevel=MathX.Lerp(Animator.DuckLevel,Input.Down("Duck")?1:0,Time.Delta*10.0f);
 			//chair stuff
 			EyeAngles+=Input.AnalogLook;
@@ -357,8 +360,7 @@ public sealed class TheaterPlayer : Component
 		if (Camera!=null) StartCameraTransform=Camera.Transform.Local;
 		IDHashed=GameObject.Id.GetHashCode().ToString();//for now it only needs for render exclude camera tag
 		Tags.Add(IDHashed);
-		var cam=Scene.Camera;
-		cam.RenderExcludeTags.RemoveAll();
+		Scene.Camera?.RenderExcludeTags.RemoveAll();
 		Sandbox.Services.Achievements.Unlock("newbie");
 		Settings.Load();
 	}
