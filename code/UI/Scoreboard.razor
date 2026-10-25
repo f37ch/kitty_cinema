@@ -212,7 +212,6 @@
 </root>
 @code
 {
-	private Chat Chat;
     string GetTime( Connection c )
     {
         TimeSpan time=DateTime.UtcNow-c.ConnectionTime;
@@ -231,17 +230,16 @@
 	private void BanPlayer(Connection connection)
     {
 		if (!Rpc.Caller.IsHost){return;}
-		Chat.AddLocalText("Bans currently in dev.","info");
+		GameChat.Info("Bans currently in dev.");
 	}
 	private void ShowSteam(Connection con)
     {
 		Game.Overlay.ShowPlayer(con.SteamId);
 		//Clipboard.SetText($"https://steamcommunity.com/profiles/{con.SteamId}");
-		//Chat.AddLocalText($"Link to {con.DisplayName}'s profile was copied to your clipboard.","info");
+		//GameChat.Info($"Link to {con.DisplayName}'s profile was copied to your clipboard.");
 	}
 	protected override void OnStart()
 	{
-		Chat=Scene.Components.GetInDescendantsOrSelf<Chat>();
 	}
 	protected override void OnUpdate()
     {

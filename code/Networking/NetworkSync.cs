@@ -25,7 +25,6 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 	/// </summary>
 	[Property] public List<GameObject> SpawnPoints {get;set;}
 	//[Sync] public NetDictionary<Guid,Guid> Players {get;set;}
-	private static Chat Chat;
 	private bool PrivateLobby {get;set;}
 	//private bool LobbyNeedPassword {get;set;}
 	//private string LobbyPassword {get;set;}
@@ -68,14 +67,14 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 		var player=Connection.All.First(x=>x.Id==id);
 		var kicked=false;
 		if (Rpc.Caller.Id==player.Id){
-			Chat.AddLocalText("You can not kick yourself.","terminal",true);
+			GameChat.InfoForCaller("You can not kick yourself.","terminal");
 			return;
 		}else if(id==Connection.Local.Id){
 			Disconnect("KICKED BY HOST","link_off");
 			kicked=true;
 		}
 		if(kicked){
-			Chat.AddLocalText(player.DisplayName+" was kicked by host.","terminal");
+			GameChat.Info(player.DisplayName+" was kicked by host.","terminal");
 		}
 		Game.ActiveScene.Directory.FindByGuid(id)?.Destroy();
 	}
@@ -169,8 +168,8 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 			InitPlayer(channel);
 			await Task.DelayRealtimeSeconds(.4f);
 			if (PrivateLobby){
-				Chat.AddLocalText("#notify.friendonly","info",true);
-				Chat.AddLocalText("#notify.friendonly2","info",true);
+				GameChat.Info("#notify.friendonly");
+				GameChat.Info("#notify.friendonly2");
 			}
 		//}
 	}
@@ -205,6 +204,5 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 	protected override void OnStart()
 	{
 		base.OnStart();
-		Chat=Scene.Components.GetInDescendantsOrSelf<Chat>();
 	}
 }

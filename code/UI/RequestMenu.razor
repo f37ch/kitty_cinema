@@ -246,7 +246,6 @@
     private static readonly string[] TwitchReserved={"directory","videos","settings","search","downloads","p","jobs","login","signup","subscriptions","inventory","wallet","drops","turbo","prime"};
 
     private TextEntry UrlEntry {get;set;}
-    private Chat Chat {get;set;}
     private WebPanel WebPanel {get;set;}
     private RequestHistory HistoryPanel {get;set;}
     public MediaPlayer MediaPlayer {get;set;}
@@ -343,9 +342,6 @@
         }
         UrlEntry.AcceptsFocus=true;
         if (Direct) UrlEntry.Focus();
-        if (Game.ActiveScene.Components.TryGet<Chat>(out var chatty,FindMode.EnabledInSelfAndDescendants)){
-            Chat=chatty;
-        }
     }
     protected override void OnUpdate(){
         base.OnUpdate();
@@ -431,7 +427,7 @@
     private void Fail(string message)
     {
         if (Closing||!this.IsValid()){
-            Chat?.AddLocalText($"Failed to request video: {message}","video_settings");
+            GameChat.Info($"Failed to request video: {message}","video_settings");
         }else{
             ShowError(message);
         }

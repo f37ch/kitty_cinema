@@ -10,7 +10,6 @@ public sealed class ChairController : Component
 	[Property] public string  ChairInfo { get; set; }
 	[Property] public string  ChairChatInfo { get; set; }
 	[Sync] public NetList<ChairPlace> UsingList {get;set;}=new();
-	private Chat Chat {get; set;}
 	public InfoPopup Popup {get;set;}
 	
 	protected override void OnUpdate()
@@ -28,7 +27,7 @@ public sealed class ChairController : Component
 					User.GameObject.SetParent(GameObject,true);
 					
 					if (Connection.Local==User.Network.Owner){
-						Chat.AddLocalText(ChairChatInfo,"info");
+						GameChat.Info(ChairChatInfo);
 					}
 					UsingList.Remove(Place);
 				}
@@ -64,6 +63,5 @@ public sealed class ChairController : Component
 		Pos=new Vector3(2,0,49);
 		UsingList.Add(new (){user=default,eyepos=Pos,sitpos=new Vector3(8,0,4)});
 		Popup=Scene.Components.GetInDescendantsOrSelf<InfoPopup>();
-		Chat=Scene.Components.GetInDescendantsOrSelf<Chat>();
 	}
 }

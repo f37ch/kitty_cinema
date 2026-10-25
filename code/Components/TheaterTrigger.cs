@@ -5,10 +5,26 @@ public sealed class TheaterTrigger:Component,Component.ITriggerListener
 	private MediaPlayer MediaPlayer { get; set; }
 	[Property]private string LocationName { get; set; }
 	int iTouching;
-	void ITriggerListener.OnTriggerEnter(Collider other) 
+	/// <summary>Colliders of each player touching the trigger: a player has several, the log wants one line.</summary>
+	private readonly Dictionary<Guid,int> PlayerTouches=new();
+
+	/// <summary>Theater log: who comes in and goes out, for the others in this theater.</summary>
+	private void LogPresence(TheaterPlayer player,int change)
+	{
+		var id=player.GameObject.Id;
+		PlayerTouches.TryGetValue(id,out var count);
+		var now=Math.Max(0,count+change);
+		if (now==0) PlayerTouches.Remove(id); else PlayerTouches[id]=now;
+		if (MediaPlayer==null||player.IsProxy==false) return;
+		var name=player.GameObject.Network.Owner?.DisplayName??"Someone";
+		if (count==0&&now>0) GameChat.Theater(LocationName,$"{name} came in.");
+		else if (count>0&&now==0) GameChat.Theater(LocationName,$"{name} left.");
+	}
+	void ITriggerListener.OnTriggerEnter(Collider other)
 	{
 		iTouching++;
 		if (other.GameObject.Root.Components.TryGet<TheaterPlayer>(out var Player)){
+			LogPresence(Player,1);
 			//if (Player.Location!=LocationName){
 				Player.Location=LocationName;
 				if (MediaPlayer!=null&&!IsProxy){
@@ -38,6 +54,7 @@ public sealed class TheaterTrigger:Component,Component.ITriggerListener
 	{
 		iTouching--;
 		if (other.GameObject.Root.Components.TryGet<TheaterPlayer>(out var Player)){
+			LogPresence(Player,-1);
 			if (Player.GameObject.Network.Owner.Id==Connection.Local.Id){
 				if (MediaPlayer!=null&&!IsProxy){
 					if(MediaPlayer.PanelComponent.Components.TryGet<Queue>(out var queue)){

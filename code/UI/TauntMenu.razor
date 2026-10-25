@@ -203,7 +203,8 @@
 
     public static TauntMenu Open()
     {
-        var panel=Game.ActiveScene.GetAllComponents<ScreenPanel>().FirstOrDefault();
+        // The top screen panel: above the chat and the theater UI.
+        var panel=Game.ActiveScene.GetAllComponents<ScreenPanel>().OrderByDescending(x=>x.ZIndex).FirstOrDefault();
         if (panel==null) return null;
         return panel.Components.Get<TauntMenu>()??panel.Components.Create<TauntMenu>();
     }

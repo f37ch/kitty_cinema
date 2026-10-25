@@ -1,8 +1,14 @@
 @using Sandbox.UI;
 @using Sandbox.Network;
+@using System.Linq;
 @inherits PanelComponent;
 @implements Component.INetworkListener;
 <style>
+@@keyframes chat-picker-in {
+	0% { opacity: 0; transform: translateY(10px); }
+	100% { opacity: 1; transform: translateY(0px); }
+}
+
 Chat
 {
 	position: absolute;
@@ -10,8 +16,6 @@ Chat
 	left: 20px;
 	bottom: 200px;
 	width: 600px;
-	justify-content: center;
-	align-items: center;
 	font-weight: bold;
 	border-radius: 20px;
 	flex-direction: column;
@@ -31,22 +35,27 @@ Chat
 		overflow: scroll;
 		gap: 5px;
 
+		// A dark capsule around each message, as wide as its text.
 		.chat_entry
 		{
-			//background-color: #222d;
-			padding: 2px;
-			gap: 10px;
-			text-shadow: 2px 2px 2px #000a;
-			align-items: center;
+			align-self: flex-start;
+			max-width: 100%;
+			padding: 4px 14px 4px 4px;
+			gap: 8px;
+			border-radius: 20px;
+			background-color: #000000a6;
+			text-shadow: 1px 1px 2px #000c;
+			align-items: flex-start;
 			flex-shrink: 0;
 
 			&.fade {
 				transition: opacity 1s ease;
-          		opacity: 0;
-        	}
+				opacity: 0;
+			}
 
 			.avatar
 			{
+				flex-shrink: 0;
 				width: 32px;
 				height: 32px;
 				background-position: center;
@@ -56,9 +65,11 @@ Chat
 
 			.author
 			{
-				color: #009e54ce;
 				white-space: nowrap;
 				flex-shrink: 0;
+				min-height: 32px;
+				padding-left: 6px;
+				align-items: center;
 				.terminal{
 					color: rgb(56, 119, 105);
 					font-size: 24px;
@@ -78,7 +89,15 @@ Chat
 
 			.message
 			{
+				flex-shrink: 1;
+				min-height: 32px;
+				flex-direction: row;
+				flex-wrap: wrap;
+				align-items: center;
 				color: #fff;
+				.name { color: #00d7bb; white-space: nowrap; margin-right: 6px; }
+				.word { white-space: pre; }
+				.emoji { flex-shrink: 0; width: 24px; height: 24px; margin: 0px 1px; }
 			}
 		}
 	}
@@ -86,56 +105,110 @@ Chat
 	.input
 	{
 		flex-shrink: 0;
+		flex-direction: row;
+		align-items: center;
 		color: white;
 		.placeholder {
-       		opacity: 0;
-      	}
+			opacity: 0;
+		}
+		.te {
+			flex-grow: 1;
+		}
 		.togglesmiles{
-			position: absolute;
-			right: 0;
-			font-size: 34px;
-			top:auto;
-			bottom: auto;
-			align-items: center;
-			justify-content: center;
+			flex-shrink: 0;
+			width: 34px;
+			height: 34px;
+			margin: 0px 6px;
 			transform: scale(0);
 			transition: all 0.2s ease-in-out;
-			
+			&:hover { transform: scale(1.2); cursor: pointer; }
 		}
 	}
 
-	.emoji-picker {
+	.emoji-picker
+	{
 		flex-shrink: 0;
-		transition: all .2s ease-out;
-		background-color: rgba(46, 46, 46, 0.925);
-		width: 100%;
+		height: 340px;
+		flex-direction: column;
 		border-radius: 14px;
-    	
-		overflow: scroll;
-		flex-wrap: wrap;
-   	}
-   	.emoji-picker button {
-		
-   	    font-size: 30px;
-   	    cursor: pointer;
-   	    border: none;
-   	    background-color: transparent;
-   	    padding: 0 5px;
-		transition: all 0.2s ease-in-out;
-		transform: scale(1);
-		&:hover{
-			transition: all 0.2s ease-in-out;
-			transform: scale(1.2);
+		border: 1px solid #ffffff14;
+		background-color: #0d0e10f2;
+		overflow: hidden;
+		animation: chat-picker-in 0.15s ease-out;
+		font-weight: normal;
+
+		.ep-search {
+			flex-shrink: 0;
+			flex-direction: row;
+			align-items: center;
+			gap: 6px;
+			margin: 8px 8px 4px 8px;
+			height: 32px;
+			padding: 0px 10px;
+			border-radius: 8px;
+			background-color: #ffffff0d;
+			i { font-family: Material Icons; font-size: 18px; color: #ffffff55; }
+			TextEntry { flex-grow: 1; height: 100%; align-items: center; font-size: 14px; color: #f0f0f0; .placeholder { opacity: 0.4; } }
 		}
-   	}
-	
+
+		.ep-tabs {
+			flex-shrink: 0;
+			flex-direction: row;
+			gap: 2px;
+			padding: 4px 8px;
+			border-bottom: 1px solid #ffffff12;
+			.ep-tab {
+				width: 40px;
+				height: 34px;
+				justify-content: center;
+				align-items: center;
+				border-radius: 8px;
+				opacity: 0.55;
+				transition: all 0.12s ease;
+				.emoji { width: 22px; height: 22px; }
+				i { font-family: Material Icons; font-size: 20px; color: #e8e8e8; }
+				&:hover { opacity: 1; background-color: #ffffff12; cursor: pointer; }
+				&.active { opacity: 1; background-color: #00d7bb26; }
+			}
+		}
+
+		.ep-title {
+			flex-shrink: 0;
+			padding: 6px 12px 2px 12px;
+			font-size: 12px;
+			letter-spacing: 1px;
+			color: #ffffff66;
+		}
+
+		.ep-grid {
+			flex-grow: 1;
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-content: flex-start;
+			padding: 4px 8px 8px 8px;
+			overflow: scroll;
+			.ep-item {
+				width: 40px;
+				height: 40px;
+				justify-content: center;
+				align-items: center;
+				border-radius: 8px;
+				transition: background-color 0.1s ease;
+				.emoji { width: 28px; height: 28px; transition: transform 0.12s ease; }
+				&:hover { background-color: #ffffff14; cursor: pointer; .emoji { transform: scale(1.2); } }
+			}
+		}
+
+		.ep-empty { flex-grow: 1; justify-content: center; align-items: center; color: #ffffff55; font-size: 14px; }
+	}
+
 	&.open
 	{
 		.chat_entry
 		{
 			&.fade {
-        	  opacity: 1;
-        	}
+				opacity: 1;
+			}
 		}
 		opacity: 1;
 		pointer-events: all;
@@ -143,115 +216,231 @@ Chat
 		{
 			border-radius: 14px;
 			flex-shrink: 0;
-			
 			background-color: #009b8662;
 			.placeholder {
-       			opacity: .5;
-      		}
+				opacity: .5;
+			}
 			.te{
 				align-items: flex-start;
 				white-space: normal;
 			}
 			.togglesmiles{
 				transform: scale(1);
-				&:hover{
-				transition: all 0.2s ease-in-out;
-				transform: scale(1.2);
-			}
 			}
 		}
-		
-		
 	}
 }
 </style>
-<root>
+<root class="@(IsOpen ? "open" : "")">
 	<div class="output">
 		@foreach (var entry in Entries)
 		{
-            <div class="chat_entry @(entry.timeSinceAdded>14f ? "fade" : "")">
-                @if (entry.steamid>0)
-                {
-                    <div class="avatar" style="background-image: url( avatar:@entry.steamid)"></div>
-                }
-				<div class="author">
-					@if (entry.icon==null) 
+			<div class="chat_entry @(entry.timeSinceAdded>14f ? "fade" : "")">
+				@if (entry.steamid>0)
+				{
+					<div class="avatar" style="background-image: url( avatar:@entry.steamid)"></div>
+				}
+				@if (entry.icon!=null)
+				{
+					<div class="author"><i class="@entry.icon">@entry.icon</i></div>
+				}
+				<div class="message">
+					@if (entry.icon==null)
 					{
-						@entry.author
-					}else{
-						<i class="@entry.icon">@entry.icon</i>
+						@* The name sits on the message's first line, so both share one baseline. *@
+						<label class="name">@($"{entry.author}:")</label>
+					}
+					@foreach (var token in entry.tokens)
+					{
+						if (token.Emoji!=null)
+						{
+							<Image class="emoji" Texture=@EmojiCatalog.TextureOf(token.Emoji)></Image>
+						}
+						else
+						{
+							<label class="word">@token.Text</label>
+						}
 					}
 				</div>
-				<div class="message">@entry.message</div>
 			</div>
 		}
 	</div>
-	<div class="emoji-picker" style="opacity: @(ShowEmojiPicker ? "1;" : "0;") height: @(ShowEmojiPicker ? "300;" : "0;") padding: @(ShowEmojiPicker ? "5px;" : "0px;")">
-		@foreach (var emoji in EmojiList)
-        {
-    	<button @onclick="@(()=>InsertEmoji(emoji))">@emoji</button>
-		}
-    </div>
+	@if (IsOpen && ShowEmojiPicker)
+	{
+		<div class="emoji-picker">
+			<div class="ep-search">
+				<i>search</i>
+				<TextEntry @ref="SearchBox" Placeholder="search emoji..."></TextEntry>
+			</div>
+			<div class="ep-tabs">
+				<div class="ep-tab @(PickerCategory==RecentCategory ? "active" : "")" @onclick=@(()=>SelectCategory(RecentCategory))><i>schedule</i></div>
+				@for (int i=0;i<EmojiCatalog.Categories.Count;i++)
+				{
+					var index=i;
+					var icon=EmojiCatalog.Find(EmojiCatalog.Categories[i].Icon);
+					<div class="ep-tab @(PickerCategory==index ? "active" : "")" @onclick=@(()=>SelectCategory(index))>
+						@if (icon!=null)
+						{
+							<Image class="emoji" Texture=@EmojiCatalog.TextureOf(icon)></Image>
+						}
+					</div>
+				}
+			</div>
+			<label class="ep-title">@PickerTitle</label>
+			@if (PickerItems.Count==0)
+			{
+				<div class="ep-empty">@(string.IsNullOrEmpty(SearchText) ? "Emoji you use will show up here" : "Nothing found")</div>
+			}
+			else
+			{
+				<div class="ep-grid">
+					@foreach (var emoji in PickerItems)
+					{
+						<div class="ep-item" @onclick=@(()=>InsertEmoji(emoji))>
+							<Image class="emoji" Texture=@EmojiCatalog.TextureOf(emoji)></Image>
+						</div>
+					}
+				</div>
+			}
+		</div>
+	}
 	<div class="input">
-		<TextEntry class="te" @ref="InputBox" onsubmit="@ChatFinished" AllowEmojiReplace=@(true)></TextEntry><!--placeholder="type your msg..."-->
-		<button class="togglesmiles" onclick=@ToggleEmojiPicker>😀</button>
+		<TextEntry class="te" @ref="InputBox" onsubmit="@ChatFinished" AllowEmojiReplace=@(true)></TextEntry>
+		@if (SmileIcon!=null)
+		{
+			<Image class="togglesmiles emoji" Texture=@EmojiCatalog.TextureOf(SmileIcon) @onclick=@ToggleEmojiPicker></Image>
+		}
 	</div>
-	
 </root>
 
 @code
 {
-	private List<string> EmojiList = new List<string> {
-    "😀", "😃", "😄", "😁", "😆", "😅", "🤣", "😂", "🙂", "🙃",
-    "😉", "😊", "😇", "😍", "😘", "😗", "😙", "😚", "😋", "😛",
-    "😜", "😝", "🤑", "🤗", "🤭", "🤫", "🤔", "🤐", "🤨", "😐",
-    "😑", "😶", "😏", "😒", "🙄", "😬", "🤥", "😌", "😔", "😪",
-    "🤤", "😴", "😷", "🤒", "🤕", "🤢", "🤮", "🤧", "🥵", "🥶",
-    "🥴", "😵", "🤯", "🤠", "🥳", "🥸", "😎", "🤓", "🧐", "😕",
-    "😟", "🙁", "🙂", "🙃", "😮", "😯", "😲", "😳", "🥺", "😦",
-    "😧", "😨", "😰", "😥", "😢", "😭", "😱", "😖", "😣", "😞",
-    "😓", "😩", "😫", "🥱", "😤", "😡", "😠", "🤬", "😈", "👿",
-    "💀", "💩", "🤡", "👹", "👺", "👻", "👽", "👾", "🤖", "😺",
-    "😸", "😹", "😻", "😼", "😽", "😾", "😿", "🙀",
-    "👋", "🤚", "🖐️", "✋", "🖖",
-    "👍", "👎", "👊", "✊", "🤛", "🤜", "👏", "🙌",
-	"❤️", "💖", "💗", "💞", "💘", "💝", "💓", "💕", "💟", "🤍",
-	};
-    private TextEntry InputBox;
-    private record Entry(ulong steamid,string icon,string author,string message,RealTimeSince timeSinceAdded);
-    private List<Entry> Entries = new();
+	private const int RecentCategory=-1;
+	private const int RecentMax=32;
+	private const string RecentCookie="chat.emoji.recent";
+	private const int SearchLimit=160;
+
+	/// <summary>The chat input is open: Escape and clicks belong to the chat.</summary>
+	public static bool IsTyping {get;private set;}
+
+	private TextEntry InputBox;
+	private TextEntry SearchBox {get;set;}
+	private record Entry(ulong steamid,string icon,string author,string message,RealTimeSince timeSinceAdded,List<EmojiCatalog.Token> tokens);
+	private List<Entry> Entries = new();
 	private float LastCheck {get; set;}=0;
-	private bool ShowEmojiPicker = false;
+	private bool IsOpen {get;set;}
+	private bool ShowEmojiPicker {get;set;}
+	private int PickerCategory {get;set;}=0;
+	private string SearchText {get;set;}="";
+	private List<EmojiCatalog.Emoji> PickerItems {get;set;}=new();
+	private EmojiCatalog.Emoji SmileIcon=>EmojiCatalog.Find("\U0001F600");
+	private string PickerTitle=>!string.IsNullOrEmpty(SearchText)?"SEARCH":PickerCategory==RecentCategory?"RECENT":EmojiCatalog.Categories.ElementAtOrDefault(PickerCategory)?.Name.ToUpperInvariant()??"";
+
 	private void ToggleEmojiPicker()
 	{
-	    ShowEmojiPicker=!ShowEmojiPicker;
+		ShowEmojiPicker=!ShowEmojiPicker;
+		if (ShowEmojiPicker){
+			SearchText="";
+			SelectCategory(Recent().Count>0?RecentCategory:0);
+		}
+		InputBox?.Focus();
 	}
-	private void InsertEmoji(string emoji)
+
+	private void SelectCategory(int category)
 	{
-		//var cursorPosition = InputBox.CaretPosition;
-    	//var text = InputBox.Text;
-    	//var newText = text.Insert(cursorPosition,emoji);
-		//InputBox.CaretPosition += emoji.Length;
-		InputBox.Text += emoji;
+		PickerCategory=category;
+		if (SearchBox!=null) SearchBox.Value="";
+		SearchText="";
+		RefreshPicker();
 	}
+
+	private void RefreshPicker()
+	{
+		if (!string.IsNullOrEmpty(SearchText)) PickerItems=EmojiCatalog.Search(SearchText).Take(SearchLimit).ToList();
+		else if (PickerCategory==RecentCategory) PickerItems=Recent().Select(EmojiCatalog.Find).Where(x=>x!=null).ToList();
+		else PickerItems=EmojiCatalog.InCategory(PickerCategory).ToList();
+		StateHasChanged();
+	}
+
+	private static List<string> Recent()=>Game.Cookies.Get(RecentCookie,new List<string>())??new List<string>();
+
+	/// <summary>Where the caret was while the input had focus: clicking the picker takes the focus away.</summary>
+	private int LastCaret {get;set;}
+
+	private void InsertEmoji(EmojiCatalog.Emoji emoji)
+	{
+		// The caret counts visible characters (an emoji is one), the string counts UTF-16 chars.
+		var text=InputBox.Text??"";
+		var info=new System.Globalization.StringInfo(text);
+		var caret=Math.Clamp(LastCaret,0,info.LengthInTextElements);
+		var split=caret>=info.LengthInTextElements?text.Length:info.SubstringByTextElements(0,caret).Length;
+		InputBox.Text=text.Insert(split,emoji.Unicode);
+		LastCaret=caret+1;
+		var recent=Recent();
+		recent.Remove(emoji.Unicode);
+		recent.Insert(0,emoji.Unicode);
+		if (recent.Count>RecentMax) recent.RemoveRange(RecentMax,recent.Count-RecentMax);
+		Game.Cookies.Set(RecentCookie,recent);
+		// The click took focus from the input: give it back so the player keeps typing.
+		InputBox.Focus();
+		InputBox.CaretPosition=LastCaret;
+	}
+
 	protected override void OnStart()
-    {
+	{
 		base.OnStart();
 		AddLocalText("#notify.welcome","terminal");
 		AddLocalText("#notify.tpinfo","info");
 		AddLocalText("#notify.cominfo","info");
 	}
-    protected override void OnUpdate()
-    {
-        if (InputBox is null)
-            return;
-		
-        Panel.AcceptsFocus = false;
 
-        if ( Input.Pressed( "chat" ) )
-        {
-            InputBox.Focus();
-        }
+	private void Open()
+	{
+		IsOpen=true;
+		InputBox.Focus();
+		StateHasChanged();
+	}
+
+	private void Close()
+	{
+		IsOpen=false;
+		ShowEmojiPicker=false;
+		InputBox.Value="";
+		InputBox.Blur();
+		StateHasChanged();
+	}
+
+	protected override void OnUpdate()
+	{
+		if (InputBox is null)
+			return;
+
+		Panel.AcceptsFocus = false;
+
+		if (!IsOpen&&Input.Pressed("chat"))
+		{
+			Open();
+		}
+		else if (IsOpen)
+		{
+			if (Input.EscapePressed){
+				Input.EscapePressed=false;
+				Close();
+			}
+			// A click inside the chat (picker tabs, grid, messages) takes the focus: give it back to the input.
+			// Only a click outside closes the chat.
+			else if (!InputBox.HasFocus&&(SearchBox==null||!SearchBox.HasFocus)){
+				if (Panel.HasHovered) InputBox.Focus();
+				else Close();
+			}
+		}
+		IsTyping=IsOpen;
+		if (IsOpen&&InputBox.HasFocus) LastCaret=InputBox.CaretPosition;
+
+		if (ShowEmojiPicker&&SearchBox!=null&&(SearchBox.Value??"")!=SearchText){
+			SearchText=SearchBox.Value??"";
+			RefreshPicker();
+		}
 
 		if (Entries.Count>150)
 		{
@@ -260,54 +449,62 @@ Chat
 		}
 
 		if (LastCheck<Time.Now)
-        {
+		{
 			LastCheck=Time.Now+5;
-            StateHasChanged();
-        }
-        SetClass("open",InputBox.HasFocus);
-		if (!InputBox.HasFocus){
-			InputBox.Value="";
-			ShowEmojiPicker=false;
+			StateHasChanged();
 		}
-    }
+	}
 
-    void ChatFinished()
-    {
-        var text=InputBox.Text;
-        InputBox.Text="";
-        if (string.IsNullOrWhiteSpace(text)) return;
+	protected override void OnDisabled()
+	{
+		IsTyping=false;
+		base.OnDisabled();
+	}
+
+	void ChatFinished()
+	{
+		var text=InputBox.Text;
+		InputBox.Text="";
+		Close();
+		if (string.IsNullOrWhiteSpace(text)) return;
 		Sandbox.Services.Achievements.Unlock("ssome");
-        AddText(text);
-    }
-	public void AddLocalText(string message, string icon, bool fproxy=false)
-    {
-		if (fproxy&&Rpc.Caller!=Connection.Local)return;
-        message=message.Truncate(300);
-        if (string.IsNullOrWhiteSpace(message)) return;
-        Entries.Add(new Entry(0,icon,null,message,0));
-        StateHasChanged();
-    }
-	
-    [Rpc.Broadcast]
-    public void AddText( string message )
-    {
-        message=message.Truncate(300);
-        if (string.IsNullOrWhiteSpace(message)) return;
-        var author=Rpc.Caller.DisplayName;
-        var steamid=Rpc.Caller.SteamId;
-		Log.Info($"{author}: {message}");
-        Entries.Add(new Entry(steamid,null,author,message,0));
+		AddText(text);
+	}
+
+	private void AddEntry(ulong steamid,string icon,string author,string message)
+	{
+		// "#key" notices are localized before they are split into words.
+		var text=message.StartsWith("#")?Language.GetPhrase(message[1..]):message;
+		Entries.Add(new Entry(steamid,icon,author,message,0,EmojiCatalog.Tokenize(text)));
 		StateHasChanged();
 	}
 
-    [Rpc.Broadcast(NetFlags.HostOnly)]
-    public void AddSystemText(string message, string icon)
-    {
-        message=message.Truncate(300);
-        if (string.IsNullOrWhiteSpace(message)) return;
-        Entries.Add(new Entry(0,icon,null,message,0));
-        StateHasChanged();
-    }
+	public void AddLocalText(string message, string icon, bool fproxy=false)
+	{
+		if (fproxy&&Rpc.Caller!=Connection.Local)return;
+		message=message.Truncate(300);
+		if (string.IsNullOrWhiteSpace(message)) return;
+		AddEntry(0,icon,null,message);
+	}
+
+	[Rpc.Broadcast]
+	public void AddText( string message )
+	{
+		message=message.Truncate(300);
+		if (string.IsNullOrWhiteSpace(message)) return;
+		var author=Rpc.Caller.DisplayName;
+		var steamid=Rpc.Caller.SteamId;
+		Log.Info($"{author}: {message}");
+		AddEntry(steamid,null,author,message);
+	}
+
+	[Rpc.Broadcast(NetFlags.HostOnly)]
+	public void AddSystemText(string message, string icon)
+	{
+		message=message.Truncate(300);
+		if (string.IsNullOrWhiteSpace(message)) return;
+		AddEntry(0,icon,null,message);
+	}
 
 	void Component.INetworkListener.OnConnected(Connection channel)
 	{
@@ -319,5 +516,10 @@ Chat
 	{
 		if (IsProxy) return;
 		AddSystemText($"{channel.DisplayName} has left the game","terminal");
+	}
+
+	protected override int BuildHash()
+	{
+		return HashCode.Combine(IsOpen,ShowEmojiPicker,PickerCategory,SearchText,PickerItems.Count,Entries.Count,(int)(Time.Now/5));
 	}
 }

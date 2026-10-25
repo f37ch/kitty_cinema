@@ -135,7 +135,7 @@ public sealed class TheaterPlayer : Component
 						TimeSinceSpray=0;
 					}
 				}else{
-					Scene.Components.GetInDescendantsOrSelf<Chat>().AddLocalText("Wait atleast 10 seconds before applying next spray.","info",true);
+					GameChat.Info("Wait atleast 10 seconds before applying next spray.");
 				}
 			}
 			CheckTauntEnd();

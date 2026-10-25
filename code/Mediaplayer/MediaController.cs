@@ -53,21 +53,13 @@ public class MediaController:Component
 	}
 	public static void ChatMsgLocal(MediaPlayer MediaPlayer,string msg)//local msg
 	{
-		if (Game.ActiveScene.Components.TryGet<Chat>(out var Chat,FindMode.EnabledInSelfAndDescendants)){
-			Chat.AddLocalText(msg,"video_settings",true);
-		}
+		GameChat.Info(msg,"video_settings");
 	}
-	[Rpc.Broadcast(NetFlags.HostOnly)]//msg for all in theater
+	/// <summary>Host: a theater log line for everyone in that theater.</summary>
 	public static void ChatMsg(MediaPlayer MediaPlayer,string msg)
 	{
 		if (!MediaPlayer.IsValid()) return;
-		if (Game.ActiveScene.Components.TryGet<Chat>(out var Chat,FindMode.EnabledInSelfAndDescendants)){
-			var da=Game.ActiveScene.GetAllComponents<TheaterPlayer>().FirstOrDefault(x=>!x.IsProxy);
-			if (da==null) return;
-			if (da.Location==MediaPlayer.Location){
-				Chat.AddLocalText(msg,"video_settings");
-			}
-		}
+		GameChat.TheaterBroadcast(MediaPlayer.Location,msg);
 	}
 	/// <summary>Local: the volume is per player, the page reloads at the current time with it.</summary>
     public static void SetVolume(Guid playerid,float volume)

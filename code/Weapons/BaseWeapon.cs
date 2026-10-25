@@ -16,7 +16,6 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 	public bool Throwed;
 	private bool Spilled;
 	public InfoPopup Popup {get;set;}
-	private Chat Chat {get;set;}
 	private Vector3 SpawnPosition {get;set;}
 	/// <summary>
 	/// Follows the holder's hand. Not parented to the bone: a child would inherit the holder's tag, which their
@@ -78,7 +77,7 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 		if (Throwed) return;
 		if (Scene.Directory.FindByGuid(Userid).Components.TryGet<TheaterPlayer>(out var Player)){
 			if (Player.HoldingWeapon!=default){
-				Chat.AddLocalText("#notify.dropweaponFirst","info",true);
+				GameChat.InfoForCaller("#notify.dropweaponFirst");
 				return;
 			}
 			Holder=Userid;
@@ -89,7 +88,7 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 			GameObject.Network.Interpolation=false;
 			GameObject.Transform.ClearInterpolation();
 			Player.HoldingWeapon=GameObject.Id;
-			Chat.AddLocalText(PickupInfoChat,"info",true);
+			GameChat.InfoForCaller(PickupInfoChat);
 		}
 	}
 	[Rpc.Broadcast]
@@ -116,7 +115,6 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 		//if (Particle!=null){Particle.Enabled=false;}
 		WorldScale =WeaponScale;
 		Popup=Scene.Components.GetInDescendantsOrSelf<InfoPopup>();
-		Chat=Scene.Components.GetInDescendantsOrSelf<Chat>();
 		SpawnPosition=GameObject.WorldPosition;
 	}
 }

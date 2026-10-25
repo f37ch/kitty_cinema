@@ -83,16 +83,15 @@
     </div>
 </root>
 @code{
-    private Chat Chat;
 
     void VRSettings(){
-        Chat.AddLocalText("VR Settings currently in dev.","info");
+        GameChat.Info("VR Settings currently in dev.");
     }
     void PMEditor(){
-        Chat.AddLocalText("PM Editor currently in dev.","info");
+        GameChat.Info("PM Editor currently in dev.");
     }
     void AdminMenu(){
-        Chat.AddLocalText("Admin menu currently in dev.","info");
+        GameChat.Info("Admin menu currently in dev.");
     }
     void TauntMenu(){
         Sandbox.UI.TauntMenu.Open();
@@ -114,7 +113,6 @@
     }
     protected override void OnStart()
     {
-        Chat=Scene.Components.GetInDescendantsOrSelf<Chat>();
     }
 
 

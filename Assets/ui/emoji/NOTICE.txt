@@ -1,0 +1,10 @@
+Twemoji
+  Emoji graphics: Copyright 2019 Twitter, Inc and other contributors,
+  https://github.com/jdecked/twemoji
+  Licensed under CC-BY 4.0 (https://creativecommons.org/licenses/by/4.0/) — see CC-BY-4.0.txt.
+  Images were repacked into a texture atlas (single-codepoint emoji and flags).
+
+emoji-datasource
+  Emoji metadata and sprite sheet layout: Copyright (c) 2013 Cal Henderson,
+  https://github.com/iamcal/emoji-data
+  Licensed under the MIT License — see emoji-datasource-MIT.txt.
