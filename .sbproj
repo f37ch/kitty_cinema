@@ -32,6 +32,10 @@
       "Gamepad": true
     },
     "LaunchMode": "Normal",
-    "StartupScene": "scenes/init.scene"
+    "StartupScene": "scenes/init.scene",
+    "RecommendedMinPlayers": 1,
+    "RecommendedMaxPlayers": 64,
+    "Coop": false,
+    "Versus": false
   }
 }

@@ -1,0 +1,464 @@
+@using Sandbox.UI
+@using System
+@using System.Linq
+@using System.Threading.Tasks
+
+@inherits PanelComponent
+<style>
+    @@keyframes spray-window-in {
+        0% { opacity: 0; transform: scale(0.94); }
+        100% { opacity: 1; transform: scale(1); }
+    }
+    @@keyframes spray-tile-in {
+        0% { opacity: 0; transform: scale(0.85); }
+        100% { opacity: 1; transform: scale(1); }
+    }
+
+    SprayMenu {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        background-color: #00000088;
+        backdrop-filter: blur(6px);
+        pointer-events: all;
+        font-family: Poppins;
+        color: #e8e8e8;
+        transition: opacity 0.15s ease;
+
+        &.closing { opacity: 0; pointer-events: none; }
+    }
+
+    .sm-window {
+        width: 960px;
+        max-height: 88%;
+        flex-direction: column;
+        border-radius: 16px;
+        border: 1px solid #ffffff14;
+        background-color: #0d0e10f5;
+        box-shadow: 0px 16px 60px #000000cc;
+        overflow: hidden;
+        animation: spray-window-in 0.2s ease-out;
+    }
+
+    .sm-header {
+        flex-shrink: 0;
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 20px;
+        font-family: BerlinSansFBDemi;
+        font-size: 26px;
+        letter-spacing: 2px;
+        color: #00d7bb;
+        background-color: #00d7bb14;
+        border-bottom: 1px solid #ffffff0f;
+        i { font-size: 30px; }
+        .sm-close {
+            margin-left: auto;
+            width: 40px;
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            font-size: 26px;
+            color: #cfcfcf;
+            transition: all 0.1s ease;
+            &:hover { background-color: #ff4d5e33; color: #ff6b6b; cursor: pointer; }
+        }
+    }
+
+    .sm-top {
+        flex-shrink: 0;
+        flex-direction: row;
+        gap: 20px;
+        padding: 20px;
+        border-bottom: 1px solid #ffffff0a;
+    }
+
+    .sm-preview {
+        flex-shrink: 0;
+        width: 220px;
+        height: 220px;
+        border-radius: 12px;
+        border: 2px solid #00d7bb66;
+        background-color: #1b1d21;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        justify-content: flex-end;
+        align-items: flex-start;
+        .tag {
+            margin: 8px;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #0b0c0e;
+            background-color: #00d7bb;
+        }
+    }
+
+    .sm-side {
+        flex-grow: 1;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .sm-label {
+        font-size: 14px;
+        letter-spacing: 1px;
+        color: #ffffff66;
+    }
+
+    .sm-entry {
+        flex-direction: row;
+        gap: 10px;
+        height: 48px;
+    }
+
+    .sm-url {
+        flex-grow: 1;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        padding: 0 12px;
+        border-radius: 10px;
+        border: 1px solid #ffffff1f;
+        background-color: #0b0c0e;
+        i { font-size: 20px; color: #ffffff55; }
+        TextEntry {
+            flex-grow: 1;
+            height: 100%;
+            align-items: center;
+            font-size: 16px;
+            color: #f0f0f0;
+            background-color: transparent;
+            white-space: nowrap;
+            overflow: hidden;
+            .placeholder { color: #ffffff40; }
+        }
+    }
+
+    .sm-apply {
+        flex-shrink: 0;
+        flex-direction: row;
+        align-items: center;
+        gap: 6px;
+        padding: 0 20px;
+        border-radius: 10px;
+        font-family: BerlinSansFBDemi;
+        font-size: 17px;
+        color: #0b0c0e;
+        background-color: #00d7bb;
+        transition: background-color 0.12s ease;
+        i { font-size: 20px; }
+        &:hover { background-color: #3cf0d6; cursor: pointer; }
+        &.busy { background-color: #00d7bb88; pointer-events: none; }
+    }
+
+    .sm-status {
+        flex-direction: row;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        color: #ffffff80;
+        i { font-size: 18px; }
+        &.error { color: #ff8a8a; }
+        &.ok { color: #00d7bb; }
+    }
+
+    .sm-key {
+        padding: 0px 8px;
+        border-radius: 5px;
+        font-family: BerlinSansFBDemi;
+        color: #0b0c0e;
+        background-color: #e8e8e8;
+    }
+
+    .sm-history-head {
+        flex-shrink: 0;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 20px 6px 20px;
+        .count {
+            padding: 1px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            color: #00d7bb;
+            background-color: #00d7bb22;
+        }
+        .sm-clear {
+            margin-left: auto;
+            flex-direction: row;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #ff6b6bcc;
+            border: 1px solid #ff6b6b44;
+            i { font-size: 15px; }
+            &:hover { color: #ff6b6b; background-color: #ff6b6b1a; cursor: pointer; }
+            &.confirm { color: white; background-color: #e5303a; border-color: #e5303a; }
+        }
+    }
+
+    .sm-grid {
+        flex-grow: 1;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        gap: 12px;
+        padding: 10px 20px 20px 20px;
+        overflow: scroll;
+    }
+
+    .sm-tile {
+        position: relative;
+        flex-shrink: 0;
+        width: 140px;
+        height: 140px;
+        border-radius: 10px;
+        border: 2px solid #ffffff12;
+        background-color: #1b1d21;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        animation: spray-tile-in 0.25s ease-out;
+        transition: all 0.12s ease;
+        &:hover {
+            border-color: #00d7bb88;
+            transform: scale(1.04);
+            cursor: pointer;
+            .sm-remove { opacity: 1; }
+        }
+        &.current { border-color: #00d7bb; }
+        .sm-current {
+            position: absolute;
+            left: 6px;
+            bottom: 6px;
+            padding: 1px 6px;
+            border-radius: 5px;
+            font-size: 11px;
+            color: #0b0c0e;
+            background-color: #00d7bb;
+        }
+        .sm-remove {
+            position: absolute;
+            right: 6px;
+            top: 6px;
+            width: 26px;
+            height: 26px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 6px;
+            font-size: 16px;
+            color: white;
+            background-color: #000000aa;
+            opacity: 0;
+            transition: all 0.12s ease;
+            &:hover { background-color: #e5303a; }
+        }
+    }
+
+    .sm-empty {
+        flex-grow: 1;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 30px;
+        font-size: 15px;
+        color: #ffffff40;
+        i { font-size: 44px; }
+    }
+</style>
+<root class="@(Closing ? "closing" : "")">
+    <div class="sm-window">
+        <div class="sm-header">
+            <i>format_paint</i>
+            <label>SPRAY</label>
+            <button class="sm-close" @onclick=@Close><i>close</i></button>
+        </div>
+
+        <div class="sm-top">
+            <div class="sm-preview" style="background-image: url(@Spray.CurrentImage)">
+                <label class="tag">current</label>
+            </div>
+            <div class="sm-side">
+                <label class="sm-label">IMAGE LINK</label>
+                <div class="sm-entry">
+                    <div class="sm-url">
+                        <i>link</i>
+                        <TextEntry @ref="UrlEntry" Placeholder="Paste a direct link to an image or GIF" onsubmit=@(()=>_=Apply(UrlEntry.Value))></TextEntry>
+                    </div>
+                    <button class="sm-apply @(Busy ? "busy" : "")" @onclick=@(()=>_=Apply(UrlEntry.Value))>
+                        <i>@(Busy ? "hourglass_top" : "check")</i>
+                        <label>APPLY</label>
+                    </button>
+                </div>
+                @if (Error != null)
+                {
+                    <div class="sm-status error"><i>error_outline</i><label>@Error</label></div>
+                }
+                else if (Applied)
+                {
+                    <div class="sm-status ok"><i>check_circle</i><label>Spray updated</label></div>
+                }
+                <div class="sm-status"><i>info_outline</i><label>Press</label><label class="sm-key">G</label><label>to spray it on a wall or floor</label></div>
+            </div>
+        </div>
+
+        <div class="sm-history-head">
+            <label class="sm-label">RECENT SPRAYS</label>
+            <label class="count">@History.Count</label>
+            @if (History.Count > 0)
+            {
+                <button class="sm-clear @(ConfirmClear ? "confirm" : "")" @onclick=@ClearAll><i>delete_sweep</i><label>@(ConfirmClear ? "sure?" : "clear")</label></button>
+            }
+        </div>
+
+        @if (History.Count == 0)
+        {
+            <div class="sm-empty">
+                <i>photo_library</i>
+                <label>Sprays you apply will show up here</label>
+            </div>
+        }
+        else
+        {
+            <div class="sm-grid">
+                @foreach (var url in History)
+                {
+                    var current = url == Spray.CurrentImage;
+                    <div @key="@url" class="sm-tile @(current ? "current" : "")" style="background-image: url(@url)" @onclick=@(()=>_=Apply(url))>
+                        @if (current)
+                        {
+                            <label class="sm-current">current</label>
+                        }
+                        <button class="sm-remove" @onclick=@(()=>Remove(url))><i>close</i></button>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</root>
+@code{
+    private TextEntry UrlEntry {get;set;}
+    private List<string> History {get;set;}=Spray.History;
+    private string Error {get;set;}
+    private bool Applied {get;set;}
+    private bool Busy {get;set;}
+    private bool Closing {get;set;}
+    private bool ConfirmClear {get;set;}
+    private RealTimeSince SinceConfirm {get;set;}
+    /// <summary>A click on a tile's delete button also reaches the tile: ignore that one.</summary>
+    private RealTimeSince SinceRemove {get;set;}=10;
+
+    public static SprayMenu Open()
+    {
+        var panel=Game.ActiveScene.GetAllComponents<ScreenPanel>().FirstOrDefault();
+        if (panel==null) return null;
+        return panel.Components.Get<SprayMenu>()??panel.Components.Create<SprayMenu>();
+    }
+
+    protected override void OnStart()
+    {
+        Flags=ComponentFlags.NotNetworked;
+        base.OnStart();
+    }
+
+    protected override void OnTreeFirstBuilt()
+    {
+        base.OnTreeFirstBuilt();
+        UrlEntry?.Focus();
+    }
+
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
+        if (Input.EscapePressed){
+            Input.EscapePressed=false;
+            Close();
+        }
+        if (ConfirmClear&&SinceConfirm>3){
+            ConfirmClear=false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task Apply(string url)
+    {
+        if (Busy||SinceRemove<0.2f) return;
+        if (string.IsNullOrWhiteSpace(url)){
+            Error="Paste a link first.";
+            Applied=false;
+            return;
+        }
+        Busy=true;
+        Error=null;
+        Applied=false;
+        StateHasChanged();
+        Error=await Spray.TrySetImage(url);
+        Applied=Error==null;
+        if (Applied&&UrlEntry!=null) UrlEntry.Value="";
+        History=Spray.History;
+        Busy=false;
+        StateHasChanged();
+    }
+
+    private void Remove(string url)
+    {
+        SinceRemove=0;
+        Spray.Forget(url);
+        History=Spray.History;
+        StateHasChanged();
+    }
+
+    private void ClearAll()
+    {
+        if (!ConfirmClear){
+            ConfirmClear=true;
+            SinceConfirm=0;
+            StateHasChanged();
+            return;
+        }
+        ConfirmClear=false;
+        Spray.ClearHistory();
+        History=Spray.History;
+        StateHasChanged();
+    }
+
+    public async void Close()
+    {
+        if (Closing) return;
+        Closing=true;
+        StateHasChanged();
+        await Task.DelayRealtimeSeconds(0.15f);
+        if (this.IsValid()) Destroy();
+    }
+
+    /// <summary>While open, Escape closes this menu instead of opening the game menu.</summary>
+    public static bool IsOpen {get;private set;}
+    protected override void OnEnabled()
+    {
+        base.OnEnabled();
+        IsOpen=true;
+    }
+    protected override void OnDestroy()
+    {
+        IsOpen=false;
+        Panel?.Delete();
+        base.OnDestroy();
+    }
+
+    protected override int BuildHash()
+    {
+        return HashCode.Combine(History.Count,Busy,Error,Applied,Closing,ConfirmClear,Spray.CurrentImage);
+    }
+}

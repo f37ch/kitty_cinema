@@ -23,6 +23,15 @@ public sealed class TheaterPlayer : Component
 	[Sync] private Rotation CameraRotation {get;set;}
 	[Sync] public bool IsNoclipping {get;set;}
 	[Sync] public RealTimeSince TimeSinceSpray {get;set;}=10;
+	/// <summary>Id of the playing taunt (see <see cref="Taunts"/>), null when none.</summary>
+	[Sync] public string Taunt {get;set;}
+	/// <summary>Bumped on every start, so the same taunt can be replayed.</summary>
+	[Sync] private int TauntSerial {get;set;}
+	public bool IsTaunting=>!string.IsNullOrEmpty(Taunt);
+	private string AppliedTaunt;
+	private int AppliedSerial=-1;
+	/// <summary>Distance of the orbit camera while taunting.</summary>
+	private const float TauntCameraDistance=110f;
 	private Vector3 EyeWorldPosition=>Transform.Local.PointToWorld(EyePosition);
 	private Transform StartCameraTransform;
 	private Vector3 WishVelocity;
@@ -37,6 +46,47 @@ public sealed class TheaterPlayer : Component
 	public void OnThrow()
 	{
 		Animator.Target.Set("b_attack",true);
+	}
+	/// <summary>Local player: plays a taunt; any movement stops it.</summary>
+	public void StartTaunt(string id)
+	{
+		if (IsProxy||Taunts.Find(id)==null) return;
+		if (GameObject.Parent.Components.TryGet<ChairController>(out _)) return;
+		if (Controller!=null&&!Controller.IsOnGround) return;
+		Taunt=id;
+		TauntSerial++;
+	}
+	public void StopTaunt()
+	{
+		if (IsProxy||!IsTaunting) return;
+		Taunt=null;
+	}
+	/// <summary>Every client: plays the synced taunt on the model, the animgraph takes over again after it.</summary>
+	private void ApplyTaunt()
+	{
+		var body=Animator?.Target;
+		if (body==null) return;
+		if (Taunt==AppliedTaunt&&TauntSerial==AppliedSerial) return;
+		AppliedTaunt=Taunt;
+		AppliedSerial=TauntSerial;
+		var def=Taunts.Find(Taunt);
+		if (def==null){
+			body.UseAnimGraph=true;
+			return;
+		}
+		body.UseAnimGraph=false;
+		body.Sequence.Name=def.Sequence;
+		body.Sequence.Looping=def.Loop;
+		body.Sequence.Time=0;
+	}
+	/// <summary>Local player: a taunt ends when it finishes or the player does anything else.</summary>
+	private void CheckTauntEnd()
+	{
+		if (!IsTaunting) return;
+		var def=Taunts.Find(Taunt);
+		bool moved=!Input.AnalogMove.IsNearlyZero(0.1f)||Input.Down("Jump")||Input.Down("Duck")||Input.Pressed("attack1")||Input.Pressed("attack2")||IsNoclipping;
+		bool finished=def==null||(!def.Loop&&AppliedTaunt==Taunt&&Animator?.Target!=null&&Animator.Target.Sequence.IsFinished);
+		if (moved||finished) StopTaunt();
 	}
 	[Rpc.Broadcast(NetFlags.HostOnly)]
 	public void UpdateNoclip()
@@ -88,7 +138,9 @@ public sealed class TheaterPlayer : Component
 					Scene.Components.GetInDescendantsOrSelf<Chat>().AddLocalText("Wait atleast 10 seconds before applying next spray.","info",true);
 				}
 			}
+			CheckTauntEnd();
 		}
+		ApplyTaunt();
 		if ( Animator != null && Controller != null )
 		{
 			Animator.WithVelocity( Controller.Velocity );
@@ -156,6 +208,17 @@ public sealed class TheaterPlayer : Component
 					.Run();
 				Camera.WorldPosition=cameraTrace.EndPosition;
 				Camera.LocalRotation=cameraTransform.Rotation;
+			}else if (IsTaunting){
+				// Orbit the player with the mouse while they taunt.
+				var pivot=WorldPosition+Vector3.Up*50;
+				var rotation=EyeAngles.ToRotation();
+				var cameraTrace=Scene.Trace.Ray(pivot,pivot-rotation.Forward*TauntCameraDistance)
+					.Size(5f)
+					.IgnoreGameObjectHierarchy(GameObject)
+					.WithoutTags(IDHashed,"weapon","player")
+					.Run();
+				Camera.WorldPosition=cameraTrace.EndPosition;
+				Camera.WorldRotation=rotation;
 			}else{
 				var cameraTransform=StartCameraTransform.RotateAround(EyePosition,EyeAngles.WithYaw(0f));
 				var cameraPosition=ThirdPerson?Transform.Local.PointToWorld(cameraTransform.Position):EyeWorldPosition;
@@ -170,7 +233,7 @@ public sealed class TheaterPlayer : Component
 			}
 			var cam=Scene.Camera;
 			if (cam!=null){
-				if (ThirdPerson){
+				if (ThirdPerson||IsTaunting){
 					if (cam.RenderExcludeTags.Has(IDHashed)){
 						cam.RenderExcludeTags.Remove(IDHashed);
 					}
@@ -213,7 +276,8 @@ public sealed class TheaterPlayer : Component
 			return;
 		}else{
 			if (!IsProxy) {
-				WorldRotation=Rotation.FromYaw(EyeAngles.yaw);
+				// While taunting the mouse orbits the camera, the body keeps facing where it was.
+				if (!IsTaunting) WorldRotation=Rotation.FromYaw(EyeAngles.yaw);
 				UpdateCamera(ChairController);
 			}
 			if (Animator==null) return;

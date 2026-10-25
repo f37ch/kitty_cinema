@@ -568,7 +568,7 @@ GameMenu {
         var cam=Scene.Camera;
         if (cam.IsValid()&&cam.FieldOfView!=Settings.Data.PlayerFov) cam.FieldOfView=Settings.Data.PlayerFov;
 
-        if(!IsInitScene&&Input.EscapePressed){
+        if(!IsInitScene&&Input.EscapePressed&&!SprayMenu.IsOpen&&!TauntMenu.IsOpen){
             Input.EscapePressed = false;
             IsMenuOpen=!IsMenuOpen;
             if (!IsMenuOpen){
