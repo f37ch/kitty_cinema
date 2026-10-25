@@ -296,8 +296,12 @@ Chat
 				<div class="ep-grid">
 					@foreach (var emoji in PickerItems)
 					{
+						var texture=EmojiCatalog.CachedTextureOf(emoji);
 						<div class="ep-item" @onclick=@(()=>InsertEmoji(emoji))>
-							<Image class="emoji" Texture=@EmojiCatalog.TextureOf(emoji)></Image>
+							@if (texture!=null)
+							{
+								<Image class="emoji" Texture=@texture></Image>
+							}
 						</div>
 					}
 				</div>
@@ -319,6 +323,7 @@ Chat
 	private const int RecentMax=32;
 	private const string RecentCookie="chat.emoji.recent";
 	private const int SearchLimit=160;
+	private const double WarmBudgetMs=3;
 
 	/// <summary>The chat input is open: Escape and clicks belong to the chat.</summary>
 	public static bool IsTyping {get;private set;}
@@ -359,7 +364,27 @@ Chat
 		if (!string.IsNullOrEmpty(SearchText)) PickerItems=EmojiCatalog.Search(SearchText).Take(SearchLimit).ToList();
 		else if (PickerCategory==RecentCategory) PickerItems=Recent().Select(EmojiCatalog.Find).Where(x=>x!=null).ToList();
 		else PickerItems=EmojiCatalog.InCategory(PickerCategory).ToList();
+		PickerWarmed=0;
 		StateHasChanged();
+	}
+
+	/// <summary>How many picker items, from the top, already have their texture.</summary>
+	private int PickerWarmed {get;set;}
+
+	/// <summary>
+	/// Cutting an emoji's texture from the atlas is slow: a whole category at once froze the game,
+	/// so only a few milliseconds' worth are cut each frame and the grid fills in from the top.
+	/// </summary>
+	private void WarmPicker()
+	{
+		if (PickerWarmed>=PickerItems.Count) return;
+		var timer=System.Diagnostics.Stopwatch.StartNew();
+		var from=PickerWarmed;
+		while (PickerWarmed<PickerItems.Count&&timer.Elapsed.TotalMilliseconds<WarmBudgetMs){
+			EmojiCatalog.TextureOf(PickerItems[PickerWarmed]);
+			PickerWarmed++;
+		}
+		if (PickerWarmed!=from) StateHasChanged();
 	}
 
 	private static List<string> Recent()=>Game.Cookies.Get(RecentCookie,new List<string>())??new List<string>();
@@ -441,6 +466,7 @@ Chat
 			SearchText=SearchBox.Value??"";
 			RefreshPicker();
 		}
+		if (ShowEmojiPicker) WarmPicker();
 
 		if (Entries.Count>150)
 		{
@@ -520,6 +546,6 @@ Chat
 
 	protected override int BuildHash()
 	{
-		return HashCode.Combine(IsOpen,ShowEmojiPicker,PickerCategory,SearchText,PickerItems.Count,Entries.Count,(int)(Time.Now/5));
+		return HashCode.Combine(IsOpen,ShowEmojiPicker,PickerCategory,SearchText,PickerItems.Count,PickerWarmed,Entries.Count,(int)(Time.Now/5));
 	}
 }

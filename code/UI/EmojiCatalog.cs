@@ -87,6 +87,9 @@ public static class EmojiCatalog
 		return texture;
 	}
 
+	/// <summary>The emoji's texture if it's been cut already, without cutting it now.</summary>
+	public static Texture CachedTextureOf(Emoji emoji)=>emoji!=null&&_textures.TryGetValue(emoji,out var texture)?texture:null;
+
 	/// <summary>A piece of a message: plain text, or an emoji drawn from the atlas.</summary>
 	public readonly record struct Token(string Text,Emoji Emoji);
 
