@@ -35,41 +35,46 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 	{
 		if (!Throwed||Spilled||!SpillOnImpact) return;
 		Spilled=true;
-		PopcornSpill.Broadcast(collision.Contact.Point,collision.Contact.Normal);
+		// Every client simulates its own thrown copy, so the spill is local too.
+		PopcornSpill.Spawn(collision.Contact.Point,collision.Contact.Normal);
 	}
 
-	public async Task Throw()
+	/// <summary>Holder: throws a copy of the held weapon, the weapon itself stays in the hand.</summary>
+	public void Throw()
 	{
-		if (Scene.Directory.FindByGuid(Holder).Components.TryGet<TheaterPlayer>(out var Player)){
-			Rigidbody.Enabled=true;
-			
-			var obj=GameObject.Clone(GameObject.WorldPosition,GameObject.WorldRotation);
-			obj.Tags.Remove("player");
-			obj.Tags.Remove(Player.IDHashed);
-			obj.NetworkSpawn();
-			obj.NetworkMode=NetworkMode.Never;
-			//obj.Network.SetOrphanedMode(NetworkOrphaned.Destroy);
-			//obj.Network.AssignOwnership(Player.Network.OwnerConnection);
-			Rigidbody.Enabled=false;
-			if (obj.Components.TryGet<BaseWeapon>(out var WeaponController)){
-				//WeaponController.Destroy();
-				WeaponController.Throwed=true;
-			}
-			if (obj.Components.TryGet<ModelCollider>(out var modelCollider,FindMode.DisabledInSelf)){
-				modelCollider.Enabled=true;
-			}
-
-			//Holder.Animator.TriggerDeploy();
-
-			obj.LocalRotation=Rotation.Random;
-			if (obj.Components.TryGet<Rigidbody>(out var body)){
-				body.Gravity=true;
-				body.Velocity=(Player.WorldRotation.Forward*700).WithZ(-Player.EyeAngles.pitch*15);
-				await Task.DelayRealtimeSeconds(2f);
-				obj.Destroy();
-			}
+		if (!Scene.Directory.FindByGuid(Holder).Components.TryGet<TheaterPlayer>(out var Player)) return;
+		SpawnThrown(WorldPosition,(Player.WorldRotation.Forward*700).WithZ(-Player.EyeAngles.pitch*15));
+	}
+	/// <summary>
+	/// Every client spawns and simulates the thrown copy locally: a networked copy only moves on its owner,
+	/// proxies would see it hanging in the air.
+	/// </summary>
+	[Rpc.Broadcast]
+	private void SpawnThrown(Vector3 position,Vector3 velocity)
+	{
+		_=ThrowLocal(position,velocity);
+	}
+	private async Task ThrowLocal(Vector3 position,Vector3 velocity)
+	{
+		var obj=GameObject.Clone(new Transform(position,Rotation.Random,WorldScale),startEnabled:false);
+		obj.NetworkMode=NetworkMode.Never;
+		obj.Tags.Remove("player");
+		if (obj.Components.TryGet<BaseWeapon>(out var thrown,FindMode.EverythingInSelf)){
+			thrown.Throwed=true;
+			thrown.Holder=default;
 		}
-		
+		if (obj.Components.TryGet<ModelCollider>(out var modelCollider,FindMode.EverythingInSelf)){
+			modelCollider.Enabled=true;
+		}
+		obj.Components.TryGet<Rigidbody>(out var body,FindMode.EverythingInSelf);
+		if (body!=null) body.Enabled=true;
+		obj.Enabled=true;
+		if (body!=null){
+			body.Gravity=true;
+			body.Velocity=velocity;
+		}
+		await Task.DelayRealtimeSeconds(2f);
+		if (obj.IsValid()) obj.Destroy();
 	}
 	[Rpc.Broadcast]
 	public void PickUp(Guid Userid)
@@ -86,6 +91,8 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 			ModelCollider.Enabled=false;
 			//Particle.Enabled=false;
 			GameObject.Network.Interpolation=false;
+			// Every client glues it to the hand itself: synced positions arrive late and drag it behind the hand.
+			if (Networking.IsHost) GameObject.Network.Flags|=NetworkFlags.NoTransformSync;
 			GameObject.Transform.ClearInterpolation();
 			Player.HoldingWeapon=GameObject.Id;
 			GameChat.InfoForCaller(PickupInfoChat);
@@ -101,6 +108,7 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 			Rigidbody.Enabled=true;
 			GameObject.SetParent(null,false);
 			GameObject.Network.Interpolation=true;
+			if (Networking.IsHost) GameObject.Network.Flags&=~NetworkFlags.NoTransformSync;
 			GameObject.WorldPosition=(Player.WorldPosition+Player.LocalRotation.Forward*20).WithZ(Player.WorldPosition.z+40);
 
 			GameObject.WorldRotation=Player.WorldRotation;
@@ -111,7 +119,8 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 	protected override void OnStart()
 	{
 		base.OnStart();
-		GameObject.NetworkMode=NetworkMode.Object;
+		// A thrown copy is local to each client.
+		if (!Throwed) GameObject.NetworkMode=NetworkMode.Object;
 		//if (Particle!=null){Particle.Enabled=false;}
 		WorldScale =WeaponScale;
 		Popup=Scene.Components.GetInDescendantsOrSelf<InfoPopup>();

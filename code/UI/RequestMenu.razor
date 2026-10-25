@@ -269,7 +269,7 @@
     public static RequestMenu Open(MediaPlayer mediaPlayer,string url)
     {
         if (mediaPlayer.PanelComponent.Components.TryGet<RequestMenu>(out var existing)) return existing;
-        mediaPlayer.WorldInput.Enabled=false;
+        if (mediaPlayer.WorldInput.IsValid()) mediaPlayer.WorldInput.Enabled=false;
         var menu=mediaPlayer.PanelComponent.Components.Create<RequestMenu>();
         menu.MediaPlayer=mediaPlayer;
         menu.Direct=url=="direct";
@@ -376,7 +376,7 @@
 	{
         if (Closing) return;
         Closing=true;
-        if (!SteamShowcase&&MediaPlayer.IsValid()){
+        if (!SteamShowcase&&MediaPlayer.IsValid()&&MediaPlayer.WorldInput.IsValid()){
             MediaPlayer.WorldInput.Enabled=true;
         }
         UrlEntry.AcceptsFocus=false;

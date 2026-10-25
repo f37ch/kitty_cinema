@@ -2544,12 +2544,7 @@
               "Opacity": 1,
               "Scale": 1,
               "ScaleStrategy": "ConsistentHeight",
-              "TargetCamera": {
-                "_type": "component",
-                "component_id": "eed9d7e0-3e68-4221-970b-27c939fc6b56",
-                "go": "13d66eac-1d47-4a2a-ac32-2afb4b7da209",
-                "component_type": "CameraComponent"
-              },
+              "TargetCamera": null,
               "Timing": "AfterPostProcess",
               "ZIndex": 50
             },

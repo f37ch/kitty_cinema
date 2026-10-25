@@ -122,7 +122,7 @@ public sealed class TheaterPlayer : Component
 					}
 				}else if(Input.Pressed("attack2")){
 					if (Scene.Directory.FindByGuid(HoldingWeapon).Components.TryGet<BaseWeapon>(out var weapon)){
-						_=weapon?.Throw();
+						weapon?.Throw();
 						OnThrow();
 						Animator.Target.Set("b_attack",true);
 					}
@@ -360,6 +360,15 @@ public sealed class TheaterPlayer : Component
 		if (Camera!=null) StartCameraTransform=Camera.Transform.Local;
 		IDHashed=GameObject.Id.GetHashCode().ToString();//for now it only needs for render exclude camera tag
 		Tags.Add(IDHashed);
+		if (Scene.Camera==null){
+			// The scene camera isn't networked, so a joining client has none: every client owns a local one.
+			var cameraObject=new GameObject(true,"Camera");
+			cameraObject.NetworkMode=NetworkMode.Never;
+			cameraObject.Tags.Add("maincamera");
+			var created=cameraObject.Components.Create<CameraComponent>();
+			created.IsMainCamera=true;
+			created.ZNear=5;
+		}
 		Scene.Camera?.RenderExcludeTags.RemoveAll();
 		Sandbox.Services.Achievements.Unlock("newbie");
 		Settings.Load();

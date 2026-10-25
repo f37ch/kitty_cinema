@@ -113,6 +113,7 @@ public class MediaPlayer : Component
 		if (IsAuthority) HostThink();
 		UpdateLocalInside();
 		UpdatePage();
+		EnsureWorldInput();
 		UpdatePointer();
 		UpdateScreenLight();
     }
@@ -253,7 +254,7 @@ public class MediaPlayer : Component
 	}
 	/// <summary>The home screen's service buttons are clicked with the crosshair.</summary>
 	private void UpdatePointer(){
-		if (ScreenUI==null||Pointer==null||WorldUI==null) return;
+		if (ScreenUI==null||Pointer==null||WorldUI==null||Scene.Camera==null) return;
 		var ray=Scene.Camera.ScreenPixelToRay(Screen.Size/2);
 		bool aiming=LocalInside&&!Input.Down("queue")&&ray.Position.Distance(WorldUI.Position)<WorldUI.MaxInteractionDistance;
 		ScreenUI.Style.PointerEvents=aiming?PointerEvents.All:PointerEvents.None;
@@ -275,9 +276,8 @@ public class MediaPlayer : Component
 
     	WorldUI=WorldPanel.GetPanel() as Sandbox.UI.WorldPanel;
 
-		WorldInput=Scene.Camera.Components.GetOrCreate<Sandbox.WorldInput>();
-		WorldInput.LeftMouseAction="use";
-		
+		EnsureWorldInput();
+
 		WebPanel=WorldUI.AddChild<WebPanel>();
 		WebPanel.Style.Width=Length.Percent(100);
 		WebPanel.Style.Height=Length.Percent(100);
@@ -287,6 +287,14 @@ public class MediaPlayer : Component
 
 		FitLightToScreen();
     }
+	/// <summary>The scene camera can show up after the snapshot loads (joining a lobby): hook it once it exists.</summary>
+	private void EnsureWorldInput(){
+		if (WorldInput.IsValid()) return;
+		var cam=Scene.Camera;
+		if (cam==null) return;
+		WorldInput=cam.Components.GetOrCreate<Sandbox.WorldInput>();
+		WorldInput.LeftMouseAction="use";
+	}
 	private void UpdateProjection(ReadOnlySpan<byte> span, Vector2 size)
     {
 		if (!LocalInside) return;//we're not inside theater, save fps.
