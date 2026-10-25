@@ -1,0 +1,26 @@
+{
+  "guid": "1dc09fc0-4718-4b79-a264-6ddcd8fc7cde",
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "Ki 0 Woodwall",
+      "Type": "material",
+      "Org": "local",
+      "Ident": "ki0_woodwall",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": null,
+      "EditorReferences": [],
+      "Mounts": null,
+      "IsStandaloneOnly": false,
+      "AI": {
+        "EnableMcpCommunication": true
+      },
+      "Metadata": {
+        "SingleAssetSource": "materials/ki0_woodwall/ki0_woodwall.vmat",
+        "ParentPackage": "playback.kitty_cinema"
+      }
+    }
+  }
+}

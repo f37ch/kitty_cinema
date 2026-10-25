@@ -1,0 +1,26 @@
+{
+  "guid": "4d295dc5-6445-49ef-a9c1-4ce11d1bcf6f",
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "Ki 0 Woodfloor",
+      "Type": "material",
+      "Org": "local",
+      "Ident": "ki0_woodfloor",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": null,
+      "EditorReferences": [],
+      "Mounts": null,
+      "IsStandaloneOnly": false,
+      "AI": {
+        "EnableMcpCommunication": true
+      },
+      "Metadata": {
+        "SingleAssetSource": "materials/ki0_woodfloor/ki0_woodfloor.vmat",
+        "ParentPackage": "playback.kitty_cinema"
+      }
+    }
+  }
+}

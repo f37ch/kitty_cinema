@@ -19,10 +19,10 @@
             <div class="track-active" style="width: @(SliderPosition)%;"></div>
             <div @ref="ThumbPanel" style="left: @(SliderPosition)%;" class="thumb">
 
-                @if (this.HasActive)
+                @if (this.HasActive && ShowValueTooltip)
                 {
                     <div class="value-tooltip">
-                        <label>@Value.ToString( NumberFormat )</label>
+                        <label>@(Format?.Invoke( Value ) ?? Value.ToString( NumberFormat ))</label>
                         <div class="tail"></div>
                     </div>
                 }
@@ -72,6 +72,11 @@
     /// When changing the value show the tooltip
     /// </summary>
     public bool ShowValueTooltip { get; set; } = true;
+
+    /// <summary>
+    /// Formats the tooltip value, NumberFormat when not set
+    /// </summary>
+    public Func<float, string> Format { get; set; }
 
     /// <summary>
     /// When changing the value show the tooltip

@@ -40,6 +40,11 @@
 
 
     "requestmenu.request": "ВЫБРАТЬ",
+    "requestmenu.placeholder": "Вставьте ссылку или откройте видео ниже",
+    "requestmenu.placeholderDirect": "Вставьте ссылку сюда",
+    "requestmenu.browse": "откройте видео",
+    "requestmenu.direct": "ПРЯМАЯ ССЫЛКА",
+    "requestmenu.directHint": "YouTube, Twitch, SoundCloud или прямая ссылка на видео/аудио файл. Enter — запросить.",
     "thumbnail.novideo": "Нет Видео",
     "theatercontrols.votesLeft":"ГОЛОСОВ ДО СКИПА",
     "theatercontrols.voteSkip":"ГОЛОСОВАТЬ",

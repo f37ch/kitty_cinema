@@ -15,7 +15,7 @@ public sealed class TheaterPlayer : Component
 	[Property] private Vector3 EyePosition {get;set;}
 	[Property] private Angles SpawnAngles {get;set;}
 	[Property] private bool ThirdPerson {get;set;}
-	[Sync] private new bool IsRunning {get;set;}
+	[Sync] private bool IsRunning {get;set;}
 	[Sync] private float DuckLevel {get;set;}
 	[Sync] public Guid HoldingWeapon {get;set;}
 	[Sync] public Angles EyeAngles {get;set;}
@@ -168,7 +168,7 @@ public sealed class TheaterPlayer : Component
 				Camera.WorldPosition=cameraTrace.EndPosition;
 				Camera.LocalRotation=cameraTransform.Rotation;
 			}
-			var cam=Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
+			var cam=Scene.Camera;
 			if (cam!=null){
 				if (ThirdPerson){
 					if (cam.RenderExcludeTags.Has(IDHashed)){
@@ -205,7 +205,7 @@ public sealed class TheaterPlayer : Component
 			}
 			Animator.IsGrounded=true;
 			if (Animator==null) return;
-			Animator.Sitting=CitizenAnimationHelper.SittingStyle.Chair;
+			Animator.Sitting=CitizenAnimationHelper.SittingStyle.Chair1;
 			if (Controller==null) return;
 			Controller.IsOnGround=true;
 			Controller.Velocity=default;
@@ -291,7 +291,7 @@ public sealed class TheaterPlayer : Component
 		if (Camera!=null) StartCameraTransform=Camera.Transform.Local;
 		IDHashed=GameObject.Id.GetHashCode().ToString();//for now it only needs for render exclude camera tag
 		Tags.Add(IDHashed);
-		var cam=Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
+		var cam=Scene.Camera;
 		cam.RenderExcludeTags.RemoveAll();
 		Sandbox.Services.Achievements.Unlock("newbie");
 		Settings.Load();

@@ -1,228 +1,292 @@
 @using Sandbox.UI
 @using System
+@using System.Linq
 
 @inherits PanelComponent
 <style>
-    TheaterControls{
-        width: 20%;//24%;
-		height: 48%;
-        left:79%;
-        top: 21%;
-        bottom: auto;
+    TheaterControls {
         position: absolute;
-
-        color: white;
-        font-family:BerlinSansFBDemi;
-        font-size: 44px;
-        font-weight: bolder;
+        width: 20%;
+        left: 79%;
+        top: 11%;
+        flex-direction: column;
+        color: #e8e8e8;
+        font-family: Poppins;
+        font-size: 17px;
         border-radius: 14px;
-        background-color: #1115;
+        border: 1px solid #ffffff14;
+        background-color: #0d0e10d9;
         backdrop-filter: blur(20px);
-		flex-direction: column;
-        display: flex;
-		pointer-events: all;
-		transform: scale(1);
-        transition: all 0.4s ease-in-out;
+        box-shadow: 0px 10px 40px #00000099;
+        pointer-events: all;
         overflow: hidden;
-       
-        .container{
-            align-items:center;
-            justify-content: center;
-            bottom: auto;
-            width: 100%;
-            height: 10%;
-            position: relative;
-            background-color: rgba(0, 215, 186, 0.205);
-        }
-        .volume_container{
-            
-            align-items:center;
-            justify-content: center;
-            bottom: 11%;
-            width: 100%;
-            padding-right: 2%;
-            height: 10%;
-            margin-bottom: 10px;
-            background-color: rgba(0, 215, 186, 0.205);
-        }
-        .volume_icon {
-            background-size:50%;
-            width:14%;
-            height:100%;
-            right:-1%;
-            background-color: transparent;
-            background-repeat: no-repeat;
-            background-position: center center;
-            color: transparent;
-        }
-        .video_time{
-            font-size: 16px;
-            background-color: rgba(255, 0, 0, 0.411);
-            border-radius: 4px;
-            margin-right: 1%;
-            padding: .5%;
-        }
-        .cbutt {
-      
-            background-size: 70%;
-            width:10%;
-            height:80%;
-            padding: 2%;
-            
+        transition: all 0.25s ease-out;
 
-            background-color: transparent;
-            background-repeat: no-repeat;
-            background-position: center center;
-    
-            color: transparent;
-            opacity: 0.5;
-            transition: opacity 250ms;
-            transition: background-color 250ms ease;
-        }
-        .cbutt:hover {
-            cursor: pointer;
-            opacity: 1;
-            background-color: rgb(192, 64, 64);
-            sound-in:ui.button.over;
-        }
-        .cinemaslider{
-            top: 10%;
-       
-            margin-left: 1%;
-        }
-        
-        .title{
-            background-color: rgb(0, 215, 187);
-            opacity: 0.3;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            padding: 1%;
-        }
-        .vote{
-            
-            opacity: 0.7;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 350px;
-            gap:10px;
-            
-            .counter{
-                opacity: 0.3;
-                justify-content: center;
-                align-items: center;
-                width: 100%;
-                font-size: 110px;
-                flex-shrink: 0;
-            }
-            .text{
-                opacity: 0.3;
-                align-items: center;
-                font-size: 30px;
-            }
-            .button{
-                font-size: 40px;
-                opacity: 0.7;
-                width: 95%;
-                justify-content: center;
-				align-items: center;
-				background-color: rgba(0, 215, 186, 0.192);
-                border-radius: 10%;
-				padding: 2%;
-				gap: 5px;
-				.i{
-					background-color: rgba(0, 255, 13, 0.548);
-					border-radius: 100%;
-				}
-            }
-            .button:hover{
-                cursor: pointer;
-                opacity: 1;
-                background-color: rgba(0, 215, 186, 0.301);
-            }
-        }
-		&.hide{
-            
-			transition: all 0.4s ease-in-out;
-			transform: scale(0);
-            left:100%;
+        &.hide {
+            opacity: 0;
+            transform: translateX(40px) scale(0.96);
             pointer-events: none;
-            .cinemaslider{
-                pointer-events: none;
+            transition: all 0.2s ease-in;
+        }
+
+        .tc-header {
+            flex-shrink: 0;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            font-family: BerlinSansFBDemi;
+            font-size: 22px;
+            letter-spacing: 2px;
+            color: #00d7bb;
+            background-color: #00d7bb14;
+            border-bottom: 1px solid #ffffff0f;
+            i { font-size: 22px; }
+        }
+
+        .tc-section {
+            flex-direction: column;
+            padding: 14px 16px;
+            gap: 10px;
+            border-bottom: 1px solid #ffffff0a;
+        }
+
+        .tc-label {
+            font-size: 13px;
+            color: #ffffff66;
+            letter-spacing: 1px;
+        }
+
+        .tc-title {
+            font-family: BerlinSansFBDemi;
+            font-size: 17px;
+            color: white;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            &.empty { color: #ffffff55; }
+        }
+
+        .tc-sub {
+            font-size: 13px;
+            color: #ffffff80;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .tc-time {
+            flex-direction: row;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #ffffffa0;
+        }
+
+        .tc-live {
+            flex-direction: row;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #ff5c5c;
+            .dot { width: 8px; height: 8px; border-radius: 4px; background-color: #ff4040; }
+        }
+
+        .tc-row {
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tc-btn {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            font-size: 26px;
+            color: #e8e8e8;
+            background-color: #ffffff0f;
+            transition: all 0.12s ease;
+            &:hover { background-color: #00d7bb33; color: #00d7bb; cursor: pointer; sound-in: ui.button.over; }
+            &:active { sound-in: ui.button.press; }
+            &.disabled { opacity: 0.3; pointer-events: none; }
+            &.main { background-color: #00d7bb; color: #0b0c0e; &:hover { background-color: #3cf0d6; color: #0b0c0e; } }
+        }
+
+        .tc-host {
+            flex-grow: 1;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            color: #ffffff55;
+            i { font-size: 14px; }
+        }
+
+        .tc-volume {
+            i { font-size: 22px; color: #ffffffa0; flex-shrink: 0; }
+            .tc-value { width: 34px; flex-shrink: 0; text-align: right; font-size: 13px; color: #ffffffa0; }
+        }
+
+        .cinemaslider {
+            > .inner {
+                min-height: 24px;
+                > .track {
+                    height: 6px;
+                    margin: 6px 4px;
+                    background-color: #ffffff1f;
+                    > .track-active { background-color: #00d7bb; }
+                    > .thumb { width: 14px; height: 14px; }
+                }
             }
-           
-		}
+            &.disabled { pointer-events: none; opacity: 0.4; }
+        }
+
+        .tc-vote {
+            flex-direction: row;
+            align-items: center;
+            gap: 12px;
+            .count {
+                flex-shrink: 0;
+                font-family: BerlinSansFBDemi;
+                font-size: 34px;
+                color: #00d7bb;
+                min-width: 34px;
+                justify-content: center;
+            }
+            .text { flex-grow: 1; font-size: 13px; color: #ffffff80; }
+        }
+
+        .tc-wide {
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            height: 40px;
+            border-radius: 10px;
+            font-family: BerlinSansFBDemi;
+            font-size: 17px;
+            color: #e8e8e8;
+            background-color: #ffffff0f;
+            transition: all 0.12s ease;
+            i { font-size: 20px; }
+            &:hover { background-color: #ff5c5c33; color: #ff8a8a; cursor: pointer; sound-in: ui.button.over; }
+            &.disabled { opacity: 0.35; pointer-events: none; }
+            &.voted { color: #00d7bb; background-color: #00d7bb1a; pointer-events: none; }
+        }
     }
 </style>
-<root class="@((Input.Down("queue")&&!MediaPlayer.PanelComponent.Components.TryGet<RequestMenu>(out var _)) ? "" : "hide")">
-    <div class="title">Theater Control</div>
-    <div class="vote">
-        <div class="counter">@(MediaController.CountSkips(MediaPlayer.GameObject.Id)-MediaPlayer.SkipList.Count)</div>
-        <div class="text">#theatercontrols.votesLeft</div>
-        <button class="button" @onclick=@(()=>MediaController.VoteSkip(MediaPlayer.GameObject.Id))><i class="i">add_task</i>#theatercontrols.voteSkip</button>
-    </div>
-    <div class="volume_container">
-        <div class="volume_icon" style="background-image:url(/ui/volume.png);"></div>
-        <CinemaSlider @ref="VolumeSlider" class="sndslider" onclick=@VolumeSet/>
+<root class="@(Visible ? "" : "hide")">
+    <div class="tc-header"><i>theaters</i><label>THEATER CONTROL</label></div>
+
+    <div class="tc-section">
+        <label class="tc-label">NOW PLAYING</label>
+        @if (MediaPlayer.IsPlaying)
+        {
+            <label class="tc-title">@MediaPlayer.Title</label>
+            @if (!string.IsNullOrEmpty(MediaPlayer.Requester))
+            {
+                <label class="tc-sub">requested by @MediaPlayer.Requester</label>
+            }
+        }
+        else
+        {
+            <label class="tc-title empty">#thumbnail.novideo</label>
+        }
+
+        @if (MediaPlayer.IsPlaying && MediaPlayer.IsLive)
+        {
+            <div class="tc-live"><div class="dot"></div><label>LIVE</label></div>
+        }
+        else
+        {
+            <CinemaSlider @ref="TimeLine" class="cinemaslider @(CanSeek ? "" : "disabled")" Step=@(1) ShowValueTooltip=@(true) Format=@FormatTime OnValueChanged=@OnTimelineDrag/>
+            <div class="tc-time">
+                <label>@FormatTime(MediaPlayer.Curtime)</label>
+                <label>@FormatTime(MediaPlayer.Duration)</label>
+            </div>
+        }
+
+        <div class="tc-row">
+            <button class="tc-btn main @(IsHost && MediaPlayer.IsPlaying ? "" : "disabled")" @onclick=@TogglePlay><i>@(MediaPlayer.Paused ? "play_arrow" : "pause")</i></button>
+            <button class="tc-btn @(IsHost && MediaPlayer.IsPlaying ? "" : "disabled")" @onclick=@Skip><i>skip_next</i></button>
+            @if (!IsHost)
+            {
+                <div class="tc-host"><i>lock</i><label>host controls playback</label></div>
+            }
+        </div>
     </div>
 
-    <div class="container">
-        <button @onclick=@(()=>TogglePlay()) class="cbutt" style="background-image:url(@ToggleImg);"></button>
-        <button @onclick=@(()=>Skip()) class="cbutt" style="background-image:url(/ui/skip.png);"></button>
-        <CinemaSlider @ref="TimeLine" onclick=@TimeLineSeek/>
-        @if(MediaPlayer.Service!=null){
-            <div class="video_time">@(ConvertTime(MediaPlayer.Curtime)=="00:00:00"?"● Live":ConvertTime(MediaPlayer.Curtime))</div>
-        }
+    <div class="tc-section">
+        <label class="tc-label">VOLUME</label>
+        <div class="tc-row tc-volume">
+            <i>@(MediaPlayer.Volume <= 0 ? "volume_off" : MediaPlayer.Volume < 50 ? "volume_down" : "volume_up")</i>
+            <CinemaSlider @ref="VolumeSlider" Max=@(100) Step=@(1) OnValueChanged=@OnVolumeDrag/>
+            <label class="tc-value">@MediaPlayer.Volume</label>
+        </div>
+    </div>
+
+    <div class="tc-section">
+        <div class="tc-vote">
+            <label class="count">@VotesLeft</label>
+            <label class="text">#theatercontrols.votesLeft</label>
+        </div>
+        <button class="tc-wide @(!MediaPlayer.IsPlaying ? "disabled" : HasVoted ? "voted" : "")" @onclick=@(()=>MediaController.VoteSkip(MediaPlayer.GameObject.Id))>
+            <i>@(HasVoted ? "how_to_vote" : "thumb_down")</i>
+            <label>#theatercontrols.voteSkip</label>
+        </button>
     </div>
 </root>
 @code{
-    private CinemaSlider TimeLine {get;set;}=new();
-    private CinemaSlider VolumeSlider {get;set;}=new();
+    private CinemaSlider TimeLine {get;set;}
+    private CinemaSlider VolumeSlider {get;set;}
     public MediaPlayer MediaPlayer {get;set;}
-    private float NextThink{get;set;}=0;
-    private string ToggleImg {get;set;}="/ui/pause.png";
+    private bool Visible=>Input.Down("queue")&&!MediaPlayer.PanelComponent.Components.TryGet<RequestMenu>(out var _);
+    private bool IsHost=>Connection.Local?.IsHost??true;
+    private bool CanSeek=>IsHost&&MediaPlayer.IsPlaying&&!MediaPlayer.IsLive;
+    private bool HasVoted=>MediaPlayer.SkipList.Any(x=>x.steamid==Connection.Local?.SteamId);
+    private int VotesLeft=>Math.Max(0,MediaController.CountSkips(MediaPlayer.GameObject.Id)-MediaPlayer.SkipList.Count);
+
+    /// <summary>Where the player dragged the timeline to; sent when the mouse is released.</summary>
+    private float? PendingSeek {get;set;}
+    private float? PendingVolume {get;set;}
+    /// <summary>The thumb stays where it was dropped until the host's time catches up.</summary>
+    private RealTimeSince SinceSeek {get;set;}=10;
+
     protected override void OnUpdate(){
-       
         base.OnUpdate();
-        if (MediaPlayer.Paused){ToggleImg="/ui/play.png";}else{ToggleImg="/ui/pause.png";}
-        if (TimeLine!=null){TimeLine.Max=MediaPlayer.Duration;}
-        if (VolumeSlider!=null){VolumeSlider.Value=MediaPlayer.Volume;}
-        if (TimeLine!=null){TimeLine.Value=Math.Clamp(MediaPlayer.Curtime,MediaPlayer.Duration/100*2,MediaPlayer.Duration);}
+        if (TimeLine!=null){
+            if (PendingSeek is float target&&!TimeLine.HasActive){
+                PendingSeek=null;
+                if (CanSeek){
+                    MediaController.Seek(MediaPlayer.GameObject.Id,target);
+                    SinceSeek=0;
+                }
+            }
+            // Don't fight the player's drag.
+            if (!TimeLine.HasActive&&PendingSeek==null&&SinceSeek>0.5f){
+                TimeLine.Max=MathF.Max(MediaPlayer.Duration,1);
+                TimeLine.Value=MediaPlayer.Curtime;
+            }
+        }
+        if (VolumeSlider!=null){
+            if (PendingVolume is float volume&&!VolumeSlider.HasActive){
+                PendingVolume=null;
+                MediaController.SetVolume(MediaPlayer.GameObject.Id,volume);
+            }
+            if (!VolumeSlider.HasActive&&PendingVolume==null){
+                VolumeSlider.Value=MediaPlayer.Volume;
+            }
+        }
     }
-    
-    
+    void OnTimelineDrag(float value)=>PendingSeek=value;
+    void OnVolumeDrag(float value)=>PendingVolume=value;
     void TogglePlay(){
-        if (!Connection.Local.IsHost){
-            if (Scene.Components.TryGet<Chat>(out var Chat, FindMode.EnabledInSelfAndDescendants)){
-			    Chat.AddLocalText("Failed to toggle play! Only host can do this.","video_settings");
-		    }
-        }else{
-            MediaController.TogglePlay(MediaPlayer.GameObject.Id);
-        }
+        MediaController.TogglePlay(MediaPlayer.GameObject.Id);
     }
-    
     void Skip(){
-        if (!Connection.Local.IsHost){
-            if (Scene.Components.TryGet<Chat>(out var Chat, FindMode.EnabledInSelfAndDescendants)){
-			    Chat.AddLocalText("Failed to skip! Only host can do this.","video_settings");
-		    }
-        }else{
-            MediaController.Skip(MediaPlayer.GameObject.Id);
-        }
-    }
-    void TimeLineSeek(){
-        if (!Connection.Local.IsHost){
-            if (Scene.Components.TryGet<Chat>(out var Chat, FindMode.EnabledInSelfAndDescendants)){
-			    Chat.AddLocalText("Failed to seek! Only host can do this.","video_settings");
-		    }
-        }else{
-             MediaController.Seek(MediaPlayer.GameObject.Id,Convert.ToSingle(TimeLine.ScreenPosToValue(Mouse.Position)));
-        }
-    }
-    void VolumeSet(){
-        MediaController.SetVolume(MediaPlayer.GameObject.Id,Convert.ToSingle(VolumeSlider.ScreenPosToValue(Mouse.Position)));
+        MediaController.Skip(MediaPlayer.GameObject.Id);
     }
     protected override void OnDestroy()
     {
@@ -232,20 +296,18 @@
     protected override void OnStart()
     {
         Flags=ComponentFlags.NotNetworked;
-        //GameObject.NetworkMode=NetworkMode.Never;
         base.OnStart();
-        VolumeSlider.Value=MediaPlayer.Volume;
     }
 
-    static string ConvertTime(float val)
+    static string FormatTime(float val)
     {
-        TimeSpan time=TimeSpan.FromSeconds(val);
-        return $"{time.Hours:D2}:{time.Minutes:D2}:{time.Seconds:D2}";
+        var t=TimeSpan.FromSeconds(MathF.Max(val,0));
+        return t.Hours>0?$"{t.Hours}:{t.Minutes:D2}:{t.Seconds:D2}":$"{t.Minutes:D2}:{t.Seconds:D2}";
     }
-
 
     protected override int BuildHash()
     {
-        return HashCode.Combine(Input.Down("queue")+MediaPlayer.Curtime.ToString());
+        return HashCode.Combine(HashCode.Combine(Visible,(int)MediaPlayer.Curtime,MediaPlayer.Paused,MediaPlayer.PlaybackId,MediaPlayer.Title),
+            HashCode.Combine(MediaPlayer.SkipList.Count,VotesLeft,MediaPlayer.Volume,IsHost));
     }
 }

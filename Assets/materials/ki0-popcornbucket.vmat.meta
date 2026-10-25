@@ -1,0 +1,26 @@
+{
+  "guid": "93f2aba5-a340-4daa-8487-13fa70b8fbdd",
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "Ki 0 Popcornbucket",
+      "Type": "material",
+      "Org": "local",
+      "Ident": "ki0_popcornbucket",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": null,
+      "EditorReferences": [],
+      "Mounts": null,
+      "IsStandaloneOnly": false,
+      "AI": {
+        "EnableMcpCommunication": true
+      },
+      "Metadata": {
+        "SingleAssetSource": "materials/ki0-popcornbucket.vmat",
+        "ParentPackage": "playback.kitty_cinema"
+      }
+    }
+  }
+}

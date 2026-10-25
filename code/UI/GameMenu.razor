@@ -71,6 +71,8 @@ GameMenu {
                 color: white;
                 padding: 14px;
                 border-radius: 14px;
+                // Grow with wrapped text instead of being squeezed under the next button.
+                flex-shrink: 0;
                 transition: all 0.14s ease;
 
                 &:hover {
@@ -103,8 +105,96 @@ GameMenu {
             margin-right: auto;
             width:50%;
             background-color: rgb(45, 97, 86);
+            &.plain { background-color: transparent; }
             transform: scale(1);
             gap:14px;
+
+            .st-scroll {
+                width: 100%;
+                max-height: 560px;
+                flex-direction: column;
+                gap: 8px;
+                padding: 8px;
+                border-radius: 14px;
+                background-color: #0d0e10;
+                overflow: scroll;
+                font-family: Poppins;
+                font-weight: normal;
+            }
+            .st-section {
+                flex-shrink: 0;
+                flex-direction: column;
+                border-radius: 14px;
+                background-color: #16181bf2;
+                border: 1px solid #ffffff14;
+                overflow: hidden;
+            }
+            .st-head {
+                flex-direction: row;
+                align-items: center;
+                gap: 12px;
+                padding: 6px 20px;
+                font-family: BerlinSansFBDemi;
+                font-size: 24px;
+                letter-spacing: 1px;
+                color: #00d7bb;
+                background-color: #00d7bb14;
+                border-bottom: 1px solid #ffffff0f;
+                i { font-size: 30px; }
+            }
+            .st-row {
+                flex-direction: row;
+                align-items: center;
+                gap: 16px;
+                min-height: 44px;
+                padding: 2px 20px;
+                border-bottom: 1px solid #ffffff0a;
+                transition: background-color 0.12s ease;
+                &:hover { background-color: #ffffff08; }
+            }
+            .st-name {
+                flex-grow: 1;
+                flex-direction: row;
+                align-items: center;
+                gap: 12px;
+                font-size: 22px;
+                color: #e6e6e6;
+                i { font-size: 26px; color: #ffffff66; }
+            }
+            .st-row .cinemaslider {
+                flex-grow: 0;
+                flex-shrink: 0;
+                width: 320px;
+                min-width: 320px;
+                margin-top: 0px;
+                > .inner > .track {
+                    height: 8px;
+                    background-color: #ffffff1f;
+                    > .track-active { background-color: #00d7bb; }
+                    > .thumb { width: 20px; height: 20px; }
+                }
+            }
+            .st-val {
+                flex-shrink: 0;
+                width: 70px;
+                justify-content: flex-end;
+                font-size: 20px;
+                color: #00d7bb;
+            }
+            .st-btn {
+                flex-shrink: 0;
+                width: 48px;
+                height: 40px;
+                justify-content: center;
+                align-items: center;
+                border-radius: 8px;
+                font-size: 24px;
+                color: #0b0c0e;
+                background-color: #00d7bb;
+                transition: background-color 0.12s ease;
+                &:hover { background-color: #3cf0d6; cursor: pointer; sound-in: ui.button.over; }
+                &:active { sound-in: ui.button.press; }
+            }
 
             .info_container{
                 transition: opacity .2s ease;
@@ -324,7 +414,7 @@ GameMenu {
             <div class="button @(@selectedB=="settings"?"selected":"")" onclick=@(()=>SelectOption("settings"))>#menu.settings</div>
             <div class="button" onclick=@(()=>Quit())>#menu.quit</div>
         </div>
-        <div class="optionwind">
+        <div class="optionwind @(selected=="settings"?"plain":"")">
             @if (selected=="servers"){
                 @if (IsConnecting){
                     <div class="parseinfo">#menu.connecting</div>
@@ -360,62 +450,57 @@ GameMenu {
 	    		}
                 <div class="refresh_button" onclick=@(()=>RefreshServerList())><i class="ic">refresh</i>#menu.refreshsv</div>
             }else if (selected=="settings"){
-                <h2 class="stitle">#menu.settings.main</h2>
-                <div class="settings_list">
-                    <div class="setting_justify">
-                        <button class="stbutton" onclick=@(()=>Game.Overlay.ShowBinds())>#menu.settings.binds</button>
-                    </div>
-                   
-                    
-                    <div class="setting">
-                        <CinemaSlider class="cinemaslider" Max=@(100) Step=@(1) Value=@Camera.FieldOfView  OnValueChanged=@FovSet/>
-                        <div class="stext">#menu.settings.fov</div>
-                    </div>
-                    
-                </div>
-                <h2 class="stitle">#menu.settings.sound</h2>
-                <div class="settings_list">
-                    <div class="setting">
-                        <CinemaSlider class="cinemaslider" Max=@(100) Step=@(1) Value=@(Mixer.Master.Volume*100)  OnValueChanged=@OverVolSet/>
-                        <div class="stext">#menu.settings.overallVolume</div>
-                    </div>
-                    @{
-                        var children=Mixer.Master.GetChildren();
-                    }
-                    <div class="setting">
-                        <CinemaSlider class="cinemaslider" Max=@(100) Step=@(1) Value=@(children[1].Volume*100)  OnValueChanged=@VoiceVolSet/>
-                        <div class="stext">#menu.settings.voiceVolume</div>
-                    </div>
-                    <div class="setting">
-                        <CinemaSlider class="cinemaslider" Max=@(100) Step=@(1) Value=@(children[0].Volume*100)  OnValueChanged=@SFXVolSet/>
-                        <div class="stext">#menu.settings.effectVolume</div>
-                    </div>
-                    <div class="setting">
-                        <CinemaSlider class="cinemaslider" Max=@(100) Step=@(1) Value=@(children[2].Volume*100)  OnValueChanged=@UIVolSet/>
-                        <div class="stext">#menu.settings.interfaceVolume</div>
-                    </div>
-                    <div class="setting">
-                        <CinemaSlider class="cinemaslider" Max=@(100) Step=@(1) Value=@(Footsteps.FootStepVolume*100)  OnValueChanged=@FootstepSet/>
-                        <div class="stext">#menu.settings.footstepsVolume</div>
-                    </div>
-                </div> 
-                <h2 class="stitle">#menu.settings.lobby</h2>
-                <div class="settings_list">
-                    <div class="setting">
-                        <CinemaSwitch class="cinemaswitch" Value=@IsLobbyPrivate OnValueChanged=@TogglePrivate/>
-                        <div class="stext">#menu.settings.lobby.friends</div>
-                    </div>
-                    <!--@if (!IsLobbyPrivate){
-                        <div class="setting">
-                            <CinemaSwitch class="cinemaslider" Value=@IsLobbyNeedPassword OnValueChanged=@TogglePassword/>
-                            <div class="stext">LOBBY PASSWORD</div>
+                var st=Settings.Data;
+                <div class="st-scroll">
+                    <div class="st-section">
+                        <div class="st-head"><i>tune</i><label>#menu.settings.main</label></div>
+                        <div class="st-row">
+                            <div class="st-name"><i>visibility</i><label>#menu.settings.fov</label></div>
+                            <CinemaSlider class="cinemaslider st-slider" ShowValueTooltip=@(false) Min=@(50) Max=@(120) Step=@(1) Value=@st.PlayerFov OnValueChanged=@FovSet/>
+                            <label class="st-val">@($"{(int)st.PlayerFov}°")</label>
                         </div>
-                        @if (IsLobbyNeedPassword){
-                            <div class="setting">
-                                <TextEntry class="te" Value:bind="@LobbyPassword" @ref="TextEntry"></TextEntry>
-                            </div>
-                        }
-                    }-->
+                        <div class="st-row">
+                            <div class="st-name"><i>keyboard</i><label>#menu.settings.binds</label></div>
+                            <button class="st-btn" onclick=@(()=>Game.Overlay.ShowBinds())><i>open_in_new</i></button>
+                        </div>
+                    </div>
+
+                    <div class="st-section">
+                        <div class="st-head"><i>volume_up</i><label>#menu.settings.sound</label></div>
+                        <div class="st-row">
+                            <div class="st-name"><i>speaker</i><label>#menu.settings.overallVolume</label></div>
+                            <CinemaSlider class="cinemaslider st-slider" ShowValueTooltip=@(false) Max=@(100) Step=@(1) Value=@(st.OverAllVolume*100) OnValueChanged=@OverVolSet/>
+                            <label class="st-val">@Percent(st.OverAllVolume)</label>
+                        </div>
+                        <div class="st-row">
+                            <div class="st-name"><i>mic</i><label>#menu.settings.voiceVolume</label></div>
+                            <CinemaSlider class="cinemaslider st-slider" ShowValueTooltip=@(false) Max=@(100) Step=@(1) Value=@(st.VoiceVolume*100) OnValueChanged=@VoiceVolSet/>
+                            <label class="st-val">@Percent(st.VoiceVolume)</label>
+                        </div>
+                        <div class="st-row">
+                            <div class="st-name"><i>graphic_eq</i><label>#menu.settings.effectVolume</label></div>
+                            <CinemaSlider class="cinemaslider st-slider" ShowValueTooltip=@(false) Max=@(100) Step=@(1) Value=@(st.SFXVolume*100) OnValueChanged=@SFXVolSet/>
+                            <label class="st-val">@Percent(st.SFXVolume)</label>
+                        </div>
+                        <div class="st-row">
+                            <div class="st-name"><i>web</i><label>#menu.settings.interfaceVolume</label></div>
+                            <CinemaSlider class="cinemaslider st-slider" ShowValueTooltip=@(false) Max=@(100) Step=@(1) Value=@(st.InterfaceVolume*100) OnValueChanged=@UIVolSet/>
+                            <label class="st-val">@Percent(st.InterfaceVolume)</label>
+                        </div>
+                        <div class="st-row">
+                            <div class="st-name"><i>directions_walk</i><label>#menu.settings.footstepsVolume</label></div>
+                            <CinemaSlider class="cinemaslider st-slider" ShowValueTooltip=@(false) Max=@(100) Step=@(1) Value=@(st.FootStepVolume*100) OnValueChanged=@FootstepSet/>
+                            <label class="st-val">@Percent(st.FootStepVolume)</label>
+                        </div>
+                    </div>
+
+                    <div class="st-section">
+                        <div class="st-head"><i>groups</i><label>#menu.settings.lobby</label></div>
+                        <div class="st-row">
+                            <div class="st-name"><i>lock</i><label>#menu.settings.lobby.friends</label></div>
+                            <CinemaSwitch class="cinemaswitch" Value=@IsLobbyPrivate OnValueChanged=@TogglePrivate/>
+                        </div>
+                    </div>
                 </div>
             }else if (selected=="displaytext"){
                 <div class="info_container">
@@ -428,6 +513,7 @@ GameMenu {
 
 @code{
     public bool IsMenuOpen {get;set;}
+    private bool IsInitScene {get;set;}
     public TextEntry TextEntry {get;set;}
     public CameraComponent Camera {get;set;}
     public float FootStepsVolume {get;set;}
@@ -441,37 +527,48 @@ GameMenu {
     public string LobbyPassword {get;set;}
     private bool parsingServers {get;set;}
 	private List<LobbyInformation> ServerList {get;set;}=new();
+    // Every change goes through Settings: it applies the value locally and saves it shortly after.
     private void FovSet(float val){
-        Camera.FieldOfView=val;
+        Settings.Change(s=>s.PlayerFov=val);
+        StateHasChanged();
     }
     private void FootstepSet(float val){
-        Footsteps.FootStepVolume=Math.Clamp(val/100,0,1);
+        Settings.Change(s=>s.FootStepVolume=val/100);
+        StateHasChanged();
     }
     private void OverVolSet(float val){
-        Mixer.Master.Volume=val/100;
+        Settings.Change(s=>s.OverAllVolume=val/100);
+        StateHasChanged();
     }
     private void VoiceVolSet(float val){
-        var children=Mixer.Master.GetChildren();
-        children[1].Volume=Math.Clamp(val/100,0,1);
+        Settings.Change(s=>s.VoiceVolume=val/100);
+        StateHasChanged();
     }
     private void SFXVolSet(float val){
-        var children=Mixer.Master.GetChildren();
-        children[0].Volume=Math.Clamp(val/100,0,1);
+        Settings.Change(s=>s.SFXVolume=val/100);
+        StateHasChanged();
     }
     private void UIVolSet(float val){
-        var children=Mixer.Master.GetChildren();
-        children[2].Volume=Math.Clamp(val/100,0,1);
+        Settings.Change(s=>s.InterfaceVolume=val/100);
+        StateHasChanged();
     }
     private void TogglePrivate(bool val){
         IsLobbyPrivate=val;
+        Settings.Change(s=>s.PrivateLobby=val);
+        StateHasChanged();
     }
+    private static string Percent(float v)=>$"{MathF.Round(v*100)}%";
     private void TogglePassword(bool val){
         IsLobbyNeedPassword=val;
     }
     protected override void OnUpdate(){
         base.OnUpdate();
-    
-        if(Game.ActiveScene.Components.Get<SceneInformation>(FindMode.EnabledInSelfAndDescendants).Title!="init"&&Input.EscapePressed){
+        Settings.Tick();
+        // The camera may be replaced or reset (scene load, network snapshot): keep the player's FOV on it.
+        var cam=Scene.Camera;
+        if (cam.IsValid()&&cam.FieldOfView!=Settings.Data.PlayerFov) cam.FieldOfView=Settings.Data.PlayerFov;
+
+        if(!IsInitScene&&Input.EscapePressed){
             Input.EscapePressed = false;
             IsMenuOpen=!IsMenuOpen;
             if (!IsMenuOpen){
@@ -510,13 +607,15 @@ GameMenu {
     }
     protected override void OnStart()
 	{
-        var isInit=Game.ActiveScene.Components.Get<SceneInformation>(FindMode.EnabledInSelfAndDescendants).Title=="init";
+        // Searched once: the scene doesn't change under a running menu.
+        IsInitScene=Game.ActiveScene.Components.Get<SceneInformation>(FindMode.EnabledInSelfAndDescendants)?.Title=="init";
+        var isInit=IsInitScene;
 
    
         if (isInit){
             Settings.Load();
         }
-        Camera=Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
+        Camera=Scene.Camera;
         IsMenuOpen=isInit;
 		_=RefreshServerList();
 	}

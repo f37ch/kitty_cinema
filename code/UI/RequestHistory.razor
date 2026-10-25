@@ -7,59 +7,80 @@
 
 <style>
     RequestHistory {
-        width: 22%;
+        width: 24%;
         height: 100%;
         flex-direction: column;
-        display: flex;
-        background-color: #0e0e0edd;
-        border-left: 1px solid #ffffff18;
+        background-color: #0f1013;
+        border-left: 1px solid #ffffff12;
+        font-family: Poppins;
+        color: #e6e6e6;
 
         .hist-header {
             flex-shrink: 0;
-            height: 2vw;
-            background-color: #00d7bb33;
-            justify-content: center;
+            flex-direction: row;
             align-items: center;
+            gap: 8px;
+            padding: 0 14px;
+            height: 50px;
             font-family: BerlinSansFBDemi;
-            font-size: 1.1vw;
-            font-weight: bolder;
-            color: #d4d4d4;
+            font-size: 18px;
             letter-spacing: 2px;
+            color: #00d7bb;
+            background-color: #16181b;
+            border-bottom: 1px solid #ffffff12;
+            i { font-size: 20px; }
+            .hist-total {
+                margin-left: auto;
+                padding: 2px 9px;
+                border-radius: 10px;
+                font-family: Poppins;
+                font-size: 12px;
+                letter-spacing: 0px;
+                background-color: #00d7bb22;
+            }
+        }
+
+        .hist-tools {
+            flex-shrink: 0;
+            flex-direction: column;
+            gap: 8px;
+            padding: 10px 10px 6px 10px;
         }
 
         .hist-search {
-            flex-shrink: 0;
-            margin: 4px 6px 2px 6px;
-            height: 1.4vw;
-            .TextEntry {
-                width: 100%;
+            flex-direction: row;
+            align-items: center;
+            gap: 6px;
+            height: 32px;
+            padding: 0 10px;
+            border-radius: 8px;
+            background-color: #0b0c0e;
+            border: 1px solid #ffffff1f;
+            i { font-size: 16px; color: #ffffff55; }
+            TextEntry {
+                flex-grow: 1;
                 height: 100%;
-                background-color: #1e1e1e;
-                color: #ccc;
-                font-size: 0.9vw;
-                border: 1px solid #ffffff22;
-                border-radius: 4px;
+                align-items: center;
+                font-size: 13px;
+                color: #f0f0f0;
+                background-color: transparent;
+                .placeholder { color: #ffffff40; }
             }
         }
 
         .hist-sort {
-            flex-shrink: 0;
             flex-direction: row;
             flex-wrap: wrap;
-            margin: 2px 6px;
-            gap: 3px;
-
+            gap: 5px;
             .sort-btn {
-                font-size: 0.65vw;
-                font-family: BerlinSansFBDemi;
-                color: #aaa;
-                background-color: #1a1a1a;
-                border: 1px solid #ffffff18;
-                border-radius: 3px;
-                padding: 1px 6px;
+                padding: 3px 10px;
+                border-radius: 12px;
+                font-size: 12px;
+                color: #ffffff99;
+                background-color: #ffffff0d;
                 transition: all 0.1s ease;
-                &:hover { color: #00d7bb; cursor: pointer; border-color: #00d7bb55; }
-                &.active { color: #00d7bb; background-color: #00d7bb1a; border-color: #00d7bb66; }
+                &:hover { color: white; background-color: #ffffff1a; cursor: pointer; }
+                &.active { color: #0b0c0e; background-color: #00d7bb; }
             }
         }
 
@@ -67,195 +88,253 @@
             flex-grow: 1;
             flex-direction: column;
             overflow: scroll;
-            gap: 3px;
-            padding: 4px 6px;
+            gap: 6px;
+            padding: 4px 10px 10px 10px;
+        }
 
-            .hist-item {
-                flex-shrink: 0;
-                flex-direction: row;
-                height: 52px;
-                background-color: #477c7533;
-                border-radius: 5px;
-                overflow: hidden;
-                border: 1px solid #ffffff0a;
-                transition: background-color 0.15s ease;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                &:hover { background-color: #477c7566; cursor: pointer; }
-
-                .hist-thumb {
-                    flex-shrink: 0;
-                    width: 30%;
-                    background-position: center;
-                    background-size: cover;
-                    background-repeat: no-repeat;
-                }
-                .hist-thumb-ph {
-                    flex-shrink: 0;
-                    width: 30%;
-                    background-color: #1a1a1a;
-                    justify-content: center;
-                    align-items: center;
-                    color: #444;
-                    font-family: Material Icons;
-                    font-size: 1.2vw;
-                }
-                .hist-info {
-                    flex-grow: 1;
-                    flex-shrink: 1;
-                    flex-direction: column;
-                    padding: 4px 5px;
-                    justify-content: center;
-                    .hist-title {
-                        color: #ddd;
-                        font-size: 0.75vw;
-                        font-family: BerlinSansFBDemi;
-                        opacity: 0.9;
-                    }
-                    .hist-meta {
-                        flex-direction: row;
-                        gap: 6px;
-                        .hist-dur { color: #00d7bad0; font-size: 0.6vw; }
-                        .hist-cnt { color: #f0f0f0d8; font-size: 0.6vw; }
-                    }
-                }
-                .hist-actions {
-                    flex-shrink: 0;
-                    flex-direction: column;
-                    justify-content: center;
-                    gap: 2px;
-                    padding: 4px 3px;
-                    .btn-ha {
-                        width: 1.1vw;
-                        height: 1.1vw;
-                        font-family: Material Icons;
-                        font-size: 0.8vw;
-                        border-radius: 3px;
-                        justify-content: center;
-                        align-items: center;
-                        opacity: 0.35;
-                        transition: opacity 0.1s ease;
-                        &:hover { opacity: 1; cursor: pointer; }
-                    }
-                    .btn-play { color: #00d7bb; &:hover { background-color: #00d7bb22; } }
-                    .btn-del  { color: #ff6b6b; &:hover { background-color: #ff6b6b22; } }
-                }
+        .hist-item {
+            flex-shrink: 0;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+            height: 64px;
+            padding: 5px;
+            border-radius: 10px;
+            background-color: #ffffff08;
+            border: 1px solid #ffffff0a;
+            transition: all 0.12s ease;
+            &:hover {
+                background-color: #00d7bb14;
+                border-color: #00d7bb40;
+                .hist-actions { opacity: 1; }
             }
+        }
 
-            .hist-empty {
-                flex-direction: column;
-                align-items: center;
+        .hist-thumb {
+            position: relative;
+            flex-shrink: 0;
+            width: 96px;
+            height: 54px;
+            border-radius: 6px;
+            overflow: hidden;
+            justify-content: flex-end;
+            align-items: flex-end;
+            background-color: #000000;
+            &:hover { cursor: pointer; }
+            .ph {
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
                 justify-content: center;
-                flex-grow: 1;
-                color: #ffffff33;
-                font-size: 0.85vw;
-                gap: 6px;
-                padding-top: 20%;
-                .empty-icon { font-family: Material Icons; font-size: 2vw; }
+                align-items: center;
+                font-size: 26px;
+                color: #ffffff55;
+                background-color: #1b1d21;
+                &.yt { color: #ff4e45aa; }
+                &.tw { color: #a970ffaa; }
+                &.sc { color: #ff7700aa; }
+                &.dr { color: #00d7bbaa; }
             }
+            .img {
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+            .badge {
+                margin: 3px;
+                padding: 0px 4px;
+                border-radius: 3px;
+                font-size: 10px;
+                color: white;
+                background-color: #000000cc;
+                &.live { background-color: #e5303a; }
+            }
+        }
+
+        .hist-info {
+            flex-grow: 1;
+            flex-shrink: 1;
+            width: 0;
+            flex-direction: column;
+            justify-content: center;
+            gap: 4px;
+            overflow: hidden;
+            &:hover { cursor: pointer; }
+            .hist-title {
+                font-family: BerlinSansFBDemi;
+                font-size: 14px;
+                color: white;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .hist-meta {
+                flex-direction: row;
+                align-items: center;
+                gap: 6px;
+                font-size: 11px;
+                color: #ffffff80;
+                white-space: nowrap;
+                overflow: hidden;
+                i { font-size: 13px; }
+                .svc { flex-direction: row; align-items: center; gap: 3px; flex-shrink: 0; }
+                .svc.yt { color: #ff4e45; }
+                .svc.tw { color: #a970ff; }
+                .svc.sc { color: #ff7700; }
+                .svc.dr { color: #00d7bb; }
+                .dot { color: #ffffff33; }
+            }
+        }
+
+        .hist-actions {
+            flex-shrink: 0;
+            flex-direction: column;
+            gap: 4px;
+            opacity: 0.45;
+            transition: opacity 0.12s ease;
+            .btn-ha {
+                width: 26px;
+                height: 26px;
+                border-radius: 6px;
+                justify-content: center;
+                align-items: center;
+                font-size: 17px;
+                transition: all 0.1s ease;
+                &:hover { cursor: pointer; }
+            }
+            .btn-play { color: #0b0c0e; background-color: #00d7bb; &:hover { background-color: #3cf0d6; } }
+            .btn-del { color: #ff6b6b; background-color: #ff6b6b1a; &:hover { background-color: #ff6b6b40; } }
+        }
+
+        .hist-empty {
+            flex-grow: 1;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding-top: 20%;
+            font-size: 13px;
+            color: #ffffff40;
+            i { font-size: 40px; }
         }
 
         .hist-pager {
             flex-shrink: 0;
             flex-direction: row;
             align-items: center;
-            height: 1.6vw;
-            background-color: #101010;
+            gap: 4px;
+            height: 40px;
+            padding: 0 8px;
+            background-color: #16181b;
             border-top: 1px solid #ffffff12;
-            padding: 0 4px;
-            gap: 3px;
             .pg-btn {
-                flex-shrink: 0;
-                width: 1.2vw;
-                height: 1.2vw;
-                font-family: Material Icons;
-                font-size: 1vw;
+                width: 26px;
+                height: 26px;
+                border-radius: 6px;
                 justify-content: center;
                 align-items: center;
-                border-radius: 3px;
+                font-size: 20px;
                 color: #00d7bb;
-                opacity: 0.7;
-                &:hover { opacity: 1; cursor: pointer; background-color: #00d7bb18; }
-                &.disabled { color: #555; opacity: 0.4; pointer-events: none; }
+                &:hover { cursor: pointer; background-color: #00d7bb1f; }
+                &.disabled { color: #ffffff30; pointer-events: none; }
             }
-            .pg-info { flex-grow: 1; color: #ffffff66; font-size: 0.7vw; text-align: center; }
+            .pg-info { flex-grow: 1; justify-content: center; font-size: 12px; color: #ffffff80; }
             .btn-clear {
-                flex-shrink: 0;
-                height: 1.1vw;
-                font-size: 0.65vw;
-                font-family: BerlinSansFBDemi;
-                color: #ff6b6b99;
-                background-color: transparent;
+                flex-direction: row;
+                align-items: center;
+                gap: 4px;
+                padding: 3px 9px;
+                border-radius: 6px;
+                font-size: 12px;
+                color: #ff6b6bcc;
                 border: 1px solid #ff6b6b44;
-                border-radius: 3px;
-                padding: 0 5px;
-                transition: all 0.15s ease;
-                &:hover { color: #ff6b6b; border-color: #ff6b6b88; cursor: pointer; background-color: #ff6b6b11; }
+                transition: all 0.12s ease;
+                i { font-size: 14px; }
+                &:hover { color: #ff6b6b; background-color: #ff6b6b1a; cursor: pointer; }
+                &.confirm { color: white; background-color: #e5303a; border-color: #e5303a; }
             }
         }
     }
 </style>
 
 <root>
-    <div class="hist-header">HISTORY</div>
-
-    <div class="hist-search">
-        <TextEntry @ref="SearchEntry" Placeholder="search..." />
+    <div class="hist-header">
+        <i>history</i>
+        <label>HISTORY</label>
+        <label class="hist-total">@RequestHistoryStore.GetAll().Count</label>
     </div>
 
-    <div class="hist-sort">
-        <button class="sort-btn @(_sortMode=="lastRequest"?"active":"")" onclick=@(()=>SetSort("lastRequest"))>recent</button>
-        <button class="sort-btn @(_sortMode=="title"?"active":"")"       onclick=@(()=>SetSort("title"))>A-Z</button>
-        <button class="sort-btn @(_sortMode=="duration"?"active":"")"    onclick=@(()=>SetSort("duration"))>duration</button>
-        <button class="sort-btn @(_sortMode=="count"?"active":"")"       onclick=@(()=>SetSort("count"))>popular</button>
+    <div class="hist-tools">
+        <div class="hist-search">
+            <i>search</i>
+            <TextEntry @ref="SearchEntry" Placeholder="search..." />
+        </div>
+        <div class="hist-sort">
+            <button class="sort-btn @(_sortMode=="lastRequest"?"active":"")" onclick=@(()=>SetSort("lastRequest"))>recent</button>
+            <button class="sort-btn @(_sortMode=="title"?"active":"")"       onclick=@(()=>SetSort("title"))>A-Z</button>
+            <button class="sort-btn @(_sortMode=="duration"?"active":"")"    onclick=@(()=>SetSort("duration"))>duration</button>
+            <button class="sort-btn @(_sortMode=="count"?"active":"")"       onclick=@(()=>SetSort("count"))>popular</button>
+        </div>
     </div>
 
     <div class="hist-list">
         @if ( !PageItems.Any() )
         {
             <div class="hist-empty">
-                <label class="empty-icon">movie_filter</label>
-                <label>no history yet</label>
+                <i>movie_filter</i>
+                <label>@(string.IsNullOrEmpty(_lastSearch) ? "no history yet" : "nothing found")</label>
             </div>
         }
         else
         {
-            @foreach ( var entry in PageItems )
+            foreach ( var entry in PageItems )
             {
+                var svc = ServiceOf( entry.Url );
                 <div class="hist-item">
+                    <div class="hist-thumb" onclick=@(() => OnItemClick( entry ))>
+                        <div class="ph @svc.Css"><i>@svc.Icon</i></div>
+                        @if ( !string.IsNullOrEmpty( entry.Thumb ) )
+                        {
+                            <div class="img" style="background-image: url(@entry.Thumb)"></div>
+                        }
+                        <label class="badge @(entry.Duration > 0 ? "" : "live")">@(entry.Duration > 0 ? FormatTime(entry.Duration) : "LIVE")</label>
+                    </div>
 
-                    @if ( !string.IsNullOrEmpty( entry.Thumb ) )
-                    {
-                        <img class="hist-thumb" onclick=@(() => OnItemClick( entry )) onerror="/ui/novideo.gif" src=@entry.Thumb/>
-                    }
-                    else
-                    {
-                        <div class="hist-thumb-ph" onclick=@(() => OnItemClick( entry ))><label>movie</label></div>
-                    }
-
-                    <div class="hist-info">
-                        <div class="hist-title">@entry.Title</div>
+                    <div class="hist-info" onclick=@(() => OnItemClick( entry ))>
+                        <label class="hist-title">@entry.Title</label>
                         <div class="hist-meta">
-                            <div class="hist-dur">@(entry.Duration > 0 ? FormatTime(entry.Duration) : "live")</div>
-                            <div class="hist-cnt">x@(entry.Count)</div>
+                            <div class="svc @svc.Css"><i>@svc.Icon</i><label>@svc.Name</label></div>
+                            <label class="dot">•</label>
+                            <label>@TimeAgo( entry.LastRequest )</label>
+                            @if ( entry.Count > 1 )
+                            {
+                                <label class="dot">•</label>
+                                <label>x@(entry.Count)</label>
+                            }
                         </div>
                     </div>
 
                     <div class="hist-actions">
-                        <button class="btn-ha btn-play" onclick=@(() => OnRequestClick( entry ))>play_arrow</button>
-                        <button class="btn-ha btn-del"  onclick=@(() => OnDeleteClick( entry ))>delete</button>
+                        <button class="btn-ha btn-play" onclick=@(() => OnRequestClick( entry ))><i>play_arrow</i></button>
+                        <button class="btn-ha btn-del"  onclick=@(() => OnDeleteClick( entry ))><i>delete</i></button>
                     </div>
-
                 </div>
             }
         }
     </div>
 
     <div class="hist-pager">
-        <button class="pg-btn @(CurrentPage<=1?"disabled":"")" onclick=@PrevPage>chevron_left</button>
+        <button class="pg-btn @(CurrentPage<=1?"disabled":"")" onclick=@PrevPage><i>chevron_left</i></button>
         <label class="pg-info">@CurrentPage / @TotalPages</label>
-        <button class="pg-btn @(CurrentPage>=TotalPages?"disabled":"")" onclick=@NextPage>chevron_right</button>
-        <button class="btn-clear" onclick=@OnClearAll>clear all</button>
+        <button class="pg-btn @(CurrentPage>=TotalPages?"disabled":"")" onclick=@NextPage><i>chevron_right</i></button>
+        <button class="btn-clear @(_confirmClear?"confirm":"")" onclick=@OnClearAll><i>delete_sweep</i><label>@(_confirmClear ? "sure?" : "clear all")</label></button>
     </div>
 </root>
 
@@ -268,9 +347,13 @@
     private List<HistoryEntry> _filtered = new();
     private string _sortMode = "lastRequest";
     private string _lastSearch = "";
+    private bool _confirmClear;
+    private RealTimeSince _sinceConfirm;
     private int CurrentPage { get; set; } = 1;
     private int TotalPages => Math.Max( 1, (int)Math.Ceiling( _filtered.Count / (double)PageSize ) );
     private IEnumerable<HistoryEntry> PageItems => _filtered.Skip( (CurrentPage - 1) * PageSize ).Take( PageSize );
+
+    private record struct ServiceInfo( string Name, string Icon, string Css );
 
     protected override void OnAfterTreeRender( bool firstTime )
     {
@@ -312,8 +395,17 @@
         StateHasChanged();
     }
 
+    /// <summary>First click asks, the second one within a few seconds clears.</summary>
     private void OnClearAll()
     {
+        if ( !_confirmClear )
+        {
+            _confirmClear = true;
+            _sinceConfirm = 0;
+            StateHasChanged();
+            return;
+        }
+        _confirmClear = false;
         RequestHistoryStore.ClearAll();
         _filtered.Clear();
         CurrentPage = 1;
@@ -338,6 +430,25 @@
         };
     }
 
+    private static ServiceInfo ServiceOf( string url )
+    {
+        var u = url?.ToLowerInvariant() ?? "";
+        if ( u.Contains( "youtube.com" ) || u.Contains( "youtu.be" ) ) return new( "YouTube", "smart_display", "yt" );
+        if ( u.Contains( "twitch.tv" ) ) return new( "Twitch", "live_tv", "tw" );
+        if ( u.Contains( "soundcloud.com" ) ) return new( "SoundCloud", "graphic_eq", "sc" );
+        return new( "Direct", "link", "dr" );
+    }
+
+    private static string TimeAgo( long unix )
+    {
+        var ago = DateTimeOffset.UtcNow - DateTimeOffset.FromUnixTimeSeconds( unix );
+        if ( ago.TotalMinutes < 1 ) return "just now";
+        if ( ago.TotalHours < 1 ) return $"{(int)ago.TotalMinutes} min ago";
+        if ( ago.TotalDays < 1 ) return $"{(int)ago.TotalHours} h ago";
+        if ( ago.TotalDays < 30 ) return $"{(int)ago.TotalDays} d ago";
+        return DateTimeOffset.FromUnixTimeSeconds( unix ).ToLocalTime().ToString( "dd.MM.yyyy" );
+    }
+
     private static string FormatTime( float seconds )
     {
         var t = TimeSpan.FromSeconds( seconds );
@@ -348,7 +459,6 @@
 
     protected override int BuildHash()
     {
-
         var cur = SearchEntry?.Value ?? "";
         if ( cur != _lastSearch )
         {
@@ -356,8 +466,9 @@
             CurrentPage = 1;
             ApplyFilters();
         }
+        if ( _confirmClear && _sinceConfirm > 3 ) _confirmClear = false;
 
         var first = _filtered.FirstOrDefault();
-        return HashCode.Combine( CurrentPage, _sortMode, _filtered.Count, _lastSearch, first?.Id ?? "", first?.Title ?? "" );
+        return HashCode.Combine( CurrentPage, _sortMode, _filtered.Count, _lastSearch, first?.Id ?? "", first?.Title ?? "", _confirmClear );
     }
 }

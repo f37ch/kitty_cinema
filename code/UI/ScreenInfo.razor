@@ -78,7 +78,7 @@
     <text class="ptext">#mediaplayer.paused</text>
     @if (!MediaPlayer.IsLive){
         <div class="container">
-            <div class="durbar" style="width: @((MediaPlayer.Curtime/MediaPlayer.Duration)*100)%;"/>
+            <div class="durbar" style="width: @(MediaPlayer.Duration>0?MediaPlayer.Curtime/MediaPlayer.Duration*100:0)%;"/>
         </div>
     }
 </root>
@@ -92,6 +92,6 @@
     }
     protected override int BuildHash()
     {
-        return HashCode.Combine(DateTime.Now.ToString());
+        return HashCode.Combine(MediaPlayer?.Title,MediaPlayer?.IsLive,(int)(MediaPlayer?.Curtime??0));
     }
 }

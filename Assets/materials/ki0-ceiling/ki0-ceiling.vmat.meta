@@ -1,0 +1,26 @@
+{
+  "guid": "4c966fcc-2787-4473-8032-dea32780fe04",
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "Ki 0 Ceiling",
+      "Type": "material",
+      "Org": "local",
+      "Ident": "ki0_ceiling",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": null,
+      "EditorReferences": [],
+      "Mounts": null,
+      "IsStandaloneOnly": false,
+      "AI": {
+        "EnableMcpCommunication": true
+      },
+      "Metadata": {
+        "SingleAssetSource": "materials/ki0-ceiling/ki0-ceiling.vmat",
+        "ParentPackage": "playback.kitty_cinema"
+      }
+    }
+  }
+}

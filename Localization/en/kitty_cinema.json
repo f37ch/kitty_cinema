@@ -39,6 +39,11 @@
     "notify.dropweaponFirst":"You need to drop current weapon first!",
 
     "requestmenu.request": "REQUEST",
+    "requestmenu.placeholder": "Paste a link or open a video below",
+    "requestmenu.placeholderDirect": "Paste a link here",
+    "requestmenu.browse": "open a video",
+    "requestmenu.direct": "DIRECT LINK",
+    "requestmenu.directHint": "YouTube, Twitch, SoundCloud or a direct link to a video or audio file. Enter to request.",
     "thumbnail.novideo": "No Video Playing",
     "theatercontrols.votesLeft":"MORE VOTE TO SKIP",
     "theatercontrols.voteSkip":"VOTE FOR SKIP",

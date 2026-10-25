@@ -1,0 +1,26 @@
+{
+  "guid": "2a2208ba-edaa-4562-9989-3fa20cc46bd2",
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "Ki 0 Lobbyposters",
+      "Type": "material",
+      "Org": "local",
+      "Ident": "ki0_lobbyposters",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": null,
+      "EditorReferences": [],
+      "Mounts": null,
+      "IsStandaloneOnly": false,
+      "AI": {
+        "EnableMcpCommunication": true
+      },
+      "Metadata": {
+        "SingleAssetSource": "materials/ki0-lobbyposters.vmat",
+        "ParentPackage": "playback.kitty_cinema"
+      }
+    }
+  }
+}

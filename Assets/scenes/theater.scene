@@ -44,7 +44,7 @@
       "__version": 2,
       "Flags": 0,
       "Name": "NetworkSync",
-      "Position": "-105.6839,-151.1344,121.7287",
+      "Position": "-105.683899,-151.134399,121.728699",
       "Rotation": "0,0,0,1",
       "Scale": "1,1,1",
       "Tags": "",
@@ -119,7 +119,10 @@
         {
           "__guid": "ed7146f3-4f8e-471e-b14b-80e7ab673ec8",
           "__version": 2,
-          "__Prefab": "prefabs/player.prefab",
+          "__Prefab": {
+            "Id": "a573b992-baf3-447f-9807-abb9ad17c280",
+            "Path": "prefabs/player.prefab"
+          },
           "__PrefabInstancePatch": {
             "AddedObjects": [],
             "RemovedObjects": [],
@@ -130,7 +133,7 @@
                   "IdValue": "877a24a4-7065-457c-b34b-ba7cd105ef6c"
                 },
                 "Property": "Position",
-                "Value": "-127.5646,135.2954,-121.6874"
+                "Value": "-127.564598,135.295395,-121.687401"
               },
               {
                 "Target": {
@@ -153,30 +156,14 @@
           },
           "__PrefabIdToInstanceId": {
             "877a24a4-7065-457c-b34b-ba7cd105ef6c": "ed7146f3-4f8e-471e-b14b-80e7ab673ec8",
-            "f73ad975-aeee-46fe-96ae-3d869a2e64ad": "e59088e1-60d7-4bc3-a640-f3ad339041ad",
-            "81c211aa-1df1-4eb4-93ed-bbd6925c91b5": "69630582-efa7-4d31-869b-c7ae2fdb6c88",
-            "520d1eb0-46cf-4f9e-88c8-d1d72cc2b5dd": "2f349080-ef33-48ba-a4c6-75ae51d52e84",
-            "ed43de14-f15a-4c1f-ab3a-375c4dac8abb": "1b022b78-47f3-4b47-a9fd-f10718d0bdd7",
-            "70b0c1ea-e83b-4834-82c8-384795841d75": "cd7dae3f-ac31-499f-9c21-4797243be564",
-            "7493a5fa-0a5e-4ecf-8fb9-9d055de0758d": "fbe63368-f810-40a9-8bb8-cbcc730811e7",
-            "6265c8c9-89e1-4e3d-96a4-97266cb8c6a9": "77b571ac-9346-4f43-93ee-275c9752a8b2",
             "a41771b6-9354-4518-badb-7596be78e5e0": "5868881a-f68d-44e6-bb9d-1776e4e8cd8e",
-            "38e1a397-720b-4a10-a07e-39d6973cbc72": "c25fe082-f43a-4106-a4e2-a257c9e7a01a",
             "bf5bf83e-f285-4f3f-a9d0-73d56cf7df57": "a4c4f01c-8077-4250-8c33-24a2538a5ebc",
-            "5ee58622-36f0-41c2-a4e9-161bb1dfbf9f": "dfd8ca94-d3d1-4962-bb11-1a313f753d1a",
             "d45ba39e-c702-4919-b05d-49ff38c42a6a": "a32a940e-b6df-4daa-b9ee-aeecb414f983",
-            "ea0123cf-bd10-4fff-921b-c338ed7af109": "0b4b0bf4-3c66-4def-a807-2317c292d58f",
             "21f8124c-ad30-4b39-a3b4-92270d9c37ed": "6619ea39-ed3b-42dc-b4cc-2512b047af9c",
-            "8d4d2f44-2725-4cbe-8999-d5db6f6fd2f8": "7a9d996d-6dcb-4cf9-b783-c8b387491ff4",
             "87148b69-60ed-4823-9416-faeccfc7978e": "a2f5fd49-8023-4bb7-8e5e-b5c2be68cddb",
-            "5befa5a1-a36b-421c-8f0d-05454e2740c7": "45a9b8b6-79df-4be0-b481-0b4d2738af4f",
             "0bef3b7a-0f17-48b7-a57d-b052ae9261a8": "22457781-1e83-4940-b877-6403b3c60177",
-            "f69d5551-32d6-4ad4-ad9b-7229c2b3859e": "bb1f4a78-7b7c-446b-a247-fda20df024ba",
             "c9045f7c-a365-4bac-824f-eb32f2b0775f": "db196d95-2b08-4f58-a79c-9f0feb7beaa0",
-            "7bb58f98-2b19-489c-a2d3-31e374adacb1": "49c72f5a-ac9a-464b-ad22-20513627e31c",
-            "b79eaa18-ad72-4e43-9262-c1a97d7050d2": "110bd7da-fd10-484b-a309-169ff16a20c5",
             "6a41f38b-9187-4f04-b07d-b02b0ffd541e": "885f6cdb-90c6-4ab3-9ca5-952fed7aa4f2",
-            "7777cffb-0231-443f-9ad7-f2b89b498208": "0ed0c81a-b842-475f-a926-7ba79473cea1",
             "de2b02fa-4dd8-4c00-ab85-5acda935d25d": "a84c84b8-c958-4d35-8b4d-fa4c89c9acb6",
             "921b22a5-8ea6-4b3c-8f70-690e1d73841b": "a1bc3928-256b-4863-8c5d-d3bb441847d4",
             "3250d11a-172e-4daf-bced-2c1d723ee2a6": "0a94adf8-408d-426b-9980-668588fb8648",
@@ -272,7 +259,23 @@
             "254c26bf-a003-4e50-b8e5-1da6992ea071": "a05879de-025d-42c1-88b0-f918d6fd7cad",
             "117d0dbb-91f2-447e-bda6-a4fad4d3834f": "bb14b963-1abd-4d38-8ff0-dc3243ae38d4",
             "050e30fd-9a4e-4a84-83e0-4157bd3c9f8c": "b702cc29-341f-4fe4-91dd-1bb7358f02d1",
-            "d6f067c5-15eb-4745-a43f-241b7af511f1": "cab3fba3-ea15-4cb2-9efd-419a9d34ffbe"
+            "d6f067c5-15eb-4745-a43f-241b7af511f1": "cab3fba3-ea15-4cb2-9efd-419a9d34ffbe",
+            "f73ad975-aeee-46fe-96ae-3d869a2e64ad": "e59088e1-60d7-4bc3-a640-f3ad339041ad",
+            "81c211aa-1df1-4eb4-93ed-bbd6925c91b5": "69630582-efa7-4d31-869b-c7ae2fdb6c88",
+            "520d1eb0-46cf-4f9e-88c8-d1d72cc2b5dd": "2f349080-ef33-48ba-a4c6-75ae51d52e84",
+            "ed43de14-f15a-4c1f-ab3a-375c4dac8abb": "1b022b78-47f3-4b47-a9fd-f10718d0bdd7",
+            "70b0c1ea-e83b-4834-82c8-384795841d75": "cd7dae3f-ac31-499f-9c21-4797243be564",
+            "7493a5fa-0a5e-4ecf-8fb9-9d055de0758d": "fbe63368-f810-40a9-8bb8-cbcc730811e7",
+            "6265c8c9-89e1-4e3d-96a4-97266cb8c6a9": "77b571ac-9346-4f43-93ee-275c9752a8b2",
+            "38e1a397-720b-4a10-a07e-39d6973cbc72": "c25fe082-f43a-4106-a4e2-a257c9e7a01a",
+            "5ee58622-36f0-41c2-a4e9-161bb1dfbf9f": "dfd8ca94-d3d1-4962-bb11-1a313f753d1a",
+            "ea0123cf-bd10-4fff-921b-c338ed7af109": "0b4b0bf4-3c66-4def-a807-2317c292d58f",
+            "8d4d2f44-2725-4cbe-8999-d5db6f6fd2f8": "7a9d996d-6dcb-4cf9-b783-c8b387491ff4",
+            "5befa5a1-a36b-421c-8f0d-05454e2740c7": "45a9b8b6-79df-4be0-b481-0b4d2738af4f",
+            "f69d5551-32d6-4ad4-ad9b-7229c2b3859e": "bb1f4a78-7b7c-446b-a247-fda20df024ba",
+            "7bb58f98-2b19-489c-a2d3-31e374adacb1": "49c72f5a-ac9a-464b-ad22-20513627e31c",
+            "b79eaa18-ad72-4e43-9262-c1a97d7050d2": "110bd7da-fd10-484b-a309-169ff16a20c5",
+            "7777cffb-0231-443f-9ad7-f2b89b498208": "0ed0c81a-b842-475f-a926-7ba79473cea1"
           }
         },
         {
@@ -280,12 +283,12 @@
           "__version": 2,
           "Flags": 0,
           "Name": "Camera",
-          "Position": "155.6839,104.6867,-3.097641",
-          "Rotation": "0.06162842,0.06162842,-0.7044161,0.7044161",
+          "Position": "155.683899,104.686699,-3.09764099",
+          "Rotation": "0.0616284199,0.0616284199,-0.704416096,0.704416096",
           "Scale": "1,1,1",
           "Tags": "maincamera",
           "Enabled": true,
-          "NetworkMode": 2,
+          "NetworkMode": 0,
           "NetworkFlags": 0,
           "NetworkOrphaned": 0,
           "NetworkTransmit": true,
@@ -368,7 +371,7 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Point Light (2)",
-      "Position": "0,-1344.834,218.2512",
+      "Position": "0,-1344.83398,218.251205",
       "Rotation": "0,0,0,1",
       "Scale": "1,1,1",
       "Tags": "light_point,light",
@@ -385,6 +388,7 @@
           "__enabled": true,
           "Flags": 0,
           "Attenuation": 1,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "9.735,10.19,8.48377,1",
@@ -395,6 +399,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 1000,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": false
         }
       ],
@@ -405,7 +411,7 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Point Light (1)",
-      "Position": "0,-187.7143,218.2512",
+      "Position": "0,-187.714294,218.251205",
       "Rotation": "0,0,0,1",
       "Scale": "1,1,1",
       "Tags": "light_point,light",
@@ -422,6 +428,7 @@
           "__enabled": true,
           "Flags": 0,
           "Attenuation": 1.24,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "15.59129,16.32,13.58735,1",
@@ -432,6 +439,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 1400,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": true
         }
       ],
@@ -442,7 +451,7 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Point Light (3)",
-      "Position": "0,-755.1943,243.5929",
+      "Position": "0,-755.194275,243.592896",
       "Rotation": "0,0,0,1",
       "Scale": "1,1,1",
       "Tags": "light_point,light",
@@ -459,6 +468,7 @@
           "__enabled": true,
           "Flags": 0,
           "Attenuation": 1.24,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "13.58735,15.50021,16.32,1",
@@ -469,6 +479,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 1400,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": true
         }
       ],
@@ -479,8 +491,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spot Light",
-      "Position": "446.8425,-16.00911,290.0436",
-      "Rotation": "0,0.7071068,0,0.7071068",
+      "Position": "446.842499,-16.0091095,290.04361",
+      "Rotation": "0,0.707106829,0,0.707106829",
       "Scale": "1,1,1",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -498,6 +510,7 @@
           "Attenuation": 1,
           "ConeInner": 20.74,
           "ConeOuter": 67.57,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
@@ -509,6 +522,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 500,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": true
         }
       ],
@@ -519,8 +534,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spot Light (23)",
-      "Position": "0.0001502541,128.6861,269.2515",
-      "Rotation": "0,0.7071068,0,0.7071068",
+      "Position": "0.000150254098,128.686096,269.251495",
+      "Rotation": "0,0.707106829,0,0.707106829",
       "Scale": "1,1,1",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -538,6 +553,7 @@
           "Attenuation": 1,
           "ConeInner": 20.74,
           "ConeOuter": 67.57,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
@@ -549,6 +565,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 500,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": true
         }
       ],
@@ -559,8 +577,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spot Light (10)",
-      "Position": "584.7117,-1271.466,268.5127",
-      "Rotation": "0,0.7071068,0,0.7071068",
+      "Position": "584.71167,-1271.46594,268.512695",
+      "Rotation": "0,0.707106829,0,0.707106829",
       "Scale": "1,1,1",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -578,6 +596,7 @@
           "Attenuation": 1.87,
           "ConeInner": 37.38,
           "ConeOuter": 61.93,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
@@ -589,6 +608,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 500,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": false
         }
       ],
@@ -599,8 +620,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spot Light (14)",
-      "Position": "490,-1912.067,51.43364",
-      "Rotation": "-0,1,-0,-0.00000004371139",
+      "Position": "490,-1912.06702,51.4336395",
+      "Rotation": "-0,1,-0,-4.37113883E-08",
       "Scale": "1,1,1",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -618,6 +639,7 @@
           "Attenuation": 10,
           "ConeInner": 0,
           "ConeOuter": 58,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "Cookie": null,
           "FogMode": "Disabled",
           "FogStrength": 1,
@@ -629,6 +651,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 100,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": false
         }
       ],
@@ -639,8 +663,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spot Light (21)",
-      "Position": "-488.3229,-1912.067,51.43372",
-      "Rotation": "1,0.0000001947072,-0.00000004371139,-0.000000000000008510921",
+      "Position": "-488.322906,-1912.06702,51.4337196",
+      "Rotation": "1,1.94707198E-07,-4.37113883E-08,-8.51092099E-15",
       "Scale": "1,1,1",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -658,6 +682,7 @@
           "Attenuation": 10,
           "ConeInner": 0,
           "ConeOuter": 58,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "Cookie": null,
           "FogMode": "Disabled",
           "FogStrength": 1,
@@ -669,6 +694,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 100,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": false
         }
       ],
@@ -679,8 +706,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spot Light (15)",
-      "Position": "490,-2059.795,27.92627",
-      "Rotation": "-0,1,-0,-0.00000004371139",
+      "Position": "490,-2059.79492,27.9262695",
+      "Rotation": "-0,1,-0,-4.37113883E-08",
       "Scale": "1,1,1",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -698,6 +725,7 @@
           "Attenuation": 10,
           "ConeInner": 0,
           "ConeOuter": 58,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "Cookie": null,
           "FogMode": "Disabled",
           "FogStrength": 1,
@@ -709,6 +737,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 100,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": false
         }
       ],
@@ -719,8 +749,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spot Light (20)",
-      "Position": "-488.3229,-2059.795,27.92636",
-      "Rotation": "1,0.0000001947072,-0.00000004371139,-0.000000000000008510921",
+      "Position": "-488.322906,-2059.79492,27.9263592",
+      "Rotation": "1,1.94707198E-07,-4.37113883E-08,-8.51092099E-15",
       "Scale": "1,1,1",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -738,6 +768,7 @@
           "Attenuation": 10,
           "ConeInner": 0,
           "ConeOuter": 58,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "Cookie": null,
           "FogMode": "Disabled",
           "FogStrength": 1,
@@ -749,6 +780,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 100,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": false
         }
       ],
@@ -759,8 +792,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spot Light (16)",
-      "Position": "490,-2228.186,-9.185959",
-      "Rotation": "-0,1,-0,-0.00000004371139",
+      "Position": "490,-2228.18604,-9.18595886",
+      "Rotation": "-0,1,-0,-4.37113883E-08",
       "Scale": "1,1,1",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -778,6 +811,7 @@
           "Attenuation": 10,
           "ConeInner": 0,
           "ConeOuter": 58,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "Cookie": null,
           "FogMode": "Disabled",
           "FogStrength": 1,
@@ -789,6 +823,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 100,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": false
         }
       ],
@@ -799,8 +835,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spot Light (18)",
-      "Position": "-488.3229,-2228.186,-9.185873",
-      "Rotation": "1,0.0000001947072,-0.00000004371139,-0.000000000000008510921",
+      "Position": "-488.322906,-2228.18604,-9.18587303",
+      "Rotation": "1,1.94707198E-07,-4.37113883E-08,-8.51092099E-15",
       "Scale": "1,1,1",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -818,6 +854,7 @@
           "Attenuation": 10,
           "ConeInner": 0,
           "ConeOuter": 58,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "Cookie": null,
           "FogMode": "Disabled",
           "FogStrength": 1,
@@ -829,6 +866,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 100,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": false
         }
       ],
@@ -839,8 +878,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spot Light (17)",
-      "Position": "490,-2374.133,-32.78491",
-      "Rotation": "-0,1,-0,-0.00000004371139",
+      "Position": "490,-2374.13306,-32.7849083",
+      "Rotation": "-0,1,-0,-4.37113883E-08",
       "Scale": "1,1,1",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -858,6 +897,7 @@
           "Attenuation": 10,
           "ConeInner": 0,
           "ConeOuter": 58,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "Cookie": null,
           "FogMode": "Disabled",
           "FogStrength": 1,
@@ -869,6 +909,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 100,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": false
         }
       ],
@@ -879,8 +921,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spot Light (19)",
-      "Position": "-488.3229,-2374.133,-32.78482",
-      "Rotation": "1,0.0000001947072,-0.00000004371139,-0.000000000000008510921",
+      "Position": "-488.322906,-2374.13306,-32.7848206",
+      "Rotation": "1,1.94707198E-07,-4.37113883E-08,-8.51092099E-15",
       "Scale": "1,1,1",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -898,6 +940,7 @@
           "Attenuation": 10,
           "ConeInner": 0,
           "ConeOuter": 58,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "Cookie": null,
           "FogMode": "Disabled",
           "FogStrength": 1,
@@ -909,6 +952,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 100,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": false
         }
       ],
@@ -919,8 +964,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spot Light (12)",
-      "Position": "605.4368,-919.3625,168.2819",
-      "Rotation": "-0.4273651,0.00000001868073,-0.904079,-0.00000003951855",
+      "Position": "605.436829,-919.362488,168.281906",
+      "Rotation": "-0.427365094,1.86807299E-08,-0.90407902,-3.95185502E-08",
       "Scale": "1,1,1",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -938,6 +983,7 @@
           "Attenuation": 1.87,
           "ConeInner": 37.38,
           "ConeOuter": 78.86,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
@@ -949,6 +995,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 500,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": false
         }
       ],
@@ -959,8 +1007,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spot Light (13)",
-      "Position": "-546.1298,-947.1195,158.1223",
-      "Rotation": "-0.00000000000001012083,-0.427365,-0.000000000000004784192,0.9040791",
+      "Position": "-546.129822,-947.119507,158.122299",
+      "Rotation": "-1.01208299E-14,-0.427365005,-4.78419201E-15,0.90407908",
       "Scale": "1,1,1",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -978,6 +1026,7 @@
           "Attenuation": 1.87,
           "ConeInner": 37.38,
           "ConeOuter": 78.86,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
@@ -989,6 +1038,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 500,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": false
         }
       ],
@@ -999,8 +1050,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spot Light (11)",
-      "Position": "-575.6505,-1271.466,268.5132",
-      "Rotation": "0,0.7071068,0,0.7071068",
+      "Position": "-575.650513,-1271.46594,268.513214",
+      "Rotation": "0,0.707106829,0,0.707106829",
       "Scale": "1,1,1",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -1018,6 +1069,7 @@
           "Attenuation": 1.87,
           "ConeInner": 37.38,
           "ConeOuter": 61.93,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
@@ -1029,6 +1081,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 500,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": false
         }
       ],
@@ -1039,8 +1093,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spot Light (22)",
-      "Position": "0.00006454677,-1688.147,360.9717",
-      "Rotation": "0,0.7071068,0,0.7071068",
+      "Position": "6.45467735E-05,-1688.14697,360.97171",
+      "Rotation": "0,0.707106829,0,0.707106829",
       "Scale": "1,1,1",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -1058,6 +1112,7 @@
           "Attenuation": 10,
           "ConeInner": 7.48,
           "ConeOuter": 68.13,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
@@ -1069,6 +1124,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 500,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": false
         }
       ],
@@ -1079,8 +1136,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spot Light (1)",
-      "Position": "-445.4463,-16.00911,290.044",
-      "Rotation": "0,0.7071068,0,0.7071068",
+      "Position": "-445.446289,-16.0091095,290.044006",
+      "Rotation": "0,0.707106829,0,0.707106829",
       "Scale": "1,1,1",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -1098,6 +1155,7 @@
           "Attenuation": 1,
           "ConeInner": 20.74,
           "ConeOuter": 67.57,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
@@ -1109,6 +1167,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 500,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": false
         }
       ],
@@ -1119,8 +1179,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spot Light (9)",
-      "Position": "0,-1035.45,258.6378",
-      "Rotation": "0.6263539,0.6263539,-0.3281476,0.3281476",
+      "Position": "0,-1035.44995,258.637787",
+      "Rotation": "0.62635392,0.62635392,-0.32814759,0.32814759",
       "Scale": "1,1,1",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -1138,6 +1198,7 @@
           "Attenuation": 1,
           "ConeInner": 20.74,
           "ConeOuter": 67.57,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
@@ -1149,6 +1210,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 500,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": false
         }
       ],
@@ -1159,8 +1222,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spot Light (2)",
-      "Position": "-507.7312,-1012.067,287.7446",
-      "Rotation": "0,0.7071068,0,0.7071068",
+      "Position": "-507.731201,-1012.06702,287.744598",
+      "Rotation": "0,0.707106829,0,0.707106829",
       "Scale": "1,1,1",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -1178,6 +1241,7 @@
           "Attenuation": 1,
           "ConeInner": 20.74,
           "ConeOuter": 60,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
@@ -1189,6 +1253,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 500,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": true
         }
       ],
@@ -1199,8 +1265,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spot Light (8)",
-      "Position": "-1018.583,-1276.551,265.533",
-      "Rotation": "0,0.7071068,0,0.7071068",
+      "Position": "-1018.58301,-1276.55103,265.53299",
+      "Rotation": "0,0.707106829,0,0.707106829",
       "Scale": "1,1,1",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -1218,6 +1284,7 @@
           "Attenuation": 1.74,
           "ConeInner": 25.25,
           "ConeOuter": 35.69,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
@@ -1229,6 +1296,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 500,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": false
         }
       ],
@@ -1239,8 +1308,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spot Light (6)",
-      "Position": "508.1959,-1012.067,287.7443",
-      "Rotation": "0,0.7071068,0,0.7071068",
+      "Position": "508.195892,-1012.06702,287.744293",
+      "Rotation": "0,0.707106829,0,0.707106829",
       "Scale": "1,1,1",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -1258,6 +1327,7 @@
           "Attenuation": 1,
           "ConeInner": 20.74,
           "ConeOuter": 60,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
@@ -1269,6 +1339,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 500,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": true
         }
       ],
@@ -1279,8 +1351,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spot Light (3)",
-      "Position": "-507.7312,-850.058,287.7447",
-      "Rotation": "0,0.7071068,0,0.7071068",
+      "Position": "-507.731201,-850.057983,287.74469",
+      "Rotation": "0,0.707106829,0,0.707106829",
       "Scale": "1,1,1",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -1298,6 +1370,7 @@
           "Attenuation": 1,
           "ConeInner": 20.74,
           "ConeOuter": 60,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
@@ -1309,6 +1382,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 500,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": true
         }
       ],
@@ -1319,8 +1394,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spot Light (5)",
-      "Position": "508.1959,-850.058,287.7444",
-      "Rotation": "0,0.7071068,0,0.7071068",
+      "Position": "508.195892,-850.057983,287.744385",
+      "Rotation": "0,0.707106829,0,0.707106829",
       "Scale": "1,1,1",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -1338,6 +1413,7 @@
           "Attenuation": 1,
           "ConeInner": 20.74,
           "ConeOuter": 60,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
@@ -1349,6 +1425,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 500,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": true
         }
       ],
@@ -1359,8 +1437,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spot Light (4)",
-      "Position": "-507.7311,-687.9802,287.7449",
-      "Rotation": "0,0.7071068,0,0.7071068",
+      "Position": "-507.73111,-687.980225,287.744904",
+      "Rotation": "0,0.707106829,0,0.707106829",
       "Scale": "1,1,1",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -1378,6 +1456,7 @@
           "Attenuation": 1,
           "ConeInner": 20.74,
           "ConeOuter": 60,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
@@ -1389,6 +1468,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 500,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": true
         }
       ],
@@ -1399,8 +1480,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spot Light (7)",
-      "Position": "508.196,-687.9802,287.7446",
-      "Rotation": "0,0.7071068,0,0.7071068",
+      "Position": "508.196014,-687.980225,287.744598",
+      "Rotation": "0,0.707106829,0,0.707106829",
       "Scale": "1,1,1",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -1418,6 +1499,7 @@
           "Attenuation": 1,
           "ConeInner": 20.74,
           "ConeOuter": 60,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
@@ -1429,6 +1511,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 500,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": true
         }
       ],
@@ -1439,8 +1523,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spot Light",
-      "Position": "0,-2551.663,221.1124",
-      "Rotation": "0,-0,-0.7071068,0.7071068",
+      "Position": "0,-2551.66309,221.112396",
+      "Rotation": "0,-0,-0.707106829,0.707106829",
       "Scale": "1,1,1",
       "Tags": "light_spot,light",
       "Enabled": true,
@@ -1458,6 +1542,7 @@
           "Attenuation": 0.15,
           "ConeInner": 67.99,
           "ConeOuter": 81.13,
+          "Contribution": "Diffuse, Specular, Transmissive",
           "Cookie": null,
           "FogMode": "Enabled",
           "FogStrength": 1,
@@ -1469,6 +1554,8 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "Radius": 1000,
+          "ShadowBias": 0,
+          "ShadowHardness": 0,
           "Shadows": false
         }
       ],
@@ -1479,7 +1566,7 @@
       "__version": 2,
       "Flags": 0,
       "Name": "ChatBox",
-      "Position": "-0.06991577,6.282762,101.5707",
+      "Position": "-0.0699157715,6.28276205,101.570702",
       "Rotation": "0,0,0,1",
       "Scale": "1,1,1",
       "Tags": "",
@@ -1506,6 +1593,7 @@
           "Scale": 1,
           "ScaleStrategy": "ConsistentHeight",
           "TargetCamera": null,
+          "Timing": "AfterPostProcess",
           "ZIndex": 10
         },
         {
@@ -1528,7 +1616,7 @@
       "__version": 2,
       "Flags": 0,
       "Name": "SpawnPoints",
-      "Position": "-12.91846,-44.25635,58.24101",
+      "Position": "-12.9184599,-44.2563515,58.2410088",
       "Rotation": "0,0,0,1",
       "Scale": "1,1,1",
       "Tags": "",
@@ -1545,8 +1633,8 @@
           "__version": 2,
           "Flags": 0,
           "Name": "Spawn Point",
-          "Position": "12.91867,73.93378,2.101",
-          "Rotation": "0,0,-0.7071068,0.7071068",
+          "Position": "12.9186697,73.9337769,2.10100007",
+          "Rotation": "0,0,-0.707106829,0.707106829",
           "Scale": "1,1,1",
           "Tags": "",
           "Enabled": true,
@@ -1577,8 +1665,8 @@
           "__version": 2,
           "Flags": 0,
           "Name": "Spawn Point (7)",
-          "Position": "12.91861,-2.191261,2.10099",
-          "Rotation": "0,0,-0.7071068,0.7071068",
+          "Position": "12.9186096,-2.19126105,2.10099006",
+          "Rotation": "0,0,-0.707106829,0.707106829",
           "Scale": "1,1,1",
           "Tags": "",
           "Enabled": true,
@@ -1609,8 +1697,8 @@
           "__version": 2,
           "Flags": 0,
           "Name": "Spawn Point (1)",
-          "Position": "62.91848,73.93375,2.10099",
-          "Rotation": "0,0,-0.7071068,0.7071068",
+          "Position": "62.9184799,73.9337463,2.10099006",
+          "Rotation": "0,0,-0.707106829,0.707106829",
           "Scale": "1,1,1",
           "Tags": "",
           "Enabled": true,
@@ -1641,8 +1729,8 @@
           "__version": 2,
           "Flags": 0,
           "Name": "Spawn Point (8)",
-          "Position": "62.91844,-2.191315,2.10099",
-          "Rotation": "0,0,-0.7071068,0.7071068",
+          "Position": "62.9184418,-2.19131494,2.10099006",
+          "Rotation": "0,0,-0.707106829,0.707106829",
           "Scale": "1,1,1",
           "Tags": "",
           "Enabled": true,
@@ -1673,8 +1761,8 @@
           "__version": 2,
           "Flags": 0,
           "Name": "Spawn Point (4)",
-          "Position": "112.9185,73.9337,2.10099",
-          "Rotation": "0,0,-0.7071068,0.7071068",
+          "Position": "112.918503,73.9337006,2.10099006",
+          "Rotation": "0,0,-0.707106829,0.707106829",
           "Scale": "1,1,1",
           "Tags": "",
           "Enabled": true,
@@ -1705,8 +1793,8 @@
           "__version": 2,
           "Flags": 0,
           "Name": "Spawn Point (9)",
-          "Position": "112.9185,-2.191357,2.10099",
-          "Rotation": "0,0,-0.7071068,0.7071068",
+          "Position": "112.918503,-2.1913569,2.10099006",
+          "Rotation": "0,0,-0.707106829,0.707106829",
           "Scale": "1,1,1",
           "Tags": "",
           "Enabled": true,
@@ -1737,8 +1825,8 @@
           "__version": 2,
           "Flags": 0,
           "Name": "Spawn Point (2)",
-          "Position": "-37.08154,73.93381,2.10099",
-          "Rotation": "0,0,-0.7071068,0.7071068",
+          "Position": "-37.0815392,73.9338074,2.10099006",
+          "Rotation": "0,0,-0.707106829,0.707106829",
           "Scale": "1,1,1",
           "Tags": "",
           "Enabled": true,
@@ -1769,8 +1857,8 @@
           "__version": 2,
           "Flags": 0,
           "Name": "Spawn Point (5)",
-          "Position": "-37.08157,-2.191216,2.10099",
-          "Rotation": "0,0,-0.7071068,0.7071068",
+          "Position": "-37.0815697,-2.19121599,2.10099006",
+          "Rotation": "0,0,-0.707106829,0.707106829",
           "Scale": "1,1,1",
           "Tags": "",
           "Enabled": true,
@@ -1801,8 +1889,8 @@
           "__version": 2,
           "Flags": 0,
           "Name": "Spawn Point (3)",
-          "Position": "-87.08156,73.93385,2.10099",
-          "Rotation": "0,0,-0.7071068,0.7071068",
+          "Position": "-87.0815582,73.9338531,2.10099006",
+          "Rotation": "0,0,-0.707106829,0.707106829",
           "Scale": "1,1,1",
           "Tags": "",
           "Enabled": true,
@@ -1833,8 +1921,8 @@
           "__version": 2,
           "Flags": 0,
           "Name": "Spawn Point (6)",
-          "Position": "-87.08159,-2.191166,2.10099",
-          "Rotation": "0,0,-0.7071068,0.7071068",
+          "Position": "-87.0815887,-2.19116592,2.10099006",
+          "Rotation": "0,0,-0.707106829,0.707106829",
           "Scale": "1,1,1",
           "Tags": "",
           "Enabled": true,
@@ -1867,9 +1955,9 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Lobby Left",
-      "Position": "943.5516,-1458.555,325.5295",
+      "Position": "943.551575,-1458.55505,325.52951",
       "Rotation": "0,0,0,1",
-      "Scale": "17.19999,13.59987,13.39999",
+      "Scale": "17.1999893,13.5998697,13.3999901",
       "Tags": "trigger",
       "Enabled": false,
       "NetworkMode": 2,
@@ -1889,7 +1977,10 @@
           "MaterialGroup": null,
           "MaterialOverride": "materials/dev/debug_nav_wireframe.vmat",
           "Materials": null,
-          "Model": "models/dev/box.vmdl",
+          "Model": {
+            "Id": "8a84e5a0-01f8-0000-f0db-b088f8010000",
+            "Path": "models/dev/box.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -1952,9 +2043,9 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Lobby Right",
-      "Position": "-943.7822,-1458.555,325.5295",
+      "Position": "-943.782227,-1458.55505,325.52951",
       "Rotation": "0,0,0,1",
-      "Scale": "17.19999,13.59987,13.39999",
+      "Scale": "17.1999893,13.5998697,13.3999901",
       "Tags": "trigger",
       "Enabled": false,
       "NetworkMode": 2,
@@ -1974,7 +2065,10 @@
           "MaterialGroup": null,
           "MaterialOverride": "materials/dev/debug_nav_wireframe.vmat",
           "Materials": null,
-          "Model": "models/dev/box.vmdl",
+          "Model": {
+            "Id": "8a84e5a0-01f8-0000-f0db-b088f8010000",
+            "Path": "models/dev/box.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -2037,9 +2131,9 @@
       "__version": 2,
       "Flags": 0,
       "Name": "LobbyTrigger",
-      "Position": "0,-384.981,325.5295",
+      "Position": "0,-384.980988,325.52951",
       "Rotation": "0,0,0,1",
-      "Scale": "20.5,48.39989,13.39999",
+      "Scale": "20.5,48.3998909,13.3999901",
       "Tags": "trigger",
       "Enabled": true,
       "NetworkMode": 2,
@@ -2059,7 +2153,10 @@
           "MaterialGroup": null,
           "MaterialOverride": "materials/dev/debug_nav_wireframe.vmat",
           "Materials": null,
-          "Model": "models/dev/box.vmdl",
+          "Model": {
+            "Id": "8a84e5a0-01f8-0000-f0db-b088f8010000",
+            "Path": "models/dev/box.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -2122,9 +2219,9 @@
       "__version": 2,
       "Flags": 0,
       "Name": "TheaterTrigger",
-      "Position": "0,-2227.907,178.6719",
+      "Position": "0,-2227.90698,178.671906",
       "Rotation": "0,0,0,1",
-      "Scale": "20,23.30003,10.3",
+      "Scale": "20,23.3000298,10.3000002",
       "Tags": "trigger",
       "Enabled": true,
       "NetworkMode": 2,
@@ -2144,7 +2241,10 @@
           "MaterialGroup": null,
           "MaterialOverride": "materials/dev/debug_nav_wireframe.vmat",
           "Materials": null,
-          "Model": "models/dev/box.vmdl",
+          "Model": {
+            "Id": "8a84e5a0-01f8-0000-f0db-b088f8010000",
+            "Path": "models/dev/box.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -2207,8 +2307,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "TheaterThumbnail",
-      "Position": "-175.5096,-1580.779,107.0915",
-      "Rotation": "0,0,0.7071068,0.7071068",
+      "Position": "-175.509598,-1580.77905,107.091499",
+      "Rotation": "0,0,0.707106829,0.707106829",
       "Scale": "1,1,1",
       "Tags": "",
       "Enabled": true,
@@ -2225,6 +2325,7 @@
           "Flags": 0,
           "HorizontalAlign": "Center",
           "InteractionRange": 1000,
+          "Lighting": false,
           "LookAtCamera": false,
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
@@ -2232,7 +2333,7 @@
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
-          "PanelSize": "2152.203,1446.6",
+          "PanelSize": "2152.20288,1446.59998",
           "RenderOptions": {
             "GameLayer": true,
             "OverlayLayer": false,
@@ -2268,7 +2369,7 @@
       "__version": 2,
       "Flags": 0,
       "Name": "2D Skybox",
-      "Position": "0,0,97.10023",
+      "Position": "0,0,97.1002274",
       "Rotation": "0,0,0,1",
       "Scale": "1,1,1",
       "Tags": "skybox",
@@ -2291,7 +2392,10 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "SkyIndirectLighting": true,
-          "SkyMaterial": "materials/skybox/skybox_day_01.vmat",
+          "SkyMaterial": {
+            "Id": "e05fd285-6edd-4c7b-9b31-8a41a0265c3e",
+            "Path": "materials/skybox/skybox_day_01.vmat"
+          },
           "Tint": "0.87535,0.37674,1,1"
         },
         {
@@ -2319,6 +2423,7 @@
           "OnComponentUpdate": null,
           "Priority": 0,
           "Projection": "Sphere",
+          "RenderExcludeTags": "",
           "Resolution": "Small",
           "Texture": "textures/cubemaps/default2.vtex",
           "TintColor": "1,1,1,1",
@@ -2332,7 +2437,10 @@
     {
       "__guid": "23e3d258-a1b0-4452-ab30-7687e673b079",
       "__version": 2,
-      "__Prefab": "prefabs/mediaplayer.prefab",
+      "__Prefab": {
+        "Id": "5edf927c-eed5-41da-a3da-ae9d38122a39",
+        "Path": "prefabs/mediaplayer.prefab"
+      },
       "__PrefabInstancePatch": {
         "AddedObjects": [],
         "RemovedObjects": [],
@@ -2351,7 +2459,7 @@
               "IdValue": "23e3d258-a1b0-4452-ab30-7687e673b079"
             },
             "Property": "Position",
-            "Value": "6.963126,-2795.663,237.2749"
+            "Value": "6.96312618,-2795.66309,237.274902"
           },
           {
             "Target": {
@@ -2359,7 +2467,7 @@
               "IdValue": "23e3d258-a1b0-4452-ab30-7687e673b079"
             },
             "Property": "Scale",
-            "Value": "1,2.3,2.3"
+            "Value": "1,2.29999995,2.29999995"
           },
           {
             "Target": {
@@ -2377,14 +2485,14 @@
       },
       "__PrefabIdToInstanceId": {
         "23e3d258-a1b0-4452-ab30-7687e673b079": "23e3d258-a1b0-4452-ab30-7687e673b079",
-        "fe53049a-8c49-405c-8736-dfb1ca21f890": "47316a06-0478-44a2-9275-33df6a1bbf7f",
         "d26940de-4a30-48fe-9e32-8eeeb4f6dc14": "3d6dff40-1eb1-403a-977c-f9dc1be29eab",
+        "8a7f386f-d31b-4e17-a166-ecb72179a7c4": "122655a5-c437-43dd-93ce-66f4e4b2e70a",
+        "87afb8c1-56d5-40a3-8e73-2e303237edb8": "60920d86-ec49-443d-9f0f-2148c46e5942",
+        "fe53049a-8c49-405c-8736-dfb1ca21f890": "47316a06-0478-44a2-9275-33df6a1bbf7f",
         "3f6434d1-ea0f-4957-972c-03b0a9336ec1": "f344a8aa-4cb3-490e-b777-b495a0e25c58",
         "1dd77507-3749-4351-8a23-2613de6f418b": "82f85567-0ecf-421f-a6dd-82a21efbf2fd",
         "e8cd9573-8677-48b1-b5f6-a1c3926aebfa": "681ca836-0f4f-421b-8d2f-26a0e1b6312c",
-        "8a7f386f-d31b-4e17-a166-ecb72179a7c4": "122655a5-c437-43dd-93ce-66f4e4b2e70a",
         "84ec7fef-8acb-48bc-bad8-16b89089125a": "0aa04478-5528-4bec-b577-2c1f9e8137b3",
-        "87afb8c1-56d5-40a3-8e73-2e303237edb8": "60920d86-ec49-443d-9f0f-2148c46e5942",
         "72d60da8-971f-4a0f-b2c7-b3356f5f1262": "75d67297-4409-416e-88b1-edeadb930e9c"
       }
     },
@@ -2393,7 +2501,7 @@
       "__version": 2,
       "Flags": 0,
       "Name": "UI",
-      "Position": "117.1323,132.4785,318.1753",
+      "Position": "117.132301,132.4785,318.175293",
       "Rotation": "0,0,0,1",
       "Scale": "1,1,1",
       "Tags": "",
@@ -2410,7 +2518,7 @@
           "__version": 2,
           "Flags": 0,
           "Name": "Screen Panel",
-          "Position": "-73.59944,69.92676,-53.50952",
+          "Position": "-73.5994415,69.9267578,-53.5095215",
           "Rotation": "0,0,0,1",
           "Scale": "1,1,1",
           "Tags": "",
@@ -2442,6 +2550,7 @@
                 "go": "13d66eac-1d47-4a2a-ac32-2afb4b7da209",
                 "component_type": "CameraComponent"
               },
+              "Timing": "AfterPostProcess",
               "ZIndex": 50
             },
             {
@@ -2515,6 +2624,7 @@
               "Scale": 1,
               "ScaleStrategy": "ConsistentHeight",
               "TargetCamera": null,
+              "Timing": "AfterPostProcess",
               "ZIndex": 40
             },
             {
@@ -2539,8 +2649,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "chair",
-      "Position": "484.6157,-747.7231,31.99999",
-      "Rotation": "0,0,1,0.0000001947072",
+      "Position": "484.615692,-747.723083,31.9999905",
+      "Rotation": "0,0,1,1.94707198E-07",
       "Scale": "1,1,1",
       "Tags": "",
       "Enabled": true,
@@ -2559,13 +2669,17 @@
           "Health": 0,
           "IsStatic": true,
           "MaterialGroup": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
+          "OnGibsCreated": null,
           "OnPropBreak": null,
           "OnPropTakeDamage": null,
           "StartAsleep": false,
@@ -2596,7 +2710,10 @@
           "MaterialGroup": null,
           "MaterialOverride": null,
           "Materials": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -2621,7 +2738,10 @@
           "Elasticity": null,
           "Friction": null,
           "IsTrigger": false,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -2645,7 +2765,7 @@
       "__version": 2,
       "Flags": 0,
       "Name": "chair (2)",
-      "Position": "-483.8703,-747.7227,31.99999",
+      "Position": "-483.8703,-747.722717,31.9999905",
       "Rotation": "0,0,0,1",
       "Scale": "1,1,1",
       "Tags": "",
@@ -2665,13 +2785,17 @@
           "Health": 0,
           "IsStatic": true,
           "MaterialGroup": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
+          "OnGibsCreated": null,
           "OnPropBreak": null,
           "OnPropTakeDamage": null,
           "StartAsleep": false,
@@ -2702,7 +2826,10 @@
           "MaterialGroup": null,
           "MaterialOverride": null,
           "Materials": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -2727,7 +2854,10 @@
           "Elasticity": null,
           "Friction": null,
           "IsTrigger": false,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -2751,8 +2881,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "chair (1)",
-      "Position": "484.6156,-945.9023,31.99999",
-      "Rotation": "0,0,1,0.0000001947072",
+      "Position": "484.615601,-945.902283,31.9999905",
+      "Rotation": "0,0,1,1.94707198E-07",
       "Scale": "1,1,1",
       "Tags": "",
       "Enabled": true,
@@ -2771,13 +2901,17 @@
           "Health": 0,
           "IsStatic": true,
           "MaterialGroup": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
+          "OnGibsCreated": null,
           "OnPropBreak": null,
           "OnPropTakeDamage": null,
           "StartAsleep": false,
@@ -2808,7 +2942,10 @@
           "MaterialGroup": null,
           "MaterialOverride": null,
           "Materials": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -2833,7 +2970,10 @@
           "Elasticity": null,
           "Friction": null,
           "IsTrigger": false,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -2857,7 +2997,7 @@
       "__version": 2,
       "Flags": 0,
       "Name": "chair (3)",
-      "Position": "-483.8704,-945.9019,31.99999",
+      "Position": "-483.870392,-945.901917,31.9999905",
       "Rotation": "0,0,0,1",
       "Scale": "1,1,1",
       "Tags": "",
@@ -2877,13 +3017,17 @@
           "Health": 0,
           "IsStatic": true,
           "MaterialGroup": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
+          "OnGibsCreated": null,
           "OnPropBreak": null,
           "OnPropTakeDamage": null,
           "StartAsleep": false,
@@ -2914,7 +3058,10 @@
           "MaterialGroup": null,
           "MaterialOverride": null,
           "Materials": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -2939,7 +3086,10 @@
           "Elasticity": null,
           "Friction": null,
           "IsTrigger": false,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -2963,7 +3113,7 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Volumetric Fog",
-      "Position": "-0.06991577,-2323.694,182.3062",
+      "Position": "-0.0699157715,-2323.69409,182.306198",
       "Rotation": "0,0,0,1",
       "Scale": "1,1,1",
       "Tags": "",
@@ -2980,9 +3130,10 @@
           "__enabled": true,
           "Flags": 0,
           "Bounds": {
-            "Mins": "-500,-370.1999,-275.5996",
-            "Maxs": "500,500,353.2998"
+            "Mins": "-500,-370.19989,-275.599609",
+            "Maxs": "500,500,353.299805"
           },
+          "Color": "1,1,1,1",
           "FalloffExponent": 0.7,
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
@@ -3000,8 +3151,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "chair (4)",
-      "Position": "0,-1883.251,0",
-      "Rotation": "0,0,-0.7071066,0.7071067",
+      "Position": "0,-1883.25098,0",
+      "Rotation": "0,0,-0.70710659,0.707106709",
       "Scale": "1,1,1",
       "Tags": "",
       "Enabled": true,
@@ -3020,13 +3171,17 @@
           "Health": 0,
           "IsStatic": true,
           "MaterialGroup": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
+          "OnGibsCreated": null,
           "OnPropBreak": null,
           "OnPropTakeDamage": null,
           "StartAsleep": false,
@@ -3057,7 +3212,10 @@
           "MaterialGroup": null,
           "MaterialOverride": null,
           "Materials": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -3082,7 +3240,10 @@
           "Elasticity": null,
           "Friction": null,
           "IsTrigger": false,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -3106,8 +3267,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "chair (6)",
-      "Position": "131.2427,-1918.328,0",
-      "Rotation": "0,0,-0.8660251,0.4999999",
+      "Position": "131.242706,-1918.328,0",
+      "Rotation": "0,0,-0.86602509,0.499999911",
       "Scale": "1,1,1",
       "Tags": "",
       "Enabled": true,
@@ -3126,13 +3287,17 @@
           "Health": 0,
           "IsStatic": true,
           "MaterialGroup": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
+          "OnGibsCreated": null,
           "OnPropBreak": null,
           "OnPropTakeDamage": null,
           "StartAsleep": false,
@@ -3163,7 +3328,10 @@
           "MaterialGroup": null,
           "MaterialOverride": null,
           "Materials": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -3188,7 +3356,10 @@
           "Elasticity": null,
           "Friction": null,
           "IsTrigger": false,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -3212,8 +3383,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "chair (5)",
-      "Position": "-132.1943,-1917.279,0",
-      "Rotation": "0,0,-0.4999998,0.8660251",
+      "Position": "-132.194305,-1917.27905,0",
+      "Rotation": "0,0,-0.499999791,0.86602509",
       "Scale": "1,1,1",
       "Tags": "",
       "Enabled": true,
@@ -3232,13 +3403,17 @@
           "Health": 0,
           "IsStatic": true,
           "MaterialGroup": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
+          "OnGibsCreated": null,
           "OnPropBreak": null,
           "OnPropTakeDamage": null,
           "StartAsleep": false,
@@ -3269,7 +3444,10 @@
           "MaterialGroup": null,
           "MaterialOverride": null,
           "Materials": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -3294,7 +3472,10 @@
           "Elasticity": null,
           "Friction": null,
           "IsTrigger": false,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -3318,8 +3499,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "chair (7)",
-      "Position": "0,-2144.889,-31.99998",
-      "Rotation": "0,0,-0.7071066,0.7071067",
+      "Position": "0,-2144.88892,-31.9999809",
+      "Rotation": "0,0,-0.70710659,0.707106709",
       "Scale": "1,1,1",
       "Tags": "",
       "Enabled": true,
@@ -3338,13 +3519,17 @@
           "Health": 0,
           "IsStatic": true,
           "MaterialGroup": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
+          "OnGibsCreated": null,
           "OnPropBreak": null,
           "OnPropTakeDamage": null,
           "StartAsleep": false,
@@ -3375,7 +3560,10 @@
           "MaterialGroup": null,
           "MaterialOverride": null,
           "Materials": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -3400,7 +3588,10 @@
           "Elasticity": null,
           "Friction": null,
           "IsTrigger": false,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -3424,8 +3615,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "chair (14)",
-      "Position": "0.006123878,-2297.66,-64.58572",
-      "Rotation": "0,0,-0.7071066,0.7071067",
+      "Position": "0.00612387806,-2297.65991,-64.5857162",
+      "Rotation": "0,0,-0.70710659,0.707106709",
       "Scale": "1,1,1",
       "Tags": "",
       "Enabled": true,
@@ -3444,13 +3635,17 @@
           "Health": 0,
           "IsStatic": true,
           "MaterialGroup": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
+          "OnGibsCreated": null,
           "OnPropBreak": null,
           "OnPropTakeDamage": null,
           "StartAsleep": false,
@@ -3481,7 +3676,10 @@
           "MaterialGroup": null,
           "MaterialOverride": null,
           "Materials": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -3506,7 +3704,10 @@
           "Elasticity": null,
           "Friction": null,
           "IsTrigger": false,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -3530,8 +3731,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "chair (8)",
-      "Position": "134.2998,-2144.889,-31.99998",
-      "Rotation": "0,0,-0.7071066,0.7071067",
+      "Position": "134.299805,-2144.88892,-31.9999809",
+      "Rotation": "0,0,-0.70710659,0.707106709",
       "Scale": "1,1,1",
       "Tags": "",
       "Enabled": true,
@@ -3550,13 +3751,17 @@
           "Health": 0,
           "IsStatic": true,
           "MaterialGroup": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
+          "OnGibsCreated": null,
           "OnPropBreak": null,
           "OnPropTakeDamage": null,
           "StartAsleep": false,
@@ -3587,7 +3792,10 @@
           "MaterialGroup": null,
           "MaterialOverride": null,
           "Materials": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -3612,7 +3820,10 @@
           "Elasticity": null,
           "Friction": null,
           "IsTrigger": false,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -3636,8 +3847,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "chair (15)",
-      "Position": "134.3059,-2297.66,-64.58572",
-      "Rotation": "0,0,-0.7071066,0.7071067",
+      "Position": "134.305893,-2297.65991,-64.5857162",
+      "Rotation": "0,0,-0.70710659,0.707106709",
       "Scale": "1,1,1",
       "Tags": "",
       "Enabled": true,
@@ -3656,13 +3867,17 @@
           "Health": 0,
           "IsStatic": true,
           "MaterialGroup": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
+          "OnGibsCreated": null,
           "OnPropBreak": null,
           "OnPropTakeDamage": null,
           "StartAsleep": false,
@@ -3693,7 +3908,10 @@
           "MaterialGroup": null,
           "MaterialOverride": null,
           "Materials": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -3718,7 +3936,10 @@
           "Elasticity": null,
           "Friction": null,
           "IsTrigger": false,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -3742,8 +3963,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "chair (9)",
-      "Position": "-132.8842,-2144.89,-31.99998",
-      "Rotation": "0,0,-0.7071066,0.7071067",
+      "Position": "-132.884201,-2144.88989,-31.9999809",
+      "Rotation": "0,0,-0.70710659,0.707106709",
       "Scale": "1,1,1",
       "Tags": "",
       "Enabled": true,
@@ -3762,13 +3983,17 @@
           "Health": 0,
           "IsStatic": true,
           "MaterialGroup": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
+          "OnGibsCreated": null,
           "OnPropBreak": null,
           "OnPropTakeDamage": null,
           "StartAsleep": false,
@@ -3799,7 +4024,10 @@
           "MaterialGroup": null,
           "MaterialOverride": null,
           "Materials": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -3824,7 +4052,10 @@
           "Elasticity": null,
           "Friction": null,
           "IsTrigger": false,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -3848,8 +4079,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "chair (13)",
-      "Position": "-132.878,-2297.66,-64.58572",
-      "Rotation": "0,0,-0.7071066,0.7071067",
+      "Position": "-132.878006,-2297.65991,-64.5857162",
+      "Rotation": "0,0,-0.70710659,0.707106709",
       "Scale": "1,1,1",
       "Tags": "",
       "Enabled": true,
@@ -3868,13 +4099,17 @@
           "Health": 0,
           "IsStatic": true,
           "MaterialGroup": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
+          "OnGibsCreated": null,
           "OnPropBreak": null,
           "OnPropTakeDamage": null,
           "StartAsleep": false,
@@ -3905,7 +4140,10 @@
           "MaterialGroup": null,
           "MaterialOverride": null,
           "Materials": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -3930,7 +4168,10 @@
           "Elasticity": null,
           "Friction": null,
           "IsTrigger": false,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -3954,8 +4195,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "chair (10)",
-      "Position": "-279.621,-2175.926,-31.99998",
-      "Rotation": "0,0,-0.7071066,0.7071067",
+      "Position": "-279.621002,-2175.92603,-31.9999809",
+      "Rotation": "0,0,-0.70710659,0.707106709",
       "Scale": "1,1,1",
       "Tags": "",
       "Enabled": true,
@@ -3974,13 +4215,17 @@
           "Health": 0,
           "IsStatic": true,
           "MaterialGroup": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
+          "OnGibsCreated": null,
           "OnPropBreak": null,
           "OnPropTakeDamage": null,
           "StartAsleep": false,
@@ -4011,7 +4256,10 @@
           "MaterialGroup": null,
           "MaterialOverride": null,
           "Materials": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -4036,7 +4284,10 @@
           "Elasticity": null,
           "Friction": null,
           "IsTrigger": false,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -4060,8 +4311,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "chair (12)",
-      "Position": "-279.6148,-2328.698,-64.58572",
-      "Rotation": "0,0,-0.7071066,0.7071067",
+      "Position": "-279.614807,-2328.698,-64.5857162",
+      "Rotation": "0,0,-0.70710659,0.707106709",
       "Scale": "1,1,1",
       "Tags": "",
       "Enabled": true,
@@ -4080,13 +4331,17 @@
           "Health": 0,
           "IsStatic": true,
           "MaterialGroup": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
+          "OnGibsCreated": null,
           "OnPropBreak": null,
           "OnPropTakeDamage": null,
           "StartAsleep": false,
@@ -4117,7 +4372,10 @@
           "MaterialGroup": null,
           "MaterialOverride": null,
           "Materials": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -4142,7 +4400,10 @@
           "Elasticity": null,
           "Friction": null,
           "IsTrigger": false,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -4166,8 +4427,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "chair (11)",
-      "Position": "277.0394,-2175.925,-31.99998",
-      "Rotation": "0,0,-0.7071066,0.7071067",
+      "Position": "277.039398,-2175.92505,-31.9999809",
+      "Rotation": "0,0,-0.70710659,0.707106709",
       "Scale": "1,1,1",
       "Tags": "",
       "Enabled": true,
@@ -4186,13 +4447,17 @@
           "Health": 0,
           "IsStatic": true,
           "MaterialGroup": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
+          "OnGibsCreated": null,
           "OnPropBreak": null,
           "OnPropTakeDamage": null,
           "StartAsleep": false,
@@ -4223,7 +4488,10 @@
           "MaterialGroup": null,
           "MaterialOverride": null,
           "Materials": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -4248,7 +4516,10 @@
           "Elasticity": null,
           "Friction": null,
           "IsTrigger": false,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -4272,8 +4543,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "chair (17)",
-      "Position": "277.0447,-1997.526,3.456753",
-      "Rotation": "0,0,-0.7071066,0.7071067",
+      "Position": "277.044708,-1997.526,3.45675302",
+      "Rotation": "0,0,-0.70710659,0.707106709",
       "Scale": "1,1,1",
       "Tags": "",
       "Enabled": true,
@@ -4292,13 +4563,17 @@
           "Health": 0,
           "IsStatic": true,
           "MaterialGroup": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
+          "OnGibsCreated": null,
           "OnPropBreak": null,
           "OnPropTakeDamage": null,
           "StartAsleep": false,
@@ -4329,7 +4604,10 @@
           "MaterialGroup": null,
           "MaterialOverride": null,
           "Materials": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -4354,7 +4632,10 @@
           "Elasticity": null,
           "Friction": null,
           "IsTrigger": false,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -4378,8 +4659,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "chair (18)",
-      "Position": "-275.6812,-1997.526,3.456753",
-      "Rotation": "0,0,-0.7071066,0.7071067",
+      "Position": "-275.681213,-1997.526,3.45675302",
+      "Rotation": "0,0,-0.70710659,0.707106709",
       "Scale": "1,1,1",
       "Tags": "",
       "Enabled": true,
@@ -4398,13 +4679,17 @@
           "Health": 0,
           "IsStatic": true,
           "MaterialGroup": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
+          "OnGibsCreated": null,
           "OnPropBreak": null,
           "OnPropTakeDamage": null,
           "StartAsleep": false,
@@ -4435,7 +4720,10 @@
           "MaterialGroup": null,
           "MaterialOverride": null,
           "Materials": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -4460,7 +4748,10 @@
           "Elasticity": null,
           "Friction": null,
           "IsTrigger": false,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -4484,8 +4775,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "chair (16)",
-      "Position": "277.0456,-2328.695,-64.58572",
-      "Rotation": "0,0,-0.7071066,0.7071067",
+      "Position": "277.045593,-2328.69507,-64.5857162",
+      "Rotation": "0,0,-0.70710659,0.707106709",
       "Scale": "1,1,1",
       "Tags": "",
       "Enabled": true,
@@ -4504,13 +4795,17 @@
           "Health": 0,
           "IsStatic": true,
           "MaterialGroup": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
+          "OnGibsCreated": null,
           "OnPropBreak": null,
           "OnPropTakeDamage": null,
           "StartAsleep": false,
@@ -4541,7 +4836,10 @@
           "MaterialGroup": null,
           "MaterialOverride": null,
           "Materials": null,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -4566,7 +4864,10 @@
           "Elasticity": null,
           "Friction": null,
           "IsTrigger": false,
-          "Model": "models/citizen_props/chair04blackleather.vmdl",
+          "Model": {
+            "Id": "df1a7159-325e-4821-960d-cecba179bdd6",
+            "Path": "models/citizen_props/chair04blackleather.vmdl"
+          },
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
@@ -4590,7 +4891,7 @@
       "__version": 2,
       "Flags": 0,
       "Name": "WeaponRespawner",
-      "Position": "-0.09231567,5.758641,95.28773",
+      "Position": "-0.0923156664,5.75864077,95.2877274",
       "Rotation": "0,0,0,1",
       "Scale": "1,1,1",
       "Tags": "",
@@ -4626,7 +4927,10 @@
         {
           "__guid": "03b29248-23ec-44c5-b5f4-d75c9ce1380b",
           "__version": 2,
-          "__Prefab": "prefabs/popcorn.prefab",
+          "__Prefab": {
+            "Id": "b7e66491-544f-4d7b-ac86-7e322ae76b6e",
+            "Path": "prefabs/popcorn.prefab"
+          },
           "__PrefabInstancePatch": {
             "AddedObjects": [],
             "RemovedObjects": [],
@@ -4645,7 +4949,7 @@
                   "IdValue": "a14caa65-4adc-49eb-84e2-2947c78605be"
                 },
                 "Property": "Position",
-                "Value": "385.6664,-10.69617,-39.66934"
+                "Value": "385.666412,-10.6961699,-39.6693382"
               },
               {
                 "Target": {
@@ -4653,7 +4957,7 @@
                   "IdValue": "a14caa65-4adc-49eb-84e2-2947c78605be"
                 },
                 "Property": "Rotation",
-                "Value": "0.0005608582,0.002113482,-0.000001706154,0.9999976"
+                "Value": "0.000560858229,0.00211348198,-1.70615397E-06,0.999997616"
               },
               {
                 "Target": {
@@ -4662,6 +4966,14 @@
                 },
                 "Property": "Enabled",
                 "Value": false
+              },
+              {
+                "Target": {
+                  "Type": "Component",
+                  "IdValue": "95e29a17-3e5b-4a62-ba84-2a425b61002c"
+                },
+                "Property": "SpillOnImpact",
+                "Value": true
               }
             ],
             "MovedObjects": []
@@ -4671,17 +4983,16 @@
             "5d064184-c979-48d6-a110-8de1740248da": "251eee46-4d4d-4a15-93db-61bcc0c7e299",
             "82f6fabf-ef15-4da6-8a8e-ce065543e05f": "2b588e2d-2b56-4b8f-8652-321785a86ca4",
             "98359cfe-034e-434b-bdb0-7b2ffe4c9f1f": "fc59c028-1952-4b7f-b5ba-018dca971796",
-            "95e29a17-3e5b-4a62-ba84-2a425b61002c": "b8a98c4c-51cc-47db-b183-6d2015f2f247",
-            "3c15aa1d-d673-43d7-b699-08cc8de4bc9c": "5dc865a1-848d-4f5e-b3f3-3ac22a909af0",
-            "60331dfc-9d2c-4ca9-bba6-84caff124d65": "7e8fe8cf-570d-4336-aed0-5fe1abb26d6c",
-            "498475d8-a63b-4a97-b617-0cd16ae97845": "8c9c132f-2a91-44d2-ad06-d251d7a5fb01",
-            "9cb99be4-48e2-4a33-92ec-917da288dc88": "bfe82028-4627-4ec6-a230-e18974287e09"
+            "95e29a17-3e5b-4a62-ba84-2a425b61002c": "b8a98c4c-51cc-47db-b183-6d2015f2f247"
           }
         },
         {
           "__guid": "731ce821-1f96-4401-aa64-785fb5c458c4",
           "__version": 2,
-          "__Prefab": "prefabs/soda.prefab",
+          "__Prefab": {
+            "Id": "89457bc8-9a91-452f-9c57-19a0f6d41571",
+            "Path": "prefabs/soda.prefab"
+          },
           "__PrefabInstancePatch": {
             "AddedObjects": [],
             "RemovedObjects": [],
@@ -4692,7 +5003,7 @@
                   "IdValue": "053f2f9c-acf6-43f9-9b70-859c48d0d432"
                 },
                 "Property": "Position",
-                "Value": "367.084,-54.66273,-38.92143"
+                "Value": "367.084015,-54.6627312,-38.9214287"
               },
               {
                 "Target": {
@@ -4700,7 +5011,7 @@
                   "IdValue": "053f2f9c-acf6-43f9-9b70-859c48d0d432"
                 },
                 "Property": "Rotation",
-                "Value": "-0.000000632748,0.00002036489,0.000004214836,1"
+                "Value": "-6.32748026E-07,2.03648906E-05,4.21483583E-06,1"
               },
               {
                 "Target": {
@@ -4708,7 +5019,7 @@
                   "IdValue": "053f2f9c-acf6-43f9-9b70-859c48d0d432"
                 },
                 "Property": "Scale",
-                "Value": "1.2,1.2,1.2"
+                "Value": "1.20000005,1.20000005,1.20000005"
               },
               {
                 "Target": {
@@ -4716,6 +5027,14 @@
                   "IdValue": "053f2f9c-acf6-43f9-9b70-859c48d0d432"
                 },
                 "Property": "Enabled",
+                "Value": false
+              },
+              {
+                "Target": {
+                  "Type": "Component",
+                  "IdValue": "9c0cf2bb-59bc-4569-a5f4-a0e62c65dee5"
+                },
+                "Property": "SpillOnImpact",
                 "Value": false
               }
             ],
@@ -4734,7 +5053,10 @@
     {
       "__guid": "450f22ac-d587-43a1-ae08-a28ef5a6a7ba",
       "__version": 2,
-      "__Prefab": "prefabs/popcorn.prefab",
+      "__Prefab": {
+        "Id": "b7e66491-544f-4d7b-ac86-7e322ae76b6e",
+        "Path": "prefabs/popcorn.prefab"
+      },
       "__PrefabInstancePatch": {
         "AddedObjects": [],
         "RemovedObjects": [],
@@ -4753,7 +5075,7 @@
               "IdValue": "a14caa65-4adc-49eb-84e2-2947c78605be"
             },
             "Property": "Position",
-            "Value": "117.4174,-956.4493,73"
+            "Value": "117.417397,-956.44928,73"
           },
           {
             "Target": {
@@ -4762,6 +5084,14 @@
             },
             "Property": "Tags",
             "Value": "particles,weapon"
+          },
+          {
+            "Target": {
+              "Type": "Component",
+              "IdValue": "95e29a17-3e5b-4a62-ba84-2a425b61002c"
+            },
+            "Property": "SpillOnImpact",
+            "Value": true
           }
         ],
         "MovedObjects": []
@@ -4771,17 +5101,16 @@
         "5d064184-c979-48d6-a110-8de1740248da": "ae4fe8ef-c321-4006-8541-fd9d88fd0127",
         "82f6fabf-ef15-4da6-8a8e-ce065543e05f": "7b5e7c29-2727-46d1-8e9d-20d66b29ec3a",
         "98359cfe-034e-434b-bdb0-7b2ffe4c9f1f": "5160b3a6-42a1-4e70-9af5-17c877c423d5",
-        "95e29a17-3e5b-4a62-ba84-2a425b61002c": "ee163e4b-e0fd-4d02-8ccd-57346b5af60e",
-        "3c15aa1d-d673-43d7-b699-08cc8de4bc9c": "efe2fcb7-67b1-40a1-9668-21d8fc873a33",
-        "60331dfc-9d2c-4ca9-bba6-84caff124d65": "d0e1b3e3-75e7-472d-95bd-b9dffaae0c56",
-        "498475d8-a63b-4a97-b617-0cd16ae97845": "34f00378-5410-4879-ba1d-17ca04c60687",
-        "9cb99be4-48e2-4a33-92ec-917da288dc88": "66dc119e-e102-4e2a-a425-fae7df1fe456"
+        "95e29a17-3e5b-4a62-ba84-2a425b61002c": "ee163e4b-e0fd-4d02-8ccd-57346b5af60e"
       }
     },
     {
       "__guid": "dfa8dd6c-e972-4555-bf91-12d2b0556de7",
       "__version": 2,
-      "__Prefab": "prefabs/soda.prefab",
+      "__Prefab": {
+        "Id": "89457bc8-9a91-452f-9c57-19a0f6d41571",
+        "Path": "prefabs/soda.prefab"
+      },
       "__PrefabInstancePatch": {
         "AddedObjects": [],
         "RemovedObjects": [],
@@ -4800,7 +5129,15 @@
               "IdValue": "053f2f9c-acf6-43f9-9b70-859c48d0d432"
             },
             "Property": "Position",
-            "Value": "92.01129,-974.7043,65"
+            "Value": "92.0112915,-974.704285,65"
+          },
+          {
+            "Target": {
+              "Type": "Component",
+              "IdValue": "9c0cf2bb-59bc-4569-a5f4-a0e62c65dee5"
+            },
+            "Property": "SpillOnImpact",
+            "Value": false
           }
         ],
         "MovedObjects": []
@@ -4816,7 +5153,10 @@
     {
       "__guid": "8e190ed5-017b-4d16-bb94-7c031e5bb850",
       "__version": 2,
-      "__Prefab": "prefabs/soda.prefab",
+      "__Prefab": {
+        "Id": "89457bc8-9a91-452f-9c57-19a0f6d41571",
+        "Path": "prefabs/soda.prefab"
+      },
       "__PrefabInstancePatch": {
         "AddedObjects": [],
         "RemovedObjects": [],
@@ -4827,7 +5167,15 @@
               "IdValue": "053f2f9c-acf6-43f9-9b70-859c48d0d432"
             },
             "Property": "Position",
-            "Value": "42.57857,-974.642,65"
+            "Value": "42.5785713,-974.642029,65"
+          },
+          {
+            "Target": {
+              "Type": "Component",
+              "IdValue": "9c0cf2bb-59bc-4569-a5f4-a0e62c65dee5"
+            },
+            "Property": "SpillOnImpact",
+            "Value": false
           }
         ],
         "MovedObjects": []
@@ -4843,7 +5191,10 @@
     {
       "__guid": "7f5f1a44-ed1a-4100-a2a1-98f1474e8bf1",
       "__version": 2,
-      "__Prefab": "prefabs/soda.prefab",
+      "__Prefab": {
+        "Id": "89457bc8-9a91-452f-9c57-19a0f6d41571",
+        "Path": "prefabs/soda.prefab"
+      },
       "__PrefabInstancePatch": {
         "AddedObjects": [],
         "RemovedObjects": [],
@@ -4862,7 +5213,15 @@
               "IdValue": "053f2f9c-acf6-43f9-9b70-859c48d0d432"
             },
             "Property": "Position",
-            "Value": "58.97961,-956.5883,74"
+            "Value": "58.9796104,-956.588318,74"
+          },
+          {
+            "Target": {
+              "Type": "Component",
+              "IdValue": "9c0cf2bb-59bc-4569-a5f4-a0e62c65dee5"
+            },
+            "Property": "SpillOnImpact",
+            "Value": false
           }
         ],
         "MovedObjects": []
@@ -4878,7 +5237,10 @@
     {
       "__guid": "28657d16-df43-422a-9b1f-db6923c7e57b",
       "__version": 2,
-      "__Prefab": "prefabs/popcorn.prefab",
+      "__Prefab": {
+        "Id": "b7e66491-544f-4d7b-ac86-7e322ae76b6e",
+        "Path": "prefabs/popcorn.prefab"
+      },
       "__PrefabInstancePatch": {
         "AddedObjects": [],
         "RemovedObjects": [],
@@ -4897,7 +5259,7 @@
               "IdValue": "a14caa65-4adc-49eb-84e2-2947c78605be"
             },
             "Property": "Position",
-            "Value": "-35.78148,-973.209,64"
+            "Value": "-35.7814789,-973.208984,64"
           },
           {
             "Target": {
@@ -4906,6 +5268,14 @@
             },
             "Property": "Tags",
             "Value": "particles,weapon"
+          },
+          {
+            "Target": {
+              "Type": "Component",
+              "IdValue": "95e29a17-3e5b-4a62-ba84-2a425b61002c"
+            },
+            "Property": "SpillOnImpact",
+            "Value": true
           }
         ],
         "MovedObjects": []
@@ -4915,17 +5285,16 @@
         "5d064184-c979-48d6-a110-8de1740248da": "6f951f14-52d8-4b38-b173-cb0e2bb73163",
         "82f6fabf-ef15-4da6-8a8e-ce065543e05f": "6a16ee47-1ba6-4a62-bac8-2355a7393a31",
         "98359cfe-034e-434b-bdb0-7b2ffe4c9f1f": "850914c6-fbc7-43e7-b788-0a309df4251d",
-        "95e29a17-3e5b-4a62-ba84-2a425b61002c": "10725ee9-182b-4c87-8c67-be0941f62428",
-        "3c15aa1d-d673-43d7-b699-08cc8de4bc9c": "2d48f69c-fbfe-45cb-82cd-154f3ffa1db4",
-        "60331dfc-9d2c-4ca9-bba6-84caff124d65": "e0ed3e4c-9387-40be-b878-0075cbb6f87a",
-        "498475d8-a63b-4a97-b617-0cd16ae97845": "e1a8baf0-5a72-423e-a300-b8fcc72dc3a3",
-        "9cb99be4-48e2-4a33-92ec-917da288dc88": "51a22a3c-d8ff-4b76-994c-5d7a32b63739"
+        "95e29a17-3e5b-4a62-ba84-2a425b61002c": "10725ee9-182b-4c87-8c67-be0941f62428"
       }
     },
     {
       "__guid": "8b504d8c-fc69-4438-aa95-7e2a9fb6401d",
       "__version": 2,
-      "__Prefab": "prefabs/popcorn.prefab",
+      "__Prefab": {
+        "Id": "b7e66491-544f-4d7b-ac86-7e322ae76b6e",
+        "Path": "prefabs/popcorn.prefab"
+      },
       "__PrefabInstancePatch": {
         "AddedObjects": [],
         "RemovedObjects": [],
@@ -4936,7 +5305,7 @@
               "IdValue": "a14caa65-4adc-49eb-84e2-2947c78605be"
             },
             "Property": "Position",
-            "Value": "-71.40155,-972.9875,64"
+            "Value": "-71.4015503,-972.987488,64"
           },
           {
             "Target": {
@@ -4945,6 +5314,14 @@
             },
             "Property": "Tags",
             "Value": "particles,weapon"
+          },
+          {
+            "Target": {
+              "Type": "Component",
+              "IdValue": "95e29a17-3e5b-4a62-ba84-2a425b61002c"
+            },
+            "Property": "SpillOnImpact",
+            "Value": true
           }
         ],
         "MovedObjects": []
@@ -4954,17 +5331,16 @@
         "5d064184-c979-48d6-a110-8de1740248da": "2aada807-e983-41df-8897-0410776bf163",
         "82f6fabf-ef15-4da6-8a8e-ce065543e05f": "28464997-81c4-4374-b084-4fbbd1122acb",
         "98359cfe-034e-434b-bdb0-7b2ffe4c9f1f": "8bd1dea2-0616-47d1-860e-7b04492439ed",
-        "95e29a17-3e5b-4a62-ba84-2a425b61002c": "2f2e1dec-0d7d-434a-8785-ff2da3ef16bd",
-        "3c15aa1d-d673-43d7-b699-08cc8de4bc9c": "62495ce0-98ae-425e-a4cc-cdb0b627936d",
-        "60331dfc-9d2c-4ca9-bba6-84caff124d65": "07842ffc-fa92-4f30-afb7-ae76707c7219",
-        "498475d8-a63b-4a97-b617-0cd16ae97845": "41f3f662-4cfe-4062-98cb-351e3251a68b",
-        "9cb99be4-48e2-4a33-92ec-917da288dc88": "ff67a1fa-1bd8-49c7-a119-c0c930d4551b"
+        "95e29a17-3e5b-4a62-ba84-2a425b61002c": "2f2e1dec-0d7d-434a-8785-ff2da3ef16bd"
       }
     },
     {
       "__guid": "76868ff6-62d6-43ed-8cb7-4f777f6febed",
       "__version": 2,
-      "__Prefab": "prefabs/popcorn.prefab",
+      "__Prefab": {
+        "Id": "b7e66491-544f-4d7b-ac86-7e322ae76b6e",
+        "Path": "prefabs/popcorn.prefab"
+      },
       "__PrefabInstancePatch": {
         "AddedObjects": [],
         "RemovedObjects": [],
@@ -4983,7 +5359,7 @@
               "IdValue": "a14caa65-4adc-49eb-84e2-2947c78605be"
             },
             "Property": "Position",
-            "Value": "-101.2606,-985.274,64"
+            "Value": "-101.260597,-985.273987,64"
           },
           {
             "Target": {
@@ -4992,6 +5368,14 @@
             },
             "Property": "Tags",
             "Value": "particles,weapon"
+          },
+          {
+            "Target": {
+              "Type": "Component",
+              "IdValue": "95e29a17-3e5b-4a62-ba84-2a425b61002c"
+            },
+            "Property": "SpillOnImpact",
+            "Value": true
           }
         ],
         "MovedObjects": []
@@ -5001,11 +5385,7 @@
         "5d064184-c979-48d6-a110-8de1740248da": "232c010a-a09b-4fcf-9a92-e97cfd859972",
         "82f6fabf-ef15-4da6-8a8e-ce065543e05f": "c3b8d2e7-e255-4926-a9c0-fe0976b2572d",
         "98359cfe-034e-434b-bdb0-7b2ffe4c9f1f": "d87eabb7-e1ec-4654-95e0-67cccb017a2c",
-        "95e29a17-3e5b-4a62-ba84-2a425b61002c": "4ca602f6-3cd2-4204-9f94-9bb7341df274",
-        "3c15aa1d-d673-43d7-b699-08cc8de4bc9c": "fccb71db-3d4c-4055-b99d-a6dbb908e192",
-        "60331dfc-9d2c-4ca9-bba6-84caff124d65": "c5aedf93-25be-4625-8f31-d2092f135e13",
-        "498475d8-a63b-4a97-b617-0cd16ae97845": "44d7934f-601e-43e2-ac07-87579f93ff4d",
-        "9cb99be4-48e2-4a33-92ec-917da288dc88": "fa82ad8d-cc39-4d5b-b26b-0c15e9cd894d"
+        "95e29a17-3e5b-4a62-ba84-2a425b61002c": "4ca602f6-3cd2-4204-9f94-9bb7341df274"
       }
     },
     {
@@ -5013,8 +5393,8 @@
       "__version": 2,
       "Flags": 0,
       "Name": "MainLogo",
-      "Position": "0,-1121.512,233.3292",
-      "Rotation": "0,0,-0.7071068,0.7071068",
+      "Position": "0,-1121.51196,233.329193",
+      "Rotation": "0,0,-0.707106829,0.707106829",
       "Scale": "1,6,6.5",
       "Tags": "",
       "Enabled": true,
@@ -5032,34 +5412,14 @@
           "__version": 3,
           "AttenuationAngle": 1,
           "ColorMix": 1,
-          "ColorTint": {
-            "Type": "Constant",
-            "Evaluation": "Life",
-            "GradientA": {
-              "blend": "Linear",
-              "color": [
-                {
-                  "t": 0.5,
-                  "c": "1,1,1,1"
-                }
-              ],
-              "alpha": []
-            },
-            "GradientB": {
-              "blend": "Linear",
-              "color": [
-                {
-                  "t": 0.5,
-                  "c": "1,1,1,1"
-                }
-              ],
-              "alpha": []
-            },
-            "ConstantA": "1,1,1,1",
-            "ConstantB": "1,1,1,1"
-          },
+          "ColorTint": "1,1,1,1",
+          "CoverageAmount": 1,
+          "CoverageRange": 0.07,
           "Decals": [
-            "materials/decals/kitty-logo.decal"
+            {
+              "Id": "38cd22a6-dd58-422f-ba83-91a12baba92b",
+              "Path": "materials/decals/kitty-logo.decal"
+            }
           ],
           "Depth": 8,
           "LifeTime": 0,
@@ -5085,6 +5445,7 @@
   ],
   "SceneProperties": {
     "NetworkInterpolation": true,
+    "PhysicsMode": "Physics3D",
     "TimeScale": 1,
     "WantsSystemScene": true,
     "Metadata": {
@@ -5100,7 +5461,22 @@
       "AgentStepSize": 18,
       "AgentMaxSlope": 40,
       "ExcludedBodies": "",
-      "IncludedBodies": ""
+      "IncludedBodies": "",
+      "DeferGeneration": false,
+      "CustomBounds": false
+    },
+    "GameObjectSystems": {
+      "Sandbox.Clutter.ClutterGridSystem": {
+        "Storage": {
+          "$blob": "64db792e-5935-8fbc-8cfa-050cd49fa7fd",
+          "$refs": []
+        }
+      },
+      "Sandbox.SelectionSetsSystem": {
+        "Data": {
+          "SelectionSets": []
+        }
+      }
     }
   },
   "ResourceVersion": 3,

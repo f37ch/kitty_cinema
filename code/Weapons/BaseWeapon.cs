@@ -10,30 +10,33 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 	[Property] private Vector3 WeaponPosition {get;set;}
 	[Property] private Vector3 WeaponScale {get;set;}=1;
 	[Property] private ParticleEffect Particle {get;set;}
+	/// <summary>Spills popcorn where the thrown weapon hits something.</summary>
+	[Property] public bool SpillOnImpact {get;set;}
 	[Sync] private Guid Holder {get;set;}
 	public bool Throwed;
+	private bool Spilled;
 	public InfoPopup Popup {get;set;}
 	private Chat Chat {get;set;}
 	private Vector3 SpawnPosition {get;set;}
-	protected override void OnUpdate()
+	/// <summary>
+	/// Follows the holder's hand. Not parented to the bone: a child would inherit the holder's tag, which their
+	/// own camera hides in first person, and the weapon would vanish from their view.
+	/// </summary>
+	protected override void OnPreRender()
 	{
-		base.OnUpdate();
-		if (Holder!=default&&Scene.Directory.FindByGuid(Holder).Components.TryGet<TheaterPlayer>(out var Player)){
-			if (Player.Components.TryGet<SkinnedModelRenderer>(out var model))
-			{
-				//model.TryGetBoneTransform("hold_R",out Transform btransform);
-				//Transform ltransform=new Transform(WeaponPosition,Rotation.FromRoll(-10),1);
-        		//Transform wtransform=btransform.ToWorld(ltransform);
-        		//GameObject.WorldPosition=wtransform.Position;
-        		//GameObject.WorldRotation=wtransform.Rotation;
-        		//GameObject.WorldScale=wtransform.Scale;
-				var bone=model.GetBoneObject(15);
-				////var holdBone = model.Model.Bones.AllBones.FirstOrDefault<BoneCollection.Bone>( bone => bone.Name == "arm_upper_R" );
-				////Log.Info(holdBone.Index);
-				GameObject.SetParent(bone,true);
-				GameObject.Transform.Local=bone.Transform.Local.WithRotation(Rotation.FromRoll(-50)).WithPosition(WeaponPosition).WithScale(WeaponScale);
-			}
-		}
+		base.OnPreRender();
+		if (Holder==default) return;
+		var holder=Scene.Directory.FindByGuid(Holder);
+		if (holder==null||!holder.Components.TryGet<SkinnedModelRenderer>(out var model)) return;
+		var bone=model.GetBoneObject(15);
+		if (bone==null) return;
+		GameObject.WorldTransform=bone.WorldTransform.ToWorld(new Transform(WeaponPosition,Rotation.FromRoll(-50),WeaponScale));
+	}
+	public void OnCollisionStart(Collision collision)
+	{
+		if (!Throwed||Spilled||!SpillOnImpact) return;
+		Spilled=true;
+		PopcornSpill.Broadcast(collision.Contact.Point,collision.Contact.Normal);
 	}
 
 	public async Task Throw()
@@ -69,19 +72,6 @@ public sealed class BaseWeapon: Component, Component.ICollisionListener
 		}
 		
 	}
-	//[Rpc.Broadcast]
-	//public void BroadcastEffect(Vector3 point)
-	//{
-	//	//if (Particle!=null){Particle.Enabled=true;Particle.ResetEmitters(); }
-	//}
-	//public void OnCollisionStart(Collision o)
-	//{
-	//	Log.Info( o.Other.GameObject.Tags.Has( "world" ) );
-	//	if ( o.Other.GameObject.Tags.Has( "world" ) )
-	//	{
-	//		//BroadcastEffect( o.Contact.Point );
-	//	}
-	//}
 	[Rpc.Broadcast]
 	public void PickUp(Guid Userid)
 	{

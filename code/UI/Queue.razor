@@ -1,165 +1,416 @@
+@using Sandbox.UI
+@using System
+@using System.Linq
+
 @inherits PanelComponent
 <style>
-    Queue{
-        width: 20%;//20%
-		height: 68%;
-        left:1%;
-		top: 11%;
-        color: white;
-        position: absolute;
-		
-        font-family:BerlinSansFBDemi;
-        font-size: 44px;
-        font-weight: bolder;
-        border-radius: 14px;
-	
-        background-color: #1115;
-        backdrop-filter: blur(20px);
-		flex-direction: column;
-        display: flex;
-		pointer-events: all;
-		transform: scale(1);
-        transition: all 0.4s ease-in-out;
-        overflow: hidden;
+    @@keyframes queue-row-in {
+        0% { opacity: 0; transform: translateX(-30px) scale(0.96); }
+        100% { opacity: 1; transform: translateX(0px) scale(1); }
+    }
+    @@keyframes queue-like-pop {
+        0% { transform: scale(1); }
+        40% { transform: scale(1.45); }
+        100% { transform: scale(1); }
+    }
 
-        .list{
+    Queue {
+        position: absolute;
+        width: 20%;
+        height: 68%;
+        left: 1%;
+        top: 11%;
+        flex-direction: column;
+        color: #e8e8e8;
+        font-family: Poppins;
+        font-size: 17px;
+        border-radius: 14px;
+        border: 1px solid #ffffff14;
+        background-color: #0d0e10d9;
+        backdrop-filter: blur(20px);
+        box-shadow: 0px 10px 40px #00000099;
+        pointer-events: all;
+        overflow: hidden;
+        transition: all 0.25s ease-out;
+
+        &.hide {
+            opacity: 0;
+            transform: translateX(-40px) scale(0.96);
+            pointer-events: none;
+            transition: all 0.2s ease-in;
+        }
+
+        .q-header {
+            flex-shrink: 0;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            font-family: BerlinSansFBDemi;
+            font-size: 22px;
+            letter-spacing: 2px;
+            color: #00d7bb;
+            background-color: #00d7bb14;
+            border-bottom: 1px solid #ffffff0f;
+            i { font-size: 22px; }
+            .count {
+                margin-left: auto;
+                padding: 2px 10px;
+                border-radius: 10px;
+                font-family: Poppins;
+                font-size: 13px;
+                letter-spacing: 0px;
+                color: #00d7bb;
+                background-color: #00d7bb22;
+            }
+        }
+
+        .q-hint {
+            flex-shrink: 0;
+            flex-direction: row;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px 0px 16px;
+            font-size: 12px;
+            color: #ffffff55;
+            i { font-size: 14px; color: #ff5c8a; }
+        }
+
+        .q-list {
+            flex-grow: 1;
             flex-direction: column;
             overflow: scroll;
-            border-radius: 14px;
-            padding: 1%;
+            padding: 10px;
+        }
+
+        .q-rows {
+            position: relative;
+            flex-shrink: 0;
             width: 100%;
-            gap:4px;
-            
-            .video{
+            transition: height 0.3s ease;
+        }
+
+        .q-item {
+            position: absolute;
+            left: 0px;
+            width: 100%;
+            height: 72px;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+            padding: 6px;
+            border-radius: 10px;
+            background-color: #ffffff08;
+            border: 1px solid #ffffff0a;
+            animation: queue-row-in 0.3s ease-out;
+            transition: top 0.35s ease-in-out, opacity 0.3s ease, transform 0.3s ease, background-color 0.15s ease, border-color 0.15s ease;
+            &:hover { background-color: #ffffff12; .q-remove { opacity: 1; } }
+            &.next { border-color: #00d7bb55; background-color: #00d7bb12; }
+            &.leaving {
+                opacity: 0;
+                transform: translateX(-40px) scale(0.9);
+                pointer-events: none;
+            }
+
+            .pos {
                 flex-shrink: 0;
-      
-                font-size: 18px;
+                width: 18px;
+                justify-content: center;
+                font-family: BerlinSansFBDemi;
+                font-size: 15px;
+                color: #ffffff55;
+                i { font-size: 18px; color: #00d7bb; }
+            }
+            .thumb {
+                position: relative;
+                flex-shrink: 0;
+                width: 106px;
+                height: 60px;
+                border-radius: 6px;
                 overflow: hidden;
-                flex-direction: row;
-                height: 80px;
-                background-color: rgb(71, 124, 117);
-                border-radius: 5px;
-                width: 100%;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                opacity: 0.9;
-                .video_title{
-                    padding-left: 1%;
-                    opacity: 0.7;
-                }
-                .video_time{
-                    text-align: left;
+                justify-content: flex-end;
+                align-items: flex-end;
+                background-color: #1b1d21;
+                .ph {
                     position: absolute;
-                    margin-left: 32%;
-                    margin-top: 50px;
-                    opacity: .7;
+                    left: 0px;
+                    top: 0px;
+                    width: 100%;
+                    height: 100%;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 26px;
+                    color: #ffffff55;
                 }
-                :hover{
-                    opacity: 1;
-                }
-                .vidimg{
-                   
-                    background-position: center;
-                    background-size: 100%;
+                .img {
+                    position: absolute;
+                    left: 0px;
+                    top: 0px;
+                    width: 100%;
+                    height: 100%;
+                    background-size: contain;
                     background-repeat: no-repeat;
-                   
-                    flex-shrink: 0;
-                    width: 30%;
+                    background-position: center;
+                }
+                .badge {
+                    margin: 3px;
+                    padding: 0px 4px;
+                    border-radius: 3px;
+                    font-size: 11px;
+                    color: white;
+                    background-color: #000000cc;
+                    &.live { background-color: #e5303a; }
                 }
             }
-            
-        }
-        
-        .service_list {
-            flex-shrink:0;
-            width: 100%;
-            height: 10%;
-            margin-top: auto;
-            background-color: rgb(71, 124, 117);
-            justify-content: center;
+            .info {
+                flex-grow: 1;
+                flex-shrink: 1;
+                width: 0;
+                flex-direction: column;
+                justify-content: center;
+                gap: 4px;
+                overflow: hidden;
+            }
+            .title {
+                font-family: BerlinSansFBDemi;
+                font-size: 15px;
+                color: white;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .meta {
+                font-size: 12px;
+                color: #ffffff80;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
 
-            .service {
-                background-size:contain;
-                width: 100%;
-                height: 100%;
-                margin: 2px;
-                background-color: #acacac;
-                background-repeat: no-repeat;
-                background-position: center center;
-                border-radius: 4px;
-                color: transparent;
+            .q-side {
+                flex-shrink: 0;
+                flex-direction: column;
+                align-items: center;
+                gap: 4px;
+            }
+            .q-like {
+                flex-direction: row;
+                align-items: center;
+                gap: 3px;
+                padding: 3px 7px;
+                border-radius: 12px;
+                font-size: 13px;
+                color: #ffffff99;
+                background-color: #ffffff0d;
+                transition: all 0.15s ease;
+                i { font-size: 16px; }
+                &:hover { color: #ff5c8a; background-color: #ff5c8a22; cursor: pointer; }
+                &.liked {
+                    color: #ff5c8a;
+                    background-color: #ff5c8a26;
+                    i { animation: queue-like-pop 0.35s ease-out; }
+                }
+            }
+            .q-remove {
+                width: 24px;
+                height: 24px;
+                border-radius: 6px;
+                justify-content: center;
+                align-items: center;
+                font-size: 16px;
+                color: #ff6b6b;
+                opacity: 0.35;
+                transition: all 0.12s ease;
+                &:hover { background-color: #ff6b6b33; cursor: pointer; }
             }
         }
-        .service:hover{
-            cursor: pointer;
-            sound-in:ui.button.over;
-            opacity: 1;
-            background-color: #EEE;
-        }
-        .service:active{
-            sound-in: ui.button.press;
-        }
 
-        .title{
-            background-color: rgb(0, 215, 187);
-            opacity: 0.3;
+        .q-empty {
+            flex-grow: 1;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: 100%;
-            padding: 1%;
+            gap: 8px;
+            color: #ffffff40;
+            font-size: 14px;
+            animation: queue-row-in 0.3s ease-out;
+            i { font-size: 44px; }
         }
 
-		&.hide{
-			transition: all 0.4s ease-in-out;
-			transform: scale(0);
-            left:-20%;
-            pointer-events: none;
-		}
+        .q-add {
+            flex-shrink: 0;
+            flex-direction: column;
+            gap: 8px;
+            padding: 12px;
+            background-color: #ffffff06;
+            border-top: 1px solid #ffffff0f;
+            .q-label { font-size: 13px; color: #ffffff66; letter-spacing: 1px; }
+        }
+
+        .services {
+            flex-direction: row;
+            gap: 6px;
+            height: 52px;
+        }
+
+        .service {
+            flex-grow: 1;
+            flex-basis: 0;
+            border-radius: 8px;
+            background-color: #e6e6e6;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.85;
+            transition: all 0.12s ease;
+            &:hover { opacity: 1; transform: scale(1.04); cursor: pointer; sound-in: ui.button.over; }
+            &:active { sound-in: ui.button.press; }
+        }
     }
 </style>
-<root class="@(Input.Down("queue")&&!MediaPlayer.PanelComponent.Components.TryGet<RequestMenu>(out var _) ? "" : "hide")">
-    <div class="title">QUEUE</div>
+<root class="@(Visible ? "" : "hide")">
+    <div class="q-header">
+        <i>queue_music</i>
+        <label>QUEUE</label>
+        <label class="count">@MediaPlayer.VideoList.Count</label>
+    </div>
+    @if (MediaPlayer.VideoList.Count > 1)
+    {
+        <div class="q-hint"><i>favorite</i><label>most liked plays next</label></div>
+    }
 
-    <div class="list">
-        @foreach (var video in MediaPlayer.VideoList)
-		{
-            <div class="video">
-                <img class="vidimg" src=@video.thumb></img>
-                <div class="video_title">@video.title</div>
-                <div class="video_time">@(ConvertTime(video.duration)=="00:00:00"?"● Live":ConvertTime(video.duration))</div>
+    <div class="q-list">
+        @if (Rows.Count == 0)
+        {
+            <div class="q-empty">
+                <i>playlist_play</i>
+                <label>queue is empty</label>
+            </div>
+        }
+        else
+        {
+            <div class="q-rows" style="height: @(VisibleCount * RowStep)px">
+                @foreach (var row in Rows)
+                {
+                    var key = row.Key;
+                    var likes = MediaPlayer.LikesOf(row.Video);
+                    var liked = LikedByMe(key);
+                    <div @key="@key" class="q-item @(row.Leaving ? "leaving" : "") @(row.Index == 0 && !row.Leaving ? "next" : "")" style="top: @(row.Index * RowStep)px">
+                        <div class="pos">
+                            @if (row.Index == 0)
+                            {
+                                <i>skip_next</i>
+                            }
+                            else
+                            {
+                                <label>@(row.Index + 1)</label>
+                            }
+                        </div>
+                        <div class="thumb">
+                            <div class="ph"><i>movie</i></div>
+                            <div class="img" style="background-image: url(@row.Video.thumb)"></div>
+                            <label class="badge @(row.Video.duration > 0 ? "" : "live")">@(row.Video.duration > 0 ? FormatTime(row.Video.duration) : "LIVE")</label>
+                        </div>
+                        <div class="info">
+                            <label class="title">@row.Video.title</label>
+                            <label class="meta">@($"{row.Video.servicename} · {row.Video.requester}")</label>
+                        </div>
+                        <div class="q-side">
+                            <button class="q-like @(liked ? "liked" : "")" @onclick=@(() => MediaController.ToggleLike(MediaPlayer.GameObject.Id, key))>
+                                <i>@(liked ? "favorite" : "favorite_border")</i>
+                                <label>@likes</label>
+                            </button>
+                            @if (CanRemove(row.Video))
+                            {
+                                <button class="q-remove" @onclick=@(() => Remove(key))><i>close</i></button>
+                            }
+                        </div>
+                    </div>
+                }
             </div>
         }
     </div>
 
-    <div class="service_list">
-        <button @onclick=@(()=>OpenRequest($"https://www.youtube.com/")) class="service" style="background-image:url(/ui/services/youtube.png);"></button>
-        <button @onclick=@(()=>OpenRequest($"https://soundcloud.com/")) class="service"  style="background-image:url(/ui/services/soundcloud.png);"></button>
-        <button @onclick=@(()=>OpenRequest($"https://twitch.com/")) class="service"  style="background-image:url(/ui/services/twitch.png);"></button>
-        <button @onclick=@(()=>OpenRequest($"direct")) class="service"  style="background-image:url(/ui/services/directlink.png);">direct link</button>
+    <div class="q-add">
+        <label class="q-label">ADD VIDEO</label>
+        <div class="services">
+            <button @onclick=@(()=>OpenRequest("https://www.youtube.com/")) class="service" style="background-image:url(/ui/services/youtube.png);"></button>
+            <button @onclick=@(()=>OpenRequest("https://soundcloud.com/")) class="service" style="background-image:url(/ui/services/soundcloud.png);"></button>
+            <button @onclick=@(()=>OpenRequest("https://www.twitch.tv/")) class="service" style="background-image:url(/ui/services/twitch.png);"></button>
+            <button @onclick=@(()=>OpenRequest("direct")) class="service" style="background-image:url(/ui/services/directlink.png);"></button>
+        </div>
     </div>
 </root>
 @code{
+    /// <summary>A queue entry on screen: kept for a moment after it leaves the queue so it can animate out.</summary>
+    private class Row
+    {
+        public string Key;
+        public Video Video;
+        public int Index;
+        public bool Leaving;
+        public RealTimeSince SinceLeft;
+    }
+
+    /// <summary>Row height plus the gap between rows, in px.</summary>
+    private const int RowStep = 80;
+    private const float LeaveTime = 0.35f;
+
     public MediaPlayer MediaPlayer {get;set;}
-    protected override void OnUpdate(){
-        base.OnUpdate();
-    }
+    private bool Visible=>Input.Down("queue")&&!MediaPlayer.PanelComponent.Components.TryGet<RequestMenu>(out var _);
+    private List<Row> Rows {get;set;}=new();
+    private int VisibleCount=>Rows.Count(x=>!x.Leaving);
+    private int Signature {get;set;}
+
+    private bool LikedByMe(string key)=>MediaPlayer.LikeList.Any(x=>x.uid==key&&x.steamid==Connection.Local?.SteamId);
+    private bool CanRemove(Video vid)=>(Connection.Local?.IsHost??true)||vid.requesterid==Connection.Local?.SteamId;
+
     private void OpenRequest(string url){
-        MediaPlayer.WorldInput.Enabled=false;
-        var menu=MediaPlayer.PanelComponent.Components.Create<RequestMenu>();
-		menu.MediaPlayer=MediaPlayer;
-		if (url=="direct"){
-			menu.AddClass("OpenDirect");
-			menu.RemoveClass("Close");
-		}else{
-			menu.RemoveClass("Close");
-			menu.AddClass("Open");
-		}
-        menu.CurURL=url;
+        RequestMenu.Open(MediaPlayer,url);
     }
+    private void Remove(string key){
+        MediaController.RemoveQueued(MediaPlayer.GameObject.Id,key);
+    }
+
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
+        SyncRows();
+    }
+
+    /// <summary>Follows the synced queue: new rows slide in, gone rows slide out, moved rows glide to their place.</summary>
+    private void SyncRows()
+    {
+        var ordered=MediaPlayer.OrderedQueue.ToList();
+        var hash=new HashCode();
+        for (int i=0;i<ordered.Count;i++){
+            var key=MediaPlayer.QueueKey(ordered[i]);
+            var row=Rows.FirstOrDefault(x=>x.Key==key&&!x.Leaving);
+            if (row==null){
+                row=new Row{Key=key};
+                Rows.Add(row);
+            }
+            row.Video=ordered[i];
+            row.Index=i;
+            hash.Add(key);
+            hash.Add(i);
+            hash.Add(MediaPlayer.LikesOf(ordered[i]));
+            hash.Add(LikedByMe(key));
+        }
+        foreach (var row in Rows){
+            if (row.Leaving||ordered.Any(x=>MediaPlayer.QueueKey(x)==row.Key)) continue;
+            row.Leaving=true;
+            row.SinceLeft=0;
+        }
+        Rows.RemoveAll(x=>x.Leaving&&x.SinceLeft>LeaveTime);
+        hash.Add(Rows.Count);
+        hash.Add(Visible);
+        Signature=hash.ToHashCode();
+    }
+
     protected override void OnStart()
     {
         Flags=ComponentFlags.NotNetworked;
-        //GameObject.NetworkMode=NetworkMode.Never;
         base.OnStart();
     }
     protected override void OnDestroy()
@@ -168,13 +419,14 @@
         base.OnDestroy();
     }
 
-    static string ConvertTime(float val)
+    static string FormatTime(float val)
     {
-        TimeSpan time=TimeSpan.FromSeconds(val);
-        return $"{time.Hours:D2}:{time.Minutes:D2}:{time.Seconds:D2}";
+        var t=TimeSpan.FromSeconds(val);
+        return t.Hours>0?$"{t.Hours}:{t.Minutes:D2}:{t.Seconds:D2}":$"{t.Minutes:D2}:{t.Seconds:D2}";
     }
+
     protected override int BuildHash()
     {
-        return HashCode.Combine(Input.Down("queue"));
+        return Signature;
     }
 }

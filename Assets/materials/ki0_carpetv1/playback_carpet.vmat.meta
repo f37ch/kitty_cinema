@@ -1,24 +1,25 @@
 {
+  "guid": "ef57a246-ede3-4d20-97cf-8c2848b66623",
   "publish": {
-    "Allowed": true,
     "Enabled": true,
     "ProjectConfig": {
       "Title": "playback_carpet",
       "Type": "material",
       "Org": "playback",
       "Ident": "playback_carpet",
-      "Tags": "carpet material",
       "Schema": 0,
-      "HasAssets": false,
-      "AssetsPath": null,
+      "IncludeSourceFiles": false,
       "Resources": null,
-      "MenuResources": "*",
-      "HasCode": false,
-      "CodePath": null,
       "PackageReferences": null,
-      "EditorReferences": null,
+      "EditorReferences": [],
+      "Mounts": null,
+      "IsStandaloneOnly": false,
+      "AI": {
+        "EnableMcpCommunication": true
+      },
       "Metadata": {
-        "SingleAssetSource": "materials/ki0_carpetv1/playback_carpet.vmat"
+        "SingleAssetSource": "materials/ki0_carpetv1/playback_carpet.vmat",
+        "ParentPackage": "playback.kitty_cinema"
       }
     }
   }

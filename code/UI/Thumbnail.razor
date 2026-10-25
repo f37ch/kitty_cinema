@@ -69,9 +69,17 @@
 </style>
 
 <root>
-	<div class="thumbtitle">@GetTitle()</div>
+	@* Separate elements: a label that held a title doesn't switch to a #token in place. *@
+	@if (string.IsNullOrEmpty(MediaPlayer?.Title))
+	{
+		<div class="thumbtitle">#thumbnail.novideo</div>
+	}
+	else
+	{
+		<div class="thumbtitle playing">@MediaPlayer.Title</div>
+	}
 	<img class="img" src="@GetThumbnail()"/>
-	@if (MediaPlayer.Duration>0){
+	@if (MediaPlayer.IsValid()&&MediaPlayer.Duration>0){
 		<div class="container">
 			<div class="durbar" style="width: @((MediaPlayer.Curtime/MediaPlayer.Duration)*100)%;"/>
 		</div>
@@ -84,14 +92,6 @@
 	protected override void OnFixedUpdate(){
 		base.OnFixedUpdate();
 	}
-	private string GetTitle()
-	{
-	    if (string.IsNullOrEmpty(MediaPlayer?.Title))
-	        return "#thumbnail.novideo";
-	
-	    return MediaPlayer.Title;
-	}
-
 	private string GetThumbnail() => MediaPlayer?.Thumbnail ?? "/ui/novideo.gif";
 	protected override int BuildHash() => System.HashCode.Combine(RealTime.Now.CeilToInt());
 }

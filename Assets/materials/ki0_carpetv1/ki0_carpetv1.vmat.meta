@@ -1,0 +1,26 @@
+{
+  "guid": "51d3ffc6-0351-4a7f-9122-a82e2986156e",
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "Ki 0 Carpetv 1",
+      "Type": "material",
+      "Org": "local",
+      "Ident": "ki0_carpetv1",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": null,
+      "EditorReferences": [],
+      "Mounts": null,
+      "IsStandaloneOnly": false,
+      "AI": {
+        "EnableMcpCommunication": true
+      },
+      "Metadata": {
+        "SingleAssetSource": "materials/ki0_carpetv1/ki0_carpetv1.vmat",
+        "ParentPackage": "playback.kitty_cinema"
+      }
+    }
+  }
+}

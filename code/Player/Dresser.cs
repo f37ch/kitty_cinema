@@ -4,8 +4,10 @@ public sealed class PlayerDresser : Component,Component.INetworkSpawn
 
 	public void OnNetworkSpawn(Connection owner)
 	{
-		var clothing=ClothingContainer.CreateFromLocalUser();
-		clothing.Deserialize(owner.GetUserData( "avatar" ));
-		clothing.Apply(BodyRenderer);
+		// The engine's Dresser reads the owner's avatar itself.
+		var dresser=Components.GetOrCreate<Dresser>();
+		dresser.BodyTarget=BodyRenderer;
+		dresser.Source=Dresser.ClothingSource.OwnerConnection;
+		_=dresser.Apply();
 	}
 }

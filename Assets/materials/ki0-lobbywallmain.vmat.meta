@@ -1,0 +1,26 @@
+{
+  "guid": "07798353-b170-4d48-a4a3-7674f4e9466d",
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "Ki 0 Lobbywallmain",
+      "Type": "material",
+      "Org": "local",
+      "Ident": "ki0_lobbywallmain",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": null,
+      "EditorReferences": [],
+      "Mounts": null,
+      "IsStandaloneOnly": false,
+      "AI": {
+        "EnableMcpCommunication": true
+      },
+      "Metadata": {
+        "SingleAssetSource": "materials/ki0-lobbywallmain.vmat",
+        "ParentPackage": "playback.kitty_cinema"
+      }
+    }
+  }
+}

@@ -1,47 +1,55 @@
 using System.Linq;
 using Sandbox.UI;
+/// <summary>
+/// Requests and controls from players. Every call runs on the host, which alone changes the player's
+/// synced state; clients follow it (see MediaPlayer).
+/// </summary>
 public class MediaController:Component
 {
     public const string WebHandlersURL="https://etsv.pw/mediaplayer/";
-	[Rpc.Broadcast]
+	[Rpc.Host]
     public static void BroadcastVideo(ParsedData Data, string VideoID, string ServiceName, string ServiceType, Guid PlayerID){
 		var MediaPlayer=GetPlayer(PlayerID);
-		if (MediaPlayer.Service!=null){
-			foreach (var video in MediaPlayer.VideoList){
-			    if (video.videoid == VideoID){
-                    ChatMsgLocal(MediaPlayer,$"Failed to requested video: Current video already listed in queue.");
-			        return;
-                }
-            }
-            MediaPlayer.VideoList.Add(new (){
-                videoid=VideoID,
-                duration=Data.duration,
-                title=Data.title!=null?Data.title:"No Title",
-                thumb=Data.thumb!=null?Data.thumb:"/ui/thumb.png",
-                service=ServiceType,
-                requester=Rpc.Caller.DisplayName,
-                servicename=ServiceName
-            });
-			if(MediaPlayer.PanelComponent.Components.TryGet<Queue>(out var queue)){
-				queue.StateHasChanged();
+		if (MediaPlayer==null) return;
+		var caller=Rpc.Caller;
+		var vid=new Video(){
+			videoid=VideoID,
+			duration=Data.duration,
+			title=string.IsNullOrEmpty(Data.title)?"No Title":Data.title,
+			thumb=string.IsNullOrEmpty(Data.thumb)?"/ui/thumb.png":Data.thumb,
+			service=ServiceType,
+			requester=caller.DisplayName,
+			servicename=ServiceName,
+			uid=Guid.NewGuid().ToString("N"),
+			requesterid=caller.SteamId
+		};
+		if (MediaPlayer.IsPlaying){
+			// The playing video may be queued again, only the same video twice in the queue is refused.
+			if (MediaPlayer.VideoList.Any(x=>x.videoid==VideoID)){
+				Notify(caller,"Failed to request video: this video is already in the queue.");
+				return;
 			}
-			ChatMsgLocal(MediaPlayer,$"Your video was added to queue.");
-			if (Rpc.Caller==Connection.Local){
-				Sandbox.Services.Stats.Increment("videos",1);
-			}
+			MediaPlayer.VideoList.Add(vid);
+			Notify(caller,"Your video was added to the queue.",true);
 		}else{
-	    	MediaPlayer.Service=ServiceType;MediaPlayer.Duration=Data.duration;MediaPlayer.ContentID=VideoID;MediaPlayer.Title=Data.title!=null?Data.title:"";
-	    	MediaPlayer.IsLive=MediaPlayer.Duration<=0;
-	    	MediaPlayer.Curtime=MediaPlayer.Duration>0?1:0;
-			MediaPlayer.Thumbnail=Data.thumb;
-			ChatMsg(MediaPlayer,$"{Rpc.Caller.DisplayName} has requested video: [{ServiceName}] {MediaPlayer.Title}");
-			if (Rpc.Caller==Connection.Local){
-				Sandbox.Services.Stats.Increment("videos",1);
-			}
+			MediaPlayer.StartVideo(vid);
+			ChatMsg(MediaPlayer,$"{caller.DisplayName} has requested video: [{ServiceName}] {vid.title}");
+			Notify(caller,null,true);
 		}
     }
 	public static MediaPlayer GetPlayer(Guid id){
-		return Game.ActiveScene.Directory.FindByGuid(id).Components.Get<MediaPlayer>();
+		return Game.ActiveScene?.Directory.FindByGuid(id)?.Components.Get<MediaPlayer>();
+	}
+	/// <summary>Host: sends a chat line to one player.</summary>
+	private static void Notify(Connection target,string msg,bool requested=false){
+		using (Rpc.FilterInclude(target)){
+			NotifyLocal(msg,requested);
+		}
+	}
+	[Rpc.Broadcast(NetFlags.HostOnly)]
+	private static void NotifyLocal(string msg,bool requested){
+		if (msg!=null) ChatMsgLocal(null,msg);
+		if (requested) Sandbox.Services.Stats.Increment("videos",1);
 	}
 	public static void ChatMsgLocal(MediaPlayer MediaPlayer,string msg)//local msg
 	{
@@ -52,91 +60,115 @@ public class MediaController:Component
 	[Rpc.Broadcast(NetFlags.HostOnly)]//msg for all in theater
 	public static void ChatMsg(MediaPlayer MediaPlayer,string msg)
 	{
+		if (!MediaPlayer.IsValid()) return;
 		if (Game.ActiveScene.Components.TryGet<Chat>(out var Chat,FindMode.EnabledInSelfAndDescendants)){
-			var da=Game.ActiveScene.GetAllComponents<TheaterPlayer>().FirstOrDefault(x=>x.GameObject.Network.Owner==Connection.Local);
+			var da=Game.ActiveScene.GetAllComponents<TheaterPlayer>().FirstOrDefault(x=>!x.IsProxy);
 			if (da==null) return;
 			if (da.Location==MediaPlayer.Location){
 				Chat.AddLocalText(msg,"video_settings");
 			}
 		}
 	}
+	/// <summary>Local: the volume is per player, the page reloads at the current time with it.</summary>
     public static void SetVolume(Guid playerid,float volume)
 	{
 		var MediaPlayer=GetPlayer(playerid);
+		if (MediaPlayer==null) return;
+		volume=MathF.Round(Math.Clamp(volume,0,100));
+		if (MediaPlayer.Volume==volume) return;
         MediaPlayer.Volume=volume;
-		ChatMsgLocal(MediaPlayer,$"Your volume set to {volume}%.");
-		if (!MediaPlayer.Paused){
-			MediaPlayer.WebPanel.Surface.Url=$"{WebHandlersURL}player.php?tp={MediaPlayer.Service}&dt={MediaPlayer.ContentID}&st={MediaPlayer.Curtime}&vol={MediaPlayer.Volume}";
-			//MediaPlayer.Trigger=Time.Now+1;
-		}
 	}
 	public static int CountSkips(Guid playerid){
 		var MediaPlayer=GetPlayer(playerid);
-		var numplayers_in_theater=Game.ActiveScene.GetAllComponents<TheaterPlayer>().Where(x=>x.Location==MediaPlayer.Location).Count();
-		if (numplayers_in_theater==1||numplayers_in_theater==0){
+		if (MediaPlayer==null) return 1;
+		var numplayers_in_theater=Game.ActiveScene.GetAllComponents<TheaterPlayer>().Count(x=>x.Location==MediaPlayer.Location);
+		if (numplayers_in_theater<=1){
 			return 1;
-		}else if(numplayers_in_theater>0 && numplayers_in_theater<3){
+		}else if(numplayers_in_theater<3){
 			return 2;
 		}else{
 			return (int)Math.Round(numplayers_in_theater*.66f);
 		}
 	}
-	[Rpc.Broadcast]
+	[Rpc.Host]
     public static void VoteSkip(Guid playerid)
 	{
 		var MediaPlayer=GetPlayer(playerid);
-		if (MediaPlayer.Service==null){ChatMsgLocal(MediaPlayer,$"Failed to vote skip video: No video is playing.");return;}
-		foreach (var vote in MediaPlayer.SkipList){
-		    if (vote.steamid == Rpc.Caller.SteamId){
-				ChatMsgLocal(MediaPlayer,$"Failed to vote skip video: You already voted.");
-		        return;
-            }
+		if (MediaPlayer==null) return;
+		var caller=Rpc.Caller;
+		if (!MediaPlayer.IsPlaying){Notify(caller,"Failed to vote skip video: No video is playing.");return;}
+		if (MediaPlayer.SkipList.Any(x=>x.steamid==caller.SteamId)){
+			Notify(caller,"Failed to vote skip video: You already voted.");
+		    return;
         }
         MediaPlayer.SkipList.Add(new (){
-            steamid=Rpc.Caller.SteamId,
+            steamid=caller.SteamId,
 		});
-		ChatMsg(MediaPlayer,$"{Rpc.Caller.DisplayName} has voted to skip this video.");
+		ChatMsg(MediaPlayer,$"{caller.DisplayName} has voted to skip this video.");
 	}
-    [Rpc.Broadcast(NetFlags.HostOnly)]
-    public static void Skip(Guid playerid)
+	/// <summary>Like or unlike a queued video: the most liked plays next.</summary>
+	[Rpc.Host]
+	public static void ToggleLike(Guid playerid,string key)
 	{
-		if (!Rpc.Caller.IsHost) return;
 		var MediaPlayer=GetPlayer(playerid);
-		if (MediaPlayer.Service==null){return;}//||MediaPlayer.Paused?
-        MediaPlayer.Curtime=0;
-		MediaPlayer.Duration=0;
-		MediaPlayer.Service=null;
-		MediaPlayer.Title=null;
-		MediaPlayer.SkipList.Clear();
-		ChatMsg(MediaPlayer,$"{Rpc.Caller.DisplayName} skipped current video.");
+		if (MediaPlayer==null||!MediaPlayer.VideoList.Any(x=>MediaPlayer.QueueKey(x)==key)) return;
+		var caller=Rpc.Caller;
+		for (int i=0;i<MediaPlayer.LikeList.Count;i++){
+			if (MediaPlayer.LikeList[i].uid==key&&MediaPlayer.LikeList[i].steamid==caller.SteamId){
+				MediaPlayer.LikeList.RemoveAt(i);
+				return;
+			}
+		}
+		MediaPlayer.LikeList.Add(new QueueLike{uid=key,steamid=caller.SteamId});
 	}
-    [Rpc.Broadcast(NetFlags.HostOnly)]
-    public static void TogglePlay(Guid playerid)
+	/// <summary>The host, or whoever requested it, takes a video out of the queue.</summary>
+	[Rpc.Host]
+	public static void RemoveQueued(Guid playerid,string key)
 	{
-		if (!Rpc.Caller.IsHost) return;
-			var MediaPlayer=GetPlayer(playerid);
-		
-		if (MediaPlayer.Service==null){return;}
-        	
-		if (MediaPlayer.Paused){
-          	MediaPlayer.Paused=false;
-		   	ChatMsg(MediaPlayer,$"{Rpc.Caller.DisplayName} resumed current video.");
-        }else{
-			MediaPlayer.Paused=true;
-			ChatMsg(MediaPlayer,$"{Rpc.Caller.DisplayName} paused current video.");
-        }
-		
-	}
-    [Rpc.Broadcast(NetFlags.HostOnly)]
-    public static void Seek(Guid playerid,float time)
-	{
-		if (!Rpc.Caller.IsHost) return;
 		var MediaPlayer=GetPlayer(playerid);
 		if (MediaPlayer==null) return;
-		if (MediaPlayer.Service==null||MediaPlayer.Paused||MediaPlayer.IsLive){return;}
-        MediaPlayer.Curtime=time;
-		if (MediaPlayer.WebPanel==null) return;
-		MediaPlayer.WebPanel.Surface.Url=$"{WebHandlersURL}player.php?tp={MediaPlayer.Service}&st={MediaPlayer.Curtime}&dt={MediaPlayer.ContentID}&vol={MediaPlayer.Volume}";
-		ChatMsg(MediaPlayer,$"{Rpc.Caller.DisplayName} seeked current video.");
+		var caller=Rpc.Caller;
+		var vid=MediaPlayer.VideoList.FirstOrDefault(x=>MediaPlayer.QueueKey(x)==key);
+		if (vid.videoid==null) return;
+		if (!caller.IsHost&&vid.requesterid!=caller.SteamId){
+			Notify(caller,"Only the host or the requester can remove a video from the queue.");
+			return;
+		}
+		if (!MediaPlayer.RemoveFromQueue(key)) return;
+		ChatMsg(MediaPlayer,$"{caller.DisplayName} removed \"{vid.title}\" from the queue.");
+	}
+	/// <summary>Host only: pause, skip and seek.</summary>
+	private static bool CallerMayControl(){
+		if (Rpc.Caller.IsHost) return true;
+		Notify(Rpc.Caller,"Only the host can control playback.");
+		return false;
+	}
+    [Rpc.Host]
+    public static void Skip(Guid playerid)
+	{
+		if (!CallerMayControl()) return;
+		var MediaPlayer=GetPlayer(playerid);
+		if (MediaPlayer==null||!MediaPlayer.IsPlaying) return;
+		ChatMsg(MediaPlayer,$"{Rpc.Caller.DisplayName} skipped current video.");
+		MediaPlayer.PlayNext();
+	}
+    [Rpc.Host]
+    public static void TogglePlay(Guid playerid)
+	{
+		if (!CallerMayControl()) return;
+		var MediaPlayer=GetPlayer(playerid);
+		if (MediaPlayer==null||!MediaPlayer.IsPlaying) return;
+		MediaPlayer.Paused=!MediaPlayer.Paused;
+		ChatMsg(MediaPlayer,$"{Rpc.Caller.DisplayName} {(MediaPlayer.Paused?"paused":"resumed")} current video.");
+	}
+    [Rpc.Host]
+    public static void Seek(Guid playerid,float time)
+	{
+		if (!CallerMayControl()) return;
+		var MediaPlayer=GetPlayer(playerid);
+		if (MediaPlayer==null||!MediaPlayer.IsPlaying||MediaPlayer.IsLive) return;
+		MediaPlayer.SeekTo(time);
+		var t=TimeSpan.FromSeconds(MediaPlayer.Curtime);
+		ChatMsg(MediaPlayer,$"{Rpc.Caller.DisplayName} rewound the video to {(t.Hours>0?$"{t.Hours}:":"")}{t.Minutes:D2}:{t.Seconds:D2}.");
 	}
 }

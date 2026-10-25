@@ -40,8 +40,7 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 			LoadingScreen.Title="Creating Lobby";
 			
 			Settings.Load();
-			var st=Settings.Current();
-			PrivateLobby=st.PrivateLobby;
+			PrivateLobby=Settings.Data.PrivateLobby;
 			Networking.CreateLobby(new LobbyConfig(){
 				Privacy=PrivateLobby?LobbyPrivacy.FriendsOnly:LobbyPrivacy.Public,
 			});

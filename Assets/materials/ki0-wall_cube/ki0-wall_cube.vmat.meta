@@ -1,0 +1,26 @@
+{
+  "guid": "be9b9807-834c-4ea4-92df-52233f107abd",
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "Ki 0 Wall Cube",
+      "Type": "material",
+      "Org": "local",
+      "Ident": "ki0_wall_cube",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": null,
+      "EditorReferences": [],
+      "Mounts": null,
+      "IsStandaloneOnly": false,
+      "AI": {
+        "EnableMcpCommunication": true
+      },
+      "Metadata": {
+        "SingleAssetSource": "materials/ki0-wall_cube/ki0-wall_cube.vmat",
+        "ParentPackage": "playback.kitty_cinema"
+      }
+    }
+  }
+}
