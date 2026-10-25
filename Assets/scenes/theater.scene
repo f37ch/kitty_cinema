@@ -2591,56 +2591,6 @@
             }
           ],
           "Children": []
-        },
-        {
-          "__guid": "549d19f6-7e4c-4142-bad3-d53bae34ffa3",
-          "__version": 2,
-          "Flags": 0,
-          "Name": "Game Menu",
-          "Position": "0,0,0",
-          "Rotation": "0,0,0,1",
-          "Scale": "1,1,1",
-          "Tags": "",
-          "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkFlags": 0,
-          "NetworkOrphaned": 0,
-          "NetworkTransmit": true,
-          "OwnerTransfer": 1,
-          "Components": [
-            {
-              "__type": "Sandbox.ScreenPanel",
-              "__guid": "5a4d387d-9e29-4950-8186-0c478ac5fc50",
-              "__enabled": true,
-              "Flags": 0,
-              "AutoScreenScale": true,
-              "OnComponentDestroy": null,
-              "OnComponentDisabled": null,
-              "OnComponentEnabled": null,
-              "OnComponentFixedUpdate": null,
-              "OnComponentStart": null,
-              "OnComponentUpdate": null,
-              "Opacity": 1,
-              "Scale": 1,
-              "ScaleStrategy": "ConsistentHeight",
-              "TargetCamera": null,
-              "Timing": "AfterPostProcess",
-              "ZIndex": 40
-            },
-            {
-              "__type": "Sandbox.UI.GameMenu",
-              "__guid": "8008f515-5451-408f-84a8-a1ed903ede70",
-              "__enabled": true,
-              "Flags": 0,
-              "OnComponentDestroy": null,
-              "OnComponentDisabled": null,
-              "OnComponentEnabled": null,
-              "OnComponentFixedUpdate": null,
-              "OnComponentStart": null,
-              "OnComponentUpdate": null
-            }
-          ],
-          "Children": []
         }
       ]
     },

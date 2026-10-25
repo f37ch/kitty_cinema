@@ -75,6 +75,7 @@
     <div class="title">Action Menu</div>
     
     <div class="container">
+        <button class="button" @onclick=@(()=>OpenSettings())><i class="i">settings</i>Settings</button>
         <button class="button" @onclick=@(()=>SetSpray())><i class="i">image</i>Set Spray</button>
         <button class="button" @onclick=@(()=>TauntMenu())><i class="i">emoji_people</i>Taunt Menu</button>
         <button class="button" @onclick=@(()=>AdminMenu())><i class="i">admin_panel_settings</i>Admin Menu</button>
@@ -95,6 +96,10 @@
     }
     void TauntMenu(){
         Sandbox.UI.TauntMenu.Open();
+        Input.ReleaseActions();
+    }
+    void OpenSettings(){
+        SettingsMenu.Open();
         Input.ReleaseActions();
     }
     void SetSpray(){

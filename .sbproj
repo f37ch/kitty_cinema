@@ -32,10 +32,17 @@
       "Gamepad": true
     },
     "LaunchMode": "Normal",
-    "StartupScene": "scenes/init.scene",
+    "StartupScene": "scenes/theater.scene",
     "RecommendedMinPlayers": 1,
     "RecommendedMaxPlayers": 64,
     "Coop": false,
-    "Versus": false
+    "Versus": false,
+    "MapSettings": {
+      "UseCreateGameModal": false,
+      "NeedsMap": false,
+      "ShowChangeMap": false,
+      "DefaultMap": null,
+      "MapTarget": null
+    }
   }
 }

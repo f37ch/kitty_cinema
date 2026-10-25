@@ -106,7 +106,6 @@ CinemaEntry{
 </root>
 @code{
 public TextEntry TextEntry {get;set;}
-public GameMenu Menu {get;set;}
 public NetworkSync NetworkSync {get;set;}
 public string EntryString {get;set;}
 public event Action<string> EntryCallback;
@@ -121,7 +120,6 @@ public async Task Close(){
 }
 protected override void OnStart()
 {
-    Menu=Game.ActiveScene.Components.Get<GameMenu>();
     NetworkSync=Game.ActiveScene.Components.Get<NetworkSync>(FindMode.EnabledInSelfAndDescendants);
 	base.OnStart();
 }

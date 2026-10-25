@@ -25,7 +25,6 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 	/// </summary>
 	[Property] public List<GameObject> SpawnPoints {get;set;}
 	//[Sync] public NetDictionary<Guid,Guid> Players {get;set;}
-	private bool PrivateLobby {get;set;}
 	//private bool LobbyNeedPassword {get;set;}
 	//private string LobbyPassword {get;set;}
 	
@@ -39,10 +38,7 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 			LoadingScreen.Title="Creating Lobby";
 			
 			Settings.Load();
-			PrivateLobby=Settings.Data.PrivateLobby;
-			Networking.CreateLobby(new LobbyConfig(){
-				Privacy=PrivateLobby?LobbyPrivacy.FriendsOnly:LobbyPrivacy.Public,
-			});
+			Networking.CreateLobby(new LobbyConfig());
 			//LobbyNeedPassword=st.IsLobbyNeedPassword;
 			//LobbyPassword=st.LobbyPassword;
 		}
@@ -50,15 +46,10 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 	}
     public static void Disconnect(string text, string icon)
 	{
-		Networking.Disconnect();
-		var init_scene=ResourceLibrary.Get<SceneFile>("scenes/init.scene");
-		Game.ActiveScene.Load(init_scene);
-		var gmenu=Game.ActiveScene.GetAllComponents<GameMenu>().FirstOrDefault();
-		gmenu.DisplayText=text;
-		gmenu.DisplayIcon=icon;
-        gmenu.selected="displaytext";
-		gmenu.selectedB="";
+		// Back to the s&box menu: it owns the lobby browser now.
 		Log.Info(text);
+		Networking.Disconnect();
+		Game.Close();
 	}
 	[Rpc.Broadcast(NetFlags.HostOnly)]
 	public static void Kick(Guid id)
@@ -160,17 +151,12 @@ public sealed class NetworkSync : Component, Component.INetworkListener
 		//	Players.Add(channel.Id,player.Id);
 		//}
 	}
-	public async void OnActive(Connection channel)
+	public void OnActive(Connection channel)
 	{
 		//if (LobbyNeedPassword){
 		//	HandlePassword(channel.Id);
 		//}else{
 			InitPlayer(channel);
-			await Task.DelayRealtimeSeconds(.4f);
-			if (PrivateLobby){
-				GameChat.Info("#notify.friendonly");
-				GameChat.Info("#notify.friendonly2");
-			}
 		//}
 	}
 

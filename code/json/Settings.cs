@@ -20,9 +20,6 @@ public class Settings
 	public float SFXVolume {get;set;}=1;
 	public float VoiceVolume {get;set;}=1;
 	public float InterfaceVolume {get;set;}=1;
-	public bool PrivateLobby {get;set;}
-	public string LobbyPassword {get;set;}
-	public bool IsLobbyNeedPassword {get;set;}
 
 	/// <summary>The settings in use, loaded from disk the first time.</summary>
 	public static Settings Data=>data??=Read();
@@ -53,14 +50,7 @@ public class Settings
 	/// <summary>Applies the settings to the current scene: call after a scene loads.</summary>
 	public static void Load()
 	{
-		var s=Data;
 		Apply();
-		var menu=Game.ActiveScene?.GetAllComponents<GameMenu>().FirstOrDefault();
-		if (menu!=null){
-			menu.IsLobbyPrivate=s.PrivateLobby;
-			menu.IsLobbyNeedPassword=s.IsLobbyNeedPassword;
-			menu.LobbyPassword=s.LobbyPassword;
-		}
         Log.Info("Settings are loaded.");
 	}
 	/// <summary>Pushes the values to the local camera, footsteps and mixers.</summary>
@@ -100,6 +90,11 @@ public class Settings
 	public static void Tick()
 	{
 		if (dirty&&sinceChange>0.5f) Save();
+	}
+	/// <summary>Saves now if a change is still waiting for Tick.</summary>
+	public static void Flush()
+	{
+		if (dirty) Save();
 	}
 	public static void Save()
 	{

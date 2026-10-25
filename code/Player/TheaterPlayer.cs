@@ -105,6 +105,8 @@ public sealed class TheaterPlayer : Component
 			Scene.Camera.WorldPosition=Camera.WorldPosition;
 			Scene.Camera.WorldRotation=Camera.WorldRotation;
 			CameraRotation=Camera.WorldRotation;
+			// The camera may be replaced or reset (scene load, network snapshot): keep the player's FOV on it.
+			if (Scene.Camera.FieldOfView!=Settings.Data.PlayerFov) Scene.Camera.FieldOfView=Settings.Data.PlayerFov;
 			DuckLevel=MathX.Lerp(Animator.DuckLevel,Input.Down("Duck")?1:0,Time.Delta*10.0f);
 			//chair stuff
 			EyeAngles+=Input.AnalogLook;

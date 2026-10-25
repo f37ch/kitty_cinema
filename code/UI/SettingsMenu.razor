@@ -1,0 +1,273 @@
+@using Sandbox.UI
+@using System
+@using System.Linq
+@using System.Threading.Tasks
+
+@inherits PanelComponent
+<style>
+    @@keyframes settings-window-in {
+        0% { opacity: 0; transform: scale(0.94); }
+        100% { opacity: 1; transform: scale(1); }
+    }
+
+    SettingsMenu {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        background-color: #00000088;
+        backdrop-filter: blur(6px);
+        pointer-events: all;
+        font-family: Poppins;
+        color: #e8e8e8;
+        transition: opacity 0.15s ease;
+
+        &.closing { opacity: 0; pointer-events: none; }
+    }
+
+    .st-window {
+        width: 860px;
+        max-height: 88%;
+        flex-direction: column;
+        border-radius: 16px;
+        border: 1px solid #ffffff14;
+        background-color: #0d0e10f5;
+        box-shadow: 0px 16px 60px #000000cc;
+        overflow: hidden;
+        animation: settings-window-in 0.2s ease-out;
+    }
+
+    .st-header {
+        flex-shrink: 0;
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 20px;
+        font-family: BerlinSansFBDemi;
+        font-size: 26px;
+        letter-spacing: 2px;
+        color: #00d7bb;
+        background-color: #00d7bb14;
+        border-bottom: 1px solid #ffffff0f;
+        i { font-size: 30px; }
+        .st-close {
+            margin-left: auto;
+            width: 40px;
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            font-size: 26px;
+            color: #cfcfcf;
+            transition: all 0.1s ease;
+            &:hover { background-color: #ff4d5e33; color: #ff6b6b; cursor: pointer; }
+        }
+    }
+
+    .st-scroll {
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px;
+        overflow: scroll;
+    }
+    .st-section {
+        flex-shrink: 0;
+        flex-direction: column;
+        border-radius: 14px;
+        background-color: #16181bf2;
+        border: 1px solid #ffffff14;
+        overflow: hidden;
+    }
+    .st-head {
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        padding: 6px 20px;
+        font-family: BerlinSansFBDemi;
+        font-size: 24px;
+        letter-spacing: 1px;
+        color: #00d7bb;
+        background-color: #00d7bb14;
+        border-bottom: 1px solid #ffffff0f;
+        i { font-size: 30px; }
+    }
+    .st-row {
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+        min-height: 44px;
+        padding: 2px 20px;
+        border-bottom: 1px solid #ffffff0a;
+        transition: background-color 0.12s ease;
+        &:hover { background-color: #ffffff08; }
+    }
+    .st-name {
+        flex-grow: 1;
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        font-size: 22px;
+        color: #e6e6e6;
+        i { font-size: 26px; color: #ffffff66; }
+    }
+    .st-row .cinemaslider {
+        flex-grow: 0;
+        flex-shrink: 0;
+        width: 320px;
+        min-width: 320px;
+        margin-top: 0px;
+        > .inner > .track {
+            height: 8px;
+        }
+    }
+    .st-val {
+        flex-shrink: 0;
+        width: 70px;
+        justify-content: flex-end;
+        font-size: 20px;
+        color: #00d7bb;
+    }
+    .st-btn {
+        flex-shrink: 0;
+        width: 48px;
+        height: 40px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        font-size: 24px;
+        color: #0b0c0e;
+        background-color: #00d7bb;
+        transition: background-color 0.12s ease;
+        &:hover { background-color: #3cf0d6; cursor: pointer; sound-in: ui.button.over; }
+        &:active { sound-in: ui.button.press; }
+    }
+</style>
+<root class="@(Closing ? "closing" : "")">
+    <div class="st-window">
+        <div class="st-header">
+            <i>settings</i>
+            <label>#menu.settings</label>
+            <button class="st-close" @onclick=@Close><i>close</i></button>
+        </div>
+
+        @{ var st=Settings.Data; }
+        <div class="st-scroll">
+            <div class="st-section">
+                <div class="st-head"><i>tune</i><label>#menu.settings.main</label></div>
+                <div class="st-row">
+                    <div class="st-name"><i>visibility</i><label>#menu.settings.fov</label></div>
+                    <CinemaSlider class="cinemaslider st-slider" ShowValueTooltip=@(false) Min=@(50) Max=@(120) Step=@(1) Value=@st.PlayerFov OnValueChanged=@FovSet/>
+                    <label class="st-val">@($"{(int)st.PlayerFov}°")</label>
+                </div>
+                <div class="st-row">
+                    <div class="st-name"><i>keyboard</i><label>#menu.settings.binds</label></div>
+                    <button class="st-btn" onclick=@(()=>Game.Overlay.ShowBinds())><i>open_in_new</i></button>
+                </div>
+            </div>
+
+            <div class="st-section">
+                <div class="st-head"><i>volume_up</i><label>#menu.settings.sound</label></div>
+                <div class="st-row">
+                    <div class="st-name"><i>speaker</i><label>#menu.settings.overallVolume</label></div>
+                    <CinemaSlider class="cinemaslider st-slider" ShowValueTooltip=@(false) Max=@(100) Step=@(1) Value=@(st.OverAllVolume*100) OnValueChanged=@OverVolSet/>
+                    <label class="st-val">@Percent(st.OverAllVolume)</label>
+                </div>
+                <div class="st-row">
+                    <div class="st-name"><i>mic</i><label>#menu.settings.voiceVolume</label></div>
+                    <CinemaSlider class="cinemaslider st-slider" ShowValueTooltip=@(false) Max=@(100) Step=@(1) Value=@(st.VoiceVolume*100) OnValueChanged=@VoiceVolSet/>
+                    <label class="st-val">@Percent(st.VoiceVolume)</label>
+                </div>
+                <div class="st-row">
+                    <div class="st-name"><i>graphic_eq</i><label>#menu.settings.effectVolume</label></div>
+                    <CinemaSlider class="cinemaslider st-slider" ShowValueTooltip=@(false) Max=@(100) Step=@(1) Value=@(st.SFXVolume*100) OnValueChanged=@SFXVolSet/>
+                    <label class="st-val">@Percent(st.SFXVolume)</label>
+                </div>
+                <div class="st-row">
+                    <div class="st-name"><i>web</i><label>#menu.settings.interfaceVolume</label></div>
+                    <CinemaSlider class="cinemaslider st-slider" ShowValueTooltip=@(false) Max=@(100) Step=@(1) Value=@(st.InterfaceVolume*100) OnValueChanged=@UIVolSet/>
+                    <label class="st-val">@Percent(st.InterfaceVolume)</label>
+                </div>
+                <div class="st-row">
+                    <div class="st-name"><i>directions_walk</i><label>#menu.settings.footstepsVolume</label></div>
+                    <CinemaSlider class="cinemaslider st-slider" ShowValueTooltip=@(false) Max=@(100) Step=@(1) Value=@(st.FootStepVolume*100) OnValueChanged=@FootstepSet/>
+                    <label class="st-val">@Percent(st.FootStepVolume)</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</root>
+@code{
+    private bool Closing {get;set;}
+
+    public static SettingsMenu Open()
+    {
+        // The top screen panel: above the chat and the theater UI.
+        var panel=Game.ActiveScene.GetAllComponents<ScreenPanel>().OrderByDescending(x=>x.ZIndex).FirstOrDefault();
+        if (panel==null) return null;
+        return panel.Components.Get<SettingsMenu>()??panel.Components.Create<SettingsMenu>();
+    }
+
+    protected override void OnStart()
+    {
+        Flags=ComponentFlags.NotNetworked;
+        base.OnStart();
+    }
+
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
+        Settings.Tick();
+        if (Input.EscapePressed){
+            Input.EscapePressed=false;
+            Close();
+        }
+    }
+
+    private void Set(Action<Settings> change)
+    {
+        Settings.Change(change);
+        StateHasChanged();
+    }
+    // Razor can't infer a delegate type from a lambda attribute: the sliders need method groups.
+    private void FovSet(float val)=>Set(s=>s.PlayerFov=val);
+    private void OverVolSet(float val)=>Set(s=>s.OverAllVolume=val/100);
+    private void VoiceVolSet(float val)=>Set(s=>s.VoiceVolume=val/100);
+    private void SFXVolSet(float val)=>Set(s=>s.SFXVolume=val/100);
+    private void UIVolSet(float val)=>Set(s=>s.InterfaceVolume=val/100);
+    private void FootstepSet(float val)=>Set(s=>s.FootStepVolume=val/100);
+    private static string Percent(float v)=>$"{MathF.Round(v*100)}%";
+
+    public async void Close()
+    {
+        if (Closing) return;
+        Closing=true;
+        StateHasChanged();
+        await Task.DelayRealtimeSeconds(0.15f);
+        if (this.IsValid()) Destroy();
+    }
+
+    /// <summary>While open, Escape closes this menu instead of opening the s&box menu.</summary>
+    public static bool IsOpen {get;private set;}
+    protected override void OnEnabled()
+    {
+        base.OnEnabled();
+        IsOpen=true;
+    }
+    protected override void OnDestroy()
+    {
+        IsOpen=false;
+        // Closed before the delayed save in Tick: write the last change now.
+        Settings.Flush();
+        Panel?.Delete();
+        base.OnDestroy();
+    }
+
+    protected override int BuildHash()
+    {
+        var st=Settings.Data;
+        return HashCode.Combine(Closing,st.PlayerFov,st.OverAllVolume,st.VoiceVolume,st.SFXVolume,st.InterfaceVolume,st.FootStepVolume);
+    }
+}
