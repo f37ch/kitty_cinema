@@ -252,14 +252,19 @@ public class MediaPlayer : Component
 		ScreenInfo=WebPanel.AddChild<ScreenInfo>();
 		ScreenInfo.MediaPlayer=this;
 	}
-	/// <summary>The home screen's service buttons are clicked with the crosshair.</summary>
+	/// <summary>
+	/// The home screen's service buttons are clicked with the crosshair.
+	/// Hit-tests the same ray WorldInput uses (cursor while the mouse is active, otherwise the camera's forward),
+	/// so the pointer shows exactly when the buttons can be hovered and sits where WorldInput hovers.
+	/// </summary>
 	private void UpdatePointer(){
-		if (ScreenUI==null||Pointer==null||WorldUI==null||Scene.Camera==null) return;
-		var ray=Scene.Camera.ScreenPixelToRay(Screen.Size/2);
-		bool aiming=LocalInside&&!Input.Down("queue")&&ray.Position.Distance(WorldUI.Position)<WorldUI.MaxInteractionDistance;
+		if (ScreenUI==null||Pointer==null||WorldUI==null||Scene.Camera==null||!WorldInput.IsValid()) return;
+		var ray=Mouse.Active?Scene.Camera.ScreenPixelToRay(Mouse.Position):new Ray(WorldInput.WorldPosition,WorldInput.WorldRotation.Forward);
+		bool aiming=LocalInside&&WorldInput.Enabled&&!Input.Down("queue")&&WorldUI.RayToLocalPosition(ray,out _,out _);
 		ScreenUI.Style.PointerEvents=aiming?PointerEvents.All:PointerEvents.None;
 		Pointer.SetClass("Hide",!aiming);
 		if (aiming){
+			// MousePosition is where WorldInput hovers, in the panel's own coordinates.
 			Pointer.Style.Top=WorldUI.PanelBounds.Top + WorldUI.MousePosition.y/2;
 			Pointer.Style.Left=(WorldUI.MousePosition.x-WorldUI.PanelBounds.Width/2)/2;
 		}
@@ -287,13 +292,20 @@ public class MediaPlayer : Component
 
 		FitLightToScreen();
     }
-	/// <summary>The scene camera can show up after the snapshot loads (joining a lobby): hook it once it exists.</summary>
+	/// <summary>
+	/// WorldInput aims along its GameObject, so it has to live on the camera we look through. That camera can show up
+	/// after the snapshot loads (joining a lobby) or change (another player's camera arriving switched on): follow it.
+	/// </summary>
 	private void EnsureWorldInput(){
-		if (WorldInput.IsValid()) return;
 		var cam=Scene.Camera;
 		if (cam==null) return;
+		if (WorldInput.IsValid()&&WorldInput.GameObject==cam.GameObject) return;
+		// Keep it switched off while a request menu has it off.
+		bool enabled=!WorldInput.IsValid()||WorldInput.Enabled;
+		if (WorldInput.IsValid()) WorldInput.Destroy();
 		WorldInput=cam.Components.GetOrCreate<Sandbox.WorldInput>();
 		WorldInput.LeftMouseAction="use";
+		WorldInput.Enabled=enabled;
 	}
 	private void UpdateProjection(ReadOnlySpan<byte> span, Vector2 size)
     {

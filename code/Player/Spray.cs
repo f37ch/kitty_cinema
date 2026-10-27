@@ -102,12 +102,13 @@ public static partial class Spray
 		LocalSpray?.Destroy();
 		LocalSpray=GameObject.Clone("prefabs/spray.prefab",config);
 
-		LocalSpray.NetworkSpawn();
-
+		// Fill in before spawning: the spawn snapshot is what other clients receive.
 		var sprayfab=LocalSpray.GetComponentInChildren<SprayRenderer>();
 		sprayfab.Image=CurrentImage;
 		sprayfab._text.Text=Steam.PersonaName;
-		
+
+		LocalSpray.NetworkSpawn();
+
 		return true;
 	}
 }
@@ -180,12 +181,14 @@ internal class SprayRenderer : Renderer
 		return true;
 	}
 
-	protected override async void OnAwake()
+	protected override void OnAwake()
 	{
 		UpdateObject();
+	}
 
-		await Task.DelayRealtimeSeconds( 0.2f );//cuz it needs time to get our link first
-
+	/// <summary>Runs after Image is set, both locally and on clients receiving the spawn.</summary>
+	protected override async void OnStart()
+	{
 		if ( string.IsNullOrWhiteSpace( Image ) )
 			return;
 		try
