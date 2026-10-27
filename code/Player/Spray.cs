@@ -103,7 +103,8 @@ public static partial class Spray
 		LocalSpray=GameObject.Clone("prefabs/spray.prefab",config);
 
 		// Fill in before spawning: the spawn snapshot is what other clients receive.
-		var sprayfab=LocalSpray.GetComponentInChildren<SprayRenderer>();
+		// The clone stays disabled until NetworkSpawn enables it.
+		var sprayfab=LocalSpray.GetComponentInChildren<SprayRenderer>(true);
 		sprayfab.Image=CurrentImage;
 		sprayfab._text.Text=Steam.PersonaName;
 
